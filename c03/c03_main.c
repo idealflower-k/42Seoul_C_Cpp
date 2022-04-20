@@ -4,7 +4,7 @@
 #include "ex01/ft_strncmp.c"
 #include "ex02/ft_strcat.c"
 #include "ex03/ft_strncat.c"
-
+#include "ex04/ft_strstr.c"
 
 int	main()
 {
@@ -43,5 +43,14 @@ int	main()
 	printf("dest : %s\nsrc : %s\n", ex03_dest1, ex03_src1);
 	printf("strncat, n=5 : %s\nstrncat, n=8 : %s\n", strncat(ex03_dest1,ex03_src1, 5), strncat(ex03_dest2, ex03_src2, 8));
 	printf("ft_strncat, n=5 : %s\nft_strncat, n=8 : %s\n\n\n", ft_strncat(ex03_dest3,ex03_src3, 5), ft_strncat(ex03_dest4, ex03_src4, 8));
+
+	//ex04
+	printf("ex04\n");
+	char str[] = "hello world!";
+
+	printf("str : %s\nto_find : ll\nstrstr : %s\n\n", str, strstr(str, "ll"));
+	printf("str : %s\nto_find : la\nstrstr : %s\n\n", str, strstr(str, "la"));
+	printf("str : %s\nto_find : ll\nft_strstr : %s\n\n", str, ft_strstr(str, "ll"));
+	printf("str : %s\nto_find : la\nft_strstr : %s\n\n\n", str, ft_strstr(str, "la"));
 
 }
