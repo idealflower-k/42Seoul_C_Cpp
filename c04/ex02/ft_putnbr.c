@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/20 20:53:35 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/04/21 21:20:00 by sanghwal         ###   ########.fr       */
+/*   Created: 2022/04/22 21:26:53 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/04/22 21:32:43 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcat(char *dest, char *src)
+void	ft_put_char(int n)
 {
-	int	dest_end;
-	int	src_idx;
-	int	dest_idx;
+	n = n + '0';
+	write(1, &n, 1);
+}
 
-	dest_end = 0;
-	src_idx = 0;
-	while (dest[dest_end])
-		dest_end++;
-	dest_idx = dest_end;
-	while (src[src_idx])
-		dest[dest_idx++] = src[src_idx++];
-	dest[dest_idx] = 0;
-	return (dest);
+void	ft_putnbr(int nb)
+{
+	if (nb == -2147483648)
+	{
+		write(1, "-2147483648", 11);
+		return ;
+	}
+	else if (nb < 0)
+	{
+		write(1, "-", 1);
+		ft_putnbr(-nb);
+	}
+	else if (nb > 9)
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
+	else
+		ft_put_char(nb);
 }

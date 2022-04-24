@@ -1,28 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/20 20:53:35 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/04/21 21:20:00 by sanghwal         ###   ########.fr       */
+/*   Created: 2022/04/22 21:33:04 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/04/24 21:58:30 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcat(char *dest, char *src)
+int	ft_atoi(char *str)
 {
-	int	dest_end;
-	int	src_idx;
-	int	dest_idx;
+	int	sign;
+	int temp;
 
-	dest_end = 0;
-	src_idx = 0;
-	while (dest[dest_end])
-		dest_end++;
-	dest_idx = dest_end;
-	while (src[src_idx])
-		dest[dest_idx++] = src[src_idx++];
-	dest[dest_idx] = 0;
-	return (dest);
+	temp = 0;
+	sign = 1;
+	while (*str)
+	{
+		if (*str == '-')
+		{
+			sign *= -1;
+			str++;
+		}
+		if (*str >= '0' && *str <= '9')
+		{
+			while (*str >= '0' && *str <= '9')
+			{
+				temp = (temp * 10) + (*str - '0');
+				str++;
+			}
+			return (sign * temp);
+		}
+		else
+			str++;
+	}
+	return (0);
 }
+

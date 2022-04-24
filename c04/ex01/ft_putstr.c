@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/20 20:53:35 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/04/21 21:20:00 by sanghwal         ###   ########.fr       */
+/*   Created: 2022/04/22 21:25:29 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/04/24 16:26:04 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcat(char *dest, char *src)
-{
-	int	dest_end;
-	int	src_idx;
-	int	dest_idx;
+#include <unistd.h>
 
-	dest_end = 0;
-	src_idx = 0;
-	while (dest[dest_end])
-		dest_end++;
-	dest_idx = dest_end;
-	while (src[src_idx])
-		dest[dest_idx++] = src[src_idx++];
-	dest[dest_idx] = 0;
-	return (dest);
+void	ft_putstr(char *str)
+{
+	while(*str)
+	{
+		write(1, str, 1);
+		str++;
+	}
 }

@@ -1,28 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/20 20:53:35 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/04/21 21:20:00 by sanghwal         ###   ########.fr       */
+/*   Created: 2022/04/20 14:04:13 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/04/24 11:22:32 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcat(char *dest, char *src)
-{
-	int	dest_end;
-	int	src_idx;
-	int	dest_idx;
+#include <unistd.h>
 
-	dest_end = 0;
-	src_idx = 0;
-	while (dest[dest_end])
-		dest_end++;
-	dest_idx = dest_end;
-	while (src[src_idx])
-		dest[dest_idx++] = src[src_idx++];
-	dest[dest_idx] = 0;
-	return (dest);
+void	ch_hexa(unsigned char str)
+{
+	write(1, &"0123456789abcdef"[str / 16], 1);
+	write(1, &"0123456789abcdef"[str % 16], 1);
+}
+
+void	ft_putstr_non_printable(char *str)
+{
+	int				i;
+	unsigned char	temp;
+
+	i = 0;
+	temp = 0;
+	while (str[i])
+	{
+		if (str[i] < 32 || str[i] > 126)
+		{
+			write(1, "\\", 1);
+			temp = str[i];
+			ch_hexa(temp);
+		}
+		else
+			write(1, &str[i], 1);
+		i++;
+	}
 }

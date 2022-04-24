@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_strlowcase.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/20 20:53:35 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/04/21 21:20:00 by sanghwal         ###   ########.fr       */
+/*   Created: 2022/04/18 16:29:32 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/04/21 13:58:42 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcat(char *dest, char *src)
+char	*ft_strlowcase(char *str)
 {
-	int	dest_end;
-	int	src_idx;
-	int	dest_idx;
+	int	i;
 
-	dest_end = 0;
-	src_idx = 0;
-	while (dest[dest_end])
-		dest_end++;
-	dest_idx = dest_end;
-	while (src[src_idx])
-		dest[dest_idx++] = src[src_idx++];
-	dest[dest_idx] = 0;
-	return (dest);
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] >= 'A' && str[i] <= 'Z')
+		{
+			str[i] += 32;
+		}
+		i++;
+	}
+	return (str);
 }
