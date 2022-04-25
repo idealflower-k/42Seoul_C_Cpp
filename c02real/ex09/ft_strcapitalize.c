@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:33:49 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/04/21 14:03:09 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/04/25 22:41:37 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	check_alpha(int i, char *str)
 {
 	if (i == 0 && str[i] >= 'a' && str[i] <= 'z')
 		str[i] -= 32;
-	else if (str[i + 1] >= 'a' && str[i + 1] <= 'z')
+	else if (i != 0 && str[i + 1] >= 'a' && str[i + 1] <= 'z')
 		str[i + 1] -= 32;
 }
 

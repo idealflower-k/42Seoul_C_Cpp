@@ -1,25 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
+/*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 15:50:41 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/04/24 10:35:53 by sanghwal         ###   ########.fr       */
+/*   Created: 2022/04/20 14:04:13 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/04/25 10:30:25 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_printable(char *str)
+#include <unistd.h>
+
+void	ch_hexa(unsigned char str)
 {
-	int	i;
+	write(1, &"0123456789abcdef"[str / 16], 1);
+	write(1, &"0123456789abcdef"[str % 16], 1);
+}
+
+void	ft_putstr_non_printable(char *str)
+{
+	int				i;
+	unsigned char	temp;
 
 	i = 0;
+	temp = 0;
 	while (str[i])
 	{
 		if (str[i] < 32 || str[i] > 126)
-			return (0);
+		{
+			write(1, "\\", 1);
+			temp = str[i];
+			ch_hexa(temp);
+		}
+		else
+			write(1, &str[i], 1);
 		i++;
 	}
-	return (1);
 }

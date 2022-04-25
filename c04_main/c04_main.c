@@ -4,8 +4,8 @@
 #include "ex01/ft_putstr.c"
 #include "ex02/ft_putnbr.c"
 #include "ex03/ft_atoi.c"
-//#include "ex04/ft_putnbr_base.c"
-//#include "ex05/ft_atoi_base.c"
+#include "ex04/ft_putnbr_base.c"
+#include "ex05/ft_atoi_base.c"
 
 int main()
 {
@@ -56,14 +56,14 @@ int main()
 	printf("str2 : %s\nft_atoi(str2) = %d\n\n", ex03_str2, ft_atoi(ex03_str2));
 	printf("str3 : %s\nft_atoi(str3) = %d\n\n", ex03_str3, ft_atoi(ex03_str3));
 
-/*	//ex04
+	//ex04
 	printf("------ ex04 ------\n");
 	printf("-bmLbpjci\n");
 	ft_putnbr_base(-2147483648, "abcdEFGhijkLNmopqrST");
 	printf("\n\n");
 
 	printf("*///////\n");
-/*	ft_putnbr_base(2147483647, "!@#$%^&*()<>,.?/");
+	ft_putnbr_base(2147483647, "!@#$%^&*()<>,.?/");
 	printf("\n\n");
 
 	printf("-)()()(\n");
@@ -114,7 +114,7 @@ int main()
 
 	printf("27\n");
 	printf("%d\n\n", ft_atoi_base(ex05_str5, "atoi"));
-	*/
+	
 }
 
 

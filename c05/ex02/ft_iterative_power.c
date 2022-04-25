@@ -1,41 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_iterative_power.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/22 21:33:04 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/04/24 21:58:30 by sanghwal         ###   ########.fr       */
+/*   Created: 2022/04/25 21:39:02 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/04/25 21:48:26 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
+int	ft_iterative_power(int nb, int power)
 {
-	int	sign;
-	int temp;
+	int	i;
+	int result;
 
-	temp = 0;
-	sign = 1;
-	while (*str)
+	result = 1;
+	if (power <= 0)
+		return (0);
+	i = 1;
+	while (i <= power)
 	{
-		if (*str == '-')
-		{
-			sign *= -1;
-			str++;
-		}
-		if (*str >= '0' && *str <= '9')
-		{
-			while (*str >= '0' && *str <= '9')
-			{
-				temp = (temp * 10) + (*str - '0');
-				str++;
-			}
-			return (sign * temp);
-		}
-		else
-			str++;
+		result *= nb;
+		i++;
 	}
-	return (0);
+	return (result);
 }
-

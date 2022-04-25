@@ -1,40 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
+/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/20 14:04:13 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/04/24 11:22:32 by sanghwal         ###   ########.fr       */
+/*   Created: 2022/04/25 20:05:59 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/04/25 21:38:40 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ch_hexa(unsigned char str)
+int	ft_iterative_factorial(int nb)
 {
-	write(1, &"0123456789abcdef"[str / 16], 1);
-	write(1, &"0123456789abcdef"[str % 16], 1);
-}
+	int	i;
+	int result;
 
-void	ft_putstr_non_printable(char *str)
-{
-	int				i;
-	unsigned char	temp;
-
-	i = 0;
-	temp = 0;
-	while (str[i])
+	i = 1;
+	result = 1;
+	if (nb == 1 || nb == 0)
+		return (1);
+	if (nb < 0)
+		return (0);
+	while (i <= nb)
 	{
-		if (str[i] < 32 || str[i] > 126)
-		{
-			write(1, "\\", 1);
-			temp = str[i];
-			ch_hexa(temp);
-		}
-		else
-			write(1, &str[i], 1);
+		result *= i;
 		i++;
 	}
+	return (result);
 }
