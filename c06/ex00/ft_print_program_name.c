@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
+/*   ft_print_program_name.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/25 21:57:15 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/04/26 10:56:35 by sanghwal         ###   ########.fr       */
+/*   Created: 2022/04/26 16:19:02 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/04/26 16:33:07 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_fibonacci(int index)
+#include <unistd.h>
+
+int	main(int ac, char **ag)
 {
-	if (index < 0)
-		return (-1);
-	if (index == 0)
-		return (0);
-	if (index == 1)
-		return (1);
-	return (ft_fibonacci(index - 1) + ft_fibonacci(index - 2));
+	int	temp;
+	int	i;
+
+	i = 0;
+	temp = ac;
+	while (ag[0][i])
+	{
+		write(1, &ag[0][i], 1);
+		i++;
+	}
+	return (0);
 }
