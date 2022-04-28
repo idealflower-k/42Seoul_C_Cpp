@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 10:58:23 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/04/26 10:59:15 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/04/27 15:55:19 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ int	ft_prime(int nb)
 	int i;
 
 	i = 2;
-	while (i <= nb /2)
+	while (i * i <= nb)
 	{
 		if (nb % i == 0)
 			return (0);
