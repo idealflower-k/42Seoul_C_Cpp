@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
+/*   ft_boolean.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/30 19:51:20 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/05/01 15:19:13 by sanghwal         ###   ########.fr       */
+/*   Created: 2022/05/02 16:48:06 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/05/02 17:00:29 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#ifndef FT_BOOLEAN_H
+# define FT_BOOLEAN_H
 
-int	ft_ultimate_range(int **range, int min, int max)
-{
-	int	size;
-	int	*temp;
+# include <unistd.h>
 
-	size = 0;
-	if (min >= max)
-	{
-		*range = 0;
-		return (0);
-	}
-	temp = (int *)malloc(sizeof(int) * (max - min));
-	if (temp == 0)
-		return (-1);
-	while (min < max)
-	{
-		temp[size] = min;
-		size++;
-		min++;
-	}
-	*range = temp;
-	return (size);
-}
+# define FALSE 0
+# define TRUE 1
+# define EVEN(number) (number % 2 == 0)
+# define EVEN_MSG "I have an even number of arguments.\n"
+# define ODD_MSG "I have an odd number of arguments.\n"
+# define SUCCESS 0
+
+typedef int t_bool;
+
+#endif

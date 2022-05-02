@@ -1,17 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_base.c                                  :+:      :+:    :+:   */
+/*   ft_point.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/01 15:19:35 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/05/01 15:29:57 by sanghwal         ###   ########.fr       */
+/*   Created: 2022/05/02 17:02:47 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/05/02 17:30:59 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_convert_base2.c"
+#ifndef FT_POINT_H
+# define FT_POINT_H
 
-char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
+typedef struct	s_point
 {
+	int x;
+	int y;
+}t_point;
 
+#endif
