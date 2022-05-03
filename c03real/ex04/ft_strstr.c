@@ -1,46 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 09:53:52 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/04/22 21:52:50 by sanghwal         ###   ########.fr       */
+/*   Created: 2022/04/20 21:22:49 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/04/27 22:20:30 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_put_char(int n)
+char	*ft_strstr(char *str, char *to_find)
 {
-	n = n + '0';
-	write(1, &n, 1);
-}
+	char	*p_str;
+	char	*p_need;
 
-void	ft_putnbr(int nb)
-{
-	if (nb == -2147483648)
-	{
-		write(1, "-2147483648", 11);
-		return ;
+	p_str = str;
+	p_need = to_find;
+	if (*to_find == 0)
+		return (str);
+	while (*str || *p_need == 0)
+	{	
+		if (*p_need == 0)
+			return (p_str);
+		if (*p_need == *str)
+		{
+			if (p_need == to_find)
+				p_str = str;
+			p_need++;
+		}
+		else
+			p_need = to_find;
+		str++;
 	}
-	else if (nb > 2147483647 || nb < -2147483648)
-	{
-		return ;
-	}
-	else if (nb < 0)
-	{
-		write(1, "-", 1);
-		ft_putnbr(-nb);
-	}
-	else if (nb > 9)
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
-	else
-	{
-		ft_put_char(nb);
-	}
+	return (0);
 }

@@ -1,46 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_map.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 09:53:52 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/04/22 21:52:50 by sanghwal         ###   ########.fr       */
+/*   Created: 2022/05/03 21:51:38 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/05/03 21:57:46 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
-void	ft_put_char(int n)
+int *ft_map(int *tab, int length, int(*f)(int))
 {
-	n = n + '0';
-	write(1, &n, 1);
-}
+	int *temp;
+	int i;
 
-void	ft_putnbr(int nb)
-{
-	if (nb == -2147483648)
+	i = 0;
+	temp = (int *)malloc(sizeof(int) * length);
+	while (i < length)
 	{
-		write(1, "-2147483648", 11);
-		return ;
+		temp[i] = f(tab[i]);
+		i++;
 	}
-	else if (nb > 2147483647 || nb < -2147483648)
-	{
-		return ;
-	}
-	else if (nb < 0)
-	{
-		write(1, "-", 1);
-		ft_putnbr(-nb);
-	}
-	else if (nb > 9)
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
-	else
-	{
-		ft_put_char(nb);
-	}
+	return (temp);
 }

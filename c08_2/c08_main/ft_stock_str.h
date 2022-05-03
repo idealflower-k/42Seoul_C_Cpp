@@ -1,46 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_stock_str.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 09:53:52 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/04/22 21:52:50 by sanghwal         ###   ########.fr       */
+/*   Created: 2022/05/03 10:20:52 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/05/03 13:23:00 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#ifndef FT_STOCK_STR_H
+# define FT_STOCK_STR_H
 
-void	ft_put_char(int n)
-{
-	n = n + '0';
-	write(1, &n, 1);
-}
-
-void	ft_putnbr(int nb)
-{
-	if (nb == -2147483648)
-	{
-		write(1, "-2147483648", 11);
-		return ;
-	}
-	else if (nb > 2147483647 || nb < -2147483648)
-	{
-		return ;
-	}
-	else if (nb < 0)
-	{
-		write(1, "-", 1);
-		ft_putnbr(-nb);
-	}
-	else if (nb > 9)
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
-	else
-	{
-		ft_put_char(nb);
-	}
-}
+typedef struct s_stock_str {
+	int size;
+	char *str;
+	char *copy;
+} t_stock_str;
+#endif

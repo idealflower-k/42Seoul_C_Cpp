@@ -1,46 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_point.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 09:53:52 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/04/22 21:52:50 by sanghwal         ###   ########.fr       */
+/*   Created: 2022/05/02 17:02:47 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/05/03 16:23:42 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#ifndef FT_POINT_H
+# define FT_POINT_H
 
-void	ft_put_char(int n)
+typedef struct s_point
 {
-	n = n + '0';
-	write(1, &n, 1);
-}
+	int	x;
+	int	y;
+}	t_point;
 
-void	ft_putnbr(int nb)
-{
-	if (nb == -2147483648)
-	{
-		write(1, "-2147483648", 11);
-		return ;
-	}
-	else if (nb > 2147483647 || nb < -2147483648)
-	{
-		return ;
-	}
-	else if (nb < 0)
-	{
-		write(1, "-", 1);
-		ft_putnbr(-nb);
-	}
-	else if (nb > 9)
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
-	else
-	{
-		ft_put_char(nb);
-	}
-}
+#endif

@@ -1,46 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 09:53:52 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/04/22 21:52:50 by sanghwal         ###   ########.fr       */
+/*   Created: 2022/04/20 16:12:59 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/05/03 17:13:31 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_put_char(int n)
+int	ft_strcmp(char *s1, char *s2)
 {
-	n = n + '0';
-	write(1, &n, 1);
-}
+	int	curr_idx;
 
-void	ft_putnbr(int nb)
-{
-	if (nb == -2147483648)
+	curr_idx = 0;
+	while (s1[curr_idx] != 0 || s2[curr_idx] != 0)
 	{
-		write(1, "-2147483648", 11);
-		return ;
+		if (s1[curr_idx] != s2[curr_idx])
+			return (s1[curr_idx] - s2[curr_idx]);
+		curr_idx++;
 	}
-	else if (nb > 2147483647 || nb < -2147483648)
-	{
-		return ;
-	}
-	else if (nb < 0)
-	{
-		write(1, "-", 1);
-		ft_putnbr(-nb);
-	}
-	else if (nb > 9)
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
-	else
-	{
-		ft_put_char(nb);
-	}
+	return (0);
 }

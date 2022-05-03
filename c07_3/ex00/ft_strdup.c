@@ -1,46 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 09:53:52 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/04/22 21:52:50 by sanghwal         ###   ########.fr       */
+/*   Created: 2022/04/28 10:32:59 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/05/03 10:06:33 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
-void	ft_put_char(int n)
+char	*ft_strdup(char *src)
 {
-	n = n + '0';
-	write(1, &n, 1);
-}
+	char	*temp;
+	int		size;
 
-void	ft_putnbr(int nb)
-{
-	if (nb == -2147483648)
+	size = 0;
+	while (src[size])
+		size++;
+	temp = (char *)malloc(sizeof(char) * size + 1);
+	if (temp == 0)
+		return (0);
+	size = 0;
+	while (*src)
 	{
-		write(1, "-2147483648", 11);
-		return ;
+		temp[size] = *src;
+		size++;
+		src++;
 	}
-	else if (nb > 2147483647 || nb < -2147483648)
-	{
-		return ;
-	}
-	else if (nb < 0)
-	{
-		write(1, "-", 1);
-		ft_putnbr(-nb);
-	}
-	else if (nb > 9)
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
-	else
-	{
-		ft_put_char(nb);
-	}
+	temp[size] = 0;
+	return (temp);
 }

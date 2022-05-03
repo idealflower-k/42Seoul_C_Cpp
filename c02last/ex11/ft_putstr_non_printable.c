@@ -1,46 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 09:53:52 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/04/22 21:52:50 by sanghwal         ###   ########.fr       */
+/*   Created: 2022/04/20 14:04:13 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/04/26 13:52:52 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_put_char(int n)
+void	ch_hexa(unsigned char str)
 {
-	n = n + '0';
-	write(1, &n, 1);
+	write(1, &"0123456789abcdef"[str / 16], 1);
+	write(1, &"0123456789abcdef"[str % 16], 1);
 }
 
-void	ft_putnbr(int nb)
+void	ft_putstr_non_printable(char *str)
 {
-	if (nb == -2147483648)
+	int				i;
+	unsigned char	temp;
+
+	i = 0;
+	temp = 0;
+	while (str[i])
 	{
-		write(1, "-2147483648", 11);
-		return ;
-	}
-	else if (nb > 2147483647 || nb < -2147483648)
-	{
-		return ;
-	}
-	else if (nb < 0)
-	{
-		write(1, "-", 1);
-		ft_putnbr(-nb);
-	}
-	else if (nb > 9)
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
-	else
-	{
-		ft_put_char(nb);
+		if (str[i] < 32 || str[i] > 126)
+		{
+			write(1, "\\", 1);
+			temp = str[i];
+			ch_hexa(temp);
+		}
+		else
+			write(1, &str[i], 1);
+		i++;
 	}
 }
