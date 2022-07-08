@@ -1,43 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 15:53:01 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/07/08 15:54:31 by sanghwal         ###   ########.fr       */
+/*   Created: 2022/07/08 15:02:59 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/07/08 15:56:13 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len);
+void	*ft_calloc(size_t count, size_t size);
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_calloc(size_t count, size_t size)
 {
-	char		*temp;
-	const char	*s;
+	void	*temp;
 
-	if (dst <= src)
-	{
-		temp = (char *)dst;
-		s = (const char *)src;
-		while (len--)
-		{
-			*temp++ = *s++;
-		}
-	}
-	else
-	{
-		temp = (char *)dst;
-		temp += len;
-		s = (const char *)src;
-		s += len;
-		while (len--)
-		{
-			*--temp = *--s;
-		}
-	}
-	return (dst);
+	if (size > SIZE_MAX / count)
+		return (0);
+	temp = malloc(size * count);
+	if (temp == 0)
+		return (0);
+	ft_bzero(temp, (count * size));
+	return (temp);
 }
