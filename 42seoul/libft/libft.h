@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: IdealFlower <IdealFlower@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 14:25:35 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/07/08 15:48:59 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/07/10 15:23:53 by IdealFlower      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,5 @@ char	*ft_strnstr(const char *haysack, const char *needle, size_t len);
 int		ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *src);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 #endif

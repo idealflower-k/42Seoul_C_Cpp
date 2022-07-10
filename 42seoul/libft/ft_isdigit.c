@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanghwal <sanghwal@student.42seoul.>       +#+  +:+       +#+        */
+/*   By: IdealFlower <IdealFlower@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 13:51:50 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/07/06 14:16:03 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/07/09 14:00:02 by IdealFlower      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
