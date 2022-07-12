@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/11 17:27:35 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/07/11 18:31:29 by sanghwal         ###   ########.fr       */
+/*   Created: 2022/07/12 11:21:04 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/07/12 14:35:10 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strtrim(char const *s1, char const *set);
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strtrim(char const *s1, char const *set)
 {
+	size_t	start;
+	size_t	end;
 	char	*temp;
-	size_t	s1_len;
-	size_t	s2_len;
 
-	if (!s1 || !s2)
+	temp = 0;
+	if (!s1)
 		return (0);
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	temp = ft_calloc(s1_len + s2_len + 1, sizeof(char));
+	if (!set)
+		return ((char *)s1);
+	start = 0;
+	end = ft_strlen(s1);
+	while (s1[start] && ft_strchr(set, s1[start]))
+		start++;
+	while (s1[end - 1] && ft_strchr(set, s1[end - 1]) && end > start)
+		end--;
+	temp = ft_calloc((end - start) + 1, sizeof(char));
 	if (!temp)
 		return (0);
-	ft_strlcat(temp, (char *)s1, s1_len + 1);
-	ft_strlcat(temp, (char *)s2, s1_len + s2_len + 1);
+	ft_strlcpy(temp, &s1[start], (end - start) + 1);
 	return (temp);
 }
