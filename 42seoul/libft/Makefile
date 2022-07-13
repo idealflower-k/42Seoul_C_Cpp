@@ -1,6 +1,6 @@
 NAME = libft.a
 
-SRCS = ft_bzero.c \
+SRCS_1 = ft_bzero.c \
 	ft_isalnum.c \
 	ft_isalpha.c \
 	ft_isascii.c \
@@ -22,8 +22,9 @@ SRCS = ft_bzero.c \
 	ft_strnstr.c \
 	ft_atoi.c \
 	ft_calloc.c \
-	ft_strdup.c \
-	ft_substr.c \
+	ft_strdup.c
+
+SRCS_2 = ft_substr.c \
 	ft_strjoin.c \
 	ft_strtrim.c \
 	ft_split.c \
@@ -34,12 +35,27 @@ SRCS = ft_bzero.c \
 	ft_putstr_fd.c \
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c
+
+SRCS_BN = ft_lstnew.c
+
+
+SRCS = $(SRCS_1) $(SRCS_2)
+
 OBJS = $(SRCS:.c=.o)
+
+OBJS_BONUS = $(SRCS_BN:.c=.o)
 
 CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
+RM = rm -f
+
+AR = ar
+
+ARFLAGS = -rcs
+
+INCLUDES = ./libft.h
 
 all: $(NAME)
 
@@ -47,7 +63,10 @@ all: $(NAME)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	ar -rcs $@ $^
+	$(AR) $(ARFLAGS) $@ $^
+
+bonus : $(OBJS) $(OBJS_BONUS)
+		$(AR) $(ARFLAGS) $(NAME) $^
 
 clean:
 	rm -f $(OBJS)
