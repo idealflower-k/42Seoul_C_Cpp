@@ -6,13 +6,20 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 14:25:35 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/07/12 20:10:44 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/07/13 16:21:50 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include<stdlib.h>
+# include <unistd.h>
+
+typedef struct	s_list
+{
+    void			*content;
+    struct s_list	*next;
+}	t_list;
 
 size_t	ft_strlen(const char *s);
 void	*ft_memset(void *d, int c, size_t len);
@@ -43,4 +50,10 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 char	*ft_itoa(int n);
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putendl_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
 #endif
