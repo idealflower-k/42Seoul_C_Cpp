@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: IdealFlower <IdealFlower@student.42.fr>    +#+  +:+       +#+        */
+/*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 15:02:59 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/07/14 21:53:34 by IdealFlower      ###   ########.fr       */
+/*   Updated: 2022/07/15 10:58:14 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	void	*temp;
 
-	if (!count && size > SIZE_MAX / count)
+	if (count && size > SIZE_MAX / count)
 		return ((void *)0);
 	temp = malloc(size * count);
 	if (temp == 0)

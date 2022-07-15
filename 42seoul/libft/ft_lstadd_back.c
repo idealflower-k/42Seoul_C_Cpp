@@ -7,14 +7,13 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*last;
 
-	if ((!*lst && !new) || (*lst && !new))
+	if (!new)
 		return ;
-	if (!*lst && new != 0)
+	if (!*lst)
 		*lst = new;
 	else if (*lst != 0 && new != 0)
 	{
 		last = ft_lstlast(*lst);
 		last -> next = new;
 	}
-	new -> next = 0;
 }
