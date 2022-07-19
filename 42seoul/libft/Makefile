@@ -52,7 +52,11 @@ OBJS = $(SRCS:.c=.o)
 
 OBJS_BONUS = $(SRCS_BN:.c=.o)
 
-CC = gcc
+ifdef FLAG_BONUS
+OBJS += $(OBJS_BONUS)
+endif
+
+CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -62,18 +66,18 @@ AR = ar
 
 ARFLAGS = -rcs
 
-INCLUDES = ./libft.h
+HEADER = libft.h
 
 all: $(NAME)
 
-%.o : %.c
+%.o : %.c $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $@ $^
 
-bonus : $(OBJS) $(OBJS_BONUS)
-		$(AR) $(ARFLAGS) $(NAME) $^
+bonus :
+	make FLAG_BONUS=1 all
 
 clean:
 	$(RM) $(OBJS) $(OBJS_BONUS)

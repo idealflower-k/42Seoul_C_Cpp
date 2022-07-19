@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: IdealFlower <IdealFlower@student.42.fr>    +#+  +:+       +#+        */
+/*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 14:25:35 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/07/14 20:49:26 by IdealFlower      ###   ########.fr       */
+/*   Updated: 2022/07/19 19:00:34 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include<stdlib.h>
+# include <stdlib.h>
 # include <unistd.h>
 
-typedef struct	s_list
+typedef struct s_list
 {
-    void			*content;
-    struct s_list	*next;
-}	t_list;
+	void			*content;
+	struct s_list	*next;
+}					t_list;
 
 size_t	ft_strlen(const char *s);
 void	*ft_memset(void *d, int c, size_t len);
@@ -58,7 +58,7 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **list, t_list *new);
-int     ft_lstsize(t_list *lst);
+int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
