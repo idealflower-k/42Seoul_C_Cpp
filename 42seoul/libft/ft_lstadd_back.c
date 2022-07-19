@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 14:58:33 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/07/19 14:58:34 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/07/19 21:55:51 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*last;
 
-	if (!new)
+	if (!lst || !new)
 		return ;
 	if (!*lst)
 		*lst = new;

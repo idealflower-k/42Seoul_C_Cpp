@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 11:21:04 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/07/12 14:35:10 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/07/19 21:44:44 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (!s1)
 		return (0);
 	if (!set)
-		return ((char *)s1);
-	start = 0;
+		return (ft_strdup(s1));
 	end = ft_strlen(s1);
+	start = 0;
 	while (s1[start] && ft_strchr(set, s1[start]))
 		start++;
 	while (s1[end - 1] && ft_strchr(set, s1[end - 1]) && end > start)

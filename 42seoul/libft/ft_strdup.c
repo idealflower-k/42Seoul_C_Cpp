@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 15:46:33 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/07/12 15:20:48 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/07/19 21:08:33 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 char	*ft_strdup(const char *src)
 {
-	char	*temp;
-	int		size;
+	char			*temp;
+	const size_t	size = ft_strlen(src);
+	size_t			i;
 
-	size = ft_strlen(src);
 	temp = ft_calloc(size + 1, sizeof(char));
 	if (!temp)
 		return (0);
-	size = 0;
-	while (src[size])
+	i = 0;
+	while (src[i])
 	{
-		temp[size] = src[size];
-		size++;
+		temp[i] = src[i];
+		i++;
 	}
 	return (temp);
 }

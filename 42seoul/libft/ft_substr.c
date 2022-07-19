@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: IdealFlower <IdealFlower@student.42.fr>    +#+  +:+       +#+        */
+/*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 13:05:36 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/07/17 14:03:08 by IdealFlower      ###   ########.fr       */
+/*   Updated: 2022/07/19 21:47:49 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char			*substr;
-	size_t			sub_idx;
-	unsigned int	s_len;
+	char	*substr;
+	size_t	sub_idx;
+	size_t	s_len;
 
 	if (s == 0)
 		return (0);
-	s_len = (unsigned int)ft_strlen(s);
+	s_len = ft_strlen(s);
 	sub_idx = 0;
 	if (start >= s_len)
 	{
