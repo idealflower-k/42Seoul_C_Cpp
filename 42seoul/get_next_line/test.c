@@ -1,44 +1,36 @@
-#include <stdio.h>
-#include <memory.h>
-#include <string.h>
+#include <unistd.h> // open, read
+#include <stdio.h> // printf
+#include <fcntl.h> // read dhqtusdls O_RDONLY 등
+#define BUF_SIZE 10
 
 int main(void)
 {
-	FILE *fp;
-	char file_buff[100];
-	int i;
-
-	fp = fopen("test.txt", "w");
-
-	if (fp == NULL)
-		printf("fail\n");
-	else
-		printf("sucess\n");
-
-	for (i = 1; i <= 5; i++)
-	{
-		printf("파일 내용 입력 (%d번째 라인)\n", i);
-		memset(file_buff, 0, sizeof(file_buff));
-		scanf("%s", file_buff);
-		file_buff[strlen(file_buff)] = '\n';
-
-		fputs(file_buff, fp);
-	}
-	fclose(fp);
-
-	fp = fopen("test.txt", "r");
+	static char txt_str[BUF_SIZE];
+	int fd1 = open("test1.txt", O_RDONLY);
+	int fd2 = open("test2.txt", O_RDONLY);
 	
-	if (fp == NULL)
-		printf("fail\n");
-	else
-		printf("sucess\n");
+	printf("test1.txt fd value : %d\n", fd1);
+	printf("test2.txt fd value : %d\n", fd2);
 
-	while (fgets(file_buff, sizeof(file_buff), fp) != NULL)
+	char buff1[BUF_SIZE + 1];
+	char buff2[BUF_SIZE + 1];
+	int n1 = read(fd1, buff1, BUF_SIZE);
+	buff1[n1] = 0;
+	puts(buff1);
+	int n2 = read(fd2, buff2, BUF_SIZE);
+	buff2[n2] = 0;
+	puts(buff2);
+	printf("test1.txt n1 value : %d\n", n1);
+	printf("test2.txt n1 value : %d\n", n2);
+	int i = 0;
+	while (buff1[i] != '\n')
 	{
-		printf("%s", file_buff);
-		memset(file_buff, 0, sizeof(file_buff));
+		txt_str[i] = buff1[i];
+		i++;
 	}
-	fclose(fp);
+	printf("buff1's text : %s\n", txt_str);
+	close(fd1);
+	close(fd2);
 
 	return (0);
 }
