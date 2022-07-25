@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:28:00 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/07/12 14:21:32 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:27:31 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ char	*ft_strchr(const char *s, int c);
 
 char	*ft_strchr(const char *s, int c)
 {
-	if (c == 0)
-		return ((char *)s + ft_strlen(s));
 	while (*s)
 	{
 		if ((char)c == *s)
@@ -26,5 +24,7 @@ char	*ft_strchr(const char *s, int c)
 		}
 		s++;
 	}
+	if ((char)c == *s)
+		return ((char *)s);
 	return (0);
 }

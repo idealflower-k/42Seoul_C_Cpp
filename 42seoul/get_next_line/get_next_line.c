@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/07 19:36:40 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/07/20 16:27:26 by sanghwal         ###   ########.fr       */
+/*   Created: 2022/07/25 14:12:23 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/07/25 14:44:22 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "get_next_line.h"
 
-char	*ft_strrchr(const char *s, int c);
+char	*get_next_line(int fd);
 
-char	*ft_strrchr(const char *s, int c)
+char	*get_next_line(int fd)
 {
-	const char	*temp;
 
-	temp = 0;
-	while (*s)
-	{
-		if ((char)c == *s)
-			temp = s;
-		s++;
-	}
-	if ((char)c == *s)
-		return ((char *)s);
-	return ((char *)temp);
 }
