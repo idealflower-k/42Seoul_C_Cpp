@@ -1,7 +1,7 @@
 #include <unistd.h> // open, read
 #include <stdio.h> // printf
 #include <fcntl.h> // read dhqtusdls O_RDONLY 등
-#define BUF_SIZE 10
+#define BUF_SIZE 5
 
 int main(void)
 {
@@ -20,6 +20,9 @@ int main(void)
 	int n2 = read(fd2, buff2, BUF_SIZE);
 	buff2[n2] = 0;
 	puts(buff2);
+	n1 = read(fd1, buff1, BUF_SIZE); // 오프셋 동작 확인
+	buff1[n1] = 0;
+	puts(buff1);
 	printf("test1.txt n1 value : %d\n", n1);
 	printf("test2.txt n1 value : %d\n", n2);
 	int i = 0;
