@@ -6,7 +6,7 @@
 /*   By: IdealFlower <IdealFlower@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:34:44 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/07/30 01:25:10 by IdealFlower      ###   ########.fr       */
+/*   Updated: 2022/07/30 01:31:10 by IdealFlower      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ typedef struct s_list
 	int				fd;
 	ssize_t			read_byte;
 	char			*result;
-	char			*offset;
 	struct s_list	*next;
 	struct s_list	*before;
 }	t_list;
