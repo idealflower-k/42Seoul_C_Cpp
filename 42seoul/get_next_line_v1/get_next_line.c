@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 14:12:23 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/07/28 16:34:51 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/07/29 14:01:04 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*get_next_line(int fd)
 		return (0);
 	fd_lst = find_lst(&(lst_head), fd);
 	result = 0;
-	if (fd_lst ->old_buf != 0 && ft_strchr(fd_lst -> old_buf, '\n'))
+	if (fd_lst->old_buf != 0 && ft_strchr(fd_lst->old_buf, '\n'))
 		result = ft_resultdup(fd_lst -> old_buf);
 	else if (ft_strlen(fd_lst -> old_buf) < BUFFER_SIZE)
 	{
