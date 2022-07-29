@@ -3,22 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: IdealFlower <IdealFlower@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:39:17 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/07/29 18:11:28 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/07/30 01:24:49 by IdealFlower      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 t_list	*get_list(t_list **list_head, int fd);
-t_list	*ft_new_list(int fd);
-size_t	ft_strchr(t_list *fd_list, char c);
-char	*ft_strjoin(char *dst, char *src);
-void	ft_del_list(t_list *fd_list);
-char	*ft_get_result(t_list *fd_list);
-char	*ft_strdup(t_list *fd_list);
+char	*ft_read_save(t_list *fd_list);
+char	*ft_get_line(t_list *fd_list);
+char	*ft_save(t_list *fd_list);
 char	*get_next_line(int fd);
 
 char	*get_next_line(int fd)
@@ -27,15 +24,16 @@ char	*get_next_line(int fd)
 	t_list			*fd_list;
 	char			*result;
 
-	if (fd < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
 	fd_list = get_list(&(list_head), fd);
 	if (!fd_list)
 		return (0);
-	if (ft_strchr(fd_list, '\n'))
-		result = ft_strdup(fd_list);
-	else
-		
+	fd_list->result = ft_read_save(fd_list);
+	if (!fd_list->result)
+		return (0);
+	result = ft_get_line(fd_list);
+	fd_list->result = ft_save(fd_list);
 	return (result);
 }
 
@@ -68,105 +66,78 @@ t_list	*get_list(t_list **list_head, int fd)
 	return (temp);
 }
 
-t_list	*ft_new_list(int fd)
+char	*ft_read_save(t_list *fd_list)
 {
-	t_list	*new;
-	size_t	i;
+	char	*buf;
 
-	new = (t_list *)malloc(sizeof(t_list));
+	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buf)
+		return (0);
+	fd_list->read_byte = 1;
+	while (!ft_strchr(fd_list, '\n') && fd_list->read_byte)
+	{
+		fd_list->read_byte = read(fd_list->fd, buf, BUFFER_SIZE);
+		if (fd_list->read_byte == -1)
+		{
+			free(buf);
+			ft_del_list(fd_list);
+			return (0);
+		}
+		buf[fd_list->read_byte] = 0;
+		fd_list->result = ft_strjoin(fd_list->result, buf);
+	}
+	free(buf);
+	return (fd_list->result);
+}
+
+char	*ft_save(t_list *fd_list)
+{
+	size_t	i;
+	size_t	j;
+	char	*new;
+
+	i = 0;
+	while (fd_list->result[i] && fd_list->result[i] != '\n')
+		i++;
+	if (!fd_list->result[i])
+	{
+		free(fd_list->result);
+		ft_del_list(fd_list);
+		return (0);
+	}
+	new = (char *)malloc(sizeof(char) * (ft_strlen(fd_list->result) - i + 1));
 	if (!new)
 		return (0);
-	new ->fd = fd;
-	new ->next = 0;
-	new ->offset = 0;
-	new ->read_byte = 0;
-	new ->before = 0;
-	i = 0;
-	while (i <= BUFFER_SIZE)
-		new ->buff[i++] = 0;
+	i++;
+	j = 0;
+	while (fd_list->result[i])
+		new[j++] = fd_list->result[i++];
+	new[j] = 0;
+	free(fd_list->result);
 	return (new);
 }
 
-size_t	ft_strchr(t_list *fd_list, char c)
+char	*ft_get_line(t_list *fd_list)
 {
 	size_t	i;
+	char	*line;
 
+	if(!fd_list->result)
+		return (0);
 	i = 0;
-	while (fd_list->buff[i])
-	{
-		if (fd_list->buff[i] == c)
-		{
-			fd_list->offset = &fd_list->buff[i + 1];
-			return (i);
-		}
+	while (fd_list->result[i] && fd_list->result[i] != '\n')
 		i++;
-	}
-	return (0);
-}
-
-void	ft_del_list(t_list *fd_list)
-{
-	t_list	*temp;
-	t_list	*del;
-
-	temp = fd_list ->before;
-	if (!temp)
+	line = (char *)malloc(sizeof(char) * (i + 2));
+	if (!line)
+		return (0);
+	i = -1;
+	while (fd_list->result[++i] && fd_list->result[i] != '\n')
+		line[i] = fd_list->result[i];
+	if (fd_list->result[i] == '\n')
 	{
-		del = fd_list;
-		fd_list = fd_list ->next;
-		free(del);
-		return ;
-	}
-	temp ->next = fd_list ->next;
-	free(fd_list);
-}
-
-char	*ft_get_result(t_list *fd_list)
-{
-	char	*result;
-	size_t	result_len;
-
-	return (result);
-}
-
-void	ft_make_result(char *result, t_list *fd_list)
-{
-	
-}
-char	*ft_strjoin(char *dst, char *src)
-{
-	size_t	dst_len;
-	size_t	src_idx;
-
-	dst_len = 0;
-	while (dst[dst_len])
-		dst_len++;
-	src_idx = 0;
-	while (src[src_idx])
-		dst[dst_len++] = src[src_idx++];
-	dst[dst_len] = 0;
-}
-
-char	*ft_strdup(t_list *fd_list)
-{
-	char			*line;
-	size_t			i;
-	size_t			j;
-	const size_t	len = (fd_list->offset - fd_list->buff) + 1;
-
-	line = (char *)malloc(sizeof(char) * len);
-	i = 0;
-	while (&fd_list->buff[i] != fd_list->offset)
-	{
-		line[i] = fd_list->buff[i];
+		line[i] = fd_list->result[i];
 		i++;
 	}
 	line[i] = 0;
-	j = 0;
-	while (fd_list->offset[j])
-	{
-		fd_list->buff[j] = fd_list->offset[j];
-		j++;
-	}
 	return (line);
 }

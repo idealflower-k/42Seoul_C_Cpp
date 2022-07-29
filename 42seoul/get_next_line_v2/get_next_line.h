@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: IdealFlower <IdealFlower@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:34:44 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/07/28 19:55:39 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/07/30 01:25:10 by IdealFlower      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,23 @@
 
 typedef struct s_list
 {
-	size_t			fd;
+	int				fd;
 	ssize_t			read_byte;
-	char			buff[BUFFER_SIZE + 1];
+	char			*result;
 	char			*offset;
 	struct s_list	*next;
 	struct s_list	*before;
 }	t_list;
 
 char	*get_next_line(int fd);
+t_list	*get_list(t_list **list_head, int fd);
+char	*ft_read_save(t_list *fd_list);
+char	*ft_get_line(t_list *fd_list);
+char	*ft_save(t_list *fd_list);
+size_t	ft_strlen(char *str);
+size_t	ft_strchr(t_list *fd_list, char c);
+t_list	*ft_new_list(int fd);
+void	ft_del_list(t_list *fd_list);
+char	*ft_strjoin(char *dst, char *src);
 
 #endif
