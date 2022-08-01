@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: IdealFlower <IdealFlower@student.42.fr>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/28 16:39:17 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/08/01 16:41:24 by IdealFlower      ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "get_next_line.h"
 
 t_list	*get_list(t_list **list_head, int fd);
@@ -24,7 +12,7 @@ char	*get_next_line(int fd)
 	t_list			*fd_list;
 	char			*result;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > OPEN_MAX)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
 	fd_list = get_list(&(list_head), fd);
 	if (!fd_list)
@@ -103,6 +91,12 @@ char	*ft_save(t_list *fd_list)
 	char	*new;
 
 	i = 0;
+	if (fd_list->read_byte == 0)
+	{
+		free(fd_list->result);
+		ft_del_list(fd_list);
+		return (0);
+	}
 	while (fd_list->result[i] && fd_list->result[i] != '\n')
 		i++;
 	if (!fd_list->result[i])
@@ -111,7 +105,7 @@ char	*ft_save(t_list *fd_list)
 		ft_del_list(fd_list);
 		return (0);
 	}
-	new = (char *)malloc(sizeof(char) * (ft_strlen(fd_list->result) - i + 1));
+	new = (char *)malloc(sizeof(char) * (ft_strlen(fd_list->result) - i + 2));
 	if (!new)
 		return (0);
 	i++;

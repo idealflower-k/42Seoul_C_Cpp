@@ -1,23 +1,7 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: IdealFlower <IdealFlower@student.42.fr>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/28 16:34:44 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/08/01 16:41:18 by IdealFlower      ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 # include <unistd.h>
 # include <stdlib.h>
-
-#ifndef OPEN_MAX
-# define OPEN_MAX 256
-# endif
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42

@@ -86,9 +86,19 @@ void	ft_del_list(t_list *fd_list)
 	{
 		del = fd_list;
 		fd_list = fd_list ->next;
+		del->before = 0;
+		del->fd = 0;
+		del->next = 0;
+		del->read_byte = 0;
+		del->result = 0;
 		free(del);
 		return ;
 	}
 	temp ->next = fd_list ->next;
+	fd_list->before = 0;
+	fd_list->fd = 0;
+	fd_list->next = 0;
+	fd_list->read_byte = 0;
+	fd_list->result = 0;
 	free(fd_list);
 }
