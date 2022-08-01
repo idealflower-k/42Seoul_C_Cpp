@@ -71,7 +71,7 @@ t_list	*ft_new_list(int fd)
 	new ->fd = fd;
 	new ->next = 0;
 	new ->result = 0;
-	new ->read_byte = 0;
+	new ->read_byte = 1;
 	new ->before = 0;
 	return (new);
 }

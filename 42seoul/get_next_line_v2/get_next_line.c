@@ -6,7 +6,7 @@
 /*   By: IdealFlower <IdealFlower@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:39:17 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/07/30 01:24:49 by IdealFlower      ###   ########.fr       */
+/*   Updated: 2022/08/01 16:41:24 by IdealFlower      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,17 @@ char	*get_next_line(int fd)
 	t_list			*fd_list;
 	char			*result;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > OPEN_MAX)
 		return (0);
 	fd_list = get_list(&(list_head), fd);
 	if (!fd_list)
 		return (0);
 	fd_list->result = ft_read_save(fd_list);
 	if (!fd_list->result)
+	{
+		ft_del_list(fd_list);
 		return (0);
+	}
 	result = ft_get_line(fd_list);
 	fd_list->result = ft_save(fd_list);
 	return (result);
@@ -70,10 +73,11 @@ char	*ft_read_save(t_list *fd_list)
 {
 	char	*buf;
 
+	if (fd_list->read_byte == 0)
+		return (0);
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (0);
-	fd_list->read_byte = 1;
 	while (!ft_strchr(fd_list, '\n') && fd_list->read_byte)
 	{
 		fd_list->read_byte = read(fd_list->fd, buf, BUFFER_SIZE);
@@ -83,6 +87,8 @@ char	*ft_read_save(t_list *fd_list)
 			ft_del_list(fd_list);
 			return (0);
 		}
+		else if (fd_list->read_byte == 0)
+			break ;
 		buf[fd_list->read_byte] = 0;
 		fd_list->result = ft_strjoin(fd_list->result, buf);
 	}
@@ -127,7 +133,9 @@ char	*ft_get_line(t_list *fd_list)
 	i = 0;
 	while (fd_list->result[i] && fd_list->result[i] != '\n')
 		i++;
-	line = (char *)malloc(sizeof(char) * (i + 2));
+	if (fd_list->result[i] == '\n')
+		i++;
+	line = (char *)malloc(sizeof(char) * (i + 1));
 	if (!line)
 		return (0);
 	i = -1;

@@ -1,4 +1,0 @@
-abcdefgh
-ijklmnop
-
-end
