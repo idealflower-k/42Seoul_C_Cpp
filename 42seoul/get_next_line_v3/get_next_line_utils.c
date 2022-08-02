@@ -1,6 +1,6 @@
 #include "get_next_line.h"
 
-void	ft_del_list(t_list *list);
+void	ft_del_list(t_list *list, t_list **head);
 size_t	ft_strchr(t_list *list, char c);
 size_t	ft_strlen(char *str);
 t_list	*ft_new_list(int fd);
@@ -77,26 +77,26 @@ t_list	*ft_new_list(int fd)
 	return (new);
 }
 
-void	ft_del_list(t_list *list)
+void	ft_del_list(t_list *list, t_list **head)
 {
 	t_list	*temp;
-	t_list	*del;
 
-	del = list;
 	temp = list->before;
 	if (!temp)
 	{
 		list->result = 0;
 		list->fd = 0;
-		list = list->next;
-		free(del);
-		del = 0;
+		*head = list->next;
+		list->next = 0;
+		free(list);
+		list = 0;
 		return ;
 	}
 	temp->next = list->next;
 	list->result = 0;
 	list->fd = 0;
-	free(del);
-	del = 0;
+	list->next = 0;
+	free(list);
+	list = 0;
 	return ;
 }

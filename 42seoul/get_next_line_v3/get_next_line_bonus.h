@@ -20,9 +20,9 @@ typedef struct s_list
 char	*get_next_line(int fd);
 char	*ft_read_save(t_list *list);
 char	*ft_get_line(t_list *list);
-void	ft_save(t_list *list);
+void	ft_save(t_list *list, t_list **head);
 t_list	*get_list(t_list **list_head, int fd);
-void	ft_del_list(t_list *list);
+void	ft_del_list(t_list *list, t_list **head);
 size_t	ft_strchr(t_list *list, char c);
 size_t	ft_strlen(char *str);
 t_list	*ft_new_list(int fd);

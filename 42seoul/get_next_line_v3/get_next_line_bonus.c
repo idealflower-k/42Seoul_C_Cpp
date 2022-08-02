@@ -3,7 +3,7 @@
 char	*get_next_line(int fd);
 char	*ft_read_save(t_list *list);
 char	*ft_get_line(t_list *list);
-void	ft_save(t_list *list);
+void	ft_save(t_list *list, t_list **head);
 t_list	*get_list(t_list **list_head, int fd);
 
 char	*get_next_line(int fd)
@@ -20,13 +20,17 @@ char	*get_next_line(int fd)
 	list->result = ft_read_save(list);
 	if (list->result == 0)
 	{
-		ft_del_list(list);
+		ft_del_list(list, &list_head);
 		return (0);
 	}
 	result = ft_get_line(list);
 	if (!result)
+	{
+		free(list->result);
+		ft_del_list(list, &list_head);
 		return (0);
-	ft_save(list);
+	}
+	ft_save(list, &list_head);
 	return (result);
 }
 
@@ -64,12 +68,16 @@ char	*ft_read_save(t_list *list)
 	{
 		list->read_byte = read(list->fd, list->buff, BUFFER_SIZE);
 		if (list->read_byte == -1)
-		{
-			ft_del_list(list);
 			return (0);
-		}
 		if (list->read_byte == 0)
+		{
+			if (list->result != 0 && list->result[0] == 0)
+			{
+				free(list->result);
+				list->result = 0;
+			}
 			break ;
+		}
 		list->buff[list->read_byte] = 0;
 		list->result = ft_strjoin(list->result, list->buff);
 	}
@@ -83,11 +91,7 @@ char	*ft_get_line(t_list *list)
 
 	i = 0;
 	if (list->result[0] == 0)
-	{
-		free(list->result);
-		ft_del_list(list);
 		return (0);
-	}
 	while (list->result[i] && list->result[i] != '\n')
 		i++;
 	if (list->result[i] == '\n')
@@ -107,19 +111,19 @@ char	*ft_get_line(t_list *list)
 	return (line);
 }
 
-void	ft_save(t_list *list)
+void	ft_save(t_list *list, t_list **head)
 {
 	size_t	i;
 	size_t	j;
 	char	*new;
 
+	i = 0;
 	if (list->read_byte == 0)
 	{
 		free(list->result);
-		ft_del_list(list);
+		ft_del_list(list, head);
 		return ;
 	}
-	i = 0;
 	while (list->result[i] != '\n')
 		i++;
 	new = (char *)malloc(ft_strlen(list->result) - i);
