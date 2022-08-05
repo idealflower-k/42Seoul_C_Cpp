@@ -68,8 +68,15 @@ char	*ft_read_save(t_list *list)
 	{
 		list->read_byte = read(list->fd, list->buff, BUFFER_SIZE);
 		if (list->read_byte == -1)
+		{
+			if (list->result != 0)
+			{
+				free(list->result);
+				list->result = 0;
+			}
 			return (0);
-		if (list->read_byte == 0)
+		}
+		else if (list->read_byte == 0)
 		{
 			if (list->result != 0 && list->result[0] == 0)
 			{

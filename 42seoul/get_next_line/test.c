@@ -79,16 +79,29 @@ t_list	*ft_new_list(int fd)
 
 void	ft_del_list(t_list *list, t_list **head)
 {
-	if (!list->before)
+	t_list	*temp;
+
+	temp = list->before;
+	if (!temp)
+	{
+		if (list->next != 0)
+			list->next->before = 0;
+		list->result = 0;
+		list->fd = 0;
 		*head = list->next;
-	else
-		list->before->next = list->next;
+		list->next = 0;
+		free(list);
+		list = 0;
+		return ;
+	}
 	if (list->next != 0)
-		list->next->before = list->before;
+		list->next->before = temp;
+	temp->next = list->next;
 	list->result = 0;
 	list->fd = 0;
 	list->next = 0;
 	list->before = 0;
 	free(list);
 	list = 0;
+	return ;
 }
