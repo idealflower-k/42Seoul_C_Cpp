@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:03:58 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/08/08 20:44:53 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/08/08 21:10:04 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,7 @@ t_list	*get_list(t_list **list_head, int fd)
 	t_list	*temp;
 
 	if (*list_head == 0)
-	// {
 		*list_head = ft_new_list(fd);
-	// 	if (!*list_head)
-	// 		return (0);
-	// }
 	temp = *list_head;
 	while (temp && temp->fd != fd)
 	{
@@ -131,7 +127,7 @@ char	*ft_save(t_list *list, t_list **head)
 	while (new && list->result[i])
 		new[j++] = list->result[i++];
 	free(list->result);
-	list->result = 0;
+	// list->result = 0; // 왜 이걸 넣으면 널체크를 못하는 거야...
 	if (new)
 	{
 		new[j] = 0;

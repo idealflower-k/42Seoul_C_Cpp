@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:06:16 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/08/08 20:40:37 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/08/08 21:09:48 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,7 @@ t_list	*get_list(t_list **list_head, int fd)
 	t_list	*temp;
 
 	if (*list_head == 0)
-	// {
 		*list_head = ft_new_list(fd);
-	// 	if (!*list_head)
-	// 		return (0);
-	// }
 	temp = *list_head;
 	while (temp && temp->fd != fd)
 	{
@@ -131,6 +127,7 @@ char	*ft_save(t_list *list, t_list **head)
 	while (new && list->result[i])
 		new[j++] = list->result[i++];
 	free(list->result);
+	// list->result = 0;
 	if (new)
 	{
 		new[j] = 0;
