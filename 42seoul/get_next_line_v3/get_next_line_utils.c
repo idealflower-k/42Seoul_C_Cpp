@@ -6,13 +6,13 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:06:07 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/08/08 14:54:09 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/08/08 19:50:41 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	ft_del_list(t_list *list, t_list **head);
+char	*ft_del_list(t_list *list, t_list **head);
 size_t	ft_strchr(t_list *list, char c);
 size_t	ft_strlen(char *str);
 t_list	*ft_new_list(int fd);
@@ -60,17 +60,15 @@ char	*ft_strjoin(char *dst, char *src)
 		dst[0] = 0;
 	}
 	result = (char *)malloc((ft_strlen(dst) + ft_strlen(src)) + 1);
-	if (!result)
-		return (0);
 	i = -1;
-	while (dst[++i] != 0)
+	while (result && dst[++i] != 0)
 		result[i] = dst[i];
 	j = 0;
-	while (src[j] != 0)
+	while (result && src[j] != 0)
 		result[i++] = src[j++];
-	result[i] = 0;
+	if (result)
+		result[i] = 0;
 	free(dst);
-	dst = 0;
 	return (result);
 }
 
@@ -89,18 +87,22 @@ t_list	*ft_new_list(int fd)
 	return (new);
 }
 
-void	ft_del_list(t_list *list, t_list **head)
+char	*ft_del_list(t_list *list, t_list **head)
 {
-	if (!list->before)
+	t_list	*temp;
+
+	if (list->result != 0)
+		free(list->result);
+	if (*head == list)
+	{
 		*head = list->next;
-	else
-		list->before->next = list->next;
-	if (list->next != 0)
-		list->next->before = list->before;
-	list->result = 0;
-	list->fd = 0;
-	list->next = 0;
-	list->before = 0;
+		free(list);
+		return (0);
+	}
+	temp = *head;
+	while (temp->next != list)
+		temp = temp->next;
+	temp->next = list->next;
 	free(list);
-	list = 0;
+	return (0);
 }

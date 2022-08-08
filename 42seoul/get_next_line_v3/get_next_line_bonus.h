@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:04:10 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/08/08 14:53:32 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/08/08 20:02:46 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ typedef struct s_list
 char	*get_next_line(int fd);
 char	*ft_read_save(t_list *list);
 char	*ft_get_line(t_list *list);
-void	ft_save(t_list *list, t_list **head);
+char	*ft_save(t_list *list, t_list **head);
 t_list	*get_list(t_list **list_head, int fd);
-void	ft_del_list(t_list *list, t_list **head);
+char	*ft_del_list(t_list *list, t_list **head);
 size_t	ft_strchr(t_list *list, char c);
 size_t	ft_strlen(char *str);
 t_list	*ft_new_list(int fd);

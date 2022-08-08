@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:06:16 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/08/08 14:53:49 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/08/08 20:40:37 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*get_next_line(int fd);
 char	*ft_read_save(t_list *list);
 char	*ft_get_line(t_list *list);
-void	ft_save(t_list *list, t_list **head);
+char	*ft_save(t_list *list, t_list **head);
 t_list	*get_list(t_list **list_head, int fd);
 
 char	*get_next_line(int fd)
@@ -29,20 +29,13 @@ char	*get_next_line(int fd)
 	list = get_list(&(list_head), fd);
 	if (!list)
 		return (0);
-	list->result = ft_read_save(list);
-	if (list->result == 0)
-	{
-		ft_del_list(list, &list_head);
-		return (0);
-	}
+	if (!ft_read_save(list))
+		return (ft_del_list(list, &list_head));
 	result = ft_get_line(list);
 	if (!result)
-	{
-		free(list->result);
-		ft_del_list(list, &list_head);
-		return (0);
-	}
-	ft_save(list, &list_head);
+		return (ft_del_list(list, &list_head));
+	if (!ft_save(list, &list_head))
+		return (ft_del_list(list, &list_head));
 	return (result);
 }
 
@@ -50,27 +43,25 @@ t_list	*get_list(t_list **list_head, int fd)
 {
 	t_list	*temp;
 
-	temp = *list_head;
 	if (*list_head == 0)
-	{
+	// {
 		*list_head = ft_new_list(fd);
-		if (!*list_head)
-			return (0);
-		return (*list_head);
-	}
-	while (temp)
+	// 	if (!*list_head)
+	// 		return (0);
+	// }
+	temp = *list_head;
+	while (temp && temp->fd != fd)
 	{
-		if (temp->fd == fd)
-			break ;
 		if (temp->next == 0)
 		{
 			temp->next = ft_new_list(fd);
 			if (!temp->next)
 				return (0);
-			temp->next->before = temp;
 		}
 		temp = temp->next;
 	}
+	if (read(fd, NULL, 0) < 0)
+		return ((t_list *)ft_del_list(temp, list_head));
 	return (temp);
 }
 
@@ -80,21 +71,11 @@ char	*ft_read_save(t_list *list)
 	{
 		list->read_byte = read(list->fd, list->buff, BUFFER_SIZE);
 		if (list->read_byte == -1)
-		{
-			if (list->result != 0)
-			{
-				free(list->result);
-				list->result = 0;
-			}
 			return (0);
-		}
 		else if (list->read_byte == 0)
 		{
 			if (list->result != 0 && list->result[0] == 0)
-			{
-				free(list->result);
-				list->result = 0;
-			}
+				return (0);
 			break ;
 		}
 		list->buff[list->read_byte] = 0;
@@ -130,7 +111,7 @@ char	*ft_get_line(t_list *list)
 	return (line);
 }
 
-void	ft_save(t_list *list, t_list **head)
+char	*ft_save(t_list *list, t_list **head)
 {
 	size_t	i;
 	size_t	j;
@@ -139,20 +120,21 @@ void	ft_save(t_list *list, t_list **head)
 	i = 0;
 	if (list->read_byte == 0)
 	{
-		free(list->result);
 		ft_del_list(list, head);
-		return ;
+		return (list->buff);
 	}
 	while (list->result[i] != '\n')
 		i++;
 	new = (char *)malloc(ft_strlen(list->result) - i);
-	if (!new)
-		return ;
 	i++;
 	j = 0;
-	while (list->result[i])
+	while (new && list->result[i])
 		new[j++] = list->result[i++];
-	new[j] = 0;
 	free(list->result);
-	list->result = new;
+	if (new)
+	{
+		new[j] = 0;
+		list->result = new;
+	}
+	return (new);
 }
