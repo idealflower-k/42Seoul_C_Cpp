@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: IdealFlower <IdealFlower@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:05:51 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/08/08 20:07:36 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/08/09 13:13:51 by IdealFlower      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ char	*ft_del_list(t_list *list, t_list **head)
 
 	if (list->result != 0)
 		free(list->result);
+	list->result = 0;
 	if (*head == list)
 	{
 		*head = list->next;

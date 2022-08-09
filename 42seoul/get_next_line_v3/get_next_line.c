@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: IdealFlower <IdealFlower@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:06:16 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/08/08 21:09:48 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/08/09 14:48:59 by IdealFlower      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_list	*get_list(t_list **list_head, int fd)
 		}
 		temp = temp->next;
 	}
-	if (read(fd, NULL, 0) < 0)
+	if (temp && read(fd, NULL, 0) < 0)
 		return ((t_list *)ft_del_list(temp, list_head));
 	return (temp);
 }
@@ -69,11 +69,7 @@ char	*ft_read_save(t_list *list)
 		if (list->read_byte == -1)
 			return (0);
 		else if (list->read_byte == 0)
-		{
-			if (list->result != 0 && list->result[0] == 0)
-				return (0);
 			break ;
-		}
 		list->buff[list->read_byte] = 0;
 		list->result = ft_strjoin(list->result, list->buff);
 	}
@@ -114,24 +110,22 @@ char	*ft_save(t_list *list, t_list **head)
 	char	*new;
 
 	i = 0;
-	if (list->read_byte == 0)
+	while (list->read_byte != 0 && list->result[i] != '\n')
+		i++;
+	if (list->read_byte == 0
+		|| (list->result[i] == '\n' && list->result[i + 1] == 0))
 	{
 		ft_del_list(list, head);
 		return (list->buff);
 	}
-	while (list->result[i] != '\n')
-		i++;
 	new = (char *)malloc(ft_strlen(list->result) - i);
 	i++;
 	j = 0;
 	while (new && list->result[i])
 		new[j++] = list->result[i++];
 	free(list->result);
-	// list->result = 0;
 	if (new)
-	{
 		new[j] = 0;
-		list->result = new;
-	}
-	return (new);
+	list->result = new;
+	return (list->result);
 }
