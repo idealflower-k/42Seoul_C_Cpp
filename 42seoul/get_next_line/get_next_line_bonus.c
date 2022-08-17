@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/08 13:06:16 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/08/17 15:57:00 by sanghwal         ###   ########.fr       */
+/*   Created: 2022/08/08 13:03:58 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/08/17 15:57:02 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*get_next_line(int fd);
 char	*ft_read_save(t_list *list);

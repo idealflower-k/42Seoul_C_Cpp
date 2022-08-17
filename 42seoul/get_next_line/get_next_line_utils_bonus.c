@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/08 13:06:07 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/08/17 15:54:51 by sanghwal         ###   ########.fr       */
+/*   Created: 2022/08/08 13:05:51 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/08/17 15:54:42 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_del_list(t_list *list, t_list **head);
 size_t	ft_strchr(t_list *list, char c);
