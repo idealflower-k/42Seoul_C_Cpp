@@ -7,21 +7,15 @@ void	str_print(const char *format, ...)
 	va_list	ap_cp;
 
 	va_start(ap, format);
-	va_copy(ap_cp, ap);
-	{
-		printf("%s", va_arg(ap, char*));
-		printf("%s", va_arg(ap, char*));
-		printf("\n");
-		printf("%s", va_arg(ap_cp, char*));
-		printf("%s", va_arg(ap_cp, char*));
-		printf("\n");
-	}
+	printf("%d\n", va_arg(ap, int));
+	printf("%d", va_arg(ap, int));
+	printf("\n");
+
 	va_end(ap);
-	va_end(ap_cp);
 }
 
-int main(void)
+int	main(void)
 {
-	str_print("dd", "hello", " friend");
+	str_print("dd", '0', 456);
 	return (0);
 }
