@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_pf.c                                     :+:      :+:    :+:   */
+/*   ft_char.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/23 17:23:45 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/08/23 17:31:10 by sanghwal         ###   ########.fr       */
+/*   Created: 2022/08/23 16:53:30 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/08/29 16:20:49 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr_pf(va_list ap, t_str *sp)
+int	ft_print_char(va_list ap, t_str *sp)
 {
-	char	*temp;
-	int		i;
+	char	temp;
 
-	temp = va_arg(ap, char *);
-	i = 0;
-	if (temp[i] == 0)
-		ft_putchar(0, sp);
-	while (temp[i] != 0 && temp[i])
-	{
-		if (ft_putchar(temp[i], sp) == -1)
-			return (-1);
-		i++;
-	}
-	return (0);
+	temp = va_arg(ap, int);
+	ft_putchar(temp, sp);
+	sp->idx++;
+	return (sp->cnt);
+}
+
+int	ft_putchar(char c, t_str *sp)
+{
+	if (write(1, c, 1) == -1)
+		return (sp->cnt = -1);
+	sp->cnt++;
+	return (sp->cnt);
 }

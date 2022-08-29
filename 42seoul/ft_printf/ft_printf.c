@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:07:13 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/08/23 17:46:06 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/08/29 18:08:33 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_printf(const char *str, ...)
 {
 	va_list	ap;
 	t_str	*sp;
-	
+
 	va_start(ap, str);
 	sp = malloc(sizeof(t_str));
 	ft_memset(sp, 0, sizeof(sp));
@@ -25,12 +25,12 @@ int	ft_printf(const char *str, ...)
 		if (str[sp->idx] == '%')
 		{
 			sp->idx++;
-			if (!check_format(ap, sp, str))
-				return (-1);
+			if (check_format(ap, sp, str) == -1)
+				return (sp->cnt);
 			sp->idx++;
 		}
 		else
-			ft_putchar_fd(str[sp->idx], 1);
+			ft_putchar(str[sp->idx], sp);
 	}
 	return (sp->cnt);
 }
@@ -40,17 +40,15 @@ int	check_format(va_list ap, t_str *sp, const char *str)
 	if (str[sp->idx] == '%')
 		ft_putchar('%', sp);
 	else if (str[sp->idx] == 'c')
-		ft_putchar_pf(ap, sp);
+		ft_print_char(ap, sp);
 	else if (str[sp->idx] == 's')
-		ft_putstr_pf(ap, sp);
+		ft_print_str(ap, sp);
 	else if (str[sp->idx] == 'p')
-	// 주소값을 16진법으로 변환하여 출력 (void *)va_arg(ap, unsigned long) 형식으로 받아서 형변환
-	else if (str[sp->idx] == 'd')
-		
-	else if (str[sp->idx] == 'i')
-	// d 와 동일
+		ft_print_pointer(ap, sp);
+	else if (str[sp->idx] == 'd' || str[sp->idx] == 'i')
+		ft_print_int(ap, sp);
 	else if (str[sp->idx] == 'u')
-	// unsigned int 출력(절대값)
+		ft_print_uint(ap, sp);
 	else if (str[sp->idx] == 'x')
 	// 16진법 소문자
 	else if (str[sp->idx] == 'X')
