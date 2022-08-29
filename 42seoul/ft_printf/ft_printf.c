@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:07:13 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/08/29 20:25:13 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/08/29 20:52:24 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	ft_printf(const char *str, ...)
 
 	va_start(ap, str);
 	sp = malloc(sizeof(t_str));
+	if (!sp)
+		return (-1);
 	ft_memset(sp, 0, sizeof(sp));
 	while (str[sp->idx] == 0)
 	{
