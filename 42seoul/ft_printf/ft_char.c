@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 16:53:30 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/08/29 16:20:49 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/08/29 20:02:40 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_print_char(va_list ap, t_str *sp)
 
 int	ft_putchar(char c, t_str *sp)
 {
-	if (write(1, c, 1) == -1)
+	if (write(1, &c, 1) == -1)
 		return (sp->cnt = -1);
 	sp->cnt++;
 	return (sp->cnt);

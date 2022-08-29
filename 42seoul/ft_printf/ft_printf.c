@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:07:13 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/08/29 18:08:33 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/08/29 20:25:13 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,13 @@ int	check_format(va_list ap, t_str *sp, const char *str)
 	else if (str[sp->idx] == 'u')
 		ft_print_uint(ap, sp);
 	else if (str[sp->idx] == 'x')
-	// 16진법 소문자
+		ft_print_hexa(ap, sp);
 	else if (str[sp->idx] == 'X')
-	// 16진법 대문자
-	else // 없는 형식지정자 에러
-		return (-1);
-	return (0);
+	{
+		sp->alpha = 1;
+		ft_print_hexa(ap, sp);
+	}
+	else
+		return (sp->cnt = -1);
+	return (sp->cnt);
 }

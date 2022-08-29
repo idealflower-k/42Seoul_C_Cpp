@@ -6,12 +6,13 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 17:51:21 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/08/29 18:01:37 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/08/29 20:05:54 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
-#include "libft.h"
+#include "ft_printf.h"
+
+static int	ft_n_len(unsigned int n);
 
 char	*ft_unsigned_itoa(unsigned int n)
 {
