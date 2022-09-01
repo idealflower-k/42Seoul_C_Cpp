@@ -6,35 +6,39 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:07:13 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/08/29 20:52:24 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/09/01 16:04:15 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
+#include <stdio.h>
 int	ft_printf(const char *str, ...)
 {
 	va_list	ap;
 	t_str	*sp;
-
+	int		cnt;
+	
+	cnt = 0;
 	va_start(ap, str);
 	sp = malloc(sizeof(t_str));
 	if (!sp)
 		return (-1);
 	ft_memset(sp, 0, sizeof(sp));
-	while (str[sp->idx] == 0)
+	while (str[sp->idx] != 0)
 	{
 		if (str[sp->idx] == '%')
 		{
 			sp->idx++;
 			if (check_format(ap, sp, str) == -1)
-				return (sp->cnt);
-			sp->idx++;
+					break ;
 		}
 		else
 			ft_putchar(str[sp->idx], sp);
+		sp->idx++;
 	}
-	return (sp->cnt);
+	cnt = sp->cnt;
+	free(sp);
+	return (cnt);
 }
 
 int	check_format(va_list ap, t_str *sp, const char *str)
@@ -61,4 +65,9 @@ int	check_format(va_list ap, t_str *sp, const char *str)
 	else
 		return (sp->cnt = -1);
 	return (sp->cnt);
+}
+
+int main(void)
+{
+	ft_printf("%c%c%c", 'a', '\t', 'b');
 }

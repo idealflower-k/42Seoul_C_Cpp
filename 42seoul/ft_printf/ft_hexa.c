@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 16:28:08 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/08/29 20:04:23 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/08/29 22:41:04 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_print_pointer(va_list ap, t_str *sp)
 	char	*hexa_str;
 
 	temp = (void *)va_arg(ap, void *);
-	hexa_str = change_to_hexa((unsigned int)temp);
+	hexa_str = change_to_hexa((unsigned long)temp);
 	if (!hexa_str)
 		sp->cnt = -1;
 	else

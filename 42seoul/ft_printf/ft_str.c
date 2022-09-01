@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 17:23:45 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/08/29 16:21:01 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/08/29 22:41:33 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 int	ft_print_str(va_list ap, t_str *sp)
 {
 	char	*temp;
-	int		i;
 
 	temp = va_arg(ap, char *);
-	i = 0;
 	if (temp[0] == 0)
 		ft_putchar(0, sp);
 	else
