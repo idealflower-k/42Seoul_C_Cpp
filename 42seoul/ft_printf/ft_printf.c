@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:07:13 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/09/06 17:52:52 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/09/06 18:03:10 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_printf(const char *str, ...)
 	if (!sp)
 		return (-1);
 	ft_memset(sp, 0, sizeof(sp));
-	while (str[sp->idx] != 0)
+	while (str[sp->idx] != 0 && sp->cnt != -1)
 	{
 		if (str[sp->idx] == '%')
 		{

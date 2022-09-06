@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 16:28:08 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/09/06 17:52:28 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/09/06 18:12:18 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,12 @@ int	ft_print_pointer(va_list *ap, t_str *sp)
 		sp->cnt = -1;
 	else
 	{
-		write(1, "0x", 2);
-		sp->cnt += 2;
-		ft_putstr(hexa_str, sp);
+		if (write(1, "0x", 2) == -1)
+			sp->cnt = -1;
+		else
+			sp->cnt += 2;
+		if (sp->cnt != -1)
+			ft_putstr(hexa_str, sp);
 		free(hexa_str);
 	}
 	return (sp->cnt);
@@ -41,7 +44,7 @@ int	ft_print_hexa(va_list *ap, t_str *sp)
 	nb = va_arg(*ap, unsigned int);
 	temp = change_to_hexa(nb);
 	if (!temp)
-		sp->cnt = -1;
+		return (sp->cnt = -1);
 	else if (sp->alpha == 1)
 	{
 		while (temp[i])
