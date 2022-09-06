@@ -6,18 +6,18 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:07:13 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/09/01 16:04:15 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:52:52 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
+
 int	ft_printf(const char *str, ...)
 {
 	va_list	ap;
 	t_str	*sp;
 	int		cnt;
-	
+
 	cnt = 0;
 	va_start(ap, str);
 	sp = malloc(sizeof(t_str));
@@ -29,8 +29,8 @@ int	ft_printf(const char *str, ...)
 		if (str[sp->idx] == '%')
 		{
 			sp->idx++;
-			if (check_format(ap, sp, str) == -1)
-					break ;
+			if (check_format(&ap, sp, str) == -1)
+				break ;
 		}
 		else
 			ft_putchar(str[sp->idx], sp);
@@ -41,7 +41,7 @@ int	ft_printf(const char *str, ...)
 	return (cnt);
 }
 
-int	check_format(va_list ap, t_str *sp, const char *str)
+int	check_format(va_list *ap, t_str *sp, const char *str)
 {
 	if (str[sp->idx] == '%')
 		ft_putchar('%', sp);
@@ -56,7 +56,10 @@ int	check_format(va_list ap, t_str *sp, const char *str)
 	else if (str[sp->idx] == 'u')
 		ft_print_uint(ap, sp);
 	else if (str[sp->idx] == 'x')
+	{
+		sp->alpha = 0;
 		ft_print_hexa(ap, sp);
+	}
 	else if (str[sp->idx] == 'X')
 	{
 		sp->alpha = 1;
@@ -67,7 +70,15 @@ int	check_format(va_list ap, t_str *sp, const char *str)
 	return (sp->cnt);
 }
 
-int main(void)
-{
-	ft_printf("%c%c%c", 'a', '\t', 'b');
-}
+// #include <stdio.h>
+
+// int main()
+// {
+// 	char *str = "123";
+// 	int cnt = 0;
+// 	int cnt2 = 0;
+
+// 	cnt = ft_printf("ft = %p\n", &str[0]);
+// 	cnt2 = printf("pf = %p\n", &str[0]);
+// 	printf("cnt = %d, cnt2 = %d\n", cnt, cnt2);
+// }
