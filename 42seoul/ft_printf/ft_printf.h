@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:04:58 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/09/06 17:49:48 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/09/14 15:23:37 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FT_PRINTF_H
 # include <stdarg.h>
 # include <unistd.h>
-# include <limits.h>
 # include "libft/libft.h"
 
 typedef struct s_str

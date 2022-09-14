@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 16:28:08 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/09/06 18:12:18 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/09/14 14:59:05 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ int	ft_print_pointer(va_list *ap, t_str *sp)
 		sp->cnt = -1;
 	else
 	{
-		if (write(1, "0x", 2) == -1)
-			sp->cnt = -1;
-		else
-			sp->cnt += 2;
+		ft_putstr("0x", sp);
 		if (sp->cnt != -1)
 			ft_putstr(hexa_str, sp);
 		free(hexa_str);
@@ -73,10 +70,10 @@ void	ft_size(unsigned long long nb, unsigned int base_len, int *size)
 
 char	*change_to_hexa(unsigned long long nb)
 {
-	char			*result;
-	int				size;
-	const char		*base = "0123456789abcdef";
-	const int		base_len = 16;
+	char		*result;
+	int			size;
+	const char	*base = "0123456789abcdef";
+	const int	base_len = 16;
 
 	size = 0;
 	ft_size(nb, base_len, &size);

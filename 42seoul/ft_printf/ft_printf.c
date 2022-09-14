@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:07:13 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/09/06 18:03:10 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/09/07 20:33:26 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ int	ft_printf(const char *str, ...)
 		if (str[sp->idx] == '%')
 		{
 			sp->idx++;
-			if (check_format(&ap, sp, str) == -1)
-				break ;
+			check_format(&ap, sp, str);
 		}
 		else
 			ft_putchar(str[sp->idx], sp);
@@ -69,16 +68,3 @@ int	check_format(va_list *ap, t_str *sp, const char *str)
 		return (sp->cnt = -1);
 	return (sp->cnt);
 }
-
-// #include <stdio.h>
-
-// int main()
-// {
-// 	char *str = "123";
-// 	int cnt = 0;
-// 	int cnt2 = 0;
-
-// 	cnt = ft_printf("ft = %p\n", &str[0]);
-// 	cnt2 = printf("pf = %p\n", &str[0]);
-// 	printf("cnt = %d, cnt2 = %d\n", cnt, cnt2);
-// }

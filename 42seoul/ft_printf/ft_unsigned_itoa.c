@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 17:51:21 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/09/06 17:21:59 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/09/14 15:15:34 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ char	*ft_unsigned_itoa(unsigned int n)
 	char	*result;
 
 	len = ft_n_len(n);
-	if (len == 0)
-		result = ft_calloc(2, sizeof(char));
-	else
-		result = ft_calloc(len + 1, sizeof(char));
+	result = ft_calloc(len + 1, sizeof(char));
 	if (!result)
 		return (0);
 	if (n == 0)
@@ -41,6 +38,8 @@ static int	ft_n_len(unsigned int n)
 	int	len;
 
 	len = 0;
+	if (n == 0)
+		len++;
 	while (n)
 	{
 		len++;
