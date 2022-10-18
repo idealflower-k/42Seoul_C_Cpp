@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:07:13 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/09/01 16:04:15 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/10/18 14:03:03 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_printf(const char *str, ...)
 	va_list	ap;
 	t_str	*sp;
 	int		cnt;
-	
+
 	cnt = 0;
 	va_start(ap, str);
 	sp = malloc(sizeof(t_str));
@@ -30,7 +30,7 @@ int	ft_printf(const char *str, ...)
 		{
 			sp->idx++;
 			if (check_format(ap, sp, str) == -1)
-					break ;
+				break ;
 		}
 		else
 			ft_putchar(str[sp->idx], sp);
@@ -56,7 +56,10 @@ int	check_format(va_list ap, t_str *sp, const char *str)
 	else if (str[sp->idx] == 'u')
 		ft_print_uint(ap, sp);
 	else if (str[sp->idx] == 'x')
+	{
+		sp->alpha = 0;
 		ft_print_hexa(ap, sp);
+	}
 	else if (str[sp->idx] == 'X')
 	{
 		sp->alpha = 1;
@@ -65,9 +68,4 @@ int	check_format(va_list ap, t_str *sp, const char *str)
 	else
 		return (sp->cnt = -1);
 	return (sp->cnt);
-}
-
-int main(void)
-{
-	ft_printf("%c%c%c", 'a', '\t', 'b');
 }
