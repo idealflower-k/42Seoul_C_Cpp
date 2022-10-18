@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 17:51:21 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/08/29 20:05:54 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/09/14 15:15:34 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ static int	ft_n_len(unsigned int n)
 	int	len;
 
 	len = 0;
+	if (n == 0)
+		len++;
 	while (n)
 	{
 		len++;

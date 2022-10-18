@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:07:13 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/18 14:07:12 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/10/18 14:12:25 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_printf(const char *str, ...)
 	if (!sp)
 		return (-1);
 	ft_memset(sp, 0, sizeof(sp));
-	while (str[sp->idx] != 0)
+	while (str[sp->idx] != 0 && sp->cnt != -1)
 	{
 		if (str[sp->idx] == '%')
 		{
@@ -41,7 +41,7 @@ int	ft_printf(const char *str, ...)
 	return (cnt);
 }
 
-int	check_format(va_list ap, t_str *sp, const char *str)
+int	check_format(va_list *ap, t_str *sp, const char *str)
 {
 	if (str[sp->idx] == '%')
 		ft_putchar('%', sp);

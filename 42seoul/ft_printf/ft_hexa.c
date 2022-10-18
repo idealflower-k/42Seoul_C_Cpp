@@ -6,46 +6,43 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 16:28:08 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/08/29 22:41:04 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/09/14 14:59:05 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_pointer(va_list ap, t_str *sp)
+int	ft_print_pointer(va_list *ap, t_str *sp)
 {
 	void	*temp;
 	char	*hexa_str;
 
-	temp = (void *)va_arg(ap, void *);
-	hexa_str = change_to_hexa((unsigned long)temp);
+	temp = (void *)va_arg(*ap, void *);
+	hexa_str = change_to_hexa((unsigned long long)temp);
 	if (!hexa_str)
 		sp->cnt = -1;
 	else
 	{
-		ft_putstr(hexa_str, sp);
+		ft_putstr("0x", sp);
+		if (sp->cnt != -1)
+			ft_putstr(hexa_str, sp);
 		free(hexa_str);
 	}
 	return (sp->cnt);
 }
 
-int	ft_print_hexa(va_list ap, t_str *sp)
+int	ft_print_hexa(va_list *ap, t_str *sp)
 {
 	unsigned int	nb;
 	char			*temp;
 	int				i;
 
 	i = 0;
-	nb = va_arg(ap, unsigned int);
+	nb = va_arg(*ap, unsigned int);
 	temp = change_to_hexa(nb);
 	if (!temp)
-		sp->cnt = -1;
-	else if (sp->alpha == 0)
-	{
-		ft_putstr(temp, sp);
-		free(temp);
-	}
-	else
+		return (sp->cnt = -1);
+	else if (sp->alpha == 1)
 	{
 		while (temp[i])
 		{
@@ -54,32 +51,32 @@ int	ft_print_hexa(va_list ap, t_str *sp)
 			i++;
 		}
 	}
+	ft_putstr(temp, sp);
+	free(temp);
 	return (sp->cnt);
 }
 
-unsigned int	ft_size(unsigned int nb, const unsigned int base_len)
+void	ft_size(unsigned long long nb, unsigned int base_len, int *size)
 {
-	unsigned int	size;
-
-	size = 0;
 	if (nb >= base_len)
 	{
-		ft_size(nb / base_len, base_len);
-		ft_size(nb % base_len, base_len);
+		ft_size(nb / base_len, base_len, size);
+		ft_size(nb % base_len, base_len, size);
 	}
 	else
-		size += 1;
-	return (size);
+		*size += 1;
+	return ;
 }
 
-char	*change_to_hexa(unsigned int nb)
+char	*change_to_hexa(unsigned long long nb)
 {
-	char			*result;
-	unsigned int	size;
-	const char		*base = "0123456789abcdef";
-	const int		base_len = 16;
+	char		*result;
+	int			size;
+	const char	*base = "0123456789abcdef";
+	const int	base_len = 16;
 
-	size = ft_size(nb, base_len);
+	size = 0;
+	ft_size(nb, base_len, &size);
 	result = (char *)malloc(sizeof(char) * size + 1);
 	if (!result)
 		return (0);

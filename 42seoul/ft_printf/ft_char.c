@@ -6,17 +6,17 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 16:53:30 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/09/01 15:59:38 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/09/07 20:16:09 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_char(va_list ap, t_str *sp)
+int	ft_print_char(va_list *ap, t_str *sp)
 {
 	char	temp;
 
-	temp = (char)va_arg(ap, int);
+	temp = (char)va_arg(*ap, int);
 	ft_putchar(temp, sp);
 	return (sp->cnt);
 }
