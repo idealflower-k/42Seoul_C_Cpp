@@ -6,12 +6,12 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:07:13 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/18 14:03:03 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/10/18 14:07:12 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
+
 int	ft_printf(const char *str, ...)
 {
 	va_list	ap;
