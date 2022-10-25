@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 16:17:13 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/24 15:27:42 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/10/25 16:02:50 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@ int	main(int ac, char *av[])
 	if (ac < 2)
 		exit(1);
 	i = 1;
+	head = 0;
 	while (av[i] != 0)
 	{
-		head = split_num(av[i++]);
+		head = split_num(av[i++], head);
 	}
-	tmp = head;
+	tmp = head->next;
 	while (tmp != 0)
 	{
 		printf("%d ", tmp->num);
@@ -36,13 +37,13 @@ int	main(int ac, char *av[])
 	return (0);
 }
 
-t_split	*split_num(char *av)
+t_split	*split_num(char *av, t_split *head)
 {
-	t_split	*head;
 	char	**splited;
 	int		i;
-
-	head = lst_creat();
+	
+	if (!head)
+		head = lst_creat();
 	i = 1;
 	splited = ft_split(av, ' ');
 	put_lst(head, splited);

@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 15:04:30 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/24 15:04:52 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/10/25 16:00:20 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_deque
 	t_node	*nodes;
 }	t_deque;
 
-t_split	*split_num(char *av);
+t_split	*split_num(char *av, t_split *head);
 t_split	*new_node(t_split *head, int num);
 t_split	*lst_creat(void);
 void	put_lst(t_split *head, char **splited);
