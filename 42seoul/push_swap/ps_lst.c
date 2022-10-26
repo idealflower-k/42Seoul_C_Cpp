@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 16:30:14 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/25 17:12:32 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/10/26 15:55:12 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ t_split	*new_node(t_split *head, int num)
 	tmp = head;
 	node = (t_split *)malloc(sizeof(t_split));
 	if (!node)
-	{
-		free_lst(head);
 		handle_error(1);
-	}
 	node->num = num;
 	node->len = 0;
 	node->next = 0;
@@ -41,10 +38,7 @@ int	check_dup(t_split *head, int num)
 	while (tmp != 0)
 	{
 		if (tmp->num == num)
-		{
-			free_lst(head);
 			handle_error(1);
-		}
 		tmp = tmp->next;
 	}
 	return (1);

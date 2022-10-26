@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_error.c                                         :+:      :+:    :+:   */
+/*   ps_operations2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 16:33:40 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/26 15:54:19 by sanghwal         ###   ########seoul.kr  */
+/*   Created: 2022/10/25 20:22:23 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/10/26 13:36:06 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	handle_error(int err)
+void	op_ra(t_deque *stack_a)
 {
-	if (err == 1)
-		write(1, "ERROR\n", 6);
-	exit(1);
+	if (stack_a->use_size >= 2)
+		dq_push_rear(stack_a, dq_pop_front(stack_a));
+	return ;
+}
+
+void	op_rb(t_deque *stack_b)
+{
+	if (stack_b->use_size >= 2)
+		dq_push_rear(stack_b, dq_pop_front(stack_b));
+	return ;
+}
+
+void	op_rr(t_deque *stack_a, t_deque *stack_b)
+{
+	op_ra(stack_a);
+	op_rb(stack_b);
+	return ;
 }

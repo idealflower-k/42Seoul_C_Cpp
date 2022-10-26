@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_operations2.c                                   :+:      :+:    :+:   */
+/*   ps_operations3.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 20:22:23 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/25 20:41:20 by sanghwal         ###   ########seoul.kr  */
+/*   Created: 2022/10/25 20:41:57 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/10/26 15:48:38 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	op_ra(t_deque *stack_a)
+void	op_rra(t_deque *stack_a)
 {
-	dq_push_rear(stack_a, dq_pop_front(stack_a));
+	if (stack_a->use_size >= 2)
+		dq_push_front(stack_a, dq_pop_rear(stack_a));
+	return ;
 }
 
-void	op_rb(t_deque *stack_b)
+void	op_rrb(t_deque *stack_b)
 {
-	dq_push_rear(stack_b, dq_pop_front(stack_b));
+	if (stack_b->use_size >= 2)
+		dq_push_front(stack_b, dq_pop_rear(stack_b));
+	return ;
 }
 
-void	op_rr(t_deque *stack_a, t_deque *stack_b)
+void	op_rrr(t_deque *stack_a, t_deque *stack_b)
 {
-	op_ra(stack_a);
-	op_rb(stack_b);
+	op_rra(stack_a);
+	op_rrb(stack_b);
+	return ;
 }

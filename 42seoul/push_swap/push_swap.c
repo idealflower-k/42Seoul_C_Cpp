@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 16:17:13 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/25 19:19:52 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/10/26 21:19:10 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,10 @@ int	main(int ac, char *av[])
 		head = split_num(av[i++], head);
 	stack_a = deque_creat(head->len);
 	if (!stack_a)
-	{
-		free_lst(head);
 		handle_error(1);
-	}
 	fill_stack_a(stack_a, head);
-	merge_sort(stack_a);
-	free_lst(head);
-	return (0);
+	sorting(stack_a);
+	exit(0);
 }
 
 t_split	*split_num(char *av, t_split *head)
@@ -46,10 +42,7 @@ t_split	*split_num(char *av, t_split *head)
 	i = 1;
 	splited = ft_split(av, ' ');
 	if (!splited)
-	{
-		free_lst(head);
 		handle_error(1);
-	}
 	put_lst(head, splited);
 	return (head);
 }

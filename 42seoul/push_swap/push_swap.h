@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 15:04:30 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/25 20:48:19 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/10/26 21:17:54 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include "./libft/libft.h"
+# include <stdio.h>
 
 typedef struct s_split
 {
@@ -25,7 +26,8 @@ typedef struct s_split
 
 typedef struct s_node
 {
-	int	data;
+	int		data;
+	size_t	idx;
 }	t_node;
 
 typedef struct s_deque
@@ -33,6 +35,7 @@ typedef struct s_deque
 	size_t	capacity;
 	size_t	front;
 	size_t	rear;
+	size_t	use_size;
 	t_node	*nodes;
 }	t_deque;
 
@@ -45,7 +48,7 @@ void	fill_stack_a(t_deque *stack_a, t_split *head);
 void	put_lst(t_split *head, char **splited);
 void	free_lst(t_split *head);
 void	handle_error(int err);
-void	merge_sort(t_deque *stack_a);
+void	sorting(t_deque *stack_a);
 void	free_stack(t_deque *stack);
 void	dq_push_front(t_deque *stack, int num);
 void	dq_push_rear(t_deque *stack, int num);
@@ -60,9 +63,15 @@ void	op_rr(t_deque *stack_a, t_deque *stack_b);
 void	op_rra(t_deque *stack_a);
 void	op_rrb(t_deque *stack_b);
 void	op_rrr(t_deque *stack_a, t_deque *stack_b);
+void	indexing_stack(int *cp_stack, t_deque *stack);
+void	sort_copy(int *cp_stack);
+int		*copy_stack(t_deque *stack, int *cp_stack);
 int		dq_pop_front(t_deque *stack);
 int		dq_pop_rear(t_deque *stack);
 int		ft_atoi_ps(const char *str);
 int		check_dup(t_split *head, int num);
 
+
+void	show_stack(t_deque *stack_a, t_deque *stack_b, char *op);
+void	show_idx(t_deque *stack, int *cp_stack);
 #endif
