@@ -6,13 +6,13 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 16:30:14 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/26 15:55:12 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/10/28 22:12:38 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_split	*new_node(t_split *head, int num)
+void	new_node(t_split *head, int num)
 {
 	t_split	*node;
 	t_split	*tmp;
@@ -27,10 +27,10 @@ t_split	*new_node(t_split *head, int num)
 	while (tmp->next != 0)
 		tmp = tmp->next;
 	tmp->next = node;
-	return (node);
+	return ;
 }
 
-int	check_dup(t_split *head, int num)
+int	check_overlap(t_split *head, int num)
 {
 	t_split	*tmp;
 

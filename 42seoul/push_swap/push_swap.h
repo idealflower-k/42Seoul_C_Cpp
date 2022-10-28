@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 15:04:30 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/28 18:03:29 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/10/28 23:18:01 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ typedef struct s_split
 
 typedef struct s_node
 {
-	int		data;
-	size_t	idx;
+	size_t	data;
 }	t_node;
 
 typedef struct s_deque
@@ -39,37 +38,44 @@ typedef struct s_deque
 	t_node	*nodes;
 }	t_deque;
 
+typedef struct s_oper
+{
+	char			*op;
+	struct s_oper	*next;
+}	t_oper;
+
 t_split	*split_num(char *av, t_split *head);
-t_split	*new_node(t_split *head, int num);
 t_split	*lst_creat(void);
 t_deque	*stack_a_creat(t_deque *stack_a, t_split *head);
 t_deque	*deque_creat(size_t size);
-void	fill_stack_a(t_deque *stack_a, t_split *head);
+t_oper	*add_op(t_oper *op_lst, char *op);
+t_oper	*do_sort(t_deque *stack_a, t_deque *stack_b);
+size_t	dq_pop_front(t_deque *stack);
+size_t	dq_pop_rear(t_deque *stack);
+size_t	set_chunk(size_t capacity);
+void	dq_push_front(t_deque *stack, size_t num);
+void	dq_push_rear(t_deque *stack, size_t num);
+void	new_node(t_split *head, int num);
 void	put_lst(t_split *head, char **splited);
-void	free_lst(t_split *head);
+void	fill_stack_a(t_deque *stack_a, t_split *head);
 void	handle_error(int err);
 void	sorting(t_deque *stack_a);
-void	free_stack(t_deque *stack);
-void	dq_push_front(t_deque *stack, int num);
-void	dq_push_rear(t_deque *stack, int num);
-void	op_sa(t_deque *stack_a);
-void	op_sb(t_deque *stack_b);
-void	op_ss(t_deque *stack_a, t_deque *stack_b);
-void	op_pa(t_deque *stack_a, t_deque *stack_b);
-void	op_pb(t_deque *stack_a, t_deque *stack_b);
-void	op_ra(t_deque *stack_a);
-void	op_rb(t_deque *stack_b);
-void	op_rr(t_deque *stack_a, t_deque *stack_b);
-void	op_rra(t_deque *stack_a);
-void	op_rrb(t_deque *stack_b);
-void	op_rrr(t_deque *stack_a, t_deque *stack_b);
+void	op_sa(t_deque *stack_a, t_oper *op_lst, int flag);
+void	op_sb(t_deque *stack_b, t_oper *op_lst, int flag);
+void	op_ss(t_deque *stack_a, t_deque *stack_b, t_oper *op_lst);
+void	op_pa(t_deque *stack_a, t_deque *stack_b, t_oper *op_lst);
+void	op_pb(t_deque *stack_a, t_deque *stack_b, t_oper *op_lst);
+void	op_ra(t_deque *stack_a, t_oper *op_lst, int flag);
+void	op_rb(t_deque *stack_b, t_oper *op_lst, int flag);
+void	op_rr(t_deque *stack_a, t_deque *stack_b, t_oper *op_lst);
+void	op_rra(t_deque *stack_a, t_oper *op_lst, int flag);
+void	op_rrb(t_deque *stack_b, t_oper *op_lst, int flag);
+void	op_rrr(t_deque *stack_a, t_deque *stack_b, t_oper *op_lst);
 void	indexing_stack(int *cp_stack, t_deque *stack);
 void	sort_copy(int *cp_stack);
 int		*copy_stack(t_deque *stack, int *cp_stack);
-int		dq_pop_front(t_deque *stack);
-int		dq_pop_rear(t_deque *stack);
 int		ft_atoi_ps(const char *str);
-int		check_dup(t_split *head, int num);
+int		check_overlap(t_split *head, int num);
 
 
 void	show_stack(t_deque *stack_a, t_deque *stack_b);

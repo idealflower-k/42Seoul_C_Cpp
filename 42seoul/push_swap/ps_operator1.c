@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_operations1.c                                   :+:      :+:    :+:   */
+/*   ps_operator1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 19:48:45 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/26 13:36:16 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/10/28 22:51:12 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	op_sa(t_deque *stack_a)
+void	op_sa(t_deque *stack_a, t_oper *op_lst, int flag)
 {
 	int	tmp1;
 	int	tmp2;
@@ -25,11 +25,13 @@ void	op_sa(t_deque *stack_a)
 		tmp2 = dq_pop_front(stack_a);
 		dq_push_front(stack_a, tmp1);
 		dq_push_front(stack_a, tmp2);
+		if (flag == 1)
+			add_op(op_lst, "sa");
 	}
 	return ;
 }
 
-void	op_sb(t_deque *stack_b)
+void	op_sb(t_deque *stack_b, t_oper *op_lst, int flag)
 {
 	int	tmp1;
 	int	tmp2;
@@ -42,27 +44,36 @@ void	op_sb(t_deque *stack_b)
 		tmp2 = dq_pop_front(stack_b);
 		dq_push_front(stack_b, tmp1);
 		dq_push_front(stack_b, tmp2);
+		if (flag == 1)
+			add_op(op_lst, "sb");
 	}
 	return ;
 }
 
-void	op_ss(t_deque *stack_a, t_deque *stack_b)
+void	op_ss(t_deque *stack_a, t_deque *stack_b, t_oper *op_lst)
 {
-	op_sa(stack_a);
-	op_sb(stack_b);
+	op_sa(stack_a, op_lst, 0);
+	op_sb(stack_b, op_lst, 0);
+	add_op(op_lst, "ss");
 	return ;
 }
 
-void	op_pa(t_deque *stack_a, t_deque *stack_b)
+void	op_pa(t_deque *stack_a, t_deque *stack_b, t_oper *op_lst)
 {
 	if (stack_b->use_size > 0)
+	{
 		dq_push_front(stack_a, dq_pop_front(stack_b));
+		add_op(op_lst, "pa");
+	}
 	return ;
 }
 
-void	op_pb(t_deque *stack_a, t_deque *stack_b)
+void	op_pb(t_deque *stack_a, t_deque *stack_b, t_oper *op_lst)
 {
 	if (stack_a->use_size > 0)
+	{
 		dq_push_front(stack_b, dq_pop_front(stack_a));
+		add_op(op_lst, "pb");
+	}
 	return ;
 }

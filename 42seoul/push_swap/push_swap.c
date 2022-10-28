@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 16:17:13 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/28 18:02:07 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/10/28 22:12:20 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,9 @@ int	main(int ac, char *av[])
 t_split	*split_num(char *av, t_split *head)
 {
 	char	**splited;
-	int		i;
 
 	if (!head)
 		head = lst_creat();
-	i = 1;
 	splited = ft_split(av, ' ');
 	if (!splited)
 		handle_error(1);
@@ -49,7 +47,6 @@ t_split	*split_num(char *av, t_split *head)
 
 void	put_lst(t_split *head, char **splited)
 {
-	t_split	*node;
 	int		num;
 	int		i;
 
@@ -58,9 +55,9 @@ void	put_lst(t_split *head, char **splited)
 	while (splited[i])
 	{
 		num = ft_atoi_ps(splited[i++]);
-		if (check_dup(head, num))
+		if (check_overlap(head, num))
 		{
-			node = new_node(head, num);
+			new_node(head, num);
 			head->len++;
 		}
 	}
