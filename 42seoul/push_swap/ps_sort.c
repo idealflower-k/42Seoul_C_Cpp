@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 16:50:16 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/28 23:58:02 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/10/29 00:16:15 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,11 @@ void	sorting(t_deque *stack_a)
 t_oper	*do_sort(t_deque *stack_a, t_deque *stack_b)
 {
 	t_oper	*op_lst;
-	size_t	chunk;
 
-	chunk = 0;
 	stack_b = 0;
 	op_lst = 0;
-	chunk = set_chunk(stack_a->capacity);
-	op_lst = add_op(op_lst, 0);
-
+	add_op(op_lst, 0);
+	hourglass_sort(stack_a, stack_b, op_lst);
 	return (op_lst);
 }
 
@@ -81,4 +78,17 @@ size_t	set_chunk(size_t capacity)
 		+ 0.03 * (capacity) + 14.5);
 	printf("chunk = %zu\n", chunk);
 	return (chunk);
+}
+
+void	hourglass_sort(t_deque *s_a, t_deque *s_b, t_oper *op_lst)
+{
+	make_hourglass(s_a, s_b, op_lst);
+	make_sorted_a(s_a, s_b, op_lst);
+}
+
+void	make_hourglass(t_deque *s_a, t_deque *s_b, t_oper *op_lst)
+{
+	const size_t	chunk = set_chunk(s_a->capacity);
+	size_t			cnt;
+	
 }
