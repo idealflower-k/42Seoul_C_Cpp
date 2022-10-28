@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 15:04:30 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/26 21:17:54 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/10/28 18:03:29 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@ int		ft_atoi_ps(const char *str);
 int		check_dup(t_split *head, int num);
 
 
-void	show_stack(t_deque *stack_a, t_deque *stack_b, char *op);
+void	show_stack(t_deque *stack_a, t_deque *stack_b);
 void	show_idx(t_deque *stack, int *cp_stack);
 #endif

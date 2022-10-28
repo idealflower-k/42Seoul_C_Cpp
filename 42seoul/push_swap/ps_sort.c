@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 16:50:16 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/26 21:29:18 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/10/28 18:03:18 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	sorting(t_deque *stack_a)
 		handle_error(1);
 	sort_copy(copy_stack(stack_a, cp_stack));
 	indexing_stack(cp_stack, stack_a);
+	show_stack(stack_a, stack_b);
+	show_idx(stack_a, cp_stack);
 }
 
 int	*copy_stack(t_deque *stack, int *cp_stack)

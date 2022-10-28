@@ -6,15 +6,14 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 15:49:19 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/26 21:29:05 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/10/28 18:03:57 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	show_stack(t_deque *stack_a, t_deque *stack_b, char *op)
+void	show_stack(t_deque *stack_a, t_deque *stack_b)
 {
-	printf("op : %s\n", op);
 	printf("stack_a use %zu : ", stack_a->use_size);
 
 	int	cnt = 0;
@@ -50,7 +49,7 @@ void	show_idx(t_deque *stack, int *cp_stack)
 {
 	printf("sorted : ");
 	for (int i = 0; cp_stack[i]; i++)
-		printf("%d|%d, ", cp_stack[i], i);
+		printf("%d[%d], ", cp_stack[i], i);
 	printf("\n");
 	
 	printf("stack_idx : ");
@@ -60,7 +59,7 @@ void	show_idx(t_deque *stack, int *cp_stack)
 	{
 		if (idx != 0 && ((idx % stack->capacity) == 0))
 			idx = 0;
-		printf("%d|%zu, ", stack->nodes[idx].data, stack->nodes[idx].idx);
+		printf("%d[%zu], ", stack->nodes[idx].data, stack->nodes[idx].idx);
 		idx++;
 		cnt++;
 	}
