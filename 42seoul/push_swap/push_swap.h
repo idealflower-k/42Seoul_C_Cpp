@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 15:04:30 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/28 23:18:01 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/10/30 17:33:21 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,20 @@ void	sort_copy(int *cp_stack);
 int		*copy_stack(t_deque *stack, int *cp_stack);
 int		ft_atoi_ps(const char *str);
 int		check_overlap(t_split *head, int num);
+void	make_sorted_a(t_deque *s_a, t_deque *s_b, t_oper *op_lst);
+size_t	get_front(t_deque *stack);
+void	make_hourglass_utils(t_deque *s_a, t_deque *s_b, \
+	t_oper *op_lst, size_t i);
+void	make_hourglass(t_deque *s_a, t_deque *s_b, t_oper *op_lst);
+void	hourglass_sort(t_deque *s_a, t_deque *s_b, t_oper *op_lst);
+size_t	set_chunk(size_t capacity);
 
+void	b_rr(t_deque *deque_b, size_t *position, size_t *top_num, t_oper *op_lst);
+void	b_r(t_deque *deque_b, size_t *position, size_t *top_num, t_oper *op_lst);
+void	find_big_idx(t_node *node, size_t *size, size_t *big_idx);
+void	b_to_a(t_deque *deque_a, t_deque *deque_b, t_oper *op_lst);
 
+void	write_oper(t_oper *op_lst);
 void	show_stack(t_deque *stack_a, t_deque *stack_b);
 void	show_idx(t_deque *stack, int *cp_stack);
 #endif
