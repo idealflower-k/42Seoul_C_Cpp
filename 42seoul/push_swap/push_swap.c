@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 16:17:13 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/30 16:26:57 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/10/31 13:28:32 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int ac, char *av[])
 	if (!stack_a)
 		handle_error(1);
 	fill_stack_a(stack_a, head);
-	sorting(stack_a);
+	do_push_swap(stack_a);
 	exit(0);
 }
 
