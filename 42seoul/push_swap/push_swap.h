@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 15:04:30 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/31 15:16:00 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/10/31 17:26:28 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ void	op_rr(t_deque *stack_a, t_deque *stack_b, t_oper *op_lst);
 void	op_rra(t_deque *stack_a, t_oper *op_lst, int flag);
 void	op_rrb(t_deque *stack_b, t_oper *op_lst, int flag);
 void	op_rrr(t_deque *stack_a, t_deque *stack_b, t_oper *op_lst);
-void	indexing_stack(int *cp_stack, t_deque *stack);
-void	sort_copy(int *cp_stack);
-int		*copy_stack(t_deque *stack, int *cp_stack);
+void	indexing_stack(size_t *cp_stack, t_deque *stack);
+void	sort_copy(size_t *cp_stack, size_t size);
+size_t	*copy_stack(t_deque *stack, size_t *cp_stack);
 int		ft_atoi_ps(const char *str);
 int		check_overlap(t_split *head, int num);
 void	make_sorted_a(t_deque *s_a, t_deque *s_b, t_oper *op_lst);
@@ -89,5 +89,5 @@ size_t	set_chunk(size_t capacity);
 
 void	write_oper(t_oper *op_lst);
 void	show_stack(t_deque *stack_a, t_deque *stack_b);
-void	show_idx(t_deque *stack, int *cp_stack);
+void	show_idx(t_deque *stack, size_t *cp_stack);
 #endif

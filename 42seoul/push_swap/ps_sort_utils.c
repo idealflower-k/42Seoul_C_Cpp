@@ -6,18 +6,18 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:17:20 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/28 23:18:26 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/10/31 17:27:14 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	*copy_stack(t_deque *stack, int *cp_stack)
+size_t	*copy_stack(t_deque *stack, size_t *cp_stack)
 {
 	size_t	i;
 
 	i = 0;
-	while (i <= stack->rear)
+	while (i < stack->use_size)
 	{
 		cp_stack[i] = stack->nodes[i].data;
 		i++;
@@ -25,17 +25,17 @@ int	*copy_stack(t_deque *stack, int *cp_stack)
 	return (cp_stack);
 }
 
-void	sort_copy(int *cp_stack)
+void	sort_copy(size_t *cp_stack, size_t size)
 {
-	int	i;
-	int	j;
-	int	tmp;
+	size_t	i;
+	size_t	j;
+	size_t	tmp;
 
 	i = 0;
-	while (cp_stack[i])
+	while (i < size)
 	{
 		j = i + 1;
-		while (cp_stack[j])
+		while (j < size)
 		{
 			if (cp_stack[i] > cp_stack[j])
 			{
@@ -49,7 +49,7 @@ void	sort_copy(int *cp_stack)
 	}
 }
 
-void	indexing_stack(int *cp_stack, t_deque *stack)
+void	indexing_stack(size_t *cp_stack, t_deque *stack)
 {
 	size_t	idx;
 	size_t	i;

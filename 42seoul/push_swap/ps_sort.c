@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 16:50:16 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/31 15:15:11 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/10/31 17:27:09 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,17 @@ void	do_push_swap(t_deque *stack_a)
 {
 	t_deque	*stack_b;
 	int		*sorted;
-	int		*cp_stack;
+	size_t		*cp_stack;
 
 	stack_b = deque_creat(stack_a->capacity);
 	sorted = (int *)malloc(sizeof(int) * stack_a->capacity);
-	cp_stack = (int *)malloc(sizeof(int) * stack_a->capacity);
+	cp_stack = (size_t *)malloc(sizeof(size_t) * stack_a->capacity);
 	if (!stack_b || !sorted || !cp_stack)
 		handle_error(1);
-	sort_copy(copy_stack(stack_a, cp_stack));
+	sort_copy(copy_stack(stack_a, cp_stack), stack_a->capacity);
 	indexing_stack(cp_stack, stack_a);
 	write_oper(do_sort(stack_a, stack_b));
+	//do_sort(stack_a, stack_b);
 }
 
 t_oper	*do_sort(t_deque *stack_a, t_deque *stack_b)
@@ -114,6 +115,7 @@ void	make_hourglass_utils(t_deque *s_a, t_deque *s_b, t_oper *op_lst, size_t i)
 			op_ra(s_a, op_lst, 1);
 		}
 	}
+	//show_stack(s_a, s_b);
 }
 
 size_t	get_front(t_deque *stack)
@@ -134,6 +136,9 @@ void	make_sorted_a(t_deque *s_a, t_deque *s_b, t_oper *op_lst)
 
 void	push_a(t_deque *s_a, t_deque *s_b, t_oper *op_lst, size_t big_idx)
 {
+	size_t	i;
+
+	i = 0;
 	if (big_idx <= s_b->use_size / 2)
 	{
 		while (big_idx > 0)
@@ -144,10 +149,11 @@ void	push_a(t_deque *s_a, t_deque *s_b, t_oper *op_lst, size_t big_idx)
 	}
 	else
 	{
-		while (big_idx > 0)
+		i = s_b->use_size - big_idx;
+		while (i > 0)
 		{
 			op_rrb(s_b, op_lst, 1);
-			big_idx--;
+			i--;
 		}
 	}
 	op_pa(s_a, s_b, op_lst);
