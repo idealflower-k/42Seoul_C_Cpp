@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 16:50:16 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/01 17:59:12 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/01 20:02:51 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,16 @@
 void	do_push_swap(t_deque *stack_a)
 {
 	t_deque	*stack_b;
-	int		*sorted;
-	size_t		*cp_stack;
+	size_t	*cp_stack;
 
 	stack_b = deque_creat(stack_a->capacity);
-	sorted = (int *)malloc(sizeof(int) * stack_a->capacity);
 	cp_stack = (size_t *)malloc(sizeof(size_t) * stack_a->capacity);
-	if (!stack_b || !sorted || !cp_stack)
+	if (!stack_b || !cp_stack)
 		handle_error(1);
 	sort_copy(copy_stack(stack_a, cp_stack), stack_a->capacity);
 	indexing_stack(cp_stack, stack_a);
 	check_sort(stack_a);
 	write_oper(do_sort(stack_a, stack_b));
-	//do_sort(stack_a, stack_b);
 }
 
 t_oper	*do_sort(t_deque *stack_a, t_deque *stack_b)
@@ -36,10 +33,10 @@ t_oper	*do_sort(t_deque *stack_a, t_deque *stack_b)
 
 	op_lst = 0;
 	op_lst = add_op(op_lst, 0);
-	// if (stack_a->use_size < 6)
-	// 	small_sort(stack_a, stack_b, op_lst);
-	// else
-	hourglass_sort(stack_a, stack_b, op_lst);
+	if (stack_a->use_size < 6)
+		small_sort(stack_a, stack_b, op_lst);
+	else
+		hourglass_sort(stack_a, stack_b, op_lst);
 	return (op_lst);
 }
 
@@ -246,7 +243,6 @@ size_t	comp_idx2(size_t big, size_t n_big, t_deque *stack)
 			return (big);
 	}
 	return (n_big);
-
 }
 
 size_t	most_big(t_deque *stack)
