@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 15:04:30 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/01 16:59:12 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/01 17:58:21 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ size_t	comp_idx(size_t big, size_t n_big, t_deque *stack);
 size_t	comp_idx2(size_t big, size_t n_big, t_deque *stack);
 size_t	next_big(t_deque *stack);
 size_t	find_big(t_deque *stack);
+void	check_sort(t_deque *stack);
 
 void	write_oper(t_oper *op_lst);
 void	show_stack(t_deque *stack_a, t_deque *stack_b);

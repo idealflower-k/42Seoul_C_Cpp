@@ -11,7 +11,7 @@
 			"name": "Debug",
 			"program": "${workspaceFolder}/a.out",
 			"args": [
-				"10 64 21 90 54 15 48 46 28 32"
+				"1 2 3"
 			],
 			"cwd": "${workspaceFolder}"
 		}

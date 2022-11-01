@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 16:50:16 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/01 17:24:13 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/01 17:59:12 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	do_push_swap(t_deque *stack_a)
 		handle_error(1);
 	sort_copy(copy_stack(stack_a, cp_stack), stack_a->capacity);
 	indexing_stack(cp_stack, stack_a);
+	check_sort(stack_a);
 	write_oper(do_sort(stack_a, stack_b));
 	//do_sort(stack_a, stack_b);
 }
@@ -35,6 +36,9 @@ t_oper	*do_sort(t_deque *stack_a, t_deque *stack_b)
 
 	op_lst = 0;
 	op_lst = add_op(op_lst, 0);
+	// if (stack_a->use_size < 6)
+	// 	small_sort(stack_a, stack_b, op_lst);
+	// else
 	hourglass_sort(stack_a, stack_b, op_lst);
 	return (op_lst);
 }
