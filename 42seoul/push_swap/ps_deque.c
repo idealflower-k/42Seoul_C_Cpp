@@ -6,26 +6,11 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 16:49:09 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/26 15:56:12 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/01 20:18:03 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	fill_stack_a(t_deque *stack_a, t_split *head)
-{
-	t_split	*tmp;
-
-	tmp = head->next;
-	while (tmp)
-	{
-		stack_a->nodes[stack_a->rear].data = tmp->num;
-		stack_a->rear++;
-		stack_a->use_size++;
-		tmp = tmp->next;
-	}
-	stack_a->rear--;
-}
 
 t_deque	*deque_creat(size_t size)
 {
@@ -42,4 +27,19 @@ t_deque	*deque_creat(size_t size)
 	if (!stack->nodes)
 		handle_error(1);
 	return (stack);
+}
+
+void	fill_stack_a(t_deque *stack_a, t_split *head)
+{
+	t_split	*tmp;
+
+	tmp = head->next;
+	while (tmp)
+	{
+		stack_a->nodes[stack_a->rear].data = tmp->num;
+		stack_a->rear++;
+		stack_a->use_size++;
+		tmp = tmp->next;
+	}
+	stack_a->rear--;
 }

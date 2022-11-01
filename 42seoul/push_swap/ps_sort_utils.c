@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:17:20 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/31 17:27:14 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/01 21:46:39 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	*copy_stack(t_deque *stack, size_t *cp_stack)
 	i = 0;
 	while (i < stack->use_size)
 	{
-		cp_stack[i] = stack->nodes[i].data;
+		cp_stack[i] = (int)stack->nodes[i].data;
 		i++;
 	}
 	return (cp_stack);
@@ -29,7 +29,7 @@ void	sort_copy(size_t *cp_stack, size_t size)
 {
 	size_t	i;
 	size_t	j;
-	size_t	tmp;
+	int		tmp;
 
 	i = 0;
 	while (i < size)
@@ -59,9 +59,27 @@ void	indexing_stack(size_t *cp_stack, t_deque *stack)
 	while (i <= stack->rear)
 	{
 		idx = 0;
-		while (stack->nodes[i].data != (size_t)cp_stack[idx])
+		while (stack->nodes[i].data != (long long)cp_stack[idx])
 			idx++;
-		stack->nodes[i].data = idx;
+		stack->nodes[i].data = (long long)idx;
 		i++;
+	}
+}
+
+void	put_lst(t_split *head, char **splited)
+{
+	int	num;
+	int	i;
+
+	num = 0;
+	i = 0;
+	while (splited[i])
+	{
+		num = ft_atoi_ps(splited[i++]);
+		if (check_overlap(head, num))
+		{
+			new_node(head, num);
+			head->len++;
+		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 15:04:30 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/01 19:57:53 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/01 21:47:05 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_split
 
 typedef struct s_node
 {
-	size_t	data;
+	long long	data;
 }	t_node;
 
 typedef struct s_deque
@@ -53,6 +53,16 @@ t_oper	*do_sort(t_deque *stack_a, t_deque *stack_b);
 size_t	dq_pop_front(t_deque *stack);
 size_t	dq_pop_rear(t_deque *stack);
 size_t	set_chunk(size_t capacity);
+size_t	*copy_stack(t_deque *stack, size_t *cp_stack);
+size_t	most_big(t_deque *stack);
+size_t	get_front(t_deque *stack);
+size_t	get_rear(t_deque *stack);
+size_t	comp_idx(size_t big, size_t n_big, t_deque *stack);
+size_t	comp_idx2(size_t big, size_t n_big, t_deque *stack);
+size_t	next_big(t_deque *stack);
+size_t	find_big(t_deque *stack);
+size_t	set_chunk(size_t capacity);
+void	push_a(t_deque *s_a, t_deque *s_b, t_oper *op_lst, size_t big_idx);
 void	dq_push_front(t_deque *stack, size_t num);
 void	dq_push_rear(t_deque *stack, size_t num);
 void	new_node(t_split *head, int num);
@@ -73,31 +83,22 @@ void	op_rrb(t_deque *stack_b, t_oper *op_lst, int flag);
 void	op_rrr(t_deque *stack_a, t_deque *stack_b, t_oper *op_lst);
 void	indexing_stack(size_t *cp_stack, t_deque *stack);
 void	sort_copy(size_t *cp_stack, size_t size);
-size_t	*copy_stack(t_deque *stack, size_t *cp_stack);
-int		ft_atoi_ps(const char *str);
-int		check_overlap(t_split *head, int num);
 void	make_sorted_a(t_deque *s_a, t_deque *s_b, t_oper *op_lst);
-size_t	most_big(t_deque *stack);
-void	push_a(t_deque *s_a, t_deque *s_b, t_oper *op_lst, size_t big_idx);
-size_t	get_front(t_deque *stack);
 void	make_hourglass_utl(t_deque *s_a, t_deque *s_b, \
 	t_oper *op_lst, size_t i);
 void	make_hourglass(t_deque *s_a, t_deque *s_b, t_oper *op_lst);
 void	hourglass_sort(t_deque *s_a, t_deque *s_b, t_oper *op_lst);
-size_t	set_chunk(size_t capacity);
 void	check_rra(t_deque *s_a, t_oper *op_lst, size_t ichunk);
-size_t	get_rear(t_deque *stack);
-size_t	comp_idx(size_t big, size_t n_big, t_deque *stack);
-size_t	comp_idx2(size_t big, size_t n_big, t_deque *stack);
-size_t	next_big(t_deque *stack);
-size_t	find_big(t_deque *stack);
 void	check_sort(t_deque *stack);
 void	small_sort(t_deque *s_a, t_deque *s_b, t_oper *op_lst);
 void	sort_two(t_deque *s_a, t_oper *op_lst);
 void	sort_three(t_deque *s_a, t_oper *op_lst, size_t num);
 void	sort_four(t_deque *s_a, t_deque *s_b, t_oper *op_lst);
 void	sort_five(t_deque *s_a, t_deque *s_b, t_oper *op_lst);
+int		ft_atoi_ps(const char *str);
+int		check_overlap(t_split *head, int num);
 
+void	ft_exit(const char *str, int exit_status);
 void	write_oper(t_oper *op_lst);
 void	show_stack(t_deque *stack_a, t_deque *stack_b);
 void	show_idx(t_deque *stack, size_t *cp_stack);
