@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 16:50:16 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/31 17:27:09 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/01 17:24:13 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,10 @@ void	make_hourglass(t_deque *s_a, t_deque *s_b, t_oper *op_lst)
 	size_t	i;
 
 	i = 0;
-	make_hourglass_utils(s_a, s_b, op_lst, i);
+	make_hourglass_utl(s_a, s_b, op_lst, i);
 }
-void	make_hourglass_utils(t_deque *s_a, t_deque *s_b, t_oper *op_lst, size_t i)
+
+void	make_hourglass_utl(t_deque *s_a, t_deque *s_b, t_oper *op_lst, size_t i)
 {
 	const size_t	chunk = set_chunk(s_a->capacity);
 
@@ -107,15 +108,28 @@ void	make_hourglass_utils(t_deque *s_a, t_deque *s_b, t_oper *op_lst, size_t i)
 		else if (get_front(s_a) > i && get_front(s_a) <= i + chunk)
 		{
 			op_pb(s_a, s_b, op_lst);
-			op_rb(s_b, op_lst, 1);
 			i++;
+			if (get_front(s_a) > i + chunk)
+				op_rr(s_a, s_b, op_lst);
+			else
+				op_rb(s_b, op_lst, 1);
 		}
 		else if (get_front(s_a) > i + chunk)
-		{
-			op_ra(s_a, op_lst, 1);
-		}
+			check_rra(s_a, op_lst, i + chunk);
 	}
-	//show_stack(s_a, s_b);
+}
+
+void	check_rra(t_deque *s_a, t_oper *op_lst, size_t ichunk)
+{
+	if (!(get_rear(s_a) > ichunk))
+		op_rra(s_a, op_lst, 1);
+	else if ((get_rear(s_a) > ichunk))
+		op_ra(s_a, op_lst, 1);
+}
+
+size_t	get_rear(t_deque *stack)
+{
+	return (stack->nodes[stack->rear].data);
 }
 
 size_t	get_front(t_deque *stack)
@@ -125,13 +139,44 @@ size_t	get_front(t_deque *stack)
 
 void	make_sorted_a(t_deque *s_a, t_deque *s_b, t_oper *op_lst)
 {
-	size_t	big_idx;
+	size_t			big;
+	size_t			n_big;
 
 	while (s_b->use_size > 0)
 	{
-		big_idx = get_big(s_b);
-		push_a(s_a, s_b, op_lst, big_idx);
+		big = most_big(s_b);
+		if (s_b->use_size > 1)
+			n_big = next_big(s_b);
+		if (comp_idx(big, n_big, s_b) == n_big && s_b->use_size > 1)
+		{
+			push_a(s_a, s_b, op_lst, n_big);
+			big = find_big(s_b);
+			push_a(s_a, s_b, op_lst, big);
+			op_sa(s_a, op_lst, 1);
+		}
+		else
+			push_a(s_a, s_b, op_lst, big);
 	}
+}
+
+size_t	find_big(t_deque *stack)
+{
+	size_t	idx;
+	size_t	big_idx;
+	size_t	cnt;
+
+	cnt = 0;
+	idx = stack->front;
+	big_idx = stack->use_size;
+	while (big_idx != stack->nodes[idx].data)
+	{
+		if (idx == stack->capacity - 1)
+			idx = 0;
+		else
+			idx++;
+		cnt++;
+	}
+	return (cnt);
 }
 
 void	push_a(t_deque *s_a, t_deque *s_b, t_oper *op_lst, size_t big_idx)
@@ -159,7 +204,48 @@ void	push_a(t_deque *s_a, t_deque *s_b, t_oper *op_lst, size_t big_idx)
 	op_pa(s_a, s_b, op_lst);
 }
 
-size_t	get_big(t_deque *stack)
+size_t	comp_idx(size_t big, size_t n_big, t_deque *stack)
+{
+	const size_t	size = stack->use_size;
+
+	if (big <= size / 2)
+	{
+		if (n_big <= size / 2)
+		{
+			if (big < n_big)
+				return (big);
+		}
+		else
+		{
+			if (big < size - n_big)
+				return (big);
+		}
+		return (n_big);
+	}
+	else if (big > size / 2)
+		return (comp_idx2(big, n_big, stack));
+	return (0);
+}
+
+size_t	comp_idx2(size_t big, size_t n_big, t_deque *stack)
+{
+	const size_t	size = stack->use_size;
+
+	if (n_big <= size / 2)
+	{
+		if (size - big < n_big)
+			return (big);
+	}
+	else
+	{
+		if (big > n_big)
+			return (big);
+	}
+	return (n_big);
+
+}
+
+size_t	most_big(t_deque *stack)
 {
 	size_t	idx;
 	size_t	big_idx;
@@ -170,7 +256,27 @@ size_t	get_big(t_deque *stack)
 	big_idx = stack->use_size - 1;
 	while (big_idx != stack->nodes[idx].data)
 	{
-		if (idx == stack->capacity -1)
+		if (idx == stack->capacity - 1)
+			idx = 0;
+		else
+			idx++;
+		cnt++;
+	}
+	return (cnt);
+}
+
+size_t	next_big(t_deque *stack)
+{
+	size_t	idx;
+	size_t	big_idx;
+	size_t	cnt;
+
+	cnt = 0;
+	idx = stack->front;
+	big_idx = stack->use_size - 2;
+	while (big_idx != stack->nodes[idx].data)
+	{
+		if (idx == stack->capacity - 1)
 			idx = 0;
 		else
 			idx++;

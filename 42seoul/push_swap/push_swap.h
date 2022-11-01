@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 15:04:30 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/31 17:26:28 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/01 16:59:12 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,15 +77,20 @@ size_t	*copy_stack(t_deque *stack, size_t *cp_stack);
 int		ft_atoi_ps(const char *str);
 int		check_overlap(t_split *head, int num);
 void	make_sorted_a(t_deque *s_a, t_deque *s_b, t_oper *op_lst);
-size_t	get_big(t_deque *stack);
+size_t	most_big(t_deque *stack);
 void	push_a(t_deque *s_a, t_deque *s_b, t_oper *op_lst, size_t big_idx);
 size_t	get_front(t_deque *stack);
-void	make_hourglass_utils(t_deque *s_a, t_deque *s_b, \
+void	make_hourglass_utl(t_deque *s_a, t_deque *s_b, \
 	t_oper *op_lst, size_t i);
 void	make_hourglass(t_deque *s_a, t_deque *s_b, t_oper *op_lst);
 void	hourglass_sort(t_deque *s_a, t_deque *s_b, t_oper *op_lst);
 size_t	set_chunk(size_t capacity);
-
+void	check_rra(t_deque *s_a, t_oper *op_lst, size_t ichunk);
+size_t	get_rear(t_deque *stack);
+size_t	comp_idx(size_t big, size_t n_big, t_deque *stack);
+size_t	comp_idx2(size_t big, size_t n_big, t_deque *stack);
+size_t	next_big(t_deque *stack);
+size_t	find_big(t_deque *stack);
 
 void	write_oper(t_oper *op_lst);
 void	show_stack(t_deque *stack_a, t_deque *stack_b);
