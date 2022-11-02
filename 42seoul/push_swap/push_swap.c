@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 16:17:13 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/02 15:36:50 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/02 17:01:43 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_split	*split_num(char *av, t_split *head)
 	if (!head)
 		head = lst_creat();
 	splited = ft_split(av, ' ');
-	if (!splited)
+	if (!splited || splited[0] == 0)
 		handle_error(1);
 	put_lst(head, splited);
 	return (head);
