@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 15:04:30 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/01 21:47:05 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/02 16:39:20 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ typedef struct s_split
 
 typedef struct s_node
 {
-	long long	data;
+	int		data;
+	size_t	idx;
 }	t_node;
 
 typedef struct s_deque
@@ -53,7 +54,7 @@ t_oper	*do_sort(t_deque *stack_a, t_deque *stack_b);
 size_t	dq_pop_front(t_deque *stack);
 size_t	dq_pop_rear(t_deque *stack);
 size_t	set_chunk(size_t capacity);
-size_t	*copy_stack(t_deque *stack, size_t *cp_stack);
+int		*copy_stack(t_deque *stack, int *cp_stack);
 size_t	most_big(t_deque *stack);
 size_t	get_front(t_deque *stack);
 size_t	get_rear(t_deque *stack);
@@ -81,9 +82,9 @@ void	op_rr(t_deque *stack_a, t_deque *stack_b, t_oper *op_lst);
 void	op_rra(t_deque *stack_a, t_oper *op_lst, int flag);
 void	op_rrb(t_deque *stack_b, t_oper *op_lst, int flag);
 void	op_rrr(t_deque *stack_a, t_deque *stack_b, t_oper *op_lst);
-void	indexing_stack(size_t *cp_stack, t_deque *stack);
-void	sort_copy(size_t *cp_stack, size_t size);
-void	make_sorted_a(t_deque *s_a, t_deque *s_b, t_oper *op_lst);
+void	indexing_stack(int *cp_stack, t_deque *stack);
+void	sort_copy(int *cp_stack, size_t size);
+void	make_sort_a(t_deque *s_a, t_deque *s_b, t_oper *op_lst);
 void	make_hourglass_utl(t_deque *s_a, t_deque *s_b, \
 	t_oper *op_lst, size_t i);
 void	make_hourglass(t_deque *s_a, t_deque *s_b, t_oper *op_lst);
@@ -100,6 +101,4 @@ int		check_overlap(t_split *head, int num);
 
 void	ft_exit(const char *str, int exit_status);
 void	write_oper(t_oper *op_lst);
-void	show_stack(t_deque *stack_a, t_deque *stack_b);
-void	show_idx(t_deque *stack, size_t *cp_stack);
 #endif

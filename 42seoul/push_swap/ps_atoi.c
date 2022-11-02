@@ -6,17 +6,20 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 14:44:26 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/26 21:18:45 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/02 16:39:14 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+static void	pass_zero(const char *str, int *i);
+static int	check_int(long result);
+
 int	ft_atoi_ps(const char *str)
 {
-	int			i;
-	int			sign;
-	long long	result;
+	int		i;
+	int		sign;
+	long	result;
 
 	i = 0;
 	sign = 1;
@@ -29,14 +32,27 @@ int	ft_atoi_ps(const char *str)
 			sign = -1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	pass_zero(str, &i);
+	while (str[i] >= '0' && str[i] <= '9' && check_int(result))
 	{
 		result = (result * 10) + (str[i] - '0');
 		i++;
 	}
 	result = sign * result;
-	if (str[i] != 0 || result > 2147483647
-		|| result < -2147483648)
+	if (str[i] != 0)
 		handle_error(1);
 	return ((int)result);
+}
+
+void	pass_zero(const char *str, int *i)
+{
+	while (str[*i] == '0')
+		(*i)++;
+}
+
+int	check_int(long result)
+{
+	if (result > 2147483647 || result < -2147483648)
+		return (0);
+	return (1);
 }

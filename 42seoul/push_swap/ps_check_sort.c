@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:53:59 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/01 21:47:51 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/02 14:14:09 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	check_sort(t_deque *stack)
 	i = 0;
 	while (i < stack->use_size)
 	{
-		if (i == stack->nodes[i].data)
+		if (i == stack->nodes[i].idx)
 			i++;
 		else
 			return ;

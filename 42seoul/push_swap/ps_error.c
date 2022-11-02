@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 16:33:40 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/30 16:08:26 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/02 14:49:13 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 void	handle_error(int err)
 {
 	if (err == 1)
-		write(1, "ERROR\n", 6);
+		write(2, "Error\n", 6);
 	exit(1);
 }

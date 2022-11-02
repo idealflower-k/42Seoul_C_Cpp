@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 17:18:34 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/28 22:09:08 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/02 14:18:56 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	dq_push_front(t_deque *stack, size_t num)
 		tmp = stack->capacity - 1;
 	else
 		tmp = stack->front - 1;
-	stack->nodes[tmp].data = num;
+	stack->nodes[tmp].idx = num;
 	stack->front = tmp;
 	stack->use_size++;
 }
@@ -37,7 +37,7 @@ void	dq_push_rear(t_deque *stack, size_t num)
 		tmp = 0;
 	else
 		tmp = stack->rear + 1;
-	stack->nodes[tmp].data = num;
+	stack->nodes[tmp].idx = num;
 	stack->rear = tmp;
 	stack->use_size++;
 	return ;
@@ -52,7 +52,7 @@ size_t	dq_pop_front(t_deque *stack)
 		tmp = 0;
 	else
 		tmp = stack->front + 1;
-	num = stack->nodes[stack->front].data;
+	num = stack->nodes[stack->front].idx;
 	if (stack->front != stack->rear)
 		stack->front = tmp;
 	stack->use_size--;
@@ -68,7 +68,7 @@ size_t	dq_pop_rear(t_deque *stack)
 		tmp = stack->capacity - 1;
 	else
 		tmp = stack->rear - 1;
-	num = stack->nodes[stack->rear].data;
+	num = stack->nodes[stack->rear].idx;
 	if (stack->front != stack->rear)
 		stack->rear = tmp;
 	stack->use_size--;

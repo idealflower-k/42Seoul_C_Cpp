@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 16:50:16 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/01 20:20:03 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/02 14:23:51 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,5 @@ size_t	set_chunk(size_t capacity)
 void	hourglass_sort(t_deque *s_a, t_deque *s_b, t_oper *op_lst)
 {
 	make_hourglass(s_a, s_b, op_lst);
-	make_sorted_a(s_a, s_b, op_lst);
+	make_sort_a(s_a, s_b, op_lst);
 }

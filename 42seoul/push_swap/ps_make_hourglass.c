@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:09:22 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/01 21:50:10 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/02 14:20:28 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ void	check_rra(t_deque *s_a, t_oper *op_lst, size_t ichunk)
 
 size_t	get_front(t_deque *stack)
 {
-	return (stack->nodes[stack->front].data);
+	return (stack->nodes[stack->front].idx);
 }
 
 size_t	get_rear(t_deque *stack)
 {
-	return (stack->nodes[stack->rear].data);
+	return (stack->nodes[stack->rear].idx);
 }

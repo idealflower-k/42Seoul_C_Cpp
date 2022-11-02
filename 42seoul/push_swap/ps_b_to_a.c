@@ -6,13 +6,13 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:11:30 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/01 20:42:49 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/02 14:21:27 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	make_sorted_a(t_deque *s_a, t_deque *s_b, t_oper *op_lst)
+void	make_sort_a(t_deque *s_a, t_deque *s_b, t_oper *op_lst)
 {
 	size_t			big;
 	size_t			n_big;

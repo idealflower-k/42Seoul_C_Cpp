@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 16:17:13 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/01 21:44:07 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/02 15:36:50 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	main(int ac, char *av[])
 	t_deque	*stack_a;
 	int		i;
 
-	if (ac < 3)
-		exit(1);
+	if (ac < 2)
+		exit(0);
 	i = 1;
 	head = 0;
 	while (av[i] != 0)
