@@ -23,6 +23,8 @@ SRCS_1 = ft_bzero.c \
 	ft_atoi.c \
 	ft_calloc.c \
 	ft_strdup.c \
+	get_next_line.c \
+	get_next_line_utils.c
 
 	
 
@@ -54,6 +56,10 @@ OBJS = $(SRCS:.c=.o)
 
 OBJS_BONUS = $(SRCS_BN:.c=.o)
 
+PRINTF = ft_printf/libftprintf.a
+
+PRINTF_DIR = ft_printf
+
 ifdef FLAG_BONUS
 OBJS += $(OBJS_BONUS)
 endif
@@ -75,7 +81,11 @@ all: $(NAME)
 %.o : %.c $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(OBJS)
+$(PRINTF):
+	make -C $(PRINTF_DIR) all
+
+$(NAME): $(OBJS) $(PRINTF)
+	cp $(PRINTF) ./$(NAME)
 	$(AR) $(ARFLAGS) $@ $^
 
 bonus :
@@ -83,9 +93,11 @@ bonus :
 	make FLAG_BONUS=1 all
 
 clean:
+	make -C $(PRINTF_DIR) clean
 	$(RM) $(OBJS) $(OBJS_BONUS)
 
 fclean: clean
+	make -C $(PRINTF_DIR) fclean
 	$(RM) $(NAME)
 
 re: 
