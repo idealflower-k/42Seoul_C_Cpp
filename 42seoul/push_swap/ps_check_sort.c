@@ -6,12 +6,12 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:53:59 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/04 17:12:50 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/04 19:15:15 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+#include <stdio.h>
 int	check_sort(t_deque *stack)
 {
 	size_t	i;
@@ -24,6 +24,5 @@ int	check_sort(t_deque *stack)
 		else
 			return (0);
 	}
-	if (i == stack->use_size)
-		return (1);
+	return (1);
 }

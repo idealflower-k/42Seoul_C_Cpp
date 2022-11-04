@@ -6,7 +6,7 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/02 19:53:36 by sanghwal          #+#    #+#              #
-#    Updated: 2022/11/04 17:20:47 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2022/11/04 19:04:41 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,14 +65,14 @@ CHECKER_SRCS = checker_bonus.c \
 			ps_sort_utils.c \
 			ps_sort.c \
 			ps_split_lst.c \
-			push_swap.c
 
 CHECKER_OBJS = $(CHECKER_SRCS:.c=.o)
 CHECKER_DEPS = $(CHECKER_SRCS:.c=.d)
 -include $(CHECKER_DEPS)
 
-$(CHECKER): $(CHECKER_OBJS)
 $(CHECKER_OBJS): $(LIBFT)
+$(CHECKER): $(CHECKER_OBJS)
+	cc $(LDFLAGS) $(CHECKER_OBJS) $(LDLIBS) -o $@
 ##################################################################
 all:
 	make -C $(dir $(LIBFT))

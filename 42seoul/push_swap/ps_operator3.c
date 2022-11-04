@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 20:41:57 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/04 17:02:09 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/04 19:22:55 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,15 @@
 void	op_rra(t_deque *stack_a, t_oper *op_lst, int flag)
 {
 	if (stack_a->use_size >= 2)
+	{
 		dq_push_front(stack_a, dq_pop_rear(stack_a));
+		ft_printf("%s\n", "rra ok");
+	}
 	if (flag == 1 && op_lst != 0)
+	{
 		add_op(op_lst, "rra");
+		ft_printf("%s\n", "rra no");
+	}
 	return ;
 }
 
