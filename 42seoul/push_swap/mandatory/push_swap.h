@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 15:04:30 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/04 19:45:53 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/04 21:26:55 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_oper
 }	t_oper;
 
 t_split	*split_num(char *av, t_split *head);
+void	free_split(char **splited);
 t_split	*lst_creat(void);
 t_deque	*stack_a_creat(t_deque *stack_a, t_split *head);
 t_deque	*deque_creat(size_t size);

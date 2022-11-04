@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 16:17:13 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/04 17:13:49 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/04 21:29:05 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	main(int ac, char *av[])
 		handle_error(1);
 	fill_stack_a(stack_a, head);
 	do_push_swap(stack_a);
+	system("leaks push_swap");
 	exit(0);
 }
 
@@ -62,7 +63,19 @@ t_split	*split_num(char *av, t_split *head)
 	if (!splited || splited[0] == 0)
 		handle_error(1);
 	put_lst(head, splited);
+	free_split(splited);
 	return (head);
+}
+
+void	free_split(char **splited)
+{
+	size_t	i;
+
+	i = 0;
+	while (splited[i])
+		free(splited[i++]);
+	free(splited);
+	return ;
 }
 
 void	write_oper(t_oper *op_lst)

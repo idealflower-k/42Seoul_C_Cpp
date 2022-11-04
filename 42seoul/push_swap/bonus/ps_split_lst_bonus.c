@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_split_lst.c                                     :+:      :+:    :+:   */
+/*   ps_split_lst_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 16:30:14 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/04 20:11:40 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/04 21:30:55 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,15 @@ t_split	*lst_creat(void)
 	head->next = 0;
 	head->len = 0;
 	return (head);
+}
+
+void	free_split(char **splited)
+{
+	size_t	i;
+
+	i = 0;
+	while (splited[i])
+		free(splited[i++]);
+	free(splited);
+	return ;
 }
