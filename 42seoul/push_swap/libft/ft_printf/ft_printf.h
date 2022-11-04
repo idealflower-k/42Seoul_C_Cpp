@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:04:58 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/04 15:51:07 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/04 19:51:54 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include "../libft.h"
-# include "../../push_swap.h"
 
 typedef struct s_str
 {
