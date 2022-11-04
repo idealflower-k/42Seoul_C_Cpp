@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:04:58 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/09/14 15:23:37 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/11/04 15:51:07 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define FT_PRINTF_H
 # include <stdarg.h>
 # include <unistd.h>
-# include "libft/libft.h"
+# include "../libft.h"
+# include "../../push_swap.h"
 
 typedef struct s_str
 {

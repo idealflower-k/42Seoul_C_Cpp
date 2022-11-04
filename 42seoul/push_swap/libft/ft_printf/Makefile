@@ -3,62 +3,46 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+         #
+#    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/08/29 19:56:41 by sanghwal          #+#    #+#              #
-#    Updated: 2022/09/07 20:15:56 by sanghwal         ###   ########.fr        #
+#    Created: 2022/11/04 14:51:23 by sanghwal          #+#    #+#              #
+#    Updated: 2022/11/04 16:21:56 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
+.DEFAULT_GOAL = all
 
-LIBFT = ./libft/libft.a
+CFLAGS = -Wall -Wextra -Werror -MMD -MP
+CPPFLAGS = 
+ARFLAGS = -rcs
 
-LIBFT_DIR = libft
+FTPRINTF = libftprintf.a
 
-SRCS = ft_char.c \
+FTPRINTF_SRC = ft_char.c \
 	ft_hexa.c \
 	ft_int.c \
 	ft_printf.c \
 	ft_str.c \
 	ft_unsigned_itoa.c
 
-OBJS = $(SRCS:.c=.o)
+FTPRINTF_OBJS = $(FTPRINTF_SRC:.c=.o)
+FTPRINTF_DEPS = $(FTPRINTF_SRC:.c=.d)
+-include $(FTPRINTF_DEPS)
 
-CC = cc
-
-CFLAGS = -Wall -Wextra -Werror
-
-RM = rm -f
-
-AR = ar
-
-ARFLAGS = -rcs
-
-HEADER = ft_printf.h
-
-all: $(NAME)
-
-$(LIBFT):
-	make -C $(LIBFT_DIR) all
-
-%.o : %.c $(HEADER)
-	$(CC) $(CFLAGS) -c $< -o $@
-
-$(NAME): $(LIBFT) $(OBJS)
-	cp $(LIBFT) ./$(NAME)
+$(FTPRINTF): $(FTPRINTF_OBJS)
 	$(AR) $(ARFLAGS) $@ $^
+	cp $(FTPRINTF) ../$(FTPRINTF)
+
+all:
+	make $(FTPRINTF)
 
 clean:
-	make -C $(LIBFT_DIR) clean
-	$(RM) $(OBJS) $(OBJS_BONUS)
+	$(RM) $(wildcard *.o) $(wildcard *.d)
 
 fclean: clean
-	make -C $(LIBFT_DIR) fclean
-	$(RM) $(NAME)
+	$(RM) $(FTPRINTF)
 
-re: 
-	make fclean
+re: fclean
 	make all
 
 .PHONY: all clean fclean re

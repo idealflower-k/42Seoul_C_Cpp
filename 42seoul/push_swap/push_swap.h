@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 15:04:30 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/02 16:39:20 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/04 17:10:26 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
-# include "./libft/libft.h"
-# include <stdio.h>
+# include "libft/ft_printf/ft_printf.h"
+# include "libft/libft.h"
 
 typedef struct s_split
 {
@@ -90,7 +90,7 @@ void	make_hourglass_utl(t_deque *s_a, t_deque *s_b, \
 void	make_hourglass(t_deque *s_a, t_deque *s_b, t_oper *op_lst);
 void	hourglass_sort(t_deque *s_a, t_deque *s_b, t_oper *op_lst);
 void	check_rra(t_deque *s_a, t_oper *op_lst, size_t ichunk);
-void	check_sort(t_deque *stack);
+int		check_sort(t_deque *stack);
 void	small_sort(t_deque *s_a, t_deque *s_b, t_oper *op_lst);
 void	sort_two(t_deque *s_a, t_oper *op_lst);
 void	sort_three(t_deque *s_a, t_oper *op_lst, size_t num);
@@ -99,6 +99,5 @@ void	sort_five(t_deque *s_a, t_deque *s_b, t_oper *op_lst);
 int		ft_atoi_ps(const char *str);
 int		check_overlap(t_split *head, int num);
 
-void	ft_exit(const char *str, int exit_status);
 void	write_oper(t_oper *op_lst);
 #endif

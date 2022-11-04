@@ -1,6 +1,27 @@
-NAME = libft.a
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/11/04 14:38:57 by sanghwal          #+#    #+#              #
+#    Updated: 2022/11/04 16:28:31 by sanghwal         ###   ########seoul.kr   #
+#                                                                              #
+# **************************************************************************** #
 
-SRCS_1 = ft_bzero.c \
+.DEFAULT_GOAL = all
+
+CFLAGS = -Wall -Wextra -Werror -MMD -MP
+CPPFLAGS = 
+ARFLAGS = -rcs
+LIBFT = libft.a
+
+FTPRINTF = ft_printf/libftprintf.a
+$(FTPRINTF):
+	make -C $(@D)
+
+LIBFT_SRC = ft_bzero.c \
 	ft_isalnum.c \
 	ft_isalpha.c \
 	ft_isascii.c \
@@ -24,11 +45,8 @@ SRCS_1 = ft_bzero.c \
 	ft_calloc.c \
 	ft_strdup.c \
 	get_next_line.c \
-	get_next_line_utils.c
-
-	
-
-SRCS_2 = ft_substr.c \
+	get_next_line_utils.c \
+	ft_substr.c \
 	ft_strjoin.c \
 	ft_strtrim.c \
 	ft_split.c \
@@ -38,9 +56,8 @@ SRCS_2 = ft_substr.c \
 	ft_putchar_fd.c \
 	ft_putstr_fd.c \
 	ft_putendl_fd.c \
-	ft_putnbr_fd.c
-
-SRCS_BN = ft_lstnew.c \
+	ft_putnbr_fd.c \
+	ft_lstnew.c \
 	ft_lstadd_front.c \
 	ft_lstsize.c \
 	ft_lstlast.c \
@@ -48,60 +65,31 @@ SRCS_BN = ft_lstnew.c \
 	ft_lstdelone.c \
 	ft_lstclear.c \
 	ft_lstiter.c \
-	ft_lstmap.c
+	ft_lstmap.c \
 
-SRCS = $(SRCS_1) $(SRCS_2)
+LIBFT_OBJS = $(LIBFT_SRC:.c=.o)
+LIBFT_DEPS = $(LIBFT_SRC:.c=.d)
+-include $(LIBFT_DEPS)
 
-OBJS = $(SRCS:.c=.o)
+$(LIBFT_OBJS): $(FTPRINTF)
 
-OBJS_BONUS = $(SRCS_BN:.c=.o)
-
-PRINTF = ft_printf/libftprintf.a
-
-PRINTF_DIR = ft_printf
-
-ifdef FLAG_BONUS
-OBJS += $(OBJS_BONUS)
-endif
-
-CC = cc
-
-CFLAGS = -Wall -Wextra -Werror
-
-RM = rm -f
-
-AR = ar
-
-ARFLAGS = -rcs
-
-HEADER = libft.h
-
-all: $(NAME)
-
-%.o : %.c $(HEADER)
-	$(CC) $(CFLAGS) -c $< -o $@
-
-$(PRINTF):
-	make -C $(PRINTF_DIR) all
-
-$(NAME): $(OBJS) $(PRINTF)
-	cp $(PRINTF) ./$(NAME)
+$(LIBFT): $(LIBFT_OBJS)
 	$(AR) $(ARFLAGS) $@ $^
 
-bonus :
-	sleep 1
-	make FLAG_BONUS=1 all
+all:
+	make -C $(dir $(FTPRINTF))
+	make $(LIBFT)
 
 clean:
-	make -C $(PRINTF_DIR) clean
-	$(RM) $(OBJS) $(OBJS_BONUS)
+	make -C $(dir $(FTPRINTF)) clean
+	$(RM) $(wildcard *.o) $(wildcard *.d)
 
 fclean: clean
-	make -C $(PRINTF_DIR) fclean
-	$(RM) $(NAME)
+	make -C $(dir $(FTPRINTF)) fclean
+	$(RM) $(LIBFT)
+	$(RM) libftprintf.a
 
-re: 
-	make fclean 
+re: fclean
 	make all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re

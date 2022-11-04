@@ -6,13 +6,13 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:53:59 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/02 21:48:24 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/04 17:12:50 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_sort(t_deque *stack)
+int	check_sort(t_deque *stack)
 {
 	size_t	i;
 
@@ -22,8 +22,8 @@ void	check_sort(t_deque *stack)
 		if (i == stack->nodes[i].idx)
 			i++;
 		else
-			return ;
+			return (0);
 	}
 	if (i == stack->use_size)
-		exit(0);
+		return (1);
 }

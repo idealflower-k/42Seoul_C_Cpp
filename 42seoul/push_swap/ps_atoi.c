@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 14:44:26 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/02 21:48:16 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/04 15:31:22 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_atoi_ps(const char *str)
 		i++;
 	}
 	pass_zero(str, &i);
-	while (str[i] >= '0' && str[i] <= '9' && check_int(result))
+	while (str[i] >= '0' && str[i] <= '9')
 	{
 		result = (result * 10) + (str[i] - '0');
 		i++;
@@ -41,7 +41,7 @@ int	ft_atoi_ps(const char *str)
 	result = sign * result;
 	if (str[i] != 0)
 		handle_error(1);
-	return ((int)result);
+	return (check_int(result));
 }
 
 void	pass_zero(const char *str, int *i)
@@ -53,6 +53,6 @@ void	pass_zero(const char *str, int *i)
 int	check_int(long result)
 {
 	if (result > 2147483647 || result < -2147483648)
-		return (0);
-	return (1);
+		handle_error(1);
+	return ((int)result);
 }

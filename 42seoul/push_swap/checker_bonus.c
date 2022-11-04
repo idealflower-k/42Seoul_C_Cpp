@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/20 16:17:13 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/04 17:13:49 by sanghwal         ###   ########seoul.kr  */
+/*   Created: 2022/11/04 15:42:50 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/11/04 17:26:42 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 int	main(int ac, char *av[])
 {
@@ -32,11 +32,9 @@ int	main(int ac, char *av[])
 	if (!stack_a)
 		handle_error(1);
 	fill_stack_a(stack_a, head);
-	do_push_swap(stack_a);
-	exit(0);
 }
 
-void	do_push_swap(t_deque *stack_a)
+void	set_checker(t_deque *stack_a)
 {
 	t_deque	*stack_b;
 	int		*cp_stack;
@@ -47,32 +45,49 @@ void	do_push_swap(t_deque *stack_a)
 		handle_error(1);
 	sort_copy(copy_stack(stack_a, cp_stack), stack_a->capacity);
 	indexing_stack(cp_stack, stack_a);
-	if (check_sort(stack_a))
-		exit(0);
-	write_oper(do_sort(stack_a, stack_b));
 }
 
-t_split	*split_num(char *av, t_split *head)
+void	checker(t_deque *s_a, t_deque *s_b)
 {
-	char	**splited;
+	char	*cmd;
 
-	if (!head)
-		head = lst_creat();
-	splited = ft_split(av, ' ');
-	if (!splited || splited[0] == 0)
-		handle_error(1);
-	put_lst(head, splited);
-	return (head);
-}
-
-void	write_oper(t_oper *op_lst)
-{
-	t_oper	*tmp;
-
-	tmp = op_lst->next;
-	while (tmp != 0)
+	cmd = get_next_line(0);
+	while (cmd)
 	{
-		ft_printf("%s\n", tmp->op);
-		tmp = tmp->next;
+		do_op(s_a, s_b, cmd);
+		cmd = get_next_line(0);
 	}
+	if (s_b->use_size == 0 && check_sort(s_a))
+		ft_printf("OK\n");
+	else
+		ft_printf("KO\n");
+}
+
+void	do_op(t_deque *s_a, t_deque *s_b, char *cmd)
+{
+	ft_strncmp(cmp, "sa\n", 3)
+	if (cmd == "sa\n")
+		op_sa(s_a, 0, 0);
+	else if (cmd == "sb\n")
+		op_sb(s_b, 0, 0);
+	else if (cmd == "ss\n")
+		op_ss(s_a, s_b, 0);
+	else if (cmd == "pa\n")
+		op_pa(s_a, s_b, 0);
+	else if (cmd == "pb\n")
+		op_pb(s_a, s_b, 0);
+	else if (cmd == "ra\n")
+		op_ra(s_a, 0, 0);
+	else if (cmd == "rb\n")
+		op_rb(s_b, 0, 0);
+	else if (cmd == "rr\n")
+		op_rr(s_a, s_b, 0);
+	else if (cmd == "rra\n")
+		op_rra(s_a, 0, 0);
+	else if (cmd == "rrb\n")
+		op_rrb(s_b, 0, 0);
+	else if (cmd == "rrr\n")
+		op_rrr(s_a, s_b, 0);
+	else
+		handle_error(1);
 }
