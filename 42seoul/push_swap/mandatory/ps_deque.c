@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 16:49:09 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/05 00:26:29 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/05 14:25:00 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,5 @@ void	fill_stack_a(t_deque *stack_a, t_split *head)
 		tmp = tmp->next;
 	}
 	stack_a->rear--;
-	free_lst2(head);
-}
-
-void	free_lst2(t_split *head)
-{
-	t_split	*tmp;
-	t_split	*del;
-
-	del = head;
-	while (del != 0)
-	{
-		tmp = del->next;
-		free(del);
-		del = tmp;
-	}
+	free_split_lst(head);
 }

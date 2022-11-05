@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 15:42:50 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/04 21:33:18 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/05 14:33:37 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	main(int ac, char *av[])
 		handle_error(1);
 	fill_stack_a(stack_a, head);
 	set_checker(stack_a);
-	system("leaks checker");
 	exit(0);
 }
 
@@ -107,6 +106,6 @@ t_split	*split_num(char *av, t_split *head)
 	if (!splited || splited[0] == 0)
 		handle_error(1);
 	put_lst(head, splited);
-	free_split(splited);
+	free_splited(splited);
 	return (head);
 }

@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 16:17:13 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/05 00:25:19 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/05 14:33:49 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	main(int ac, char *av[])
 		handle_error(1);
 	fill_stack_a(stack_a, head);
 	do_push_swap(stack_a);
-	system("leaks push_swap");
 	return (0);
 }
 
@@ -65,19 +64,8 @@ t_split	*split_num(char *av, t_split *head)
 	if (!splited || splited[0] == 0)
 		handle_error(1);
 	put_lst(head, splited);
-	free_split(splited);
+	free_splited(splited);
 	return (head);
-}
-
-void	free_split(char **splited)
-{
-	size_t	i;
-
-	i = 0;
-	while (splited[i])
-		free(splited[i++]);
-	free(splited);
-	return ;
 }
 
 void	write_oper(t_oper *op_lst)
@@ -90,19 +78,5 @@ void	write_oper(t_oper *op_lst)
 		ft_printf("%s\n", tmp->op);
 		tmp = tmp->next;
 	}
-	free_lst(op_lst);
-}
-
-void	free_lst(t_oper *op_lst)
-{
-	t_oper	*tmp;
-	t_oper	*del;
-
-	del = op_lst;
-	while (del != 0)
-	{
-		tmp = del->next;
-		free(del);
-		del = tmp;
-	}
+	free_oper_lst(op_lst);
 }

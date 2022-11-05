@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_deque.c                                         :+:      :+:    :+:   */
+/*   ps_deque_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 16:49:09 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/04 20:11:40 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/05 14:32:49 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,5 @@ void	fill_stack_a(t_deque *stack_a, t_split *head)
 		tmp = tmp->next;
 	}
 	stack_a->rear--;
+	free_split_lst(head);
 }

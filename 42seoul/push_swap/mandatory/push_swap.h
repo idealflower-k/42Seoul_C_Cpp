@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 15:04:30 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/05 00:26:38 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/05 14:27:42 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ typedef struct s_oper
 }	t_oper;
 
 t_split	*split_num(char *av, t_split *head);
-void	free_split(char **splited);
 t_split	*lst_creat(void);
 t_deque	*stack_a_creat(t_deque *stack_a, t_split *head);
 t_deque	*deque_creat(size_t size);
@@ -99,8 +98,8 @@ void	sort_four(t_deque *s_a, t_deque *s_b, t_oper *op_lst);
 void	sort_five(t_deque *s_a, t_deque *s_b, t_oper *op_lst);
 int		ft_atoi_ps(const char *str);
 int		check_overlap(t_split *head, int num);
-void	free_lst(t_oper *op_lst);
-void	free_lst2(t_split *head);
-
+void	free_oper_lst(t_oper *op_lst);
+void	free_split_lst(t_split *head);
+void	free_splited(char **splited);
 void	write_oper(t_oper *op_lst);
 #endif

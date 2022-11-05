@@ -1,28 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_check_sort.c                                    :+:      :+:    :+:   */
+/*   ps_free_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 17:53:59 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/04 19:31:41 by sanghwal         ###   ########seoul.kr  */
+/*   Created: 2022/11/05 14:22:00 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/11/05 14:37:59 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdio.h>
-int	check_sort(t_deque *stack)
+#include "push_swap_bonus.h"
+
+void	free_oper_lst(t_oper *op_lst)
+{
+	t_oper	*tmp;
+	t_oper	*del;
+
+	del = op_lst;
+	while (del != 0)
+	{
+		tmp = del->next;
+		free(del);
+		del = tmp;
+	}
+}
+
+void	free_splited(char **splited)
 {
 	size_t	i;
 
 	i = 0;
-	while (i < stack->use_size)
+	while (splited[i])
+		free(splited[i++]);
+	free(splited);
+	return ;
+}
+
+void	free_split_lst(t_split *head)
+{
+	t_split	*tmp;
+	t_split	*del;
+
+	del = head;
+	while (del != 0)
 	{
-		if (i == stack->nodes[i].idx)
-			i++;
-		else
-			return (0);
+		tmp = del->next;
+		free(del);
+		del = tmp;
 	}
-	return (1);
 }

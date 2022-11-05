@@ -6,7 +6,7 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/02 19:53:36 by sanghwal          #+#    #+#              #
-#    Updated: 2022/11/05 00:13:46 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2022/11/05 14:27:02 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,8 @@ PUSHSWAP_SRCS = ps_atoi.c \
 			ps_sort_utils.c \
 			ps_sort.c \
 			ps_split_lst.c \
-			push_swap.c
+			push_swap.c \
+			ps_free.c
 			
 PUSHSWAP_OBJS = $(addprefix $(PUSHSWAP_DIR)/, $(PUSHSWAP_SRCS:.c=.o))
 PUSHSWAP_DEPS = $(addprefix $(PUSHSWAP_DIR)/,$(PUSHSWAP_SRCS:.c=.d))
@@ -62,7 +63,8 @@ CHECKER_SRCS = checker_bonus.c \
 	ps_operator2_bonus.c \
 	ps_operator3_bonus.c \
 	ps_sort_utils_bonus.c \
-	ps_split_lst_bonus.c
+	ps_split_lst_bonus.c \
+	ps_free_bonus.c
 
 CHECKER_OBJS = $(addprefix $(CHECKER_DIR)/, $(CHECKER_SRCS:.c=.o))
 CHECKER_DEPS = $(addprefix $(CHECKER_DIR)/, $(CHECKER_SRCS:.c=.d))

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_sort_utils.c                                    :+:      :+:    :+:   */
+/*   ps_sort_utils_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 22:17:20 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/04 20:36:10 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/05 14:31:14 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	indexing_stack(int *cp_stack, t_deque *stack)
 		stack->nodes[i].idx = idx;
 		i++;
 	}
+	free(cp_stack);
 }
 
 void	put_lst(t_split *head, char **splited)
