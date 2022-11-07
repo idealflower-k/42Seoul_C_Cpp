@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 16:17:13 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/05 14:33:49 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/07 20:20:38 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	do_push_swap(t_deque *stack_a)
 	if (check_sort(stack_a))
 		exit(0);
 	write_oper(do_sort(stack_a, stack_b));
+	// do_sort(stack_a, stack_b);
 }
 
 t_split	*split_num(char *av, t_split *head)

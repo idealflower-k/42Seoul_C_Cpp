@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 16:50:16 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/02 21:48:50 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/07 20:40:22 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ size_t	set_chunk(size_t capacity)
 {
 	size_t	chunk;
 
-	if (capacity <= 14)
-		chunk = capacity / 2;
-	else
-		chunk = (size_t)(0.000000053 * (capacity * capacity) \
-			+ (0.03 * (capacity)) + 14.5);
+	if (capacity < 10)
+		return (0);
+	else if (capacity < 30)
+		return (capacity / 2);
+	chunk = (size_t)((0.03 * capacity) + 15);
 	return (chunk);
 }
 
