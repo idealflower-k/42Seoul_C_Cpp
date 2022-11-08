@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 16:17:13 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/07 20:20:38 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/08 16:10:32 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,13 @@ int	main(int ac, char *av[])
 	i = 1;
 	head = 0;
 	while (av[i] != 0)
-	{
-		if (av[i][0] == '\0')
-			handle_error(1);
 		head = split_num(av[i++], head);
-	}
 	stack_a = deque_creat(head->len);
 	if (!stack_a)
 		handle_error(1);
 	fill_stack_a(stack_a, head);
 	do_push_swap(stack_a);
-	return (0);
+	exit (0);
 }
 
 void	do_push_swap(t_deque *stack_a)
@@ -42,9 +38,8 @@ void	do_push_swap(t_deque *stack_a)
 	int		*cp_stack;
 
 	stack_b = deque_creat(stack_a->capacity);
-	cp_stack = 0;
 	cp_stack = (int *)malloc(sizeof(int) * stack_a->capacity);
-	if (!stack_b || !cp_stack)
+	if (!cp_stack)
 		handle_error(1);
 	sort_copy(copy_stack(stack_a, cp_stack), stack_a->capacity);
 	indexing_stack(cp_stack, stack_a);
@@ -52,7 +47,6 @@ void	do_push_swap(t_deque *stack_a)
 	if (check_sort(stack_a))
 		exit(0);
 	write_oper(do_sort(stack_a, stack_b));
-	// do_sort(stack_a, stack_b);
 }
 
 t_split	*split_num(char *av, t_split *head)

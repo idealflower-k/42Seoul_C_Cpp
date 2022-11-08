@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 15:04:30 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/05 14:27:42 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/08 16:02:58 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,6 @@ void	op_rrr(t_deque *stack_a, t_deque *stack_b, t_oper *op_lst);
 void	indexing_stack(int *cp_stack, t_deque *stack);
 void	sort_copy(int *cp_stack, size_t size);
 void	make_sort_a(t_deque *s_a, t_deque *s_b, t_oper *op_lst);
-void	make_hourglass_utl(t_deque *s_a, t_deque *s_b, \
-	t_oper *op_lst, size_t i);
 void	make_hourglass(t_deque *s_a, t_deque *s_b, t_oper *op_lst);
 void	hourglass_sort(t_deque *s_a, t_deque *s_b, t_oper *op_lst);
 void	check_rra(t_deque *s_a, t_oper *op_lst, size_t ichunk);

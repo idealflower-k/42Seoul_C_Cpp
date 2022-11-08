@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:33:14 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/02 21:48:45 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/08 15:56:58 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	small_sort(t_deque *s_a, t_deque *s_b, t_oper *op_lst)
 
 void	sort_two(t_deque *s_a, t_oper *op_lst)
 {
-	if (s_a->nodes[s_a->front].idx > s_a->nodes[s_a->rear].idx)
+	if (!check_sort(s_a))
 		op_sa(s_a, op_lst, 1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 15:42:50 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/05 14:33:37 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/08 16:12:55 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,7 @@ int	main(int ac, char *av[])
 	i = 1;
 	head = 0;
 	while (av[i] != 0)
-	{
-		if (av[i][0] == '\0')
-			handle_error(1);
 		head = split_num(av[i++], head);
-	}
 	stack_a = deque_creat(head->len);
 	if (!stack_a)
 		handle_error(1);
@@ -43,7 +39,7 @@ void	set_checker(t_deque *stack_a)
 
 	stack_b = deque_creat(stack_a->capacity);
 	cp_stack = (int *)malloc(sizeof(int) * stack_a->capacity);
-	if (!stack_b || !cp_stack)
+	if (!cp_stack)
 		handle_error(1);
 	sort_copy(copy_stack(stack_a, cp_stack), stack_a->capacity);
 	indexing_stack(cp_stack, stack_a);

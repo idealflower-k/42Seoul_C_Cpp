@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:09:22 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/07 20:40:34 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/08 16:03:05 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,10 @@
 
 void	make_hourglass(t_deque *s_a, t_deque *s_b, t_oper *op_lst)
 {
-	size_t	i;
-
-	i = 0;
-	make_hourglass_utl(s_a, s_b, op_lst, i);
-}
-
-void	make_hourglass_utl(t_deque *s_a, t_deque *s_b, t_oper *op_lst, size_t i)
-{
+	size_t			i;
 	const size_t	chunk = set_chunk(s_a->capacity);
 
+	i = 0;
 	while (i < s_a->capacity)
 	{
 		if (get_front(s_a) <= i)
