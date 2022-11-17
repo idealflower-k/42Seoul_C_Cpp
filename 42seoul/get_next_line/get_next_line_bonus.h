@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:04:10 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/02 18:23:18 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/08/08 20:02:46 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 42
 # endif
 
 typedef struct s_list
@@ -26,6 +26,7 @@ typedef struct s_list
 	char			*result;
 	char			buff[BUFFER_SIZE + 1];
 	struct s_list	*next;
+	struct s_list	*before;
 }	t_list;
 
 char	*get_next_line(int fd);
