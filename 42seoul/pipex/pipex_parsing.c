@@ -6,26 +6,26 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 13:48:15 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/22 16:56:45 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/23 17:51:08 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-t_cmd_node	**parsing_av(int total, char **av, char *envp[])
+t_cmd	**parsing_av(int total, char **av, char *envp[])
 {
-	t_cmd_node	**cmd_arr;
-	char		**envp_path;
-	int			i;
+	t_cmd	**cmd_arr;
+	char	**envp_path;
+	int		i;
 
 	envp_path = parsing_envp(envp);
-	cmd_arr = ft_malloc(sizeof(t_cmd_node *) * (total + 1));
+	cmd_arr = ft_malloc(sizeof(t_cmd *) * (total + 1));
 	cmd_arr[total] = 0;
 	i = 0;
 	while (i < total)
 	{
-		cmd_arr[i] = ft_malloc(sizeof(t_cmd_node));
-		ft_memset(cmd_arr[i], 0, sizeof(t_cmd_node));
+		cmd_arr[i] = ft_malloc(sizeof(t_cmd));
+		ft_memset(cmd_arr[i], 0, sizeof(t_cmd));
 		cmd_arr[i]->cmd_info = ft_split(av[i], ' ');
 		cmd_arr[i]->cmd_path = get_path(cmd_arr[i]->cmd_info[0], envp_path);
 		if (cmd_arr[i]->cmd_path)
@@ -56,7 +56,7 @@ char	*get_path(char *cmd, char **envp_path)
 		i++;
 	}
 	perror("Comand not found");
-	return(0);
+	return (0);
 }
 
 char	*make_cmd_path(char *cmd, char *envp_path)
