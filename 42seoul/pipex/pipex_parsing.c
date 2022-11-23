@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 13:48:15 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/23 17:51:08 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/23 19:12:35 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,10 @@ t_cmd	**parsing_av(int total, char **av, char *envp[])
 		i++;
 	}
 	i = 0;
-	while (envp_path[i])
+	while (envp_path && envp_path[i])
 		free(envp_path[i++]);
-	free(envp_path);
+	if (envp_path)
+		free(envp_path);
 	return (cmd_arr);
 }
 
@@ -47,13 +48,18 @@ char	*get_path(char *cmd, char **envp_path)
 
 	path = 0;
 	i = 0;
-	while (envp_path && envp_path[i])
+	while (envp_path && !ft_strchr(cmd, '/') && envp_path[i])
 	{
 		path = make_cmd_path(cmd, envp_path[i]);
 		if (access(path, F_OK | X_OK) == 0)
 			return (path);
 		free(path);
 		i++;
+	}
+	if (ft_strchr(cmd, '/'))
+	{
+		if (access(cmd, F_OK | X_OK) == 0)
+			return (cmd);
 	}
 	perror("Comand not found");
 	return (0);
@@ -79,7 +85,7 @@ char	**parsing_envp(char *envp[])
 
 	result = 0;
 	i = 0;
-	while (envp[i])
+	while (envp && envp[i])
 	{
 		if (ft_memcmp(envp[i], "PATH=", 5) == 0)
 			result = ft_split(&envp[i][5], ':');

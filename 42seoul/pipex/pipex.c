@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 20:49:05 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/23 17:41:33 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/23 19:22:55 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	fork_exec(t_args *args, t_cmd **cmd, int step, int pre_fd)
 
 	if (step == args->ac - 3)
 		return ;
-	if (step != args->ac - 4)
+	if (step < args->ac - 4)
 		pipe(step_pipe);
 	if (step == 1)
 		close(args->io_fd[0]);
@@ -49,7 +49,7 @@ void	fork_exec(t_args *args, t_cmd **cmd, int step, int pre_fd)
 		set_fd(args, step_pipe, step, pre_fd);
 		execve(cmd[step]->cmd_path, cmd[step]->cmd_info, args->envp);
 	}
-	if (step != args->ac - 4)
+	if (step < args->ac - 4)
 		close(step_pipe[1]);
 	fork_exec(args, cmd, step + 1, step_pipe[0]);
 	close(step_pipe[0]);
@@ -58,13 +58,15 @@ void	fork_exec(t_args *args, t_cmd **cmd, int step, int pre_fd)
 
 void	do_wait(pid_t pid, t_args *args, int step)
 {
-	if (step != args->ac - 4)
+	if (step < args->ac - 4)
 	{
+		write(1, "<ac-4\n", 6);
 		if (wait(0) == -1)
 			perror("wait() error");
 	}
-	else
+	else if (step == args->ac - 4)
 	{
+		write(1, ">ac-4\n", 6);
 		if (waitpid(pid, &(args->status_child), 0) == -1)
 			perror("waitpid() error");
 	}

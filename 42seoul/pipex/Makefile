@@ -6,13 +6,13 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/02 19:53:36 by sanghwal          #+#    #+#              #
-#    Updated: 2022/11/22 17:26:49 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2022/11/23 18:08:05 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 .DEFAULT_GOAL = all
 
-CFLAGS = -Wall -Wextra -Werror -MMD -MP
+CFLAGS = -Wall -Wextra -Werror -MMD -MP -g3
 CPPFLAGS = 
 LDFLAGS= -L./libft
 LDLIBS = -lft -lftprintf
