@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 20:49:05 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/25 21:50:25 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/25 21:55:33 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ void	open_infile(char *av[], t_args *arg_info)
 	if (ft_strncmp(av[1], "here_doc", 8) == 0)
 	{
 		make_temp_file(arg_info);
-		if (arg_info->io_fd[0] == -1)
-			perror("temp file open() error");
 	}
 	else
 	{
@@ -56,6 +54,8 @@ void	make_temp_file(t_args *arg_info)
 		num %= 10; // 수정 필요 , 9 다음 90 부터  시작할듯...
 	}
 	arg_info->io_fd[0] = open(tmp, O_RDWR, O_CREAT);
+	if (arg_info->io_fd[0] == -1)
+		perror("temp file open() error");
 	write(1, "here_doc> ", 10);
 	gnl = get_next_line(0);
 	while (!gnl)
@@ -76,6 +76,7 @@ t_args	*set_arg_info(int ac, char *av[], char *envp[])
 	arg_info->av = av;
 	arg_info->envp = envp;
 	arg_info->status_child = 0;
+	return (arg_info);
 }
 
 void	fork_exec(t_args *args, t_cmd **cmd, int step, int pre_fd)

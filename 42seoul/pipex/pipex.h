@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 15:18:07 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/23 17:19:29 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/25 21:52:41 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,16 @@ typedef struct s_args
 }	t_args;
 
 t_cmd	**parsing_av(int total, char **av, char *envp[]);
+t_args	*set_arg_info(int ac, char *av[], char *envp[]);
 void	fork_exec(t_args *args, t_cmd **cmd, int step, int pre_fd);
 pid_t	do_fork(void);
 void	do_wait(pid_t pid, t_args *args, int step);
 char	*get_path(char *cmd, char **envp_path);
 char	**parsing_envp(char *envp[]);
 char	*make_cmd_path(char *cmd, char *envp_path);
+void	make_temp_file(t_args *arg_info);
 void	out_file_open(t_args *args);
+void	open_infile(char *av[], t_args *arg_info);
 void	set_fd(t_args *args, int *step_pipe, int step, int pre_fd);
 void	*ft_malloc(size_t size);
 void	ft_error(char *str);
