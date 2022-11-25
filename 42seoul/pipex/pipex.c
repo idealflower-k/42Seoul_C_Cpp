@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 20:49:05 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/23 19:22:55 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/25 21:35:25 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,55 @@ int	main(int ac, char *av[], char *envp[])
 
 	if (ac < 5)
 		ft_error("argument not enough : least 5 need");
+	arg_info = set_arg_info(ac, av, envp);
+	cmd_arr = parsing_av(ac - 3, av + 2, envp);
+	open_infile(av, arg_info);
+	fork_exec(arg_info, cmd_arr, 0, arg_info->io_fd[0]);
+	exit(WEXITSTATUS(arg_info->status_child));
+}
+
+void	open_infile(char *av[], t_args *arg_info)
+{
+	if (ft_strncmp(av[1], "here_doc", 8) == 0)
+	{
+		make_temp_file(arg_info);
+		if (arg_info->io_fd[0] == -1)
+			perror("temp file open() error");
+	}
+	else
+	{
+		arg_info->io_fd[0] = open(av[1], O_RDONLY);
+		if (arg_info->io_fd[0] == -1)
+			perror("infile open() error");
+	}
+}
+
+void	make_temp_file(t_args *arg_info)
+{
+	char	*tmp;
+	int		num;
+
+	tmp = "/tmp/pipex_tmp0";
+	num = 0;
+	while (access(tmp, F_OK) == 0)
+	{
+		tmp = ft_strjoin(tmp, ft_itoa(num++));
+		num %= 10;
+	}
+	arg_info->io_fd[0] = open(tmp, O_RDWR, O_CREAT);
+}
+
+
+
+t_args	*set_arg_info(int ac, char *av[], char *envp[])
+{
+	t_args	*arg_info;
+
 	arg_info = ft_malloc(sizeof(t_args));
 	arg_info->ac = ac;
 	arg_info->av = av;
 	arg_info->envp = envp;
 	arg_info->status_child = 0;
-	cmd_arr = parsing_av(ac - 3, av + 2, envp);
-	arg_info->io_fd[0] = open(av[1], O_RDONLY);
-	if (arg_info->io_fd[0] == -1)
-		perror("infile open() error");
-	fork_exec(arg_info, cmd_arr, 0, arg_info->io_fd[0]);
-	exit(WEXITSTATUS(arg_info->status_child));
 }
 
 void	fork_exec(t_args *args, t_cmd **cmd, int step, int pre_fd)
@@ -47,26 +85,29 @@ void	fork_exec(t_args *args, t_cmd **cmd, int step, int pre_fd)
 	if (pid == 0)
 	{
 		set_fd(args, step_pipe, step, pre_fd);
+		if (cmd[step]->cmd_path == 0)
+			exit(127);
 		execve(cmd[step]->cmd_path, cmd[step]->cmd_info, args->envp);
+		perror("execve failed");
+		exit(126);
 	}
 	if (step < args->ac - 4)
 		close(step_pipe[1]);
 	fork_exec(args, cmd, step + 1, step_pipe[0]);
 	close(step_pipe[0]);
 	do_wait(pid, args, step);
+
 }
 
 void	do_wait(pid_t pid, t_args *args, int step)
 {
 	if (step < args->ac - 4)
 	{
-		write(1, "<ac-4\n", 6);
 		if (wait(0) == -1)
 			perror("wait() error");
 	}
 	else if (step == args->ac - 4)
 	{
-		write(1, ">ac-4\n", 6);
 		if (waitpid(pid, &(args->status_child), 0) == -1)
 			perror("waitpid() error");
 	}

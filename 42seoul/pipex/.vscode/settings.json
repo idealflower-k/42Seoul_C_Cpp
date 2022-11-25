@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"__mutex_base": "c",
-		"unistd.h": "c"
+		"unistd.h": "c",
+		"errno.h": "c"
 	}
 }
