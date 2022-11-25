@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 20:49:05 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/25 21:35:25 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/25 21:50:25 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	open_infile(char *av[], t_args *arg_info)
 void	make_temp_file(t_args *arg_info)
 {
 	char	*tmp;
+	char	*gnl;
 	int		num;
 
 	tmp = "/tmp/pipex_tmp0";
@@ -52,12 +53,19 @@ void	make_temp_file(t_args *arg_info)
 	while (access(tmp, F_OK) == 0)
 	{
 		tmp = ft_strjoin(tmp, ft_itoa(num++));
-		num %= 10;
+		num %= 10; // 수정 필요 , 9 다음 90 부터  시작할듯...
 	}
 	arg_info->io_fd[0] = open(tmp, O_RDWR, O_CREAT);
+	write(1, "here_doc> ", 10);
+	gnl = get_next_line(0);
+	while (!gnl)
+	{
+		if (write(arg_info->io_fd[0], gnl, ft_strlen(gnl)) == -1)
+			perror("infile write error()");
+		free(gnl);
+		gnl = get_next_line(0);
+	}
 }
-
-
 
 t_args	*set_arg_info(int ac, char *av[], char *envp[])
 {
