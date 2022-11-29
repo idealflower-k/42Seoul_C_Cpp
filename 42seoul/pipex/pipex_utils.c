@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 20:59:15 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/25 21:40:14 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/29 21:19:58 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,14 @@ void	out_file_open(t_args *args)
 			open(args->av[args->ac - 1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (args->io_fd[1] == -1)
 		perror("outfile open() error");
+}
+
+pid_t	do_fork(void)
+{
+	pid_t	pid;
+
+	pid = fork();
+	if (pid < 0)
+		perror("fork() error");
+	return (pid);
 }

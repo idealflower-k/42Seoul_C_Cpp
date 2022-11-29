@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 13:48:15 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/23 19:12:35 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/29 21:18:19 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ t_cmd	**parsing_av(int total, char **av, char *envp[])
 		ft_memset(cmd_arr[i], 0, sizeof(t_cmd));
 		cmd_arr[i]->cmd_info = ft_split(av[i], ' ');
 		cmd_arr[i]->cmd_path = get_path(cmd_arr[i]->cmd_info[0], envp_path);
-		if (cmd_arr[i]->cmd_path)
-			cmd_arr[i]->executable = 1;
 		cmd_arr[i]->total_cmd = total;
 		i++;
 	}
@@ -92,4 +90,16 @@ char	**parsing_envp(char *envp[])
 		i++;
 	}
 	return (result);
+}
+
+t_args	*set_arg_info(int ac, char *av[], char *envp[])
+{
+	t_args	*arg_info;
+
+	arg_info = ft_malloc(sizeof(t_args));
+	arg_info->ac = ac;
+	arg_info->av = av;
+	arg_info->envp = envp;
+	arg_info->status_child = 0;
+	return (arg_info);
 }
