@@ -6,7 +6,7 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/02 19:53:36 by sanghwal          #+#    #+#              #
-#    Updated: 2022/11/23 18:08:05 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2022/11/30 19:55:13 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ NAME = pipex
 PIPEX_DIR = .
 PIPEX_SRCS = pipex.c \
 		pipex_utils.c \
-		pipex_parsing.c
+		pipex_parsing.c \
+		pipex_heredoc.c
 
 PIPEX_OBJS = $(addprefix $(PIPEX_DIR)/, $(PIPEX_SRCS:.c=.o))
 PIPEX_DEPS = $(addprefix $(PIPEX_DIR)/,$(PIPEX_SRCS:.c=.d))

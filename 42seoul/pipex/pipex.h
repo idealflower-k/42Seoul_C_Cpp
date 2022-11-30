@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 15:18:07 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/29 17:36:09 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/30 19:56:01 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ typedef struct s_cmd
 {
 	int		pipe[2];
 	int		total_cmd;
-	// int		executable;
 	char	*cmd_path;
 	char	**cmd_info;
 }	t_cmd;
@@ -42,9 +41,11 @@ typedef struct s_args
 t_cmd	**parsing_av(int total, char **av, char *envp[]);
 t_cmd	**open_infile(t_args *arg_info);
 t_args	*set_arg_info(int ac, char *av[], char *envp[]);
+char	*creat_tmp_file(void);
+void	write_on_infile(t_args *arg_info);
 void	fork_exec(t_args *args, t_cmd **cmd, int step, int pre_fd);
-pid_t	do_fork(void);
 void	do_wait(pid_t pid, t_args *args, int step);
+pid_t	do_fork(void);
 char	*get_path(char *cmd, char **envp_path);
 char	**parsing_envp(char *envp[]);
 char	*make_cmd_path(char *cmd, char *envp_path);

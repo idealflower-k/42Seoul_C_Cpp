@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 20:49:05 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/29 21:18:25 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/11/30 21:33:25 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void	fork_exec(t_args *args, t_cmd **cmd, int step, int pre_fd)
 	fork_exec(args, cmd, step + 1, step_pipe[0]);
 	close(step_pipe[0]);
 	do_wait(pid, args, step);
-
 }
 
 void	do_wait(pid_t pid, t_args *args, int step)
