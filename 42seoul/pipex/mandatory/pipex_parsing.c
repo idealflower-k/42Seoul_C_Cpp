@@ -6,13 +6,13 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 13:48:15 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/30 21:38:08 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/12/01 16:13:24 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-t_cmd	**parsing_av(int total, char **av, char *envp[])
+t_cmd	**parsing_av(int total, char **av, char *envp[], t_args *args)
 {
 	t_cmd	**cmd_arr;
 	char	**envp_path;
@@ -27,7 +27,8 @@ t_cmd	**parsing_av(int total, char **av, char *envp[])
 		cmd_arr[i] = ft_malloc(sizeof(t_cmd));
 		ft_memset(cmd_arr[i], 0, sizeof(t_cmd));
 		cmd_arr[i]->cmd_info = ft_split(av[i], ' ');
-		cmd_arr[i]->cmd_path = get_path(i, cmd_arr[i], envp_path);
+		cmd_arr[i]->cmd_path = get_path(cmd_arr[i]->cmd_info[0], \
+			envp_path, args, i);
 		cmd_arr[i]->total_cmd = total;
 		i++;
 	}
@@ -39,27 +40,30 @@ t_cmd	**parsing_av(int total, char **av, char *envp[])
 	return (cmd_arr);
 }
 
-char	*get_path(int idx, t_cmd *cmd, char **envp_path)
+char	*get_path(char *cmd, char **envp_path, t_args *args, int idx)
 {
 	char	*path;
 	int		i;
 
 	path = 0;
 	i = 0;
-	while (envp_path && !ft_strchr(cmd->cmd_info[0], '/') && envp_path[i])
+	while (envp_path && !ft_strchr(cmd, '/') && envp_path[i])
 	{
-		path = make_cmd_path(cmd->cmd_info[0], envp_path[i]);
+		path = make_cmd_path(cmd, envp_path[i]);
 		if (access(path, F_OK | X_OK) == 0)
 			return (path);
 		free(path);
 		i++;
 	}
-	if (ft_strchr(cmd->cmd_info[0], '/'))
+	if (ft_strchr(cmd, '/'))
 	{
-		if (access(cmd->cmd_info[0], F_OK | X_OK) == 0)
-			return (cmd->cmd_info[0]);
+		if (access(cmd, F_OK | X_OK) == 0)
+			return (cmd);
 	}
-	perror("Comand not found");
+	if ((idx == 0 && args->io_fd[0] == -1) || \
+		(idx == args->total_cmd - 1 && args->io_fd[1] == -1))
+		return (0);
+	perror(cmd);
 	return (0);
 }
 

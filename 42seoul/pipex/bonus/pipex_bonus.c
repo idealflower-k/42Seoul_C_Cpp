@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 20:49:05 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/30 21:33:25 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/12/01 17:48:07 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 int	main(int ac, char *av[], char *envp[])
 {
@@ -20,25 +20,34 @@ int	main(int ac, char *av[], char *envp[])
 	if (ac < 5)
 		ft_error("argument not enough : least 5 need");
 	arg_info = set_arg_info(ac, av, envp);
-	cmd_arr = open_infile(arg_info);
-	arg_info->total_cmd = cmd_arr[0]->total_cmd;
+	cmd_arr = open_and_pars(arg_info);
 	fork_exec(arg_info, cmd_arr, 0, arg_info->io_fd[0]);
 	exit(WEXITSTATUS(arg_info->status_child));
 }
 
-t_cmd	**open_infile(t_args *arg_info)
+t_cmd	**open_and_pars(t_args *arg_info)
 {
-	if (ft_strncmp(arg_info->av[1], "here_doc", 8) == 0)
+	t_cmd	**result;
+
+	if (ft_strncmp(arg_info->av[1], "here_doc", ft_strlen(arg_info->av[1])) \
+		== 0)
 	{
 		make_temp_file(arg_info);
-		return (parsing_av(arg_info->ac - 4, arg_info->av + 3, arg_info->envp));
+		out_file_open(arg_info);
+		arg_info->total_cmd = arg_info->ac - 4;
+		return (parsing_av(arg_info->ac - 4, arg_info->av + 3, \
+			arg_info->envp, arg_info));
 	}
 	else
 	{
 		arg_info->io_fd[0] = open(arg_info->av[1], O_RDONLY);
 		if (arg_info->io_fd[0] == -1)
 			perror("infile open() error");
-		return (parsing_av(arg_info->ac - 3, arg_info->av + 2, arg_info->envp));
+		out_file_open(arg_info);
+		arg_info->total_cmd = arg_info->ac - 3;
+		result = parsing_av(arg_info->ac - 3, arg_info->av + 2, \
+			arg_info->envp, arg_info);
+		return (result);
 	}
 }
 
@@ -48,7 +57,7 @@ void	fork_exec(t_args *args, t_cmd **cmd, int step, int pre_fd)
 	int		step_pipe[2];
 
 	if (step == args->total_cmd)
-		return ;
+		return ((void)close(args->io_fd[1]));
 	if (step < args->total_cmd - 1)
 		pipe(step_pipe);
 	if (step == 1)
@@ -87,15 +96,17 @@ void	do_wait(pid_t pid, t_args *args, int step)
 void	set_fd(t_args *args, int *step_pipe, int step, int pre_fd)
 {
 	if (step != args->total_cmd - 1)
+	{
 		close(step_pipe[0]);
+		close(args->io_fd[1]);
+	}
 	step_pipe[0] = pre_fd;
+	if (step == args->total_cmd - 1)
+		step_pipe[1] = args->io_fd[1];
+	if (step_pipe[0] == -1 || step_pipe[1] == -1)
+		exit(0);
 	dup2(step_pipe[0], 0);
 	close(step_pipe[0]);
-	if (step == args->total_cmd - 1)
-	{
-		out_file_open(args);
-		step_pipe[1] = args->io_fd[1];
-	}
 	dup2(step_pipe[1], 1);
 	close(step_pipe[1]);
 }

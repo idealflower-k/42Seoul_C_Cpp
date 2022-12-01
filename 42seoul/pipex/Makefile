@@ -6,7 +6,7 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/02 19:53:36 by sanghwal          #+#    #+#              #
-#    Updated: 2022/11/30 19:55:13 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2022/12/01 21:33:43 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,55 +23,48 @@ $(LIBFT):
 ##################################################################
 NAME = pipex
 
-PIPEX_DIR = .
-PIPEX_SRCS = pipex.c \
+MANDATORY_DIR = mandatory
+MANDATORY_SRCS = pipex.c \
 		pipex_utils.c \
 		pipex_parsing.c \
 		pipex_heredoc.c
+		
+BONUS_DIR = bonus
+BONUS_SRCS = pipex_bonus.c \
+	pipex_heredoc_bonus.c \
+	pipex_parsing_bonus.c \
+	pipex_utils_bonus.c
 
-PIPEX_OBJS = $(addprefix $(PIPEX_DIR)/, $(PIPEX_SRCS:.c=.o))
-PIPEX_DEPS = $(addprefix $(PIPEX_DIR)/,$(PIPEX_SRCS:.c=.d))
--include $(PIPEX_DEPS)
+BONUS_OBJS = $(addprefix $(BONUS_DIR)/, $(BONUS_SRCS:.c=.o))
+BONUS_DEPS = $(addprefix $(BONUS_DIR)/, $(BONUS_SRCS:.c=.d))
 
-$(PIPEX_OBJS): $(LIBFT)
-$(NAME): $(PIPEX_OBJS)
-	cc $(LDFLAGS) $(PIPEX_OBJS) $(LDLIBS) -o $@
-##################################################################
-# CHECKER = checker
+OBJS = $(addprefix $(MANDATORY_DIR)/, $(MANDATORY_SRCS:.c=.o))
+DEPS = $(addprefix $(MANDATORY_DIR)/, $(MANDATORY_SRCS:.c=.d))
 
-# CHECKER_DIR = bonus
-# CHECKER_SRCS = checker_bonus.c \
-# 	ps_atoi_bonus.c \
-# 	ps_check_sort_bonus.c \
-# 	ps_deque_bonus.c \
-# 	ps_deque_utils_bonus.c \
-# 	ps_error_bonus.c \
-# 	ps_operator1_bonus.c \
-# 	ps_operator2_bonus.c \
-# 	ps_operator3_bonus.c \
-# 	ps_sort_utils_bonus.c \
-# 	ps_split_lst_bonus.c \
-# 	ps_free_bonus.c
+ifdef FLAG_BONUS
+OBJS = $(addprefix $(BONUS_DIR)/, $(BONUS_SRCS:.c=.o))
+DEPS = $(addprefix $(BONUS_DIR)/, $(BONUS_SRCS:.c=.d))
+endif
 
-# CHECKER_OBJS = $(addprefix $(CHECKER_DIR)/, $(CHECKER_SRCS:.c=.o))
-# CHECKER_DEPS = $(addprefix $(CHECKER_DIR)/, $(CHECKER_SRCS:.c=.d))
-# -include $(CHECKER_DEPS)
+-include $(DEPS)
 
-# $(CHECKER_OBJS): $(LIBFT)
-# $(CHECKER): $(CHECKER_OBJS)
-# 	cc $(LDFLAGS) $(CHECKER_OBJS) $(LDLIBS) -o $@
-##################################################################
+$(OBJS): $(LIBFT)
+$(NAME): $(OBJS)
+	cc $(LDFLAGS) $(OBJS) $(LDLIBS) -o $@
+
 all:
 	make -C $(dir $(LIBFT))
 	make $(NAME)
+	touch $(NAME)
 
 bonus:
 	make -C $(dir $(LIBFT))
-	make $(NAME)
+	make FLAG_BONUS=1 $(NAME)
+	touch $(NAME)
 
 clean:
 	make -C $(dir $(LIBFT)) clean
-	$(RM) $(PIPEX_OBJS) $(PIPEX_DEPS)
+	$(RM) $(OBJS) $(DEPS) $(BONUS_OBJS) $(BONUS_DEPS)
 
 fclean: clean
 	make -C $(dir $(LIBFT)) fclean

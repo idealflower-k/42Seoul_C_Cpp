@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_heredoc.c                                    :+:      :+:    :+:   */
+/*   pipex_heredoc_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 21:19:40 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/30 21:34:07 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/12/01 17:48:15 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 void	make_temp_file(t_args *arg_info)
 {
@@ -24,6 +24,7 @@ void	make_temp_file(t_args *arg_info)
 	close(arg_info->io_fd[0]);
 	arg_info->io_fd[0] = open(tmp_file, O_RDONLY);
 	unlink(tmp_file);
+	free(tmp_file);
 }
 
 void	write_on_infile(t_args *arg_info)
@@ -36,7 +37,10 @@ void	write_on_infile(t_args *arg_info)
 		gnl = get_next_line(0);
 		if (ft_strncmp(gnl, arg_info->av[2], ft_strlen(gnl) - 1) == 0 && \
 			ft_strlen(gnl) - 1 == ft_strlen(arg_info->av[2]))
+		{
+			free(gnl);
 			break ;
+		}
 		if (write(arg_info->io_fd[0], gnl, ft_strlen(gnl)) == -1)
 			perror("infile write error()");
 		free(gnl);
