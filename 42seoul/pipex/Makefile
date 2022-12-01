@@ -6,7 +6,7 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/02 19:53:36 by sanghwal          #+#    #+#              #
-#    Updated: 2022/12/01 21:33:43 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2022/12/01 21:39:48 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,12 +55,10 @@ $(NAME): $(OBJS)
 all:
 	make -C $(dir $(LIBFT))
 	make $(NAME)
-	touch $(NAME)
 
 bonus:
 	make -C $(dir $(LIBFT))
 	make FLAG_BONUS=1 $(NAME)
-	touch $(NAME)
 
 clean:
 	make -C $(dir $(LIBFT)) clean
