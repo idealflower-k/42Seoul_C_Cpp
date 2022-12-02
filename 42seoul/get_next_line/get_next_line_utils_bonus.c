@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:05:51 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/09/24 14:52:15 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/08/10 13:36:37 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ t_list	*ft_new_list(int fd)
 	if (!new)
 		return (0);
 	new->fd = fd;
+	new->before = 0;
 	new->next = 0;
 	new->result = 0;
 	new->read_byte = 1;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:04:38 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/02 19:31:30 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/08/08 20:03:49 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,28 @@
 # include <stdlib.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 42
 # endif
 
-typedef struct s_gnl_list
+typedef struct s_list
 {
-	int					fd;
-	ssize_t				read_byte;
-	char				*result;
-	char				buff[BUFFER_SIZE + 1];
-	struct s_gnl_list	*next;
-}	t_gnl_list;
+	int				fd;
+	ssize_t			read_byte;
+	char			*result;
+	char			buff[BUFFER_SIZE + 1];
+	struct s_list	*next;
+	struct s_list	*before;
+}	t_list;
 
-char		*get_next_line(int fd);
-char		*gnl_read_save(t_gnl_list *list);
-char		*gnl_get_line(t_gnl_list *list);
-char		*gnl_save(t_gnl_list *list, t_gnl_list **head);
-char		*gnl_del_list(t_gnl_list *list, t_gnl_list **head);
-size_t		gnl_strchr(t_gnl_list *list, char c);
-size_t		gnl_strlen(char *str);
-char		*gnl_strjoin(char *dst, char *src);
-t_gnl_list	*gnl_new_list(int fd);
-t_gnl_list	*get_list(t_gnl_list **list_head, int fd);
+char	*get_next_line(int fd);
+char	*ft_read_save(t_list *list);
+char	*ft_get_line(t_list *list);
+char	*ft_save(t_list *list, t_list **head);
+t_list	*get_list(t_list **list_head, int fd);
+char	*ft_del_list(t_list *list, t_list **head);
+size_t	ft_strchr(t_list *list, char c);
+size_t	ft_strlen(char *str);
+t_list	*ft_new_list(int fd);
+char	*ft_strjoin(char *dst, char *src);
 
 #endif

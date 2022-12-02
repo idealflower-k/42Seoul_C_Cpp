@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:03:58 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/09/24 14:52:18 by sanghwal         ###   ########.fr       */
+/*   Updated: 2022/08/10 13:35:37 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ char	*ft_get_line(t_list *list)
 	size_t	i;
 
 	i = 0;
+	if (list->result[0] == 0)
+		return (0);
 	while (list->result[i] && list->result[i] != '\n')
 		i++;
 	if (list->result[i] == '\n')

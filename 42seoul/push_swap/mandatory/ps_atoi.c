@@ -5,10 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/08 14:44:26 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/11/04 20:09:23 by sanghwal         ###   ########seoul.kr  */
+/*   Created: 2022/11/10 22:28:30 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/11/10 22:28:46 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
+
+
 
 #include "push_swap.h"
 
@@ -51,6 +53,8 @@ void	pass_zero(const char *str, int *i)
 	while (str[*i] == '0')
 		(*i)++;
 }
+
+#include <stdio.h>
 
 int	check_int(long result)
 {
