@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 20:49:05 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/12/01 17:48:07 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/12/07 18:00:33 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ void	fork_exec(t_args *args, t_cmd **cmd, int step, int pre_fd)
 	{
 		set_fd(args, step_pipe, step, pre_fd);
 		if (cmd[step]->cmd_path == 0)
-			exit(0);
+			exit(1);
 		execve(cmd[step]->cmd_path, cmd[step]->cmd_info, args->envp);
 		perror("execve failed");
-		exit(0);
+		exit(1);
 	}
 	if (step < args->total_cmd - 1)
 		close(step_pipe[1]);
@@ -104,7 +104,7 @@ void	set_fd(t_args *args, int *step_pipe, int step, int pre_fd)
 	if (step == args->total_cmd - 1)
 		step_pipe[1] = args->io_fd[1];
 	if (step_pipe[0] == -1 || step_pipe[1] == -1)
-		exit(0);
+		exit(1);
 	dup2(step_pipe[0], 0);
 	close(step_pipe[0]);
 	dup2(step_pipe[1], 1);
