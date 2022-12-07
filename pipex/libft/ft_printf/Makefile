@@ -6,13 +6,13 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/04 14:51:23 by sanghwal          #+#    #+#              #
-#    Updated: 2022/11/23 18:08:16 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2022/12/06 20:27:55 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 .DEFAULT_GOAL = all
 
-CFLAGS = -Wall -Wextra -Werror -MMD -MP -g3
+CFLAGS = -Wall -Wextra -Werror -MMD -MP
 CPPFLAGS = 
 ARFLAGS = -rcs
 

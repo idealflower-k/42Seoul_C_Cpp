@@ -6,13 +6,15 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/02 19:53:36 by sanghwal          #+#    #+#              #
-#    Updated: 2022/12/01 21:47:16 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2022/12/07 14:09:41 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 .DEFAULT_GOAL = all
+NAME = pipex
+# all : ${NAME}
 
-CFLAGS = -Wall -Wextra -Werror -MMD -MP -g3
+CFLAGS = -Wall -Wextra -Werror -MMD -MP
 CPPFLAGS = 
 LDFLAGS= -L./libft
 LDLIBS = -lft -lftprintf
@@ -21,8 +23,6 @@ LIBFT = libft/libft.a
 $(LIBFT):
 	make -C $(@D)
 ##################################################################
-NAME = pipex
-
 MANDATORY_DIR = mandatory
 MANDATORY_SRCS = pipex.c \
 		pipex_utils.c \
