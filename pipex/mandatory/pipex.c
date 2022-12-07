@@ -6,13 +6,10 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 20:49:05 by sanghwal          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/12/07 18:00:58 by sanghwal         ###   ########seoul.kr  */
-=======
-/*   Updated: 2022/12/06 20:15:46 by sanghwal         ###   ########seoul.kr  */
->>>>>>> ae325d6ec59719f7db0e76c25e065f87678f508e
+/*   Updated: 2022/12/07 21:18:57 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "pipex.h"
 
