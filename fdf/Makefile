@@ -6,14 +6,14 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 15:38:15 by sanghwal          #+#    #+#              #
-#    Updated: 2022/12/09 17:15:11 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2022/12/13 20:52:21 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 .DEFAULT_GOAL = all
 NAME = fdf
 
-CFLAGS = -Wall -Wextra -Werror -MMD -MP
+CFLAGS = -Wall -Wextra -Werror -MMD -MP -g3
 CPPFLAGS =
 LDFLAGS= -L./libft -L./minilibx_macos
 LDLIBS = -lft -lftprintf -lmlx
@@ -27,7 +27,7 @@ $(MLX):
 	make -C $(@D)
 ################################################################################
 MANDATORY_DIR = mandatory
-MANDATORY_SRCS = fdf.c
+MANDATORY_SRCS = fdf_parsing.c
 
 BONUS_DIR = bonus
 BONUS_SRCS = 
