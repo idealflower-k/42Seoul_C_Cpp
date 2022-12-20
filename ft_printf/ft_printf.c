@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:07:13 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/10/18 14:12:25 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/09/07 20:33:26 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ int	ft_printf(const char *str, ...)
 		if (str[sp->idx] == '%')
 		{
 			sp->idx++;
-			if (check_format(ap, sp, str) == -1)
-				break ;
+			check_format(&ap, sp, str);
 		}
 		else
 			ft_putchar(str[sp->idx], sp);
