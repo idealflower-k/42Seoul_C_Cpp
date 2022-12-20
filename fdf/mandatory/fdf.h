@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:50:37 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/12/13 20:58:25 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/12/20 16:00:11 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@
 # include<stdlib.h>
 # include<stdio.h>
 
-typedef struct s_map
+typedef struct s_var
 {
-	int		weight;
-	int		height;
-	char	*map_arr;
-}	t_map;
+	void	*mlx;
+	void	*win;
+}	t_var;
+
 
 typedef struct s_data
 {
@@ -36,7 +36,5 @@ typedef struct s_data
 	int		endian;
 }	t_data;
 
-t_map	*map_pars(char *file, t_map *map);
-void	*ft_malloc(int size);
 
 #endif
