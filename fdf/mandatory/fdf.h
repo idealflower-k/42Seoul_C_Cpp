@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:50:37 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/12/21 21:01:24 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/12/21 21:41:17 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,11 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		key_hook(int keycode, t_var *vars);
 void	draw_plus(t_data *data, int *x, int *y, int color);
 void	draw_minus(t_data *data, int *x, int *y, int color);
+
+t_map	*map_pars(char *file);
+char	**read_map(char *file, t_map *map);
+void	set_height(char *file, t_map *map);
+void	set_xyzs(t_map *map, char **tmp);
 
 void	*ft_malloc(size_t size);
 #endif
