@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:50:37 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/12/20 16:00:11 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/12/21 21:01:24 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "../libft/ft_printf/ft_printf.h"
 # include<fcntl.h>
 # include<stdlib.h>
+# include<math.h>
 # include<stdio.h>
 
 typedef struct s_var
@@ -36,5 +37,26 @@ typedef struct s_data
 	int		endian;
 }	t_data;
 
+typedef struct s_xyz
+{
+	int	x;
+	int	y;
+	int z;
+}	t_xyz;
 
+
+typedef struct s_map
+{
+	int		width;
+	int		height;
+	t_xyz	**xyzs;
+}	t_map;
+
+
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int		key_hook(int keycode, t_var *vars);
+void	draw_plus(t_data *data, int *x, int *y, int color);
+void	draw_minus(t_data *data, int *x, int *y, int color);
+
+void	*ft_malloc(size_t size);
 #endif

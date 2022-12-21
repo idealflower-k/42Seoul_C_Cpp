@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:01:52 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/12/20 17:14:11 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/12/21 19:44:09 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,18 @@ int	main(void)
 {
 	t_data	img;
 	t_var	vars;
+	int		x[2];
+	int		y[2];
 	
+	x[0] = 0;
+	y[0] = 100;
+	x[1] = 400;
+	y[1] = 100;
 	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 500, 500, "hello");
-	img.img = mlx_new_image(vars.mlx, 500, 500);
+	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "hello");
+	img.img = mlx_new_image(vars.mlx, 1920, 1080);
 	img.addr = mlx_get_data_addr(img.img, &img.bit_per_pixel, &img.line_len, &img.endian);
-	my_mlx_pixel_put(&img, 0, 0, 0x000FF000);
+	draw_plus(&img, x, y, 0x000FF000);
 	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 200, 200);
 	mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_loop(vars.mlx);

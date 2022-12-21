@@ -6,7 +6,7 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 15:38:15 by sanghwal          #+#    #+#              #
-#    Updated: 2022/12/20 15:01:49 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2022/12/21 15:08:29 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ $(MLX):
 	make -C $(@D)
 ################################################################################
 MANDATORY_DIR = mandatory
-MANDATORY_SRCS = fdf.c
+MANDATORY_SRCS = fdf.c \
+				draw_line.c
 
 BONUS_DIR = bonus
 BONUS_SRCS = 
