@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 20:05:51 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/12/21 21:50:51 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/12/22 21:34:52 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ t_map	*map_pars(char *file)
 		
 	map = ft_malloc(sizeof(t_map));
 	tmp = read_map(file, map);
-	set_xyzs(map, tmp);
+	set_vecs(map, tmp);
+	free_double_arr(tmp);
 	return (map);
 }
 
@@ -34,48 +35,62 @@ char	**read_map(char *file, t_map *map)
 	fd = open(file, O_RDONLY);
 	i = 0;
 	tmp[i] = get_next_line(fd);
-	map->width = ft_strlen(tmp[i]) / 2;
-	tmp[i][(map->width * 2) - 1] = 0;
+	set_width(tmp[i], map);
 	while (tmp[i])
 	{
 		i++;
 		tmp[i] = get_next_line(fd);
-		if (tmp[i])
-			tmp[i][(map->width * 2) - 1] = 0;
 	}
 	return (tmp);
 }
 
+void	set_width(char *str, t_map *map)
+{
+	char	**tmp;
+	
+	tmp = ft_split(str, ' ');
+	while (tmp[map->width] != 0)
+		map->width++;
+	free_double_arr(tmp);
+}
+
+
 void	set_height(char *file, t_map *map)
 {
-	int	fd;
-	
+	int		fd;
+	char	*tmp;
 	fd = open(file, O_RDONLY);
-	while (get_next_line(fd))
+	tmp = get_next_line(fd);
+	while (tmp)
+	{
 		map->height++;
+		free(tmp);
+		tmp = get_next_line(fd);
+	}
 	close(fd);
 }
 
-void	set_xyzs(t_map *map, char **tmp)
+void	set_vecs(t_map *map, char **tmp)
 {
 	int 	x;
 	int		y;
 	char	**split_z;
 	
 	y = 0;
-	map->xyzs = (t_xyz **)ft_malloc((sizeof(t_xyz *) * map->height) + 1);
+	map->vecs = (t_vec **)ft_malloc((sizeof(t_vec *) * map->height) + 1);
 	while (y < map->height)
 	{
 		x = 0;
 		split_z = ft_split(tmp[y], ' ');
-		map->xyzs[y] = (t_xyz *)ft_malloc((sizeof(t_xyz) * map->width) + 1);
+		map->vecs[y] = (t_vec *)ft_malloc((sizeof(t_vec) * map->width) + 1);
 		while (x < map->width)
 		{
-			map->xyzs[y][x].y = y;
-			map->xyzs[y][x].x = x;
-			map->xyzs[y][x].z = ft_atoi(split_z[x]);
+			map->vecs[y][x].y = y;
+			map->vecs[y][x].x = x;
+			map->vecs[y][x].z = ft_atoi(split_z[x]);
 			x++;
 		}
+		free_double_arr(split_z);
 		y++;
 	}
 }
