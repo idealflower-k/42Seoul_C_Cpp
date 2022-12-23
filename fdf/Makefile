@@ -6,7 +6,7 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 15:38:15 by sanghwal          #+#    #+#              #
-#    Updated: 2022/12/21 21:41:39 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2022/12/23 19:32:30 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,9 @@ $(MLX):
 ################################################################################
 MANDATORY_DIR = mandatory
 MANDATORY_SRCS = fdf.c \
-				draw_line.c \
 				map_pars.c \
+				matrix.c \
+				draw_line.c \
 				utils.c
 
 BONUS_DIR = bonus
