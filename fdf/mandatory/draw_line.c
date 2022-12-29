@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 14:37:39 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/12/23 19:36:37 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 21:58:54 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,15 @@ void	draw_height(t_coord **coords, t_img *img, t_map *map)
 void	draw(t_img *img, t_coord *coord0, t_coord *coord1)
 {
 	t_draw	*draw;
+	int		color;
 
+	color = GREEN;
 	draw = set_draw(coord0, coord1);
+	// if (draw->z[0] > 50 || draw->z[1] > 50)
+	// 	color = BLUE;
 	while (draw)
 	{
-		my_mlx_pixel_put(img, draw->x[0], draw->y[0], 0x000FF000);
+		my_mlx_pixel_put(img, draw->x[0], draw->y[0], color);
 		if (draw->x[0] == draw->x[1] && draw->y[0] == draw->y[1])
 			break ;
 		draw->e2 = 2 * draw->error;
@@ -99,6 +103,8 @@ t_draw	*set_draw(t_coord *coord0, t_coord *coord1)
 	draw->error = draw->dx + draw->dy;
 	draw->sx = -1;
 	draw->sy = -1;
+	draw->z[0] = coord0->z;
+	draw->z[1] = coord1->z;
 	if (coord1->x > coord0->x)
 		draw->sx = 1;
 	if (coord1->y > coord0->y)

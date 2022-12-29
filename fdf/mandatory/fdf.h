@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:50:37 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/12/23 19:41:25 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 22:56:23 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@
 # include<math.h>
 # include<stdio.h>
 
-typedef struct s_var
-{
-	void	*mlx;
-	void	*win;
-}	t_var;
+# define ALPHA -35.264
+# define BETA 45.0
+# define CHARLEE 30.0
+# define PI 3.14159265
+# define GREEN 0x000FF000
+# define BLUE 0x000000FF
 
 typedef struct s_img
 {
@@ -35,6 +36,14 @@ typedef struct s_img
 	int		len;
 	int		endian;
 }	t_img;
+
+typedef struct s_var
+{
+	void	*mlx;
+	void	*win;
+	t_img	*img;
+}	t_var;
+
 
 typedef struct s_coord
 {
@@ -61,6 +70,7 @@ typedef struct s_draw
 	int	e2;
 	int	x[2];
 	int	y[2];
+	int	z[2];
 }	t_draw;
 
 typedef struct s_mr1
@@ -74,6 +84,13 @@ void	draw_width(t_coord **coords, t_img *img, t_map *map);
 void	draw_height(t_coord **coords, t_img *img, t_map *map);
 void	draw(t_img *img, t_coord *coord0, t_coord *coord1);
 t_draw	*set_draw(t_coord *coord0, t_coord *coord1);
+
+void	isometric_projection(t_coord **coords, t_map *map);
+void	rotation_y(t_coord *coord);
+void	rotation_x(t_coord *coord);
+void	rotation_z(t_coord *coord);
+void	test(t_coord *coord);
+void	move_test(t_coord *coord);
 
 int		key_hook(int keycode, t_var *vars);
 

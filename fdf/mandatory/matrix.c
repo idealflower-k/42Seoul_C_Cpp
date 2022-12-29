@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 18:47:34 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/12/23 20:16:33 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 21:40:10 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,5 @@ void	scaling(t_coord *coord, t_map *map)
 {
 	coord->x = map->size * coord->x;
 	coord->y = map->size * coord->y;
-	coord->z = map->size * coord->z;
+	coord->z = 5 * coord->z;
 }

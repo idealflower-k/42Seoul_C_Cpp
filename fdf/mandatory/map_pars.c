@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 20:05:51 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/12/23 19:43:30 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2022/12/28 17:50:41 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	set_height(char *file, t_map *map)
 		free(tmp);
 		tmp = get_next_line(fd);
 	}
+	free(tmp);
 	close(fd);
 }
 
