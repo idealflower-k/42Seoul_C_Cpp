@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:01:52 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/12/29 22:46:22 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/01/01 15:45:29 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,15 @@ int	main(int ac, char *av[])
 	t_var	vars;
 	t_map	*map;
 
-	ac = 0;
+	if (ac < 2)
+		exit (1);
 	map = map_pars(av[1]);
 	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "hello");
-	img.img = mlx_new_image(vars.mlx, 1920, 1080);
+	vars.win = mlx_new_window(vars.mlx, 1000, 800, "hello");
+	img.img = mlx_new_image(vars.mlx, 1000, 800);
 	img.addr = mlx_get_data_addr(img.img, &img.bit_p_p, &img.len, &img.endian);
 	vars.img = &img;
-	map->size = 50;
+	map->size = 30;
 	map_scaling(map->coords, map);
 	isometric_projection(map->coords, map);
 	draw_line(map->coords, &img, map);

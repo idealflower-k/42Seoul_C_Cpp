@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Isometric_projection.c                             :+:      :+:    :+:   */
+/*   isometric_projection.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 15:18:21 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/12/29 22:56:25 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/01/01 15:46:06 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	isometric_projection(t_coord **coords, t_map *map)
 		x = 0;
 		while (x < map->width)
 		{
-			// test(&coords[y][x]);
-			rotation_y(&coords[y][x]);
-			rotation_x(&coords[y][x]);
+			test(&coords[y][x]);
+			// rotation_y(&coords[y][x]);
+			// rotation_x(&coords[y][x]);
 			// rotation_z(&coords[y][x]);
 			move_test(&coords[y][x]);
 			x++;
@@ -38,8 +38,8 @@ void	isometric_projection(t_coord **coords, t_map *map)
 
 void	move_test(t_coord *coord)
 {
-	coord->x += 400;
-	coord->y += 400;
+	coord->x += 300;
+	coord->y += 100;
 }
 
 void	test(t_coord *coord)
