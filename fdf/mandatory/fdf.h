@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:50:37 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/12/29 22:56:23 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/01/01 16:16:37 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ typedef struct s_var
 {
 	void	*mlx;
 	void	*win;
-	t_img	*img;
 }	t_var;
 
 
@@ -60,6 +59,12 @@ typedef struct s_map
 	t_coord	**coords;
 }	t_map;
 
+typedef struct s_meta
+{
+	t_var	vars;
+	t_map	map;
+	t_img	img;
+}	t_meta;
 typedef struct s_draw
 {
 	int	dx;
@@ -79,6 +84,7 @@ typedef struct s_mr1
 }	t_mr1;
 
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
+void	my_mlx_init(t_meta *meta);
 void	draw_line(t_coord **coords, t_img *img, t_map *map);
 void	draw_width(t_coord **coords, t_img *img, t_map *map);
 void	draw_height(t_coord **coords, t_img *img, t_map *map);
