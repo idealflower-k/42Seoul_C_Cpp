@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:50:37 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/01/03 20:56:53 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/01/03 21:09:29 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # define KEY_DOWN 125
 # define KEY_RIGHT 124
 # define KEY_LEFT 123
+# define KEY_Z 6
+# define KEY_X 7
 
 typedef struct s_angle
 {
@@ -101,7 +103,7 @@ t_draw	*set_draw(t_coord *coord0, t_coord *coord1);
 
 void	rotation_y(t_map *map, double angle);
 void	rotation_x(t_map *map, double angle);
-// void	rotation_z(t_coord *coord, double angle);
+void	rotation_z(t_map *map, double angle);
 void	rotation_img(int keycode, t_meta *meta);
 void	memset_img_data(t_meta *meta, t_img *img);
 void	test(t_coord *coord);

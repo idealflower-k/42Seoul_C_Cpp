@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 15:18:21 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/01/03 20:58:36 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/01/03 21:08:27 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,26 @@ void	rotation_x(t_map *map, double angle)
 	}
 }
 
-// void	rotation_z(t_coord *coord, double angle)
-// {
-// 	const double	t_x = coord->x;
-// 	const double	t_y = coord->y;
+void	rotation_z(t_map *map, double angle)
+{
+	int	y;
+	int	x;
+	int	t_y;
+	int	t_x;
 
-// 	coord->x = ((t_x * cos(angle)) + (t_y * -sin(angle))) + 0.5;
-// 	coord->y = ((t_x * sin(angle)) + (t_y * cos(angle))) + 0.5;
-// }
+	x = 0;
+	y = 0;
+	while (y < map->height)
+	{
+		x = 0;
+		while (x < map->width)
+		{
+			t_y = map->coords[y][x].y;
+			t_x = map->coords[y][x].z;
+			map->coords[y][x].y = ((t_x * cos(angle)) + (t_y * -sin(angle)) + 0.5);
+			map->coords[y][x].x = ((t_x * sin(angle)) + (t_y * cos(angle)) + 0.5);
+			x++;
+		}
+		y++;
+	}	
+}

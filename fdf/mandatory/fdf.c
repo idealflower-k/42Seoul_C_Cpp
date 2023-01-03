@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:01:52 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/01/03 20:58:54 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/01/03 21:12:48 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	key_hook(int keycode, t_meta *meta)
 		mlx_destroy_window(meta->vars.mlx, meta->vars.win);
 		exit(0);
 	}
-	if (keycode >= KEY_LEFT && keycode <= KEY_UP)
+	if ((keycode >= KEY_LEFT && keycode <= KEY_UP) || keycode == 6 || keycode == 7)
 	{
 		printf("%d\n", keycode);
 		memset_img_data(meta, &meta->img);
@@ -71,15 +71,22 @@ void	my_mlx_init(t_meta *meta)
 
 void	rotation_img(int keycode, t_meta *meta)
 {
-	double	angle;
 
-	angle = 15.0;
-	if (keycode == KEY_LEFT || keycode == KEY_DOWN)
-		angle = -15.0;
+	meta->img.angles.x = 5.0;
+	meta->img.angles.y = 5.0;
+	meta->img.angles.z = 1.0;
+	if (keycode == KEY_LEFT || keycode == KEY_DOWN || keycode == KEY_X)
+	{
+		meta->img.angles.x = -5.0;
+		meta->img.angles.y = -5.0;
+		meta->img.angles.z = -1.0;
+	}
 	if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
-		rotation_y(meta->map, angle * PI / 180);
+		rotation_y(meta->map, meta->img.angles.y * PI / 180);
 	if (keycode == KEY_DOWN || keycode == KEY_UP)
-		rotation_x(meta->map, angle * PI / 180);
+		rotation_x(meta->map, meta->img.angles.x * PI / 180);
+	if (keycode == KEY_Z || keycode == KEY_X)
+		rotation_z(meta->map, meta->img.angles.z * PI / 180);
 	move_center(meta, &meta->img, meta->map->coords);
 	draw_line(meta->map->coords, &meta->img, meta->map);
 	mlx_put_image_to_window(meta->vars.mlx, meta->vars.win, meta->img.img, 0, 0);
