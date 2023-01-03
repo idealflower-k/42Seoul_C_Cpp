@@ -1,45 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isometric_projection.c                             :+:      :+:    :+:   */
+/*   Isometric_projection.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 15:18:21 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/01/01 15:46:06 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/01/03 20:58:36 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	isometric_projection(t_coord **coords, t_map *map)
-{
-	int	y;
-	int	x;
-
-	x = 0;
-	y = 0;
-
-	while (y < map->height)
-	{
-		x = 0;
-		while (x < map->width)
-		{
-			test(&coords[y][x]);
-			// rotation_y(&coords[y][x]);
-			// rotation_x(&coords[y][x]);
-			// rotation_z(&coords[y][x]);
-			move_test(&coords[y][x]);
-			x++;
-		}
-		y++;
-	}
-}
-
 void	move_test(t_coord *coord)
 {
 	coord->x += 300;
-	coord->y += 100;
+	coord->y += 200;
 }
 
 void	test(t_coord *coord)
@@ -53,29 +29,65 @@ void	test(t_coord *coord)
 	coord->y = sin(iso_angle) * x + sin(iso_angle) * y - z;
 }
 
-void	rotation_y(t_coord *coord)
+void	rotation_y(t_map *map, double angle)
 {
-	const double	t_x = coord->x;
-	const double	t_z = coord->z;
+	int	y;
+	int	x;
+	int	t_x;
+	int	t_z;
 
-	coord->x = ((t_x * cos(BETA)) + (t_z * -sin(BETA))) + 0.5;
-	coord->z = ((t_x * sin(BETA)) + (t_z * cos(BETA))) + 0.5;
+	x = 0;
+	y = 0;
+	while (y < map->height)
+	{
+		x = 0;
+		while (x < map->width)
+		{
+			t_x = map->coords[y][x].x;
+			t_z = map->coords[y][x].z;
+			map->coords[y][x].x = ((t_x * cos(angle)) + (t_z * -sin(angle)) + 0.5);
+			map->coords[y][x].z = ((t_x * sin(angle)) + (t_z * cos(angle)) + 0.5);
+			// move_test(&map->coords[y][x]);
+			x++;
+		}
+		y++;
+	}
 }
 
-void	rotation_x(t_coord *coord)
+void	print_coord(int y, int x, t_coord *coord)
 {
-	const double	t_y = coord->y;
-	const double	t_z = coord->z;
-
-	coord->y = ((t_y * cos(ALPHA)) + (t_z * -sin(ALPHA))) + 0.5;
-	coord->z = ((t_y * sin(ALPHA)) + (t_z * cos(ALPHA))) + 0.5;
+	printf("y%d= %d, x%d= %d\n", y, coord->y, x, coord->x);
 }
 
-void	rotation_z(t_coord *coord)
+void	rotation_x(t_map *map, double angle)
 {
-	const double	t_x = coord->x;
-	const double	t_y = coord->y;
+	int	y;
+	int	x;
+	int	t_y;
+	int	t_z;
 
-	coord->x = ((t_x * cos(CHARLEE)) + (t_y * -sin(CHARLEE))) + 0.5;
-	coord->y = ((t_x * sin(CHARLEE)) + (t_y * cos(CHARLEE))) + 0.5;
+	x = 0;
+	y = 0;
+	while (y < map->height)
+	{
+		x = 0;
+		while (x < map->width)
+		{
+			t_y = map->coords[y][x].y;
+			t_z = map->coords[y][x].z;
+			map->coords[y][x].y = ((t_y * cos(angle)) + (t_z * -sin(angle)));
+			map->coords[y][x].z = ((t_y * sin(angle)) + (t_z * cos(angle)));
+			x++;
+		}
+		y++;
+	}
 }
+
+// void	rotation_z(t_coord *coord, double angle)
+// {
+// 	const double	t_x = coord->x;
+// 	const double	t_y = coord->y;
+
+// 	coord->x = ((t_x * cos(angle)) + (t_y * -sin(angle))) + 0.5;
+// 	coord->y = ((t_x * sin(angle)) + (t_y * cos(angle))) + 0.5;
+// }

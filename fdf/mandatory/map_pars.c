@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 20:05:51 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/12/28 17:50:41 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/01/03 20:06:05 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_map	*map_pars(char *file)
 	map = ft_malloc(sizeof(t_map));
 	tmp = read_map(file, map);
 	set_coords(map, tmp);
+	map->scale_size = 40;
 	free_double_arr(tmp);
 	return (map);
 }
@@ -89,7 +90,7 @@ void	set_coords(t_map *map, char **tmp)
 		{
 			map->coords[y][x].y = y;
 			map->coords[y][x].x = x;
-			map->coords[y][x].z = ft_atoi(split_z[x]);
+			map->coords[y][x].z = -1 * ft_atoi(split_z[x]);
 			x++;
 		}
 		free_double_arr(split_z);
