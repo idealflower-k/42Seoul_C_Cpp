@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 14:37:39 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/01/03 16:55:36 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/01/04 14:21:29 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ void	draw(t_img *img, t_coord *coord0, t_coord *coord1)
 
 	color = GREEN;
 	draw = set_draw(coord0, coord1);
-	// if (draw->z[0] > 50 || draw->z[1] > 50)
-	// 	color = BLUE;
 	while (draw)
 	{
 		my_mlx_pixel_put(img, draw->x[0], draw->y[0], color);
@@ -98,16 +96,16 @@ t_draw	*set_draw(t_coord *coord0, t_coord *coord1)
 	draw->x[1] = coord1->x;
 	draw->y[0] = coord0->y;
 	draw->y[1] = coord1->y;
+	draw->z[0] = coord0->z;
+	draw->z[1] = coord1->z;
 	draw->dx = abs(coord1->x - coord0->x);
 	draw->dy = -abs(coord1->y - coord0->y);
 	draw->error = draw->dx + draw->dy;
-	draw->sx = -1;
-	draw->sy = -1;
-	draw->z[0] = coord0->z;
-	draw->z[1] = coord1->z;
-	if (coord1->x > coord0->x)
-		draw->sx = 1;
-	if (coord1->y > coord0->y)
-		draw->sy = 1;
+	draw->sx = 1;
+	draw->sy = 1;
+	if (coord1->x < coord0->x)
+		draw->sx = -1;
+	if (coord1->y < coord0->y)
+		draw->sy = -1;
 	return (draw);
 }

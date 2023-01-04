@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:01:52 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/01/03 21:12:48 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/01/04 21:01:45 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,21 @@ int	main(int ac, char *av[])
 		exit (1);
 	meta.map = map_pars(av[1]);
 	my_mlx_init(&meta);
-	map_scaling(meta.map->coords, meta.map);
+	set_scaling_size(meta.map, &meta.img);
+	map_scaling(meta.map->og_coords, meta.map);
 	move_center(&meta, &meta.img, meta.map->coords);
 	draw_line(meta.map->coords, &meta.img, meta.map);
 	mlx_put_image_to_window(meta.vars.mlx, meta.vars.win, meta.img.img, 0, 0);
-	mlx_key_hook(meta.vars.win, key_hook, &meta);
+	mlx_hook(meta.vars.win, KEY_PRESS, 0, key_hook, &meta);
+	// mlx_loop_hook(meta.vars.mlx, rot_loop, &meta);
 	mlx_loop(meta.vars.mlx);
+}
+
+int	rot_loop(t_meta *meta)
+{
+	memset_img_data(meta, &meta->img);
+	rotation_img(KEY_R, meta);
+	return (0);
 }
 
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
@@ -46,7 +55,7 @@ int	key_hook(int keycode, t_meta *meta)
 		mlx_destroy_window(meta->vars.mlx, meta->vars.win);
 		exit(0);
 	}
-	if ((keycode >= KEY_LEFT && keycode <= KEY_UP) || keycode == 6 || keycode == 7)
+	if ((keycode >= KEY_LEFT && keycode <= KEY_UP) || keycode == 6 || keycode == 7 || keycode == 15)
 	{
 		printf("%d\n", keycode);
 		memset_img_data(meta, &meta->img);
@@ -64,32 +73,47 @@ void	my_mlx_init(t_meta *meta)
 	meta->img.img = mlx_new_image(meta->vars.mlx, meta->img.width, meta->img.height);
 	meta->img.addr = mlx_get_data_addr(meta->img.img, \
 		&meta->img.bit_p_p, &meta->img.len, &meta->img.endian);
-	meta->img.angles.x = 0;
-	meta->img.angles.y = 0;
-	meta->img.angles.z = 0;
+	meta->img.angles.x = 0.0;
+	meta->img.angles.y = 180.0;
+	meta->img.angles.z = -90.0;
 }
 
 void	rotation_img(int keycode, t_meta *meta)
 {
-
-	meta->img.angles.x = 5.0;
-	meta->img.angles.y = 5.0;
-	meta->img.angles.z = 1.0;
-	if (keycode == KEY_LEFT || keycode == KEY_DOWN || keycode == KEY_X)
-	{
-		meta->img.angles.x = -5.0;
-		meta->img.angles.y = -5.0;
-		meta->img.angles.z = -1.0;
-	}
+	get_og_coords(meta->map, meta->map->coords, meta->map->og_coords);
 	if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
-		rotation_y(meta->map, meta->img.angles.y * PI / 180);
+		{
+			if (keycode == KEY_LEFT)
+				meta->img.angles.y = (double)(((int)meta->img.angles.y - 1) % 360);
+			else
+				meta->img.angles.y = (double)(((int)meta->img.angles.y + 1) % 360);
+		}
 	if (keycode == KEY_DOWN || keycode == KEY_UP)
-		rotation_x(meta->map, meta->img.angles.x * PI / 180);
+		{
+			if (keycode == KEY_DOWN)
+				meta->img.angles.x = (double)(((int)meta->img.angles.x - 1) % 360);
+			else
+				meta->img.angles.x = (double)(((int)meta->img.angles.x + 1) % 360);
+		}
 	if (keycode == KEY_Z || keycode == KEY_X)
-		rotation_z(meta->map, meta->img.angles.z * PI / 180);
+		{
+			if (keycode == KEY_X)
+				meta->img.angles.z = (double)(((int)meta->img.angles.z - 1) % 360);
+			else
+				meta->img.angles.z = (double)(((int)meta->img.angles.z + 1) % 360);
+		}
+	if (keycode == KEY_R)
+	{
+		// meta->img.angles.x = (double)(((int)meta->img.angles.x - 1) % 360);
+		meta->img.angles.y = (double)(((int)meta->img.angles.y + 1) % 360);
+		// meta->img.angles.z = (double)(((int)meta->img.angles.z + 1) % 360);
+	}
+	map_scaling(meta->map->og_coords, meta->map);
+	rotation(meta->map, meta);
 	move_center(meta, &meta->img, meta->map->coords);
 	draw_line(meta->map->coords, &meta->img, meta->map);
 	mlx_put_image_to_window(meta->vars.mlx, meta->vars.win, meta->img.img, 0, 0);
+	// printf("y: %f, x: %f, z: %f\n", meta->img.angles.y, meta->img.angles.x, meta->img.angles.z);
 }
 
 void	memset_img_data(t_meta *meta, t_img *img)
@@ -102,7 +126,7 @@ void	memset_img_data(t_meta *meta, t_img *img)
 	ft_memset(img->addr, color, size);
 }
 
-void	move_center(t_meta * meta, t_img *img, t_coord **coords)
+void	move_center(t_meta *meta, t_img *img, t_coord **coords)
 {
 	const int	center_x = img->width / 2;
 	const int	center_y = img->height / 2;
@@ -110,15 +134,12 @@ void	move_center(t_meta * meta, t_img *img, t_coord **coords)
 	const int	move_y = (center_y - coords[meta->map->height / 2][meta->map->width / 2].y);
 	int x;
 	int y;
-	// printf("move_x = %d\n", move_x);
-	// printf("move_y = %d\n", move_y);
 	y = 0;
 	while (y < meta->map->height)
 	{
 		x = 0;
 		while (x < meta->map->width)
 		{
-			// print_coord(y, x, &coords[y][x]);
 			coords[y][x].x += move_x;
 			coords[y][x].y += move_y;
 			x++;
@@ -126,4 +147,3 @@ void	move_center(t_meta * meta, t_img *img, t_coord **coords)
 		y++;
 	}
 }
-

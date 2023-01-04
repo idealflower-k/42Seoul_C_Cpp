@@ -6,7 +6,7 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 15:38:15 by sanghwal          #+#    #+#              #
-#    Updated: 2022/12/28 15:44:50 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/01/04 20:42:23 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,11 @@ MANDATORY_DIR = mandatory
 MANDATORY_SRCS = fdf.c \
 				map_pars.c \
 				matrix.c \
-				isometric_projection.c \
+				rotation_coord.c \
 				draw_line.c \
-				utils.c
+				utils.c \
+				coords_utils.c \
+				map_utils.c
 
 BONUS_DIR = bonus
 BONUS_SRCS = 

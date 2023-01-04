@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 20:05:51 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/01/03 20:06:05 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/01/04 20:40:53 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_map	*map_pars(char *file)
 	map = ft_malloc(sizeof(t_map));
 	tmp = read_map(file, map);
 	set_coords(map, tmp);
-	map->scale_size = 40;
 	free_double_arr(tmp);
 	return (map);
 }
@@ -79,21 +78,22 @@ void	set_coords(t_map *map, char **tmp)
 	char	**split_z;
 
 	y = 0;
-	map->coords = (t_coord **)ft_malloc((sizeof(t_coord *) * map->height) + 1);
+	map->og_coords = (t_coord **)ft_malloc((sizeof(t_coord *) * map->height));
 	while (y < map->height)
 	{
 		x = 0;
 		split_z = ft_split(tmp[y], ' ');
-		map->coords[y] = (t_coord *)ft_malloc((sizeof(t_coord) * \
-				map->width) + 1);
+		map->og_coords[y] = (t_coord *)ft_malloc((sizeof(t_coord) * \
+				map->width));
 		while (x < map->width)
 		{
-			map->coords[y][x].y = y;
-			map->coords[y][x].x = x;
-			map->coords[y][x].z = -1 * ft_atoi(split_z[x]);
+			map->og_coords[y][x].y = y;
+			map->og_coords[y][x].x = x;
+			map->og_coords[y][x].z = -1 * ft_atoi(split_z[x]);
 			x++;
 		}
 		free_double_arr(split_z);
 		y++;
 	}
+	copy_coords(map, map->og_coords);
 }

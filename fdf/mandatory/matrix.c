@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 18:47:34 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/01/03 20:04:43 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/01/04 20:05:53 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	*matrix1(t_coord *coord)
 	return (mr1);
 }
 
-void	map_scaling(t_coord **coord, t_map *map)
+void	map_scaling(t_coord **og_coord, t_map *map)
 {
 	int	x;
 	int	y;
@@ -34,16 +34,16 @@ void	map_scaling(t_coord **coord, t_map *map)
 		x = 0;
 		while (x < map->width)
 		{
-			scaling(&coord[y][x], map);
+			scaling(&og_coord[y][x], &map->coords[y][x], map);
 			x++;
 		}
 		y++;
 	}
 }
 
-void	scaling(t_coord *coord, t_map *map)
+void	scaling(t_coord *og_coord, t_coord *coord, t_map *map)
 {
-	coord->x = map->scale_size * coord->x;
-	coord->y = map->scale_size * coord->y;
-	coord->z = 5 * coord->z;
+	coord->x = map->scale_size * og_coord->x;
+	coord->y = map->scale_size * og_coord->y;
+	coord->z = 5 * og_coord->z;
 }

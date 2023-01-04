@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:50:37 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/01/03 21:09:29 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/01/04 20:41:12 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 # define KEY_LEFT 123
 # define KEY_Z 6
 # define KEY_X 7
+# define KEY_R 15
+# define KEY_PRESS 02
 
 typedef struct s_angle
 {
@@ -71,6 +73,7 @@ typedef struct s_map
 	int		height;
 	int		scale_size;
 	t_coord	**coords;
+	t_coord	**og_coords;
 }	t_map;
 
 typedef struct s_meta
@@ -100,16 +103,18 @@ void	draw_width(t_coord **coords, t_img *img, t_map *map);
 void	draw_height(t_coord **coords, t_img *img, t_map *map);
 void	draw(t_img *img, t_coord *coord0, t_coord *coord1);
 t_draw	*set_draw(t_coord *coord0, t_coord *coord1);
+void	set_scaling_size(t_map *map, t_img  *img);
 
+void	rotation(t_map *map, t_meta *meta);
 void	rotation_y(t_map *map, double angle);
 void	rotation_x(t_map *map, double angle);
 void	rotation_z(t_map *map, double angle);
 void	rotation_img(int keycode, t_meta *meta);
 void	memset_img_data(t_meta *meta, t_img *img);
-void	test(t_coord *coord);
-void	move_test(t_coord *coord);
+// void	test(t_coord *coord);
 
 int		key_hook(int keycode, t_meta *meta);
+int		rot_loop(t_meta *meta);
 
 t_map	*map_pars(char *file);
 char	**read_map(char *file, t_map *map);
@@ -119,9 +124,11 @@ void	set_coords(t_map *map, char **tmp);
 int		*matrix1(t_coord *coord);
 void	map_scaling(t_coord **coord, t_map *map);
 void	move_center(t_meta * meta, t_img *img, t_coord **coords);
-void	scaling(t_coord *coord, t_map *map);
+void	scaling(t_coord *og_coord, t_coord *coord, t_map *map);
 
 void	print_coord(int y, int x, t_coord *coord);
+void	copy_coords(t_map *map, t_coord **og_coords);
+void	get_og_coords(t_map *map, t_coord **coords, t_coord **og_coords);
 void	*ft_malloc(size_t size);
 void	free_double_arr(char **arr);
 #endif
