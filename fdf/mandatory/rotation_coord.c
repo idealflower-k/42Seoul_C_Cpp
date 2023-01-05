@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 15:18:21 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/01/04 18:03:21 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/01/05 13:55:45 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,6 @@ void	rotation_y(t_map *map, double angle)
 	}
 }
 
-void	print_coord(int y, int x, t_coord *coord)
-{
-	printf("y%d= %d, x%d= %d\n", y, coord->y, x, coord->x);
-}
 
 void	rotation_x(t_map *map, double angle)
 {
@@ -79,6 +75,8 @@ void	rotation_z(t_map *map, double angle)
 	int	t_y;
 	int	t_x;
 
+	if (angle == 0.0)
+		return ;
 	x = 0;
 	y = 0;
 	while (y < map->height)
@@ -88,8 +86,8 @@ void	rotation_z(t_map *map, double angle)
 		{
 			t_y = map->coords[y][x].y;
 			t_x = map->coords[y][x].x;
-			map->coords[y][x].y = ((t_x * cos(angle)) + (t_y * -sin(angle)) + 0.5);
-			map->coords[y][x].x = ((t_x * sin(angle)) + (t_y * cos(angle)) + 0.5);
+			map->coords[y][x].x = (((double)t_x * sin(angle)) + ((double)t_y * cos(angle)) + 0.5);
+			map->coords[y][x].y = (((double)t_x * cos(angle)) + ((double)t_y * -sin(angle)) + 0.5);
 			x++;
 		}
 		y++;

@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 20:05:51 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/01/04 20:40:53 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/01/05 13:46:00 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	set_coords(t_map *map, char **tmp)
 		{
 			map->og_coords[y][x].y = y;
 			map->og_coords[y][x].x = x;
-			map->og_coords[y][x].z = -1 * ft_atoi(split_z[x]);
+			map->og_coords[y][x].z = 1 * ft_atoi(split_z[x]);
 			x++;
 		}
 		free_double_arr(split_z);

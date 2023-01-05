@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrix.c                                           :+:      :+:    :+:   */
+/*   fdf_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 18:47:34 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/01/05 13:53:08 by sanghwal         ###   ########seoul.kr  */
+/*   Created: 2023/01/05 13:53:57 by sanghwal          #+#    #+#             */
+/*   Updated: 2023/01/05 13:54:13 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	*matrix1(t_coord *coord)
+int	key_hook(int keycode, t_meta *meta)
 {
-	int	*mr1;
-
-	mr1 = ft_malloc(sizeof(int) * 3);
-	mr1[0] = coord->x;
-	mr1[1] = coord->y;
-	mr1[2] = coord->z;
-	return (mr1);
+	if (keycode == 53)
+	{
+		mlx_destroy_window(meta->vars.mlx, meta->vars.win);
+		exit(0);
+	}
+	if ((keycode >= KEY_LEFT && keycode <= KEY_UP) || keycode == 6 || keycode == 7 || keycode == 15)
+	{
+		printf("%d\n", keycode);
+		memset_img_data(meta, &meta->img);
+		rotation_img(keycode, meta);
+	}
+	return (0);
 }

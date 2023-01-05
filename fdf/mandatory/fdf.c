@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:01:52 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/01/04 21:01:45 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/01/05 13:54:20 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,22 +48,6 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	key_hook(int keycode, t_meta *meta)
-{
-	if (keycode == 53)
-	{
-		mlx_destroy_window(meta->vars.mlx, meta->vars.win);
-		exit(0);
-	}
-	if ((keycode >= KEY_LEFT && keycode <= KEY_UP) || keycode == 6 || keycode == 7 || keycode == 15)
-	{
-		printf("%d\n", keycode);
-		memset_img_data(meta, &meta->img);
-		rotation_img(keycode, meta);
-	}
-	return (0);
-}
-
 void	my_mlx_init(t_meta *meta)
 {
 	meta->vars.mlx = mlx_init();
@@ -74,8 +58,8 @@ void	my_mlx_init(t_meta *meta)
 	meta->img.addr = mlx_get_data_addr(meta->img.img, \
 		&meta->img.bit_p_p, &meta->img.len, &meta->img.endian);
 	meta->img.angles.x = 0.0;
-	meta->img.angles.y = 180.0;
-	meta->img.angles.z = -90.0;
+	meta->img.angles.y = 180.0;	//180
+	meta->img.angles.z = -90.0;	//-90
 }
 
 void	rotation_img(int keycode, t_meta *meta)
