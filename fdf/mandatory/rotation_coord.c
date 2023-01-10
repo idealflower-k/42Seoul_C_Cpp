@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 15:18:21 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/01/05 13:55:45 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/01/06 15:45:41 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 void	rotation(t_map *map, t_meta *meta)
 {
-	rotation_z(map, meta->img.angles.z * PI / 180);
 	rotation_x(map, meta->img.angles.x * PI / 180);
 	rotation_y(map, meta->img.angles.y * PI / 180);
+	rotation_z(map, meta->img.angles.z * PI / 180);
+	printf("%f\n", meta->img.angles.x);
+	printf("%f\n", meta->img.angles.y);
+	printf("%f\n", meta->img.angles.z);
 }
 
 void	rotation_y(t_map *map, double angle)

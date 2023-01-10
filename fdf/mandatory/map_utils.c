@@ -6,17 +6,17 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:38:45 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/01/05 13:53:02 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/01/06 14:05:46 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	set_scaling_size(t_map *map, t_img  *img)
+void	set_scaling_size(t_map *map, t_img *img)
 {
 	int	width_size;
 	int	height_size;
-	
+
 	width_size = 0;
 	height_size = 0;
 	while (map->width * width_size < img->width * (2.0 / 3.0))
@@ -45,11 +45,4 @@ void	map_scaling(t_coord **og_coord, t_map *map)
 		}
 		y++;
 	}
-}
-
-void	scaling(t_coord *og_coord, t_coord *coord, t_map *map)
-{
-	coord->x = map->scale_size * og_coord->x;
-	coord->y = map->scale_size * og_coord->y;
-	coord->z = 20 * og_coord->z;
 }

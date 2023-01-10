@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:50:37 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/01/04 20:41:12 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/01/06 14:40:24 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_img
 	int		endian;
 	int		width;
 	int		height;
-	t_angle angles;
+	t_angle	angles;
 }	t_img;
 
 typedef struct s_var
@@ -111,6 +111,8 @@ void	rotation_x(t_map *map, double angle);
 void	rotation_z(t_map *map, double angle);
 void	rotation_img(int keycode, t_meta *meta);
 void	memset_img_data(t_meta *meta, t_img *img);
+void	isometric_projection(t_meta *meta);
+void	set_angle(t_img *img, int x_a, int y_a, int z_a);
 // void	test(t_coord *coord);
 
 int		key_hook(int keycode, t_meta *meta);
@@ -123,7 +125,7 @@ void	set_width(char *str, t_map *map);
 void	set_coords(t_map *map, char **tmp);
 int		*matrix1(t_coord *coord);
 void	map_scaling(t_coord **coord, t_map *map);
-void	move_center(t_meta * meta, t_img *img, t_coord **coords);
+void	move_center(t_meta *meta, t_img *img, t_coord **coords);
 void	scaling(t_coord *og_coord, t_coord *coord, t_map *map);
 
 void	print_coord(int y, int x, t_coord *coord);

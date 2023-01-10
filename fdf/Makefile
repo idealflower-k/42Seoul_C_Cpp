@@ -6,7 +6,7 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 15:38:15 by sanghwal          #+#    #+#              #
-#    Updated: 2023/01/04 20:42:23 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/01/06 14:34:34 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,12 +29,15 @@ $(MLX):
 MANDATORY_DIR = mandatory
 MANDATORY_SRCS = fdf.c \
 				map_pars.c \
+				map_utils.c \
 				matrix.c \
-				rotation_coord.c \
 				draw_line.c \
-				utils.c \
+				draw_utils.c \
+				rotation_coord.c \
 				coords_utils.c \
-				map_utils.c
+				fdf_hook.c \
+				utils.c \
+				projection.c \
 
 BONUS_DIR = bonus
 BONUS_SRCS = 

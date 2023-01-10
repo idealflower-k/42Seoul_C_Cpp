@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:01:52 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/01/05 13:54:20 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/01/06 16:27:08 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ int	main(int ac, char *av[])
 	meta.map = map_pars(av[1]);
 	my_mlx_init(&meta);
 	set_scaling_size(meta.map, &meta.img);
-	map_scaling(meta.map->og_coords, meta.map);
-	move_center(&meta, &meta.img, meta.map->coords);
-	draw_line(meta.map->coords, &meta.img, meta.map);
+	isometric_projection(&meta);
+	// map_scaling(meta.map->og_coords, meta.map);
+	// rotation(meta.map, &meta);
+	// move_center(&meta, &meta.img, meta.map->coords);
+	// draw_line(meta.map->coords, &meta.img, meta.map);
 	mlx_put_image_to_window(meta.vars.mlx, meta.vars.win, meta.img.img, 0, 0);
 	mlx_hook(meta.vars.win, KEY_PRESS, 0, key_hook, &meta);
 	// mlx_loop_hook(meta.vars.mlx, rot_loop, &meta);
@@ -51,15 +53,15 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 void	my_mlx_init(t_meta *meta)
 {
 	meta->vars.mlx = mlx_init();
-	meta->img.width = 1920;
-	meta->img.height = 1080;
+	meta->img.width = 1000;
+	meta->img.height = 800;
 	meta->vars.win = mlx_new_window(meta->vars.mlx, meta->img.width, meta->img.height, "sanghwal");
 	meta->img.img = mlx_new_image(meta->vars.mlx, meta->img.width, meta->img.height);
 	meta->img.addr = mlx_get_data_addr(meta->img.img, \
 		&meta->img.bit_p_p, &meta->img.len, &meta->img.endian);
 	meta->img.angles.x = 0.0;
-	meta->img.angles.y = 180.0;	//180
-	meta->img.angles.z = -90.0;	//-90
+	meta->img.angles.y = 0.0;	//180
+	meta->img.angles.z = 0.0;	//-90
 }
 
 void	rotation_img(int keycode, t_meta *meta)
@@ -82,9 +84,9 @@ void	rotation_img(int keycode, t_meta *meta)
 	if (keycode == KEY_Z || keycode == KEY_X)
 		{
 			if (keycode == KEY_X)
-				meta->img.angles.z = (double)(((int)meta->img.angles.z - 1) % 360);
+				meta->img.angles.z = (double)(((int)meta->img.angles.z - 1));
 			else
-				meta->img.angles.z = (double)(((int)meta->img.angles.z + 1) % 360);
+				meta->img.angles.z = (double)(((int)meta->img.angles.z + 1));
 		}
 	if (keycode == KEY_R)
 	{
@@ -103,8 +105,8 @@ void	rotation_img(int keycode, t_meta *meta)
 void	memset_img_data(t_meta *meta, t_img *img)
 {
 	const int	size = img->width * img->height * 4;
-	int color;
-	
+	int			color;
+
 	color = 0;
 	color = mlx_get_color_value(meta->vars.mlx, color);
 	ft_memset(img->addr, color, size);
@@ -118,6 +120,7 @@ void	move_center(t_meta *meta, t_img *img, t_coord **coords)
 	const int	move_y = (center_y - coords[meta->map->height / 2][meta->map->width / 2].y);
 	int x;
 	int y;
+
 	y = 0;
 	while (y < meta->map->height)
 	{
