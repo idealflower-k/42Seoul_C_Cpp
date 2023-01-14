@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 15:14:54 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/01/06 14:51:51 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/01/14 17:02:14 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	get_og_coords(t_map *map, t_coord **coords, t_coord **og_coords)
 {
 	int	x;
 	int	y;
-	
+
 	y = 0;
 	while (y < map->height)
 	{

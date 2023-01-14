@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:01:52 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/01/06 16:27:08 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/01/14 16:26:20 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ void	my_mlx_init(t_meta *meta)
 	meta->img.addr = mlx_get_data_addr(meta->img.img, \
 		&meta->img.bit_p_p, &meta->img.len, &meta->img.endian);
 	meta->img.angles.x = 0.0;
-	meta->img.angles.y = 0.0;	//180
-	meta->img.angles.z = 0.0;	//-90
+	meta->img.angles.y = 180.0;	//180
+	meta->img.angles.z = -90.0;	//-90
 }
 
 void	rotation_img(int keycode, t_meta *meta)
@@ -114,12 +114,12 @@ void	memset_img_data(t_meta *meta, t_img *img)
 
 void	move_center(t_meta *meta, t_img *img, t_coord **coords)
 {
-	const int	center_x = img->width / 2;
-	const int	center_y = img->height / 2;
-	const int	move_x = (center_x - coords[meta->map->height / 2][meta->map->width / 2].x);
-	const int	move_y = (center_y - coords[meta->map->height / 2][meta->map->width / 2].y);
-	int x;
-	int y;
+	const int	move_x = (img->width / 2 - \
+		coords[meta->map->height / 2][meta->map->width / 2].x);
+	const int	move_y = (img->height / 2 - \
+		coords[meta->map->height / 2][meta->map->width / 2].y);
+	int			x;
+	int			y;
 
 	y = 0;
 	while (y < meta->map->height)

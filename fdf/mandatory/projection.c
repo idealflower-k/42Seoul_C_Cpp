@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 14:20:47 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/01/06 15:37:39 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/01/14 16:23:38 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	isometric_projection(t_meta *meta)
 {
 	map_scaling(meta->map->coords, meta->map);
-	set_angle(&meta->img, 35, 45, -1);
+	set_angle(&meta->img, 35, 45, -30);
 	printf("x: %f, y: %f, z: %f\n", meta->img.angles.x, meta->img.angles.y, meta->img.angles.z);
 	printf("%f\n", meta->img.angles.z * PI / 180);
 	printf("%f\n", meta->img.angles.y * PI / 180);
