@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 15:14:54 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/01/14 17:02:14 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/03/13 17:08:52 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	copy_coords(t_map *map, t_coord **og_coords)
 {
-	int y;
-	int x;
+	int	y;
+	int	x;
 
 	map->coords = (t_coord **)ft_malloc((sizeof(t_coord *) * map->height));
 	y = 0;
@@ -59,5 +59,5 @@ void	scaling(t_coord *og_coord, t_coord *coord, t_map *map)
 {
 	coord->x = map->scale_size * og_coord->x;
 	coord->y = map->scale_size * og_coord->y;
-	coord->z = 10 * og_coord->z;
+	coord->z = 3 * og_coord->z;
 }

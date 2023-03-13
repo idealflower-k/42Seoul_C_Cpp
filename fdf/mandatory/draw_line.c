@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 14:37:39 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/01/04 14:21:29 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/03/13 19:48:51 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,22 @@ void	draw_width(t_coord **coords, t_img *img, t_map *map)
 {
 	int	x;
 	int	y;
+	int	color;
 
 	y = 0;
+	color = 0;
 	while (y < map->height)
 	{
 		x = 0;
 		while (x < map->width - 1)
 		{
-			draw(img, &coords[y][x], &coords[y][x + 1]);
+			if (map->og_coords[y][x].z == 0)
+				color = BLUE;
+			if (map->og_coords[y][x].z > 0 || map->og_coords[y][x + 1].z > 0)
+				color = RED;
+			else
+				color = GREEN;
+			draw(img, &coords[y][x], &coords[y][x + 1], color);
 			x++;
 		}
 		y++;
@@ -40,26 +48,32 @@ void	draw_height(t_coord **coords, t_img *img, t_map *map)
 {
 	int	x;
 	int	y;
+	int	color;
 
 	x = 0;
+	color = 0;
 	while (x < map->width)
 	{
 		y = 0;
 		while (y < map->height - 1)
 		{
-			draw(img, &coords[y][x], &coords[y + 1][x]);
+			if (map->og_coords[y][x].z == 0)
+				color = BLUE;
+			if (map->og_coords[y][x].z > 0 || map->og_coords[y + 1][x].z > 0)
+				color = RED;
+			else
+				color = GREEN;
+			draw(img, &coords[y][x], &coords[y + 1][x], color);
 			y++;
 		}
 		x++;
 	}
 }
 
-void	draw(t_img *img, t_coord *coord0, t_coord *coord1)
+void	draw(t_img *img, t_coord *coord0, t_coord *coord1, int color)
 {
 	t_draw	*draw;
-	int		color;
 
-	color = GREEN;
 	draw = set_draw(coord0, coord1);
 	while (draw)
 	{
@@ -108,4 +122,14 @@ t_draw	*set_draw(t_coord *coord0, t_coord *coord1)
 	if (coord1->y < coord0->y)
 		draw->sy = -1;
 	return (draw);
+}
+
+void	get_color(t_coord *og_coords, int *color)
+{
+	if (og_coords->z == 0)
+				*color = BLUE;
+			if (og_coords.z > 0 || (og_coords + 1).z > 0)
+				*color = RED;
+			else
+				*color = GREEN;
 }

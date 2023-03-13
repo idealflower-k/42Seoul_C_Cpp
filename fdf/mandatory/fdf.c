@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:01:52 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/01/14 16:26:20 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/03/13 17:34:25 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,17 @@ int	main(int ac, char *av[])
 	my_mlx_init(&meta);
 	set_scaling_size(meta.map, &meta.img);
 	isometric_projection(&meta);
-	// map_scaling(meta.map->og_coords, meta.map);
-	// rotation(meta.map, &meta);
-	// move_center(&meta, &meta.img, meta.map->coords);
-	// draw_line(meta.map->coords, &meta.img, meta.map);
 	mlx_put_image_to_window(meta.vars.mlx, meta.vars.win, meta.img.img, 0, 0);
 	mlx_hook(meta.vars.win, KEY_PRESS, 0, key_hook, &meta);
-	// mlx_loop_hook(meta.vars.mlx, rot_loop, &meta);
+	mlx_hook(meta.vars.win, 17, 0, exit_fdf, &meta);
 	mlx_loop(meta.vars.mlx);
 }
 
-int	rot_loop(t_meta *meta)
+int	exit_fdf(t_meta *meta)
 {
-	memset_img_data(meta, &meta->img);
-	rotation_img(KEY_R, meta);
-	return (0);
+	mlx_destroy_window(meta->vars.mlx, meta->vars.win);
+	// free
+	exit(0);
 }
 
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
@@ -53,15 +49,15 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 void	my_mlx_init(t_meta *meta)
 {
 	meta->vars.mlx = mlx_init();
-	meta->img.width = 1000;
-	meta->img.height = 800;
+	meta->img.width = 1920;
+	meta->img.height = 1080;
 	meta->vars.win = mlx_new_window(meta->vars.mlx, meta->img.width, meta->img.height, "sanghwal");
 	meta->img.img = mlx_new_image(meta->vars.mlx, meta->img.width, meta->img.height);
 	meta->img.addr = mlx_get_data_addr(meta->img.img, \
 		&meta->img.bit_p_p, &meta->img.len, &meta->img.endian);
-	meta->img.angles.x = 0.0;
-	meta->img.angles.y = 180.0;	//180
-	meta->img.angles.z = -90.0;	//-90
+	meta->img.angles.x = 215;
+	meta->img.angles.y = -45;
+	meta->img.angles.z = 60;
 }
 
 void	rotation_img(int keycode, t_meta *meta)
@@ -88,18 +84,11 @@ void	rotation_img(int keycode, t_meta *meta)
 			else
 				meta->img.angles.z = (double)(((int)meta->img.angles.z + 1));
 		}
-	if (keycode == KEY_R)
-	{
-		// meta->img.angles.x = (double)(((int)meta->img.angles.x - 1) % 360);
-		meta->img.angles.y = (double)(((int)meta->img.angles.y + 1) % 360);
-		// meta->img.angles.z = (double)(((int)meta->img.angles.z + 1) % 360);
-	}
 	map_scaling(meta->map->og_coords, meta->map);
 	rotation(meta->map, meta);
 	move_center(meta, &meta->img, meta->map->coords);
 	draw_line(meta->map->coords, &meta->img, meta->map);
 	mlx_put_image_to_window(meta->vars.mlx, meta->vars.win, meta->img.img, 0, 0);
-	// printf("y: %f, x: %f, z: %f\n", meta->img.angles.y, meta->img.angles.x, meta->img.angles.z);
 }
 
 void	memset_img_data(t_meta *meta, t_img *img)

@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 20:05:51 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/01/05 13:46:00 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/03/13 17:26:38 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ char	**read_map(char *file, t_map *map)
 		i++;
 		tmp[i] = get_next_line(fd);
 	}
+	printf("height: %d, width: %d\n", map->height, map->width);
 	return (tmp);
 }
 

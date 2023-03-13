@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:50:37 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/01/06 14:40:24 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/03/13 17:28:23 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define PI 3.14159265
 # define GREEN 0x000FF000
 # define BLUE 0x000000FF
+# define RED 0x00FF0000
 # define KEY_UP 126
 # define KEY_DOWN 125
 # define KEY_RIGHT 124
@@ -71,7 +72,7 @@ typedef struct s_map
 	void	*map;
 	int		width;
 	int		height;
-	int		scale_size;
+	double	scale_size;
 	t_coord	**coords;
 	t_coord	**og_coords;
 }	t_map;
@@ -101,9 +102,9 @@ void	my_mlx_init(t_meta *meta);
 void	draw_line(t_coord **coords, t_img *img, t_map *map);
 void	draw_width(t_coord **coords, t_img *img, t_map *map);
 void	draw_height(t_coord **coords, t_img *img, t_map *map);
-void	draw(t_img *img, t_coord *coord0, t_coord *coord1);
+void	draw(t_img *img, t_coord *coord0, t_coord *coord1, int color);
 t_draw	*set_draw(t_coord *coord0, t_coord *coord1);
-void	set_scaling_size(t_map *map, t_img  *img);
+void	set_scaling_size(t_map *map, t_img *img);
 
 void	rotation(t_map *map, t_meta *meta);
 void	rotation_y(t_map *map, double angle);
@@ -133,4 +134,6 @@ void	copy_coords(t_map *map, t_coord **og_coords);
 void	get_og_coords(t_map *map, t_coord **coords, t_coord **og_coords);
 void	*ft_malloc(size_t size);
 void	free_double_arr(char **arr);
+
+int		exit_fdf(t_meta *meta);
 #endif
