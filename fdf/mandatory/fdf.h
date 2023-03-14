@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:50:37 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/13 17:28:23 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/03/14 20:23:23 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,22 @@
 # include "../minilibx_macos/mlx.h"
 # include "../libft/libft.h"
 # include "../libft/ft_printf/ft_printf.h"
-# include<fcntl.h>
-# include<stdlib.h>
-# include<math.h>
-# include<stdio.h>
+# include <fcntl.h>
+# include <stdlib.h>
+# include <math.h>
+# include <stdio.h>
 
 # define PI 3.14159265
-# define GREEN 0x000FF000
-# define BLUE 0x000000FF
+# define WHITE 0x00FFFFFF
+# define T 0x00000000
 # define RED 0x00FF0000
+# define GREEN 0x0000FF00
+# define BLUE 0x000000FF
+# define SKY_BLUE 0x0087CEFA
+# define YELLOW 0x00FFFFE0
+# define DELTA_R -16711680
+# define DELTA_G 0
+# define DELTA_B 255
 # define KEY_UP 126
 # define KEY_DOWN 125
 # define KEY_RIGHT 124
@@ -33,6 +40,14 @@
 # define KEY_X 7
 # define KEY_R 15
 # define KEY_PRESS 02
+
+typedef enum e_wh	t_wh;
+
+enum e_wh
+{
+	WIDTH = 0,
+	HEIGHT = 1
+};
 
 typedef struct s_angle
 {
@@ -59,7 +74,6 @@ typedef struct s_var
 	void	*win;
 }	t_var;
 
-
 typedef struct s_coord
 {
 	int	x;
@@ -75,6 +89,8 @@ typedef struct s_map
 	double	scale_size;
 	t_coord	**coords;
 	t_coord	**og_coords;
+	int		s_c;
+	int		e_c;
 }	t_map;
 
 typedef struct s_meta
@@ -102,7 +118,7 @@ void	my_mlx_init(t_meta *meta);
 void	draw_line(t_coord **coords, t_img *img, t_map *map);
 void	draw_width(t_coord **coords, t_img *img, t_map *map);
 void	draw_height(t_coord **coords, t_img *img, t_map *map);
-void	draw(t_img *img, t_coord *coord0, t_coord *coord1, int color);
+void	draw(t_img *img, t_coord *coord0, t_coord *coord1, t_map *map);
 t_draw	*set_draw(t_coord *coord0, t_coord *coord1);
 void	set_scaling_size(t_map *map, t_img *img);
 
@@ -134,6 +150,17 @@ void	copy_coords(t_map *map, t_coord **og_coords);
 void	get_og_coords(t_map *map, t_coord **coords, t_coord **og_coords);
 void	*ft_malloc(size_t size);
 void	free_double_arr(char **arr);
+
+int		get_color(t_coord *coord0, t_draw *draw, int step, t_map *map);
+int		get_gradation_color(int color1, int color2, double ratio);
+int		create_trgb(int t, int r, int g, int b);
+void	set_color_height(t_map *map, int x, int y);
+void	set_color_width(t_map *map, int x, int y);
+int		get_t(int trgb);
+int		get_r(int trgb);
+int		get_g(int trgb);
+int		get_b(int trgb);
+void	put_img(t_meta *meta);
 
 int		exit_fdf(t_meta *meta);
 #endif

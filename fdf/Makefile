@@ -6,7 +6,7 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 15:38:15 by sanghwal          #+#    #+#              #
-#    Updated: 2023/01/06 14:34:34 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/03/14 16:12:08 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ MANDATORY_SRCS = fdf.c \
 				fdf_hook.c \
 				utils.c \
 				projection.c \
+				color.c
 
 BONUS_DIR = bonus
 BONUS_SRCS = 

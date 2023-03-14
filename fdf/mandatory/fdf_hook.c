@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 13:53:57 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/13 14:18:31 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/03/14 16:02:33 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	key_hook(int keycode, t_meta *meta)
 		mlx_destroy_window(meta->vars.mlx, meta->vars.win);
 		exit(0);
 	}
-	if ((keycode >= KEY_LEFT && keycode <= KEY_UP) || keycode == 6 || keycode == 7 || keycode == 15)
+	if ((keycode >= KEY_LEFT && keycode <= KEY_UP) \
+		|| keycode == 6 || keycode == 7 || keycode == 15)
 	{
-		printf("%d\n", keycode);
 		memset_img_data(meta, &meta->img);
 		rotation_img(keycode, meta);
 	}

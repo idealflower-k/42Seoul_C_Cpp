@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 20:05:51 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/13 17:26:38 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/03/14 16:20:29 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ t_map	*map_pars(char *file)
 
 	map = ft_malloc(sizeof(t_map));
 	tmp = read_map(file, map);
+	if (tmp == NULL)
+		return (NULL);
 	set_coords(map, tmp);
 	free_double_arr(tmp);
 	return (map);
@@ -34,6 +36,8 @@ char	**read_map(char *file, t_map *map)
 	tmp = ft_malloc((sizeof(char *) * map->height) + 1);
 	fd = open(file, O_RDONLY);
 	i = 0;
+	if (fd == -1)
+		return (NULL);
 	tmp[i] = get_next_line(fd);
 	set_width(tmp[i], map);
 	while (tmp[i])
@@ -50,7 +54,7 @@ void	set_width(char *str, t_map *map)
 	char	**tmp;
 
 	tmp = ft_split(str, ' ');
-	while (tmp[map->width] != 0)
+	while (tmp && tmp[map->width] != 0)
 		map->width++;
 	free_double_arr(tmp);
 }
