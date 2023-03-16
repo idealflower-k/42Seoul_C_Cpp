@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 20:21:29 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/12/23 17:19:39 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/03/15 15:40:25 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,14 @@ void	free_double_arr(char **arr)
 	while (arr[i] != 0)
 		free(arr[i++]);
 	free(arr);
+}
+
+void	free_coords(t_coord **coords, int height)
+{
+	int	i;
+
+	i = 0;
+	while (i < height)
+		free(coords[i++]);
+	free(coords);
 }

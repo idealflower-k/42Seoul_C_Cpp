@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrix.c                                           :+:      :+:    :+:   */
+/*   projection_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 18:47:34 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/01/05 13:53:08 by sanghwal         ###   ########seoul.kr  */
+/*   Created: 2023/01/06 14:20:47 by sanghwal          #+#    #+#             */
+/*   Updated: 2023/03/15 16:55:44 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
-int	*matrix1(t_coord *coord)
+void	isometric_projection(t_meta *meta)
 {
-	int	*mr1;
-
-	mr1 = ft_malloc(sizeof(int) * 3);
-	mr1[0] = coord->x;
-	mr1[1] = coord->y;
-	mr1[2] = coord->z;
-	return (mr1);
+	map_scaling(meta->map->coords, meta->map);
+	rotation(meta->map, meta);
+	move_center(meta, &meta->img, meta->map->coords);
+	draw_line(meta->map->coords, &meta->img, meta->map);
 }

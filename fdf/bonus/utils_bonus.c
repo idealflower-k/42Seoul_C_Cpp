@@ -1,21 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   projection.c                                       :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/06 14:20:47 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/15 15:08:50 by sanghwal         ###   ########seoul.kr  */
+/*   Created: 2022/12/21 20:21:29 by sanghwal          #+#    #+#             */
+/*   Updated: 2023/03/15 16:55:44 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
-void	isometric_projection(t_meta *meta)
+void	*ft_malloc(size_t size)
 {
-	map_scaling(meta->map->coords, meta->map);
-	rotation(meta->map, meta);
-	move_center(meta, &meta->img, meta->map->coords);
-	draw_line(meta->map->coords, &meta->img, meta->map);
+	void	*result;
+
+	result = malloc(size);
+	if (!result)
+		exit(1);
+	ft_bzero(result, size);
+	return (result);
+}
+
+void	free_double_arr(char **arr)
+{
+	int	i;
+
+	i = 0;
+	while (arr[i] != 0)
+		free(arr[i++]);
+	free(arr);
+}
+
+void	free_coords(t_coord **coords, int height)
+{
+	int	i;
+
+	i = 0;
+	while (i < height)
+		free(coords[i++]);
+	free(coords);
 }

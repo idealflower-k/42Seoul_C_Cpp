@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   coords_utils.c                                     :+:      :+:    :+:   */
+/*   coords_utils_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 15:14:54 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/15 15:47:12 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/03/15 16:55:44 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
 void	copy_coords(t_map *map, t_coord **og_coords)
 {

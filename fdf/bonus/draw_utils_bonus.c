@@ -1,54 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_utils.c                                       :+:      :+:    :+:   */
+/*   draw_utils_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:28:03 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/15 17:35:12 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/03/15 16:55:44 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-
-t_draw	*set_draw(t_coord *coord0, t_coord *coord1)
-{
-	t_draw	*draw;
-
-	if (!coord0 || !coord1)
-		return (0);
-	draw = ft_malloc(sizeof(t_draw));
-	draw->x[0] = coord0->x;
-	draw->x[1] = coord1->x;
-	draw->y[0] = coord0->y;
-	draw->y[1] = coord1->y;
-	draw->z[0] = coord0->z;
-	draw->z[1] = coord1->z;
-	draw->dx = abs(coord1->x - coord0->x);
-	draw->dy = -abs(coord1->y - coord0->y);
-	draw->error = draw->dx + draw->dy;
-	draw->sx = 1;
-	draw->sy = 1;
-	if (coord1->x < coord0->x)
-		draw->sx = -1;
-	if (coord1->y < coord0->y)
-		draw->sy = -1;
-	return (draw);
-}
+#include "fdf_bonus.h"
 
 int	bresenham_line_algo(t_draw *draw)
 {
 	if (draw->x[0] == draw->x[1] && draw->y[0] == draw->y[1])
 		return (0);
-	if (draw->error >= draw->dy)
+	draw->e2 = 2 * draw->error;
+	if (draw->e2 >= draw->dy)
 	{
 		if (draw->x[0] == draw->x[1])
 			return (0);
 		draw->error += draw->dy;
 		draw->x[0] += draw->sx;
 	}
-	else if (draw->error <= draw->dx)
+	else if (draw->e2 <= draw->dx)
 	{
 		if (draw->y[0] == draw->y[1])
 			return (0);
