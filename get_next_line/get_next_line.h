@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:04:38 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/08/08 20:03:49 by sanghwal         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:38:06 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ char	*ft_get_line(t_list *list);
 char	*ft_save(t_list *list, t_list **head);
 t_list	*get_list(t_list **list_head, int fd);
 char	*ft_del_list(t_list *list, t_list **head);
-size_t	ft_strchr(t_list *list, char c);
-size_t	ft_strlen(char *str);
+size_t	ft_gnl_strchr(t_list *list, char c);
+size_t	ft_gnl_strlen(char *str);
 t_list	*ft_new_list(int fd);
-char	*ft_strjoin(char *dst, char *src);
+char	*ft_gnl_strjoin(char *dst, char *src);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:06:16 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/08/10 13:36:00 by sanghwal         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:38:03 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_list	*get_list(t_list **list_head, int fd)
 
 char	*ft_read_save(t_list *list)
 {
-	while (!ft_strchr(list, '\n') && list->read_byte > 0)
+	while (!ft_gnl_strchr(list, '\n') && list->read_byte > 0)
 	{
 		list->read_byte = read(list->fd, list->buff, BUFFER_SIZE);
 		if (list->read_byte == -1)
@@ -71,7 +71,7 @@ char	*ft_read_save(t_list *list)
 		else if (list->read_byte == 0)
 			break ;
 		list->buff[list->read_byte] = 0;
-		list->result = ft_strjoin(list->result, list->buff);
+		list->result = ft_gnl_strjoin(list->result, list->buff);
 	}
 	return (list->result);
 }
@@ -118,7 +118,7 @@ char	*ft_save(t_list *list, t_list **head)
 		ft_del_list(list, head);
 		return (list->buff);
 	}
-	new = (char *)malloc(ft_strlen(list->result) - i);
+	new = (char *)malloc(ft_gnl_strlen(list->result) - i);
 	i++;
 	j = 0;
 	while (new && list->result[i])

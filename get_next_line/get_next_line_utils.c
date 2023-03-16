@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:06:07 by sanghwal          #+#    #+#             */
-/*   Updated: 2022/08/10 13:36:26 by sanghwal         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:38:03 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 char	*ft_del_list(t_list *list, t_list **head);
-size_t	ft_strchr(t_list *list, char c);
-size_t	ft_strlen(char *str);
+size_t	ft_gnl_strchr(t_list *list, char c);
+size_t	ft_gnl_strlen(char *str);
 t_list	*ft_new_list(int fd);
-char	*ft_strjoin(char *dst, char *src);
+char	*ft_gnl_strjoin(char *dst, char *src);
 
-size_t	ft_strchr(t_list *list, char c)
+size_t	ft_gnl_strchr(t_list *list, char c)
 {
 	size_t	i;
 
@@ -36,7 +36,7 @@ size_t	ft_strchr(t_list *list, char c)
 	return (0);
 }
 
-size_t	ft_strlen(char *str)
+size_t	ft_gnl_strlen(char *str)
 {
 	size_t	i;
 
@@ -46,7 +46,7 @@ size_t	ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_strjoin(char *dst, char *src)
+char	*ft_gnl_strjoin(char *dst, char *src)
 {
 	char	*result;
 	size_t	i;
@@ -59,7 +59,7 @@ char	*ft_strjoin(char *dst, char *src)
 			return (0);
 		dst[0] = 0;
 	}
-	result = (char *)malloc((ft_strlen(dst) + ft_strlen(src)) + 1);
+	result = (char *)malloc((ft_gnl_strlen(dst) + ft_gnl_strlen(src)) + 1);
 	i = -1;
 	while (result && dst[++i] != 0)
 		result[i] = dst[i];
