@@ -4,3 +4,6 @@
 [submodule "philosophers/libft"]
 	path = philosophers/libft
 	url = git@github.com:idealflower-k/42Seoul-libft.git
+[submodule "philosophers/lib/libft"]
+	path = philosophers/lib/libft
+	url = git@github.com:idealflower-k/42Seoul-libft.git
