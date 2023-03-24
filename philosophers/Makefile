@@ -6,62 +6,27 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/16 16:48:18 by sanghwal          #+#    #+#              #
-#    Updated: 2023/03/16 16:53:11 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/03/24 17:26:34 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
-.DEFAULT_GOAL = all
-NAME = fdf
+include ./config/Rules.mk
+include ./config/color_rules.mk
 
-CFLAGS = -Wall -Wextra -Werror -MMD -MP
-CPPFLAGS =
-LDFLAGS= -L./libft
-LDLIBS = -lft -lftprintf
+NAME = $(PROJECT_NAME)
 
-LIBFT = libft/libft.a
-$(LIBFT):
-	make -C $(@D)
+all bonus clean fclean re:
+	$(MAKE) TOPDIR=`pwd` -C lib $@
+	$(MAKE) TOPDIR=`pwd` -C src $@
 
-################################################################################
-MANDATORY_DIR = philo
-MANDATORY_SRCS = main.c
+$(NAME):
+	$(MAKE) TOPDIR=`pwd` -C lib
+	$(MAKE) TOPDIR=`pwd` -C src $@
 
-BONUS_DIR = bonus
-BONUS_SRCS = 
-BONUS_OBJS = $(addprefix $(BONUS_DIR)/, $(BONUS_SRCS:.c=.o))
-BONUS_DEPS = $(addprefix $(BONUS_DIR)/, $(BONUS_SRCS:.c=.d))
+norm:
+	@norminette ./src/ ./lib/
 
-OBJS = $(addprefix $(MANDATORY_DIR)/, $(MANDATORY_SRCS:.c=.o))
-DEPS = $(addprefix $(MANDATORY_DIR)/, $(MANDATORY_SRCS:.c=.d))
+leaks: all
+	leaks ./$(NAME)
 
-ifdef FLAG_BONUS
-OBJS = $(addprefix $(BONUS_DIR)/, $(BONUS_SRCS:.c=.o))
-DEPS = $(addprefix $(BONUS_DIR)/, $(BONUS_SRCS:.c=.d))
-endif
-
--include $(DEPS)
-
-$(OBJS): $(LIBFT) $(MLX)
-$(NAME): $(OBJS)
-	cc $(LDFLAGS) $(OBJS) $(LDLIBS) -o $@
-
-all:
-	make -C $(dir $(LIBFT))
-	make $(NAME)
-
-bonus:
-	make -C $(dir $(LIBFT))
-	make FLAG_BONUS=1 $(NAME)
-
-clean:
-	make -C $(dir $(LIBFT)) clean
-	$(RM) $(OBJS) $(DEPS) $(BONUS_OBJS) $(BONUS_DEPS)
-
-fclean: clean
-	make -C $(dir $(LIBFT)) fclean
-	$(RM) $(LIBFT) $(NAME)
-
-re: fclean
-	make all
-
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re bonus norm leaks

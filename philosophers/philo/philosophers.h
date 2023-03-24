@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 19:25:54 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/01/04 14:59:51 by sanghwal         ###   ########seoul.kr  */
+/*   Created: 2023/03/16 16:54:18 by sanghwal          #+#    #+#             */
+/*   Updated: 2023/03/24 17:23:21 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef PHILOSOPHERS_H
+# define PHILOSOPHERS_H
 
-void	*ft_memset(void *d, int c, size_t len);
+# include "stdio.h"
+# include "sys/time.h"
+# include <stdio.h>
+# include <stdlib.h>
+# include <limits.h>
+# include <pthread.h>
+# include <unistd.h>
 
-void	*ft_memset(void *d, int c, size_t len)
+typedef struct s_arg	t_arg;
+
+struct s_arg
 {
-	unsigned char	*temp;
-	size_t			i;
+	long long int	num_philo;
+	long long int	t_eat;
+	long long int	t_die;
+	long long int	t_sleep;
+	long long int	must_eat;
+};
 
-	i = 0;
-	temp = (unsigned char *)d;
-	while (i < len)
-	{
-		temp[i] = (unsigned char)c;
-		i++;
-	}
-	return (temp);
-}
+#endif

@@ -6,7 +6,13 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 16:52:58 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/16 16:52:59 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/03/24 16:58:05 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "philosophers.h"
+
+int	main(void)
+{
+	
+}
