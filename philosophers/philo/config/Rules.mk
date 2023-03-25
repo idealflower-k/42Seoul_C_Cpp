@@ -6,14 +6,14 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/24 17:27:08 by sanghwal          #+#    #+#              #
-#    Updated: 2023/03/24 17:27:11 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/03/25 10:18:09 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 .DEFAULT_ON_ERROR:
 .DEFAULT_GOAL = all
 
-PROJECT_NAME = minishell
+PROJECT_NAME = philosophers
 
 ARFLAGS = rcs
 CFLAGS = -Wall -Wextra -Werror -MMD -MP

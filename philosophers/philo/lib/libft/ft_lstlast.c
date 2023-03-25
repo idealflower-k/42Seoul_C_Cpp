@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sanghwal <sanghwal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/16 16:52:58 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/24 16:58:05 by sanghwal         ###   ########seoul.kr  */
+/*   Created: 2022/07/19 14:56:11 by sanghwal          #+#    #+#             */
+/*   Updated: 2022/07/19 14:56:13 by sanghwal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "libft.h"
 
-int	main(void)
+t_list	*ft_lstlast(t_list *lst);
+
+t_list	*ft_lstlast(t_list *lst)
 {
-	
+	if (!lst)
+		return (0);
+	while (lst -> next)
+		lst = lst -> next;
+	return (lst);
 }
