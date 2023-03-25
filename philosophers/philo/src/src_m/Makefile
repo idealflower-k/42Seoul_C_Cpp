@@ -6,7 +6,7 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/24 17:54:29 by sanghwal          #+#    #+#              #
-#    Updated: 2023/03/24 17:54:41 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/03/25 16:15:23 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ include $(TOPDIR)/config/color_rules.mk
 
 NAME = $(PROJECT_NAME)
 
-DIRS = 
+DIRS = parser \
+	unit_test
 
 HEADS = 
 
