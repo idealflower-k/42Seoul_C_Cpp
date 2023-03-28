@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   meta.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/25 15:54:12 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/28 19:46:04 by sanghwal         ###   ########seoul.kr  */
+/*   Created: 2023/03/28 19:39:06 by sanghwal          #+#    #+#             */
+/*   Updated: 2023/03/28 19:45:21 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#ifndef META_H
+# define META_H
 
-/* parser.c */
+/* meta_receiver.c */
 
-void	set_number_of_philosophers(t_arg **args, char *av);
-void	set_times(t_arg **args, char **av);
-void	set_must_eat(t_arg **args, char *av);
+t_meta			*singleton(int ac, char **av);
+void			*meta_receiver(t_meta_flag flag, int ac, char **av);
 
-/* unit_test */
+/* meta_receiver.c */
 
-void	parser_test(t_meta *meta, int ac);
+t_meta			*get_meta(int ac, char **av);
+pthread_mutex_t	*get_forks(void);
+pthread_t		*get_philos(void);
 
 #endif

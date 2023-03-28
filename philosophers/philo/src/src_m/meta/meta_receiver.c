@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   meta_receiver.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/25 15:54:12 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/28 19:46:04 by sanghwal         ###   ########seoul.kr  */
+/*   Created: 2023/03/28 14:29:54 by sanghwal          #+#    #+#             */
+/*   Updated: 2023/03/28 19:46:58 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#include "philosophers.h"
+#include "defines.h"
+#include "meta.h"
 
-/* parser.c */
+void	*meta_receiver(t_meta_flag flag, int ac, char **av)
+{
+	t_meta	*meta;
 
-void	set_number_of_philosophers(t_arg **args, char *av);
-void	set_times(t_arg **args, char **av);
-void	set_must_eat(t_arg **args, char *av);
-
-/* unit_test */
-
-void	parser_test(t_meta *meta, int ac);
-
-#endif
+	meta = singleton(ac, av);
+	if (flag == META)
+		return (meta);
+	if (flag == META_ARG)
+		return (meta->args);
+	if (flag == META_FORKS)
+		return (meta->forks);
+	if (flag == META_PHILOS)
+		return (meta->philos);
+	return (NULL);
+}

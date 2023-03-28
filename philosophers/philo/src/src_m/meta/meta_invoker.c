@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   meta_invoker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/25 15:54:12 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/28 19:46:04 by sanghwal         ###   ########seoul.kr  */
+/*   Created: 2023/03/28 15:14:22 by sanghwal          #+#    #+#             */
+/*   Updated: 2023/03/28 19:47:51 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#include "philosophers.h"
+#include "defines.h"
+#include "meta.h"
 
-/* parser.c */
+t_meta	*get_meta(int ac, char **av)
+{
+	return ((t_meta *)meta_receiver(META, ac, av));
+}
 
-void	set_number_of_philosophers(t_arg **args, char *av);
-void	set_times(t_arg **args, char **av);
-void	set_must_eat(t_arg **args, char *av);
+pthread_mutex_t	*get_forks(void)
+{
+	return ((pthread_mutex_t *)meta_receiver(META_FORKS, 0, NULL));
+}
 
-/* unit_test */
-
-void	parser_test(t_meta *meta, int ac);
-
-#endif
+pthread_t	*get_philos(void)
+{
+	return ((pthread_t *)meta_receiver(META_PHILOS, 0, NULL));
+}

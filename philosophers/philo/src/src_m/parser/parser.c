@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 14:49:51 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/27 18:48:19 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/03/28 19:49:36 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,4 @@ void	set_must_eat(t_arg **args, char *av)
 		ft_print_exit("negative must_eat\n", 1);
 	}
 	(*args)->must_eat = num;
-}
-
-void	meta_init(t_meta *meta, int ac, char **av)
-{
-	meta->args = ft_calloc(1, sizeof(t_arg));
-	set_number_of_philosophers(&(meta->args), av[1]);
-	set_times(&(meta->args), av);
-	if (ac == 6)
-		set_must_eat(&(meta->args), av[5]);
-	
 }
