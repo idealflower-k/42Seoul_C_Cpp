@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   meta.h                                             :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/28 19:39:06 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/29 17:53:08 by sanghwal         ###   ########seoul.kr  */
+/*   Created: 2023/03/29 21:51:40 by sanghwal          #+#    #+#             */
+/*   Updated: 2023/03/29 22:01:35 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef META_H
-# define META_H
+#include "philosophers.h"
+#include "defines.h"
 
-/* meta_receiver.c */
+uint64_t	get_current_time(void)
+{
+	struct timeval	tv;
 
-t_meta			*singleton(int ac, char **av);
-void			*meta_receiver(t_meta_flag flag, int ac, char **av);
+	gettimeofday(&tv, NULL);
+	return ((tv.tv_sec * 1000000) + tv.tv_usec);
+}
 
-/* meta_receiver.c */
+uint64_t	get_elapsed_time(uint64_t start_time)
+{
+	struct timeval	tv;
 
-t_meta			*get_meta(int ac, char **av);
-pthread_mutex_t	*get_forks(void);
-pthread_t		*get_philos(void);
-t_arg			*get_args(void);
-
-#endif
+	gettimeofday(&tv, NULL);
+	return (((tv.tv_sec * 1000000) + tv.tv_usec) - start_time);
+}

@@ -6,7 +6,7 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/24 17:54:29 by sanghwal          #+#    #+#              #
-#    Updated: 2023/03/28 19:41:04 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/03/29 22:00:01 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,9 @@ NAME = $(PROJECT_NAME)
 
 DIRS = parser \
 	unit_test \
-	meta
+	meta \
+	philo_thread \
+	time
 
 HEADS = 
 

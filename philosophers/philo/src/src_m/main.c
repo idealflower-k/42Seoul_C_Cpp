@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 16:52:58 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/28 19:54:23 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/03/29 21:43:36 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int ac, char **av)
 	if (ac < 5 && ac < 6)
 		ft_print_exit("arguments error\n", 1);
 	meta = get_meta(ac, av);
+	// meta err 처리
 	create_philos();
 	system("leaks philosophers");
 }
