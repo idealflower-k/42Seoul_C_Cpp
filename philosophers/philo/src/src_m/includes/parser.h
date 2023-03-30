@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 15:54:12 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/28 19:46:04 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 13:38:12 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ void	set_must_eat(t_arg **args, char *av);
 /* unit_test */
 
 void	parser_test(t_meta *meta, int ac);
+void	time_test(void);
 
 #endif

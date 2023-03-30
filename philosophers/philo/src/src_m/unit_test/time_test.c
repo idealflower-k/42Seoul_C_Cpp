@@ -1,40 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   meta_invoker.c                                     :+:      :+:    :+:   */
+/*   time_test.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/28 15:14:22 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/30 13:47:10 by sanghwal         ###   ########seoul.kr  */
+/*   Created: 2023/03/30 13:35:43 by sanghwal          #+#    #+#             */
+/*   Updated: 2023/03/30 13:56:26 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 #include "defines.h"
-#include "meta.h"
+#include "philo_time.h"
 
-t_meta	*get_meta(int ac, char **av)
+void	time_test(void)
 {
-	return ((t_meta *)meta_receiver(META, ac, av));
-}
+	uint64_t	current_time;
+	uint64_t	elapsed_time;
 
-pthread_mutex_t	*get_forks(void)
-{
-	return ((pthread_mutex_t *)meta_receiver(META_FORKS, 0, NULL));
-}
-
-t_philo	*get_philos(void)
-{
-	return ((t_philo *)meta_receiver(META_PHILOS, 0, NULL));
-}
-
-t_arg	*get_args(void)
-{
-	return ((t_arg *)meta_receiver(META_ARG, 0, NULL));
-}
-
-int	get_err(void)
-{
-	return ((int)meta_receiver(META_ERR, 0, NULL));
+	current_time = get_current_time();
+	elapsed_time = get_elapsed_time(100);
+	printf("current_time : %llu\n", current_time);
+	printf("elapsed_time : %llu\n", elapsed_time);
 }

@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:53:19 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/29 22:02:40 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 15:26:25 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ t_meta	*singleton(int ac, char **av)
 		return (meta);
 	meta = ft_calloc(1, sizeof(t_meta));
 	if (pthread_mutex_init(&meta->start, NULL))
-		return (FT_FALSE);
+	{
+		meta->error = ERR_MUTEX_INIT;
+		return (meta);
+	}
 	meta->args = ft_calloc(1, sizeof(t_arg));
 	set_number_of_philosophers(&(meta->args), av[1]);
 	set_times(&(meta->args), av);
@@ -32,6 +35,6 @@ t_meta	*singleton(int ac, char **av)
 	meta->philos = ft_calloc(meta->args->num_philo, sizeof(t_philo));
 	meta->forks = ft_calloc(meta->args->num_philo, sizeof(pthread_mutex_t));
 	meta->start_time = get_current_time();
-	meta->err = 0;
+	meta->error = NOTHING;
 	return (meta);
 }

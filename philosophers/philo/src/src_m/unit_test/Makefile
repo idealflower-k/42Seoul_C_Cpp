@@ -6,7 +6,7 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/25 16:12:59 by sanghwal          #+#    #+#              #
-#    Updated: 2023/03/25 16:15:55 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/03/30 13:38:40 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ endif
 include $(TOPDIR)/config/Rules.mk
 include $(TOPDIR)/config/color_rules.mk
 
-SRCS = parser_test.c
+SRCS = parser_test.c \
+	time_test.c
 
 NAME = unit_test.a
 

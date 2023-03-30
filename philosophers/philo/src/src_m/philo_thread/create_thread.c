@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 19:53:54 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/29 22:21:37 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 15:48:27 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,31 @@
 #include "defines.h"
 #include "meta.h"
 #include "philo_thread.h"
+#include "util.h"
 
-static	t_info	init_info(t_meta *meta, t_info *info)
+t_bool	init_forks(void)
 {
-	const t_arg	*args = meta->args;
+	t_meta	*meta;
+	int		i;
+
+	meta = get_meta(0, NULL);
+	i = 0;
+	while (i < meta->args->num_philo)
+	{
+		if (pthread_mutex_init(&meta->forks[i], NULL))
+		{
+			meta->error = ERR_MUTEX_INIT;
+			return (FT_FALSE);
+		}
+		i++;
+	}
+	return (FT_TRUE);
+}
+
+void	init_info(t_info *info)
+{
+	const t_meta	*meta = get_meta(0, NULL);
+	const t_arg		*args = meta->args;
 
 	(*info).t_die = args->t_die;
 	(*info).t_eat = args->t_eat;
@@ -44,9 +65,10 @@ t_bool	init_philo_data(t_philo *philo, t_info *info, int id)
 	philo->fork[L] = meta->forks[id - 1];
 	if (pthread_mutex_init(&philo->philo_lock, NULL))
 		return (FT_FALSE);
+	return (FT_TRUE);
 }
 
-void	init_philo(t_info *info)
+t_bool	init_philo(t_info *info)
 {
 	const t_arg	*args = get_args();
 	t_philo		*philos;
@@ -56,25 +78,32 @@ void	init_philo(t_info *info)
 	i = 0;
 	while (i < args->num_philo)
 	{
-		if (init_philo_data(&philos[i], info, i))
+		if (!init_philo_data(&philos[i], info, i))
 		{
-			// err 처리
+			get_meta(0, NULL)->error = ERR_MUTEX_INIT;
+			return (FT_FALSE);
 		}
 		i++;
 	}
 }
 
+
+
 t_bool	create_thread(pthread_t *threads)
 {
-	const t_philo	*philos = get_philos();
-	const int		num = get_args()->num_philo;
-	int				i;
+	t_philo		*philos;
+	const int	num = get_args()->num_philo;
+	int			i;
 
+	philos = get_philos();
 	i = 0;
 	while (i < num)
 	{
 		if (pthread_create(&threads[i], NULL, start_routine, &philos[i]))
+		{
+			get_meta(0, NULL)->error = ERR_PTHREAD_CREATE;
 			return (FT_FALSE);
+		}
 		i++;
 	}
 }

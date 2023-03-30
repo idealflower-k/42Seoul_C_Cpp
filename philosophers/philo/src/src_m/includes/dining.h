@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_thread.h                                     :+:      :+:    :+:   */
+/*   dining.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/28 19:53:11 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/30 15:45:33 by sanghwal         ###   ########seoul.kr  */
+/*   Created: 2023/03/30 14:00:20 by sanghwal          #+#    #+#             */
+/*   Updated: 2023/03/30 15:30:29 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_THREAD_H
-# define PHILO_THREAD_H
+#ifndef DINING_H
+# define DINING_H
 
-void	*start_routine(void *arg);
-t_bool	init_forks(void);
-t_bool	init_philo(t_info *info);
-t_bool	init_philo_data(t_philo *philo, t_info *info, int id);
-void	init_info(t_info *info);
-t_bool	create_thread(pthread_t *threads);
+t_bool	set_dining(t_info *info);
 
 #endif

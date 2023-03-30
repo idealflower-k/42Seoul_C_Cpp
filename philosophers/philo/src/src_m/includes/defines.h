@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:00:06 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/29 22:04:11 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 15:26:04 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,12 @@ typedef struct s_meta		t_meta;
 typedef struct s_info		t_info;
 typedef struct s_philo		t_philo;
 typedef enum e_meta_flag	t_meta_flag;
+typedef enum e_err			t_err;
 
 # define L 0
 # define R 1
+# define MUTEX_INIT "mutex_init failed\n"
+# define PTHREAD_CREATE "pthread_create failed\n"
 
 struct s_arg
 {
@@ -36,9 +39,9 @@ struct s_meta
 	t_arg			*args;
 	pthread_mutex_t	*forks;
 	t_philo			*philos;
-	int				err;
 	pthread_mutex_t	start;
 	uint64_t		start_time;
+	int				error;
 };
 
 enum e_meta_flag
@@ -46,7 +49,8 @@ enum e_meta_flag
 	META,
 	META_ARG,
 	META_FORKS,
-	META_PHILOS
+	META_PHILOS,
+	META_ERR
 };
 
 struct s_info
@@ -68,6 +72,13 @@ struct s_philo
 	t_info			info;
 	pthread_mutex_t	fork[2];
 	pthread_mutex_t	philo_lock;
+};
+
+enum e_err
+{
+	NOTHING,
+	ERR_MUTEX_INIT,
+	ERR_PTHREAD_CREATE
 };
 
 #endif

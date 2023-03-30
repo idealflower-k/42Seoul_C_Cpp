@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/28 19:52:15 by sanghwal          #+#    #+#              #
-#    Updated: 2023/03/30 13:51:05 by sanghwal         ###   ########seoul.kr   #
+#    Created: 2023/03/30 13:59:54 by sanghwal          #+#    #+#              #
+#    Updated: 2023/03/30 14:34:42 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,9 @@ endif
 include $(TOPDIR)/config/Rules.mk
 include $(TOPDIR)/config/color_rules.mk
 
-SRCS = create_thread.c \
-	start_routine.c
+SRCS = set_dining.c
 
-NAME = philo_thread.a
+NAME = dining.a
 
 OBJS = $(SRCS:.c=.o)
 DEPS = $(SRCS:.c=.d)

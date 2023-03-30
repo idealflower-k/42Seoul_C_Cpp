@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 14:49:51 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/28 19:49:36 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 13:53:48 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	set_times(t_arg **args, char **av)
 	ft_time = 0;
 	while (i < 3)
 	{
-		if (!ft_atounit64(av[idx], &ft_time))
+		if (!ft_atouint64(av[idx], &ft_time))
 		{
 			free(*args);
 			ft_print_exit("invalid time error\n", 1);

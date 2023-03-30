@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_thread.h                                     :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/28 19:53:11 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/30 15:45:33 by sanghwal         ###   ########seoul.kr  */
+/*   Created: 2023/03/30 15:16:10 by sanghwal          #+#    #+#             */
+/*   Updated: 2023/03/30 15:54:08 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_THREAD_H
-# define PHILO_THREAD_H
+#ifndef UTILS_H
+# define UTILS_H
 
-void	*start_routine(void *arg);
-t_bool	init_forks(void);
-t_bool	init_philo(t_info *info);
-t_bool	init_philo_data(t_philo *philo, t_info *info, int id);
-void	init_info(t_info *info);
-t_bool	create_thread(pthread_t *threads);
+void	error_handler(int err_num);
+void	detach_threads(pthread_t *threads);
+void	destory_forks(void);
 
 #endif

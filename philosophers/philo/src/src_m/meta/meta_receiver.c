@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:29:54 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/28 19:46:58 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/03/30 13:47:53 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ void	*meta_receiver(t_meta_flag flag, int ac, char **av)
 		return (meta->forks);
 	if (flag == META_PHILOS)
 		return (meta->philos);
+	if (flag == META_ERR)
+		return ((void *)meta->error);
 	return (NULL);
 }
