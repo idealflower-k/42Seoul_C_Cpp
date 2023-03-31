@@ -6,7 +6,7 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/28 14:29:31 by sanghwal          #+#    #+#              #
-#    Updated: 2023/03/28 15:11:43 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/03/31 16:04:32 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ include $(TOPDIR)/config/Rules.mk
 include $(TOPDIR)/config/color_rules.mk
 
 SRCS = meta_receiver.c \
+	meta_invoker.c \
 	meta_invoker.c \
 	singleton.c
 

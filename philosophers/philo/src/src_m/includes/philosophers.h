@@ -6,14 +6,13 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 16:54:18 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/25 16:01:43 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/03/31 15:10:22 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
 
-# include "libft.h"
 # include <sys/time.h>
 # include <stdint.h>
 # include <stdio.h>

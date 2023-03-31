@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 16:52:58 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/30 15:50:05 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/03/31 16:36:04 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ int	main(int ac, char **av)
 	t_info	info;
 
 	if (ac < 5 && ac < 6)
-		ft_print_exit("arguments error\n", 1);
-	meta = get_meta(ac, av);
-	if (meta->error)
 	{
-		free(meta);
-		exit(1);
+		ft_print_err("arguments error\n");
+		return (1);
 	}
+	meta = get_meta(ac, av);
+	if (meta == NULL)
+		return (1);
 	if (!set_dining(&info))
 		error_handler(meta->error);
 	system("leaks philosophers");

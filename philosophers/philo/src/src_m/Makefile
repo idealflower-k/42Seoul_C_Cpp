@@ -6,7 +6,7 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/24 17:54:29 by sanghwal          #+#    #+#              #
-#    Updated: 2023/03/30 13:43:06 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/03/31 15:30:01 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ DIRS = parser \
 	meta \
 	philo_thread \
 	philo_time \
-	
+	deque \
+	dining
 
 HEADS = 
 

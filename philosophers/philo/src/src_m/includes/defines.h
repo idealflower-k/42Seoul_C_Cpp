@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:00:06 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/30 15:26:04 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/03/31 16:15:56 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@ typedef struct s_arg		t_arg;
 typedef struct s_meta		t_meta;
 typedef struct s_info		t_info;
 typedef struct s_philo		t_philo;
+typedef struct s_deaue		t_deque;
+
 typedef enum e_meta_flag	t_meta_flag;
 typedef enum e_err			t_err;
+typedef enum e_bool			t_bool;
 
 # define L 0
 # define R 1
@@ -39,8 +42,10 @@ struct s_meta
 	t_arg			*args;
 	pthread_mutex_t	*forks;
 	t_philo			*philos;
-	pthread_mutex_t	start;
 	uint64_t		start_time;
+	pthread_mutex_t	start;
+	t_deque			*deque;
+	pthread_mutex_t	que_lock;
 	int				error;
 };
 
@@ -50,6 +55,7 @@ enum e_meta_flag
 	META_ARG,
 	META_FORKS,
 	META_PHILOS,
+	MALLOC_ERR,
 	META_ERR
 };
 
@@ -57,6 +63,8 @@ struct s_info
 {
 	pthread_mutex_t	*start;
 	uint64_t		*start_time;
+	pthread_mutex_t	*que_lock;
+	t_deque			*deque;
 	uint64_t		t_die;
 	uint64_t		t_eat;
 	uint64_t		t_sleep;
@@ -74,11 +82,32 @@ struct s_philo
 	pthread_mutex_t	philo_lock;
 };
 
+struct s_deque
+{
+	size_t	capacity;
+	size_t	front;
+	size_t	rear;
+	size_t	use_size;
+	void	**nodes;
+	void	(*push_front)(t_deque *, void *);
+	void	(*push_rear)(t_deque *, void *);
+	void	*(*pop_front)(t_deque *);
+	void	*(*pop_rear)(t_deque *);
+	void	*(*peek_front)(const t_deque *);
+	void	*(*peek_rear)(const t_deque *);
+};
+
 enum e_err
 {
 	NOTHING,
 	ERR_MUTEX_INIT,
 	ERR_PTHREAD_CREATE
+};
+
+enum e_bool
+{
+	FT_FALSE,
+	FT_TRUE
 };
 
 #endif

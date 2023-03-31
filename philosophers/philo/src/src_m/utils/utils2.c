@@ -1,36 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_thread.c                                    :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/28 19:53:54 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/31 15:34:13 by sanghwal         ###   ########seoul.kr  */
+/*   Created: 2023/03/31 15:13:38 by sanghwal          #+#    #+#             */
+/*   Updated: 2023/03/31 16:00:21 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 #include "defines.h"
-#include "meta.h"
-#include "philo_thread.h"
-#include "utils.h"
 
-t_bool	create_thread(pthread_t *threads)
+size_t	ft_strlen(const char *s)
 {
-	t_philo		*philos;
-	const int	num = get_args()->num_philo;
-	int			i;
+	size_t	i;
 
-	philos = get_philos();
 	i = 0;
-	while (i < num)
+	while (s[i])
+		i++;
+	return (i);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s)
 	{
-		if (pthread_create(&threads[i], NULL, start_routine, &philos[i]))
+		if ((char)c == *s)
 		{
-			get_meta(0, NULL)->error = ERR_PTHREAD_CREATE;
-			return (FT_FALSE);
+			return ((char *)s);
 		}
+		s++;
+	}
+	if ((char)c == *s)
+		return ((char *)s);
+	return (0);
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	unsigned char	*temp;
+	size_t			i;
+
+	i = 0;
+	temp = (unsigned char *)s;
+	while (i < n)
+	{
+		temp[i] = 0;
 		i++;
 	}
+}
+
+void	ft_print_err(const char *str)
+{
+	printf("%s", str);
 }

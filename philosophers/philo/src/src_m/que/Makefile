@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/30 14:33:48 by sanghwal          #+#    #+#              #
-#    Updated: 2023/03/31 15:16:31 by sanghwal         ###   ########seoul.kr   #
+#    Created: 2023/03/31 15:23:10 by sanghwal          #+#    #+#              #
+#    Updated: 2023/03/31 15:28:25 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,11 +17,10 @@ endif
 include $(TOPDIR)/config/Rules.mk
 include $(TOPDIR)/config/color_rules.mk
 
-SRCS = error_handle.c \
-	utils.c \
-	utils2.c
+SRCS = deque.c \
+	deque_utils.c
 
-NAME = utils.a
+NAME = deque.a
 
 OBJS = $(SRCS:.c=.o)
 DEPS = $(SRCS:.c=.d)
