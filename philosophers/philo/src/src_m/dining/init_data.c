@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 15:34:02 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/31 15:34:39 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/01 20:42:42 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_bool	init_forks(void)
 		if (pthread_mutex_init(&meta->forks[i], NULL))
 		{
 			meta->error = ERR_MUTEX_INIT;
+			destory_forks(i);
 			return (FT_FALSE);
 		}
 		i++;
@@ -82,7 +83,9 @@ t_bool	init_philo(t_info *info)
 	{
 		if (!init_philo_data(&philos[i], info, i))
 		{
-			get_meta(0, NULL)->error = ERR_MUTEX_INIT;
+			set_err(ERR_MUTEX_INIT);
+			destory_forks(args->num_philo);
+			destory_philos(i);
 			return (FT_FALSE);
 		}
 		i++;

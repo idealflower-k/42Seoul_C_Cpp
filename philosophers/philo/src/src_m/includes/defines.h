@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:00:06 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/31 16:15:56 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/01 20:29:37 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ typedef struct s_arg		t_arg;
 typedef struct s_meta		t_meta;
 typedef struct s_info		t_info;
 typedef struct s_philo		t_philo;
-typedef struct s_deaue		t_deque;
+typedef struct s_deque		t_deque;
 
 typedef enum e_meta_flag	t_meta_flag;
 typedef enum e_err			t_err;

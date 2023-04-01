@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 15:24:08 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/31 16:26:31 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/01 20:29:38 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 #include "deque.h"
 #include "defines.h"
 #include "meta.h"
+#include "utils.h"
 
 t_deque	*deque_init(size_t size)
 {
 	t_deque	*dque;
 
-	dque = ft_malloc(sizeof(t_deque));
+	dque = ft_calloc(1, sizeof(t_deque));
 	if (!dque)
 		return (NULL);
 	dque->capacity = size;

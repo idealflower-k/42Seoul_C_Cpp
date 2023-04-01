@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 14:01:09 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/31 16:36:40 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/01 20:49:04 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ t_bool	set_dining(t_info *info)
 	pthread_t	*threads;
 
 	meta = get_meta(0, NULL);
-	if (!init_forks())
-		return (FT_FALSE);
 	init_info(info);
 	if (!init_forks() || !init_philo(info))
 		return (FT_FALSE);
@@ -33,7 +31,6 @@ t_bool	set_dining(t_info *info)
 	pthread_mutex_lock(&meta->start);
 	if (!create_thread(threads))
 	{
-		detach_threads(threads);
 		pthread_mutex_unlock(&meta->start);
 		return (FT_FALSE);
 	}

@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 19:53:54 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/31 15:34:13 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/01 20:48:54 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ t_bool	create_thread(pthread_t *threads)
 	{
 		if (pthread_create(&threads[i], NULL, start_routine, &philos[i]))
 		{
-			get_meta(0, NULL)->error = ERR_PTHREAD_CREATE;
+			set_err(ERR_PTHREAD_CREATE);
+			detach_threads(threads, i);
 			return (FT_FALSE);
 		}
 		i++;
