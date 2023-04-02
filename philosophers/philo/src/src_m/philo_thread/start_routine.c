@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 22:12:26 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/01 21:05:27 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/02 13:16:07 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	*start_routine(void *arg)
 	philo = (t_philo *)arg;
 	pthread_mutex_lock(philo->info.start);
 	pthread_mutex_unlock(philo->info.start);
-	while (!check_terminate())
+	while (!check_terminate(philo))
 	{
 		philo_eat(philo);
 		philo_sleep(philo);
