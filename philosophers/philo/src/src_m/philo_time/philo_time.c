@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 21:51:40 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/30 14:24:32 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/02 20:02:12 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ uint64_t	get_elapsed_time(uint64_t start_time)
 	return (((tv.tv_sec * 1000000) + tv.tv_usec) - start_time);
 }
 
-void	philo_usleep(uint64_t sec)
+void	philo_usleep(uint64_t microsec)
 {
-	const uint64_t	end_time = get_current_time() + sec;
+	const uint64_t	end_time = get_current_time() + microsec;
 
-	usleep(sec * 0.9);
+	usleep(microsec * 0.9);
 	while (1)
 	{
 		usleep(42);

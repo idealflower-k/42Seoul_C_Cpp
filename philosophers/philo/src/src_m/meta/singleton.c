@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:53:19 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/01 20:20:18 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/02 19:13:26 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,3 @@ t_meta	*singleton(int ac, char **av)
 	if (!set_args(&meta, ac, av) || !set_data(&meta, meta->args))
 		return (meta);
 }
-
-// error 발생시 free 신경쓰는법 작성

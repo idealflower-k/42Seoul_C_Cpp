@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 21:04:50 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/02 17:48:23 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/02 20:03:51 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,21 @@
 #include "philo_time.h"
 #include "philo_thread.h"
 
-static t_bool	take_left_fork(t_philo *philo)
+t_bool	take_left_fork(t_philo *philo)
 {
-
+	if (pthread_mutex_lock(philo->fork[L]))
+		return (FT_FALSE);
+	return (FT_TRUE);
 }
 
-static t_bool	take_right_fork(t_philo *philo)
+t_bool	take_right_fork(t_philo *philo)
 {
-
+	if (pthread_mutex_lock(philo->fork[R]))
+	{
+		pthread_mutex_unlock(philo->fork[R]);
+		return (FT_FALSE);
+	}
+	return (FT_TRUE);
 }
 
 t_bool	philo_eat(t_philo *philo)
@@ -34,5 +41,11 @@ t_bool	philo_eat(t_philo *philo)
 	}
 	else
 		return (FT_FALSE);
+	// 라스트밀 시간 조정
+	// 출력 처리
+	// 먹은 카운트 업
+	philo_usleep(philo->info.t_eat * 1000);
+	pthread_mutex_unlock(philo->fork[L]);
+	pthread_mutex_unlock(philo->fork[R]);
 	return (FT_TRUE);
 }
