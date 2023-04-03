@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:00:06 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/01 20:29:37 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/03 13:37:04 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_philo		t_philo;
 typedef struct s_deque		t_deque;
 
 typedef enum e_meta_flag	t_meta_flag;
+typedef enum e_state		t_state;
 typedef enum e_err			t_err;
 typedef enum e_bool			t_bool;
 
@@ -75,12 +76,21 @@ struct s_philo
 {
 	int				id;
 	int				eat_cnt;
+	t_state			state;
 	uint64_t		last_eat;
 	t_bool			terminate;
 	t_info			info;
 	pthread_mutex_t	fork[2];
 	pthread_mutex_t	philo_lock;
 };
+
+struct s_message
+{
+	int			id;
+	uint64_t	last_eat;
+	t_state		state;
+};
+
 
 struct s_deque
 {
@@ -95,6 +105,15 @@ struct s_deque
 	void	*(*pop_rear)(t_deque *);
 	void	*(*peek_front)(const t_deque *);
 	void	*(*peek_rear)(const t_deque *);
+};
+
+enum e_state
+{
+	TAKE_FORK,
+	EAT,
+	SLEEP,
+	THINK,
+	DIE
 };
 
 enum e_err

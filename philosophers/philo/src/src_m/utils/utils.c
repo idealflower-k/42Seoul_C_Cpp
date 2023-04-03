@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 15:06:52 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/31 15:56:31 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/03 13:24:12 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_bool	ft_atouint64(const char *str, uint64_t *num)
 		return (FT_FALSE);
 	return (FT_TRUE);
 }
+
 
 void	*ft_calloc(size_t count, size_t size)
 {

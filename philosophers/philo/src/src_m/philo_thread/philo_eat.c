@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 21:04:50 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/03 11:39:11 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/03 13:26:35 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,13 @@ static void	write_eat_state(t_philo *philo)
 	char		*eat_state_line;
 
 	elapsed_time = get_elapsed_time(philo->info.start_time) / 1000;
+	eat_state_line = make_eat_line(elapsed_time, philo);
+}
+
+char	*make_eat_line(uint64_t sec, t_philo *philo)
+{
+	// 100 1 is eating
+	const int	id = philo->id;
 }
 
 t_bool	philo_eat(t_philo *philo)
