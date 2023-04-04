@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 21:04:50 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/04 16:38:46 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/04 19:13:04 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ t_bool	philo_eat(t_philo *philo)
 	else
 		return (FT_FALSE);
 	if (!set_last_eat(philo))
-		
+		// 에러처리
 	save_state_message(philo, EATING);
 	philo_usleep(philo->info.t_eat * 1000);
 	pthread_mutex_unlock(&philo->fork[L]);
