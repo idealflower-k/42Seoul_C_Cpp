@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_thread.h                                     :+:      :+:    :+:   */
+/*   philo_sleep.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/28 19:53:11 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/04 16:26:30 by sanghwal         ###   ########seoul.kr  */
+/*   Created: 2023/04/04 16:23:15 by sanghwal          #+#    #+#             */
+/*   Updated: 2023/04/04 16:25:56 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_THREAD_H
-# define PHILO_THREAD_H
+#include "philosophers.h"
+#include "defines.h"
+#include "philo_time.h"
+#include "philo_thread.h"
+#include "utils.h"
+#include "deque.h"
 
-void	*start_routine(void *arg);
-t_bool	init_forks(void);
-t_bool	init_philo(t_info *info);
-t_bool	init_philo_data(t_philo *philo, t_info *info, int id);
-void	init_info(t_info *info);
-t_bool	create_thread(pthread_t *threads);
-t_bool	save_state_message(t_philo *philo, char *state);
-
-#endif
+void	philo_sleep(t_philo *philo)
+{
+	save_state_message(philo, SLEEPING);
+	philo_usleep(philo->info.t_sleep * 1000);
+}

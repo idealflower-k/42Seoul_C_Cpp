@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:00:06 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/03 13:37:04 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/04 16:13:40 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ typedef struct s_meta		t_meta;
 typedef struct s_info		t_info;
 typedef struct s_philo		t_philo;
 typedef struct s_deque		t_deque;
+typedef struct s_message	t_message;
 
 typedef enum e_meta_flag	t_meta_flag;
 typedef enum e_state		t_state;
@@ -28,6 +29,12 @@ typedef enum e_bool			t_bool;
 # define R 1
 # define MUTEX_INIT "mutex_init failed\n"
 # define PTHREAD_CREATE "pthread_create failed\n"
+
+# define TAKE_FORK "has taken a fork\n"
+# define EATING "is eating\n"
+# define SLEEPING "is sleeping\n"
+# define THINKING "is thinking\n"
+# define DIE "died\n"
 
 struct s_arg
 {
@@ -87,10 +94,9 @@ struct s_philo
 struct s_message
 {
 	int			id;
-	uint64_t	last_eat;
-	t_state		state;
+	uint64_t	elapsed_time;
+	char		*state;
 };
-
 
 struct s_deque
 {

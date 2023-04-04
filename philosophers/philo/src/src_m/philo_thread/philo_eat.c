@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 21:04:50 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/03 13:26:35 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/04 16:38:46 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "defines.h"
 #include "philo_time.h"
 #include "philo_thread.h"
+#include "utils.h"
+#include "deque.h"
 
 t_bool	take_left_fork(t_philo *philo)
 {
@@ -26,36 +28,42 @@ t_bool	take_right_fork(t_philo *philo)
 {
 	if (pthread_mutex_lock(&philo->fork[R]))
 	{
-		pthread_mutex_unlock(&philo->fork[R]);
+		pthread_mutex_unlock(&philo->fork[L]);
 		return (FT_FALSE);
 	}
 	return (FT_TRUE);
 }
 
-static void	set_last_eat(t_philo *philo)
+static t_bool	set_last_eat(t_philo *philo)
 {
 	struct timeval	tv;
 
-	pthread_mutex_lock(&philo->philo_lock);
+	if (pthread_mutex_lock(&philo->philo_lock))
+		return (FT_FALSE);
 	gettimeofday(&tv, NULL);
 	philo->last_eat = ((tv.tv_sec * 1000000) + tv.tv_usec);
 	philo->eat_cnt++;
-	pthread_mutex_unlock(&philo->philo_lock);
+	if (pthread_mutex_unlock(&philo->philo_lock))
+		return (FT_FALSE);
+	return (FT_TRUE);
 }
 
-static void	write_eat_state(t_philo *philo)
+t_bool	save_state_message(t_philo *philo, char *state)
 {
-	uint64_t	elapsed_time;
-	char		*eat_state_line;
+	t_message	*message;
+	t_deque		*deque;
 
-	elapsed_time = get_elapsed_time(philo->info.start_time) / 1000;
-	eat_state_line = make_eat_line(elapsed_time, philo);
-}
-
-char	*make_eat_line(uint64_t sec, t_philo *philo)
-{
-	// 100 1 is eating
-	const int	id = philo->id;
+	deque = philo->info.deque;
+	message = ft_calloc(1, sizeof(t_messag));
+	message->elapsed_time = get_elapsed_time(philo->info.start_time) / 1000;
+	message->id = philo->id;
+	message->state = state;
+	if (pthread_mutex_lock(&philo->info.que_lock))
+		return (FT_FALSE);
+	deque->push_rear(deque, message);
+	if (pthread_mutex_unlock(&philo->info.que_lock))
+		return (FT_FALSE);
+	return (FT_TRUE);
 }
 
 t_bool	philo_eat(t_philo *philo)
@@ -67,8 +75,9 @@ t_bool	philo_eat(t_philo *philo)
 	}
 	else
 		return (FT_FALSE);
-	set_last_eat(philo);
-	write_eat_state(philo);
+	if (!set_last_eat(philo))
+		
+	save_state_message(philo, EATING);
 	philo_usleep(philo->info.t_eat * 1000);
 	pthread_mutex_unlock(&philo->fork[L]);
 	pthread_mutex_unlock(&philo->fork[R]);
