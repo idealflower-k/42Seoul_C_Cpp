@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 15:06:52 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/03 13:24:12 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/05 14:55:08 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,7 @@ void	*ft_calloc(size_t count, size_t size)
 		return ((void *)0);
 	temp = malloc(size * count);
 	if (!temp)
-	{
-		ft_print_exit("malloc error\n", 1);
 		return (NULL);
-	}
 	ft_bzero(temp, (count * size));
 	return (temp);
 }

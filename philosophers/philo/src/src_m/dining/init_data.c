@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 15:34:02 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/01 20:42:42 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/05 17:56:42 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,11 @@ t_bool	init_forks(void)
 
 void	init_info(t_info *info)
 {
-	const t_meta	*meta = get_meta(0, NULL);
-	const t_arg		*args = meta->args;
+	t_meta	*meta;
+	t_arg	*args;
 
+	meta = get_meta(0, NULL);
+	args = meta->args;
 	(*info).t_die = args->t_die;
 	(*info).t_eat = args->t_eat;
 	(*info).t_sleep = args->t_sleep;
@@ -83,12 +85,11 @@ t_bool	init_philo(t_info *info)
 	{
 		if (!init_philo_data(&philos[i], info, i))
 		{
-			set_err(ERR_MUTEX_INIT);
 			destory_forks(args->num_philo);
 			destory_philos(i);
 			return (FT_FALSE);
 		}
 		i++;
 	}
+	return (FT_TRUE);
 }
-

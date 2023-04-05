@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 14:34:44 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/01 20:57:46 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/05 17:52:07 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@
 
 void	detach_threads(pthread_t *threads, int num)
 {
-	const int	cnt = get_args()->num_philo;
 	int			i;
 
 	i = 0;
-	while (i < cnt)
+	while (i < num)
 	{
 		if (pthread_detach(threads[i]))
 			return ;
@@ -42,16 +41,16 @@ void	destory_forks(int num)
 
 void	destory_philos(int num)
 {
-	pthread_mutex_t	*philos;
-	int				i;
+	t_philo	*philos;
+	int		i;
 
 	philos = get_philos();
 	i = -1;
 	while (++i < num)
-		pthread_mutex_destroy(&philos[i]);
+		pthread_mutex_destroy(&philos[i].philo_lock);
 }
 
-static void	free_meta_data(void)
+void	free_meta_data(void)
 {
 	t_meta	*meta;
 
@@ -59,6 +58,7 @@ static void	free_meta_data(void)
 	free(meta->args);
 	free(meta->forks);
 	free(meta->philos);
+	free(meta->threads);
 	dq_free(meta->deque);
 }
 

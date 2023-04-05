@@ -6,7 +6,7 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/24 17:54:29 by sanghwal          #+#    #+#              #
-#    Updated: 2023/03/31 15:30:01 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/04/05 16:14:56 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,13 +19,14 @@ include $(TOPDIR)/config/color_rules.mk
 
 NAME = $(PROJECT_NAME)
 
-DIRS = parser \
-	unit_test \
+DIRS = deque \
+	dining \
 	meta \
+	parser \
 	philo_thread \
 	philo_time \
-	deque \
-	dining
+	unit_test \
+	utils
 
 HEADS = 
 

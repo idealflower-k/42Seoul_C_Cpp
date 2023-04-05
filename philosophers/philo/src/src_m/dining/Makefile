@@ -6,7 +6,7 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/30 13:59:54 by sanghwal          #+#    #+#              #
-#    Updated: 2023/03/30 14:34:42 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/04/05 17:40:42 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,9 @@ endif
 include $(TOPDIR)/config/Rules.mk
 include $(TOPDIR)/config/color_rules.mk
 
-SRCS = set_dining.c
+SRCS = set_dining.c \
+	init_data.c \
+	monitoring.c
 
 NAME = dining.a
 

@@ -6,12 +6,17 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:00:06 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/04 16:13:40 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/05 17:53:24 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINES_H
 # define DEFINES_H
+
+typedef enum e_meta_flag	t_meta_flag;
+typedef enum e_state		t_state;
+typedef enum e_err			t_err;
+typedef enum e_bool			t_bool;
 
 typedef struct s_arg		t_arg;
 typedef struct s_meta		t_meta;
@@ -19,11 +24,6 @@ typedef struct s_info		t_info;
 typedef struct s_philo		t_philo;
 typedef struct s_deque		t_deque;
 typedef struct s_message	t_message;
-
-typedef enum e_meta_flag	t_meta_flag;
-typedef enum e_state		t_state;
-typedef enum e_err			t_err;
-typedef enum e_bool			t_bool;
 
 # define L 0
 # define R 1
@@ -36,6 +36,11 @@ typedef enum e_bool			t_bool;
 # define THINKING "is thinking\n"
 # define DIE "died\n"
 
+enum e_bool
+{
+	FT_FALSE,
+	FT_TRUE
+};
 struct s_arg
 {
 	int			num_philo;
@@ -54,6 +59,7 @@ struct s_meta
 	pthread_mutex_t	start;
 	t_deque			*deque;
 	pthread_mutex_t	que_lock;
+	pthread_t		*threads;
 	int				error;
 };
 
@@ -83,7 +89,6 @@ struct s_philo
 {
 	int				id;
 	int				eat_cnt;
-	t_state			state;
 	uint64_t		last_eat;
 	t_bool			terminate;
 	t_info			info;
@@ -113,26 +118,11 @@ struct s_deque
 	void	*(*peek_rear)(const t_deque *);
 };
 
-enum e_state
-{
-	TAKE_FORK,
-	EAT,
-	SLEEP,
-	THINK,
-	DIE
-};
-
 enum e_err
 {
 	NOTHING,
 	ERR_MUTEX_INIT,
 	ERR_PTHREAD_CREATE
-};
-
-enum e_bool
-{
-	FT_FALSE,
-	FT_TRUE
 };
 
 #endif

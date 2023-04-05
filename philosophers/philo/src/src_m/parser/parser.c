@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 14:49:51 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/31 16:15:39 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/05 15:43:06 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,18 @@
 
 t_bool	set_number_of_philosophers(t_arg **args, char *av)
 {
-	int	num;
+	int			num;
+	uint64_t	unum;
 
-	num = ft_atoi(av);
+	if (!ft_atouint64(av, &unum))
+	{
+		free(*args);
+		return (FT_FALSE);
+	}
+	num = (int)unum;
 	if (num < 1)
 	{
 		free(*args);
-		set_err(META_ARG);
 		ft_print_err("number of philosophers error\n");
 		return (FT_FALSE);
 	}
@@ -45,7 +50,6 @@ t_bool	set_times(t_arg **args, char **av)
 		if (!ft_atouint64(av[idx++], &ft_time))
 		{
 			free(*args);
-			set_err(META_ARG);
 			ft_print_err("invalid time error\n");
 			return (FT_FALSE);
 		}
@@ -62,13 +66,18 @@ t_bool	set_times(t_arg **args, char **av)
 
 t_bool	set_must_eat(t_arg **args, char *av)
 {
-	int	num;
+	int			num;
+	uint64_t	unum;
 
-	num = ft_atoi(av);
+	if (!ft_atouint64(av, &unum))
+	{
+		free(*args);
+		return (FT_FALSE);
+	}
+	num = (int)unum;
 	if (num < 0)
 	{
 		free(*args);
-		set_err(META_ARG);
 		ft_print_err("negative must_eat\n");
 		return (FT_FALSE);
 	}

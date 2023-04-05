@@ -6,7 +6,7 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/28 19:52:15 by sanghwal          #+#    #+#              #
-#    Updated: 2023/04/04 16:23:31 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/04/05 15:07:01 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ include $(TOPDIR)/config/color_rules.mk
 SRCS = create_thread.c \
 	start_routine.c \
 	philo_eat.c \
-	philo_sleep.c
+	philo_sleep_think.c \
+	philo_utils.c
 
 NAME = philo_thread.a
 

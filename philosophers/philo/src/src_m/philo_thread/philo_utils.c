@@ -1,42 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_dining.c                                       :+:      :+:    :+:   */
+/*   philo_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/30 14:01:09 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/05 17:56:30 by sanghwal         ###   ########seoul.kr  */
+/*   Created: 2023/04/05 14:59:15 by sanghwal          #+#    #+#             */
+/*   Updated: 2023/04/05 18:04:34 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 #include "defines.h"
-#include "philo_thread.h"
 #include "philo_time.h"
 #include "utils.h"
-#include "deque.h"
-#include "meta.h"
 
-t_bool	set_dining(t_info *info)
+t_bool	save_state_message(t_philo *philo, char *state)
 {
-	t_meta		*meta;
-	pthread_t	*threads;
+	t_message	*message;
+	t_deque		*deque;
 
-	meta = get_meta(0, NULL);
-	init_info(info);
-	if (!init_forks() || !init_philo(info))
+	deque = philo->info.deque;
+	message = ft_calloc(1, sizeof(t_message));
+	if (!message)
 		return (FT_FALSE);
-	threads = ft_calloc(meta->args->num_philo, sizeof(pthread_t));
-	meta->threads = threads;
-	pthread_mutex_lock(&meta->start);
-	if (!create_thread(threads))
-	{
-		pthread_mutex_unlock(&meta->start);
+	message->elapsed_time = get_elapsed_time(*(philo->info.start_time)) / 1000;
+	message->id = philo->id;
+	message->state = state;
+	if (pthread_mutex_lock(philo->info.que_lock))
 		return (FT_FALSE);
-	}
-	meta->start_time = get_current_time();
-	pthread_mutex_unlock(&meta->start);
-	philo_usleep(meta->args->t_die * 0.5);
+	deque->push_rear(deque, message);
+	if (pthread_mutex_unlock(philo->info.que_lock))
+		return (FT_FALSE);
 	return (FT_TRUE);
 }

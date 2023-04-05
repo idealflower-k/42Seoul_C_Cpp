@@ -6,7 +6,7 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/24 17:27:08 by sanghwal          #+#    #+#              #
-#    Updated: 2023/03/25 10:18:09 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/04/05 15:13:52 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,8 @@ CFLAGS = -Wall -Wextra -Werror -MMD -MP
 Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
 
 CPPFLAGS = -I$(TOPDIR)/includes -I$(TOPDIR)/src/src_m/includes
-LDFLAGS = -L$(TOPDIR)/lib
-LDLIBS = -lft
+LDFLAGS = 
+LDLIBS =
 
 # debug
 ifdef DEBUG

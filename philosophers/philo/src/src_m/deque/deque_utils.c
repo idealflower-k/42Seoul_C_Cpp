@@ -6,13 +6,15 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 15:24:32 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/31 15:28:03 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/05 16:11:02 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 #include "deque.h"
 #include "defines.h"
+#include "meta.h"
+#include "utils.h"
 
 void	*dq_peek_front(const t_deque *dque)
 {

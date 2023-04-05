@@ -6,12 +6,13 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 21:51:40 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/03 11:23:11 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/05 15:44:06 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 #include "defines.h"
+#include "philo_time.h"
 
 uint64_t	get_current_time(void)
 {
@@ -37,7 +38,7 @@ void	philo_usleep(uint64_t microsec)
 	while (1)
 	{
 		usleep(42);
-		if (current_time() >= end_time)
+		if (get_current_time() >= end_time)
 			return ;
 	}
 }
