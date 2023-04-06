@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 16:52:58 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/05 18:05:11 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/06 20:00:17 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "parser.h"
 #include "meta.h"
 #include "dining.h"
+#include "monitoring.h"
 #include "utils.h"
 
 int	main(int ac, char **av)
@@ -40,6 +41,7 @@ int	main(int ac, char **av)
 	destory_philos(meta->args->num_philo);
 	free_all();
 	free(meta);
+	printf("=====end=====\n");
 	// system("leaks philosophers");
 	return (0);
 }

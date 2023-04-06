@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/30 13:59:54 by sanghwal          #+#    #+#              #
-#    Updated: 2023/04/06 16:22:29 by sanghwal         ###   ########seoul.kr   #
+#    Created: 2023/04/06 16:22:04 by sanghwal          #+#    #+#              #
+#    Updated: 2023/04/06 16:52:31 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,10 @@ endif
 include $(TOPDIR)/config/Rules.mk
 include $(TOPDIR)/config/color_rules.mk
 
-SRCS = set_dining.c \
-	init_data.c \
+SRCS = monitoring.c \
+	monitoring_utils.c
 
-NAME = dining.a
+NAME = monitoring.a
 
 OBJS = $(SRCS:.c=.o)
 DEPS = $(SRCS:.c=.d)

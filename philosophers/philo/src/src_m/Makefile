@@ -6,7 +6,7 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/24 17:54:29 by sanghwal          #+#    #+#              #
-#    Updated: 2023/04/05 16:14:56 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/04/06 20:51:59 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ DIRS = deque \
 	parser \
 	philo_thread \
 	philo_time \
+	monitoring \
 	unit_test \
 	utils
 

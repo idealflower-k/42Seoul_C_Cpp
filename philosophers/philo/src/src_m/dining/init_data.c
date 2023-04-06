@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 15:34:02 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/05 17:56:42 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/06 19:07:06 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ t_bool	init_forks(void)
 	int		i;
 
 	meta = get_meta(0, NULL);
-	i = 0;
-	while (i < meta->args->num_philo)
+	i = -1;
+	while (++i < meta->args->num_philo)
 	{
 		if (pthread_mutex_init(&meta->forks[i], NULL))
 		{
@@ -31,7 +31,6 @@ t_bool	init_forks(void)
 			destory_forks(i);
 			return (FT_FALSE);
 		}
-		i++;
 	}
 	return (FT_TRUE);
 }
@@ -63,11 +62,11 @@ t_bool	init_philo_data(t_philo *philo, t_info *info, int id)
 	philo->last_eat = 0;
 	philo->terminate = FT_FALSE;
 	philo->info = *info;
-	if (id == 1)
-		philo->fork[R] = meta->forks[args->num_philo - 1];
+	philo->fork[L] = &meta->forks[philo->id - 1];
+	if (philo->id == 1)
+		philo->fork[R] = &meta->forks[args->num_philo - 1];
 	else
-		philo->fork[R] = meta->forks[id - 2];
-	philo->fork[L] = meta->forks[id - 1];
+		philo->fork[R] = &meta->forks[philo->id - 2];
 	if (pthread_mutex_init(&philo->philo_lock, NULL))
 		return (FT_FALSE);
 	return (FT_TRUE);

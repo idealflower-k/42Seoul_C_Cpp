@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 21:04:50 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/05 20:06:15 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/06 19:08:25 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 static t_bool	take_left_fork(t_philo *philo)
 {
-	if (pthread_mutex_lock(&philo->fork[L]))
+	if (pthread_mutex_lock(philo->fork[L]))
 		return (FT_FALSE);
 	save_state_message(philo, TAKE_FORK);
 	return (FT_TRUE);
@@ -27,9 +27,14 @@ static t_bool	take_left_fork(t_philo *philo)
 
 static t_bool	take_right_fork(t_philo *philo)
 {
-	if (pthread_mutex_lock(&philo->fork[R]))
+	if (philo->fork[L] == philo->fork[R])
 	{
-		pthread_mutex_unlock(&philo->fork[L]);
+		pthread_mutex_unlock(philo->fork[L]);
+		return (FT_FALSE);
+	}
+	if (pthread_mutex_lock(philo->fork[R]))
+	{
+		pthread_mutex_unlock(philo->fork[L]);
 		return (FT_FALSE);
 	}
 	save_state_message(philo, TAKE_FORK);
@@ -64,8 +69,8 @@ t_bool	philo_eat(t_philo *philo)
 	if (!save_state_message(philo, EATING))
 		return (FT_FALSE);
 	philo_usleep(philo->info.t_eat * 1000);
-	if (pthread_mutex_unlock(&philo->fork[L]) \
-		|| pthread_mutex_unlock(&philo->fork[R]))
+	if (pthread_mutex_unlock(philo->fork[L]) \
+		|| pthread_mutex_unlock(philo->fork[R]))
 		return (FT_FALSE);
 	return (FT_TRUE);
 }

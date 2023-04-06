@@ -6,7 +6,7 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/24 17:27:08 by sanghwal          #+#    #+#              #
-#    Updated: 2023/04/05 15:13:52 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/04/06 20:52:33 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,11 @@ endif
 # address
 ifdef ADDR
 	CFLAGS += -fsanitize=address
+endif
+
+ifdef RACE
+	CFLAGS += -g -fsanitize=thread
+	LDFLAGS += -g -fsanitize=thread
 endif
 
 link_files:: unlink_files

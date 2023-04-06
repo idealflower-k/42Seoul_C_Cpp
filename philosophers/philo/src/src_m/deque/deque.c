@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 15:24:08 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/01 20:29:38 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/06 20:02:33 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ t_deque	*deque_init(size_t size)
 	dque->rear = 0;
 	dque->use_size = 0;
 	dque->nodes = ft_calloc(sizeof(void *), dque->capacity);
+	if (!dque->nodes)
+	{
+		free(dque);
+		return (NULL);
+	}
 	dque->push_front = dq_push_front;
 	dque->push_rear = dq_push_rear;
 	dque->pop_front = dq_pop_front;

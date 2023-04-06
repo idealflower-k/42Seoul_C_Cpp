@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dining.h                                           :+:      :+:    :+:   */
+/*   monitoring.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/30 14:00:20 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/06 16:23:43 by sanghwal         ###   ########seoul.kr  */
+/*   Created: 2023/04/06 16:24:00 by sanghwal          #+#    #+#             */
+/*   Updated: 2023/04/06 19:26:54 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DINING_H
-# define DINING_H
+#ifndef MONITORING_H
+# define MONITORING_H
 
-t_bool	set_dining(t_info *info);
-t_bool	init_philo(t_info *info);
-t_bool	init_philo_data(t_philo *philo, t_info *info, int id);
-void	init_info(t_info *info);
-t_bool	init_forks(void);
+void	monitoring(void);
+t_bool	display_philo_state(void);
+void	print_message(uint64_t elapsed_time, int id, char *state);
+void	print_all_message(void);
+void	terminate_true(void);
+t_bool	check_philo(t_arg *arg);
+t_bool	check_die(uint64_t curr_time, t_philo *philo);
+t_bool	check_must_eat(t_philo *philo, int *must_cnt);
 
 #endif

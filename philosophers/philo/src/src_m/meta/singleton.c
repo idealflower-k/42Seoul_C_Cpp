@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:53:19 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/05 16:32:00 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/06 20:15:46 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static t_bool	set_args(t_meta **meta, int ac, char **av)
 		if (!set_must_eat(&((*meta)->args), av[5]))
 			return (FT_FALSE);
 	}
+	else
+		(*meta)->args->must_eat = -1;
 	return (FT_TRUE);
 }
 
@@ -42,11 +44,12 @@ static t_bool	set_data(t_meta **meta, t_arg *arg)
 	(*meta)->forks \
 		= ft_calloc(arg->num_philo, sizeof(pthread_mutex_t));
 	(*meta)->philos = ft_calloc(arg->num_philo, sizeof(t_philo));
-	(*meta)->deque = deque_init(arg->num_philo * 4);
+	(*meta)->deque = deque_init(arg->num_philo * 5);
 	if ((*meta)->forks == NULL \
 		|| (*meta)->philos == NULL \
 		|| (*meta)->deque == NULL)
 	{
+		ft_print_err("make_data fail\n");
 		free_meta_data();
 		return (FT_FALSE);
 	}
@@ -77,6 +80,7 @@ t_meta	*singleton(int ac, char **av)
 	}
 	if (!set_args(&meta, ac, av) || !set_data(&meta, meta->args))
 	{
+		printf("wrong arguments\n");
 		free(meta);
 		return (NULL);
 	}

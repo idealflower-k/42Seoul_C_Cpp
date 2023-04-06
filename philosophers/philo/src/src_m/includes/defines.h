@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:00:06 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/05 17:53:24 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/06 19:29:46 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_message	t_message;
 # define SLEEPING "is sleeping\n"
 # define THINKING "is thinking\n"
 # define DIE "died\n"
+# define MUST_EAT "Everyone ate as much as must_eat\n"
 
 enum e_bool
 {
@@ -92,7 +93,7 @@ struct s_philo
 	uint64_t		last_eat;
 	t_bool			terminate;
 	t_info			info;
-	pthread_mutex_t	fork[2];
+	pthread_mutex_t	*fork[2];
 	pthread_mutex_t	philo_lock;
 };
 

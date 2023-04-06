@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 15:24:32 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/05 16:11:02 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/06 19:57:02 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	dq_free(const t_deque *dque)
 	size_t	i;
 
 	i = 0;
+	if (dque == NULL)
+		return ;
 	while (i < dque->use_size)
 	{
 		free(dque->nodes[(i + dque->front) % dque->capacity]);

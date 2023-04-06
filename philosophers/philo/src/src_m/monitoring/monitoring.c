@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 17:09:03 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/05 20:59:02 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/06 17:00:21 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,45 +15,29 @@
 #include "philo_time.h"
 #include "deque.h"
 #include "meta.h"
+#include "monitoring.h"
 
-t_bool	check_philo(void)
+t_bool	check_philo(t_arg *arg)
 {
-	t_philo	*philos;
-	t_arg	*arg;
-	int		i;
+	uint64_t	curr_time;
+	t_philo		*philos;
+	int			i;
+	int			must_cnt;
 
 	philos = get_philos();
-	arg = get_args();
 	i = -1;
+	must_cnt = 0;
 	while (++i < arg->num_philo)
 	{
 		pthread_mutex_lock(&philos[i].philo_lock);
-		if (philos[i].last_eat != 0 && \
-			get_current_time() - philos[i].last_eat >= arg->t_die * 1000000)
-		{
-			pthread_mutex_unlock(&philos[i].philo_lock);
+		curr_time = get_current_time();
+		if (!check_die(curr_time, &philos[i]))
 			return (FT_FALSE);
-		}
+		if (!check_must_eat(&philos[i], &must_cnt))
+			return (FT_FALSE);
 		pthread_mutex_unlock(&philos[i].philo_lock);
 	}
 	return (FT_TRUE);
-}
-
-void	terminate_true(void)
-{
-	t_philo	*philos;
-	t_arg	*arg;
-	int		i;
-
-	philos = get_philos();
-	arg = get_args();
-	i = -1;
-	while (++i < arg->num_philo)
-	{
-		pthread_mutex_lock(&philos[i].philo_lock);
-		philos[i].terminate = FT_TRUE;
-		pthread_mutex_unlock(&philos[i].philo_lock);
-	}
 }
 
 t_bool	display_philo_state(void)
@@ -64,14 +48,13 @@ t_bool	display_philo_state(void)
 
 	meta = get_meta(0, NULL);
 	deque = meta->deque;
-	while (check_philo())
+	while (check_philo(meta->args))
 	{
 		pthread_mutex_lock(&meta->que_lock);
 		if (deque->use_size > 0)
 		{
 			message = deque->pop_front(deque);
-			printf("%llu %d %s", \
-				message->elapsed_time, message->id, message->state);
+			print_message(message->elapsed_time, message->id, message->state);
 			free(message);
 		}
 		pthread_mutex_unlock(&meta->que_lock);
