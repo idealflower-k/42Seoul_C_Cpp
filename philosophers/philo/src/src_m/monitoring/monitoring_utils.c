@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 16:26:32 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/07 15:16:02 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/07 15:37:38 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ t_bool	print_all_message(void)
 
 	meta = get_meta(0, NULL);
 	deque = meta->deque;
+	philo_usleep(42);
 	if (pthread_mutex_lock(&meta->que_lock))
 		return (FT_FALSE);
 	while (deque->use_size > 0)
