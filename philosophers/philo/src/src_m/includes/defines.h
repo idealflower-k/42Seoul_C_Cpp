@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:00:06 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/06 19:29:46 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/07 14:26:26 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ enum e_meta_flag
 struct s_info
 {
 	pthread_mutex_t	*start;
-	uint64_t		*start_time;
 	pthread_mutex_t	*que_lock;
 	t_deque			*deque;
 	uint64_t		t_die;
@@ -91,6 +90,7 @@ struct s_philo
 	int				id;
 	int				eat_cnt;
 	uint64_t		last_eat;
+	uint64_t		start_time;
 	t_bool			terminate;
 	t_info			info;
 	pthread_mutex_t	*fork[2];

@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 22:12:26 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/06 20:48:44 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/07 14:59:45 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,15 @@
 
 static t_bool	check_terminate(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->philo_lock);
+	if (pthread_mutex_lock(&philo->philo_lock))
+		return (FT_FALSE);
 	if (philo->terminate == FT_TRUE)
 	{
 		pthread_mutex_unlock(&philo->philo_lock);
 		return (FT_FALSE);
 	}
-	pthread_mutex_unlock(&philo->philo_lock);
+	if (pthread_mutex_unlock(&philo->philo_lock))
+		return (FT_FALSE);
 	return (FT_TRUE);
 }
 
@@ -33,7 +35,11 @@ void	*start_routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	philo->last_eat = *philo->info.start_time;
+	if (pthread_mutex_lock(&philo->philo_lock))
+		return (NULL);
+	philo->last_eat = philo->start_time;
+	if (pthread_mutex_unlock(&philo->philo_lock))
+		return (NULL);
 	if (pthread_mutex_lock(philo->info.start))
 		return (NULL);
 	if (pthread_mutex_unlock(philo->info.start))

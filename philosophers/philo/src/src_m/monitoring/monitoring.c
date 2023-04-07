@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 17:09:03 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/06 17:00:21 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/07 14:58:43 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "deque.h"
 #include "meta.h"
 #include "monitoring.h"
+#include "utils.h"
 
 t_bool	check_philo(t_arg *arg)
 {
@@ -29,13 +30,15 @@ t_bool	check_philo(t_arg *arg)
 	must_cnt = 0;
 	while (++i < arg->num_philo)
 	{
-		pthread_mutex_lock(&philos[i].philo_lock);
+		if (pthread_mutex_lock(&philos[i].philo_lock))
+			return (FT_FALSE);
 		curr_time = get_current_time();
 		if (!check_die(curr_time, &philos[i]))
 			return (FT_FALSE);
 		if (!check_must_eat(&philos[i], &must_cnt))
 			return (FT_FALSE);
-		pthread_mutex_unlock(&philos[i].philo_lock);
+		if (pthread_mutex_unlock(&philos[i].philo_lock))
+			return (FT_FALSE);
 	}
 	return (FT_TRUE);
 }
@@ -50,14 +53,16 @@ t_bool	display_philo_state(void)
 	deque = meta->deque;
 	while (check_philo(meta->args))
 	{
-		pthread_mutex_lock(&meta->que_lock);
+		if (pthread_mutex_lock(&meta->que_lock))
+			return (FT_FALSE);
 		if (deque->use_size > 0)
 		{
 			message = deque->pop_front(deque);
 			print_message(message->elapsed_time, message->id, message->state);
 			free(message);
 		}
-		pthread_mutex_unlock(&meta->que_lock);
+		if (pthread_mutex_unlock(&meta->que_lock))
+			return (FT_FALSE);
 	}
 	return (FT_FALSE);
 }
@@ -80,7 +85,12 @@ t_bool	join_threads(void)
 
 void	monitoring(void)
 {
+	t_meta	*meta;
+
+	meta = get_meta(0, NULL);
 	display_philo_state();
-	terminate_true();
-	join_threads();
+	if (!terminate_true())
+		detach_threads(meta->threads, meta->args->num_philo);
+	else
+		join_threads();
 }

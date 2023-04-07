@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 14:01:09 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/06 20:44:08 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/07 15:00:07 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,16 @@ t_bool	set_dining(t_info *info)
 	if (!threads)
 		return (FT_FALSE);
 	meta->threads = threads;
-	pthread_mutex_lock(&meta->start);
+	if (pthread_mutex_lock(&meta->start))
+		return (FT_FALSE);
 	if (!create_thread(threads))
 	{
 		pthread_mutex_unlock(&meta->start);
 		return (FT_FALSE);
 	}
 	meta->start_time = get_current_time();
-	pthread_mutex_unlock(&meta->start);
+	if (pthread_mutex_unlock(&meta->start))
+		return (FT_FALSE);
 	philo_usleep(meta->args->t_die);
 	return (FT_TRUE);
 }

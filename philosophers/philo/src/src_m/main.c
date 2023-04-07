@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 16:52:58 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/06 20:00:17 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/07 14:49:17 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,5 @@ int	main(int ac, char **av)
 	free_all();
 	free(meta);
 	printf("=====end=====\n");
-	// system("leaks philosophers");
 	return (0);
 }

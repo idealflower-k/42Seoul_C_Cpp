@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 14:49:51 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/05 15:43:06 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/07 15:09:03 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,20 @@ t_bool	set_number_of_philosophers(t_arg **args, char *av)
 	int			num;
 	uint64_t	unum;
 
+	num = 0;
 	if (!ft_atouint64(av, &unum))
-	{
-		free(*args);
-		return (FT_FALSE);
-	}
-	num = (int)unum;
-	if (num < 1)
 	{
 		free(*args);
 		ft_print_err("number of philosophers error\n");
 		return (FT_FALSE);
 	}
+	if (unum > 2147483647)
+	{
+		free(*args);
+		ft_print_err("number of philosophers error\n");
+		return (FT_FALSE);
+	}
+	num = (int)unum;
 	(*args)->num_philo = num;
 	return (FT_TRUE);
 }
@@ -72,15 +74,16 @@ t_bool	set_must_eat(t_arg **args, char *av)
 	if (!ft_atouint64(av, &unum))
 	{
 		free(*args);
+		ft_print_err("invalid must_eat error\n");
+		return (FT_FALSE);
+	}
+	if (unum > 2147483647)
+	{
+		free(*args);
+		ft_print_err("invalid must_eat error\n");
 		return (FT_FALSE);
 	}
 	num = (int)unum;
-	if (num < 0)
-	{
-		free(*args);
-		ft_print_err("negative must_eat\n");
-		return (FT_FALSE);
-	}
 	(*args)->must_eat = num;
 	return (FT_TRUE);
 }

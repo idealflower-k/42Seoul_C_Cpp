@@ -6,14 +6,14 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/24 17:27:08 by sanghwal          #+#    #+#              #
-#    Updated: 2023/04/06 20:52:33 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/04/07 14:45:19 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 .DEFAULT_ON_ERROR:
 .DEFAULT_GOAL = all
 
-PROJECT_NAME = philosophers
+PROJECT_NAME = philo
 
 ARFLAGS = rcs
 CFLAGS = -Wall -Wextra -Werror -MMD -MP

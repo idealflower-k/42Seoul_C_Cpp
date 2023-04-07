@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 15:34:02 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/06 19:07:06 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/07 14:29:52 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	init_info(t_info *info)
 	(*info).t_eat = args->t_eat;
 	(*info).t_sleep = args->t_sleep;
 	(*info).must_eat = args->must_eat;
-	(*info).start_time = &meta->start_time;
 	(*info).start = &meta->start;
 	(*info).que_lock = &meta->que_lock;
 	(*info).deque = meta->deque;
@@ -62,6 +61,7 @@ t_bool	init_philo_data(t_philo *philo, t_info *info, int id)
 	philo->last_eat = 0;
 	philo->terminate = FT_FALSE;
 	philo->info = *info;
+	philo->start_time = meta->start_time;
 	philo->fork[L] = &meta->forks[philo->id - 1];
 	if (philo->id == 1)
 		philo->fork[R] = &meta->forks[args->num_philo - 1];
