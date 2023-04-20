@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:32:32 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/19 17:32:08 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/20 20:14:35 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@ class PhoneBook
 {
 	private:
 		Contact contact[8];
+		int		next_index;
+		int		use_index;
 	public:
-		int		index;
-		PhoneBook(): index(0) {}
-		int Add();
-		int Search();
+		PhoneBook() : next_index(0), use_index(0) {} // 초기화 리스트
+		int	Add();
+		int	Search() const;
+		void Dispay(int idx) const;
 };
 
 #endif

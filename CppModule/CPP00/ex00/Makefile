@@ -6,12 +6,12 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/12 20:14:08 by sanghwal          #+#    #+#              #
-#    Updated: 2023/04/14 15:02:21 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/04/20 17:58:55 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
-CFLAGS = -std=c++98 -Wall -Wextra -Werror -pedantic-errors -MMD -MP
+CFLAGS = -std=c++98 -Wall -Wextra -Werror -MMD -MP
 
 NAME = megaphone
 

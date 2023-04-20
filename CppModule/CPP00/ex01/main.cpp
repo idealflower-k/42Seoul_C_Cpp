@@ -6,11 +6,22 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 16:20:21 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/19 17:33:39 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/20 20:15:03 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.h"
+
+std::string	cutString(const std::string& str)
+{
+	std::string	new_str = str;
+
+	if (str.length() <= 10)
+		return (str);
+	new_str[9] = '.';
+	new_str[10] = '\0';
+	return (new_str);
+}
 
 int	executeCmd(std::string cmd, PhoneBook& phone_book)
 {
@@ -19,7 +30,7 @@ int	executeCmd(std::string cmd, PhoneBook& phone_book)
 	if (cmd == "SEARCH")
 		return (phone_book.Search());
 	else
-		return (1);
+		std::cout << "Wrong Command\n";
 	return (0);
 }
 
@@ -34,8 +45,7 @@ int	main(void)
 		getline(std::cin, cmd); if(std::cin.eof()) return (0);
 		if (cmd == "EXIT")
 			break;
-		if (executeCmd(cmd, phone_book))
-			break ;
+		executeCmd(cmd, phone_book);
 	}
 	return (0);
 }
