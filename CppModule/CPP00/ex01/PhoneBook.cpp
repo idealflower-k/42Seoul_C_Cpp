@@ -6,26 +6,31 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:32:38 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/20 20:19:15 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/22 15:27:57 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.h"
+#include "main.h"
 
 int	PhoneBook::Add() {
 	int	idx = (this->next_index % 8);
 	Contact *contact = &(this->contact[idx]);
 
 	std::cout << "enter first name\n";
-	getline(std::cin, contact->first_name);	if(std::cin.eof()) return (1);
+	getline(std::cin, contact->first_name);
+	if(std::cin.eof()) {std::cin.clear();} return (1);
 	std::cout << "enter last name\n";
-	getline(std::cin, contact->last_name);	if(std::cin.eof()) return (1);
+	getline(std::cin, contact->last_name);
+	if(std::cin.eof()) {std::cin.clear();}return (1);
 	std::cout << "enter nickname\n";
-	getline(std::cin, contact->nickname);	if(std::cin.eof()) return (1);
+	getline(std::cin, contact->nickname);
+	if(std::cin.eof()) {std::cin.clear();}return (1);
 	std::cout << "enter phone number\n";
-	getline(std::cin, contact->phone_number);	if(std::cin.eof()) return (1);
+	getline(std::cin, contact->phone_number);
+	if(std::cin.eof()) {std::cin.clear();}return (1);
 	std::cout << "enter darkest secret\n";
-	getline(std::cin, contact->darkest_secret);	if(std::cin.eof()) return (1);
+	getline(std::cin, contact->darkest_secret);
+	if(std::cin.eof()) {std::cin.clear();}return (1);
 	this->next_index = (idx + 1) % 8;
 	if (this->use_index < 8)
 		this->use_index++;
@@ -41,10 +46,12 @@ int	PhoneBook::Search() const {
 	std::cout << std::setw(10) << "last name" << '|';
 	std::cout << std::setw(10) << "nickname" << "|\n";
 	while (idx <= this->use_index - 1) {
+		const Contact *contact = &(this->contact[idx]);
+
 		std::cout << std::setw(10) << idx << '|';
-		std::cout << std::setw(10) << cutString(this->contact[idx].first_name) << '|';
-		std::cout << std::setw(10) << cutString(this->contact[idx].last_name) << '|';
-		std::cout << std::setw(10) << cutString(this->contact[idx].nickname) << "|\n";
+		std::cout << std::setw(10) << cutString(contact->first_name) << '|';
+		std::cout << std::setw(10) << cutString(contact->last_name) << '|';
+		std::cout << std::setw(10) << cutString(contact->nickname) << "|\n";
 		idx ++;
 	}
 	std::cout << "enter index number(0~7)\n";
@@ -56,15 +63,17 @@ int	PhoneBook::Search() const {
 }
 
 void	PhoneBook::Dispay(int idx) const {
+	const Contact *contact = &this->contact[idx];
+
 	std::cout << std::setw(15) << "first name :     " <<
-		this->contact[idx].first_name << std::endl;
+		contact->first_name << std::endl;
 	std::cout << std::setw(15) << "last name :      " <<
-		this->contact[idx].last_name << std::endl;
+		contact->last_name << std::endl;
 	std::cout << std::setw(15) << "nickname :       " <<
-		this->contact[idx].nickname << std::endl;
+		contact->nickname << std::endl;
 	std::cout << std::setw(15) << "phonenumber :    " <<
-		this->contact[idx].phone_number << std::endl;
+		contact->phone_number << std::endl;
 	std::cout << std::setw(15) << "darkest_secret : " <<
-		this->contact[idx].darkest_secret << std::endl;
+		contact->darkest_secret << std::endl;
 	return ;
 }
