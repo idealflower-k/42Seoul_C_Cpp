@@ -6,38 +6,50 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:32:38 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/22 15:27:57 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/24 14:57:39 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-int	PhoneBook::Add() {
+void	PhoneBook::Add() {
 	int	idx = (this->next_index % 8);
 	Contact *contact = &(this->contact[idx]);
+	std::string first_name, last_name, nickname, phone_number, darkest_secret;
 
-	std::cout << "enter first name\n";
-	getline(std::cin, contact->first_name);
-	if(std::cin.eof()) {std::cin.clear();} return (1);
-	std::cout << "enter last name\n";
-	getline(std::cin, contact->last_name);
-	if(std::cin.eof()) {std::cin.clear();}return (1);
-	std::cout << "enter nickname\n";
-	getline(std::cin, contact->nickname);
-	if(std::cin.eof()) {std::cin.clear();}return (1);
-	std::cout << "enter phone number\n";
-	getline(std::cin, contact->phone_number);
-	if(std::cin.eof()) {std::cin.clear();}return (1);
-	std::cout << "enter darkest secret\n";
-	getline(std::cin, contact->darkest_secret);
-	if(std::cin.eof()) {std::cin.clear();}return (1);
+	std::cout << "first_name: ";
+	std::getline(std::cin, first_name);
+	if (std::cin.eof() || first_name.empty()) return ;
+
+	std::cout << "last_name: ";
+	std::getline(std::cin, last_name);
+	if (std::cin.eof() || last_name.empty()) return ;
+
+	std::cout << "nickname: ";
+	std::getline(std::cin, nickname);
+	if (std::cin.eof() || nickname.empty()) return ;
+
+	std::cout << "phone_number: ";
+	std::getline(std::cin, phone_number);
+	if (std::cin.eof() || phone_number.empty()) return ;
+
+	std::cout << "darkest_secret: ";
+	std::getline(std::cin, darkest_secret);
+	if (std::cin.eof() || darkest_secret.empty()) return ;
+
+	contact->first_name = first_name;
+	contact->last_name = last_name;
+	contact->nickname = nickname;
+	contact->phone_number = phone_number;
+	contact->darkest_secret = darkest_secret;
+
 	this->next_index = (idx + 1) % 8;
 	if (this->use_index < 8)
 		this->use_index++;
-	return (0);
+	return ;
 }
 
-int	PhoneBook::Search() const {
+void	PhoneBook::Search() const {
 	int idx = 0;
 	std::string	input;
 	
@@ -55,11 +67,11 @@ int	PhoneBook::Search() const {
 		idx ++;
 	}
 	std::cout << "enter index number(0~7)\n";
-	getline(std::cin, input);
+	std::getline(std::cin, input); if (std::cin.eof()) return ;
 	std::stringstream ss(input);
-	ss >> idx; if(idx > 7 || idx < 0) return (1);
+	ss >> idx; if(idx > 7 || idx < 0) return ;
 	this->Dispay(idx);
-	return (0);
+	return ;
 }
 
 void	PhoneBook::Dispay(int idx) const {

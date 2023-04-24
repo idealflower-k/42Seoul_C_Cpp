@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 16:20:21 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/22 15:56:06 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/24 15:03:29 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,39 +23,30 @@ std::string	cutString(const std::string& str)
 	return (new_str);
 }
 
-int	executeCmd(std::string cmd, PhoneBook& phone_book)
+void	executeCmd(std::string cmd, PhoneBook& phone_book)
 {
-	if (cmd == "ADD")
+	if (!cmd.compare("ADD"))
 		return (phone_book.Add());
-	if (cmd == "SEARCH")
+	if (!cmd.compare("SEARCH"))
 		return (phone_book.Search());
 	else
 		std::cout << "Wrong Command!!\n";
-	return (0);
+	return ;
 }
 int main(void)
 {
-    PhoneBook phone_book;
-    std::string cmd;
+	PhoneBook phone_book;
+	std::string cmd;
 
-    while (true)
-    {
-        std::cout << "enter the command [ADD, SEARCH, EXIT]\n";
-
-        // getline()이 eof를 반환하면
-        if (!std::getline(std::cin, cmd)) {
-            // 클리어하고
-            std::cin.clear();
-            // 버퍼를 비우도록 합니다.
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            // continue로 다음 반복을 실행합니다.
-            continue;
-        }
-
-        if (cmd == "EXIT")
-            break;
-
-        executeCmd(cmd, phone_book);
-    }
-    return 0;
+	while (true)
+	{
+		std::cout << "enter the command [ADD, SEARCH, EXIT]\n";
+		std::getline(std::cin, cmd);
+		if (std::cin.eof()) {return (1);}
+		if (!cmd.compare("EXIT"))
+			break;
+		executeCmd(cmd, phone_book);
+		if (std::cin.eof()) {return (1);}
+	}
+	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:32:36 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/22 15:21:32 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/24 14:58:40 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 
-int			executeCmd(std::string cmd, PhoneBook& phone_book);
+void		executeCmd(std::string cmd, PhoneBook& phone_book);
 std::string	cutString(const std::string& str);
 
 #endif
