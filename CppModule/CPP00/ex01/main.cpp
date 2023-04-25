@@ -6,14 +6,19 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 16:20:21 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/24 15:03:29 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/25 16:32:28 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-std::string	cutString(const std::string& str)
-{
+bool	isNumber(std::string& str) {
+	for (std::string::const_iterator i = str.begin(); i != str.end(); i++)
+		if (!isdigit(*i)) return (false);
+	return (true);
+}
+
+std::string	cutString(const std::string& str) {
 	std::string	new_str = str;
 
 	if (str.length() <= 10)
@@ -23,8 +28,7 @@ std::string	cutString(const std::string& str)
 	return (new_str);
 }
 
-void	executeCmd(std::string cmd, PhoneBook& phone_book)
-{
+void	executeCmd(std::string cmd, PhoneBook& phone_book) {
 	if (!cmd.compare("ADD"))
 		return (phone_book.Add());
 	if (!cmd.compare("SEARCH"))
@@ -33,8 +37,8 @@ void	executeCmd(std::string cmd, PhoneBook& phone_book)
 		std::cout << "Wrong Command!!\n";
 	return ;
 }
-int main(void)
-{
+
+int main(void) {
 	PhoneBook phone_book;
 	std::string cmd;
 
@@ -48,5 +52,6 @@ int main(void)
 		executeCmd(cmd, phone_book);
 		if (std::cin.eof()) {return (1);}
 	}
+	system("leaks phonebook");
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:32:36 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/24 14:58:40 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/25 16:33:23 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@
 
 void		executeCmd(std::string cmd, PhoneBook& phone_book);
 std::string	cutString(const std::string& str);
+bool		isNumber(std::string& str);
 
 #endif
