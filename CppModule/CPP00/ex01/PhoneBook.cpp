@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:32:38 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/25 16:32:46 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/26 14:42:55 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ void	PhoneBook::Search() const {
 	if (isNumber(input) && ss >> idx) {
 		if(idx > 7 || idx < 0)
 			return ;
-		std::cout << "idx :" << idx << std::endl;
 		this->Dispay(idx);
 	}
 	return ;
