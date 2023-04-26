@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 16:20:21 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/25 16:32:28 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/26 17:01:59 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ int main(void) {
 	{
 		std::cout << "enter the command [ADD, SEARCH, EXIT]\n";
 		std::getline(std::cin, cmd);
-		if (std::cin.eof()) {return (1);}
+		if (std::cin.eof()) {std::cin.clear(); clearerr(stdin);}
 		if (!cmd.compare("EXIT"))
 			break;
 		executeCmd(cmd, phone_book);
-		if (std::cin.eof()) {return (1);}
+		if (std::cin.eof()) {std::cin.clear(); clearerr(stdin);}
 	}
 	system("leaks phonebook");
 	return 0;
