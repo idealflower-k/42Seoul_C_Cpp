@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*   phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:32:38 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/26 17:03:41 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/28 16:06:54 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	PhoneBook::Search() const {
 	std::cout << std::setw(10) << "first name" << '|';
 	std::cout << std::setw(10) << "last name" << '|';
 	std::cout << std::setw(10) << "nickname" << "|\n";
+
 	while (idx <= this->use_index - 1) {
 		const Contact *contact = &(this->contact[idx]);
 
@@ -66,12 +67,13 @@ void	PhoneBook::Search() const {
 		std::cout << std::setw(10) << cutString(contact->nickname) << "|\n";
 		idx ++;
 	}
+
 	std::cout << "enter index number(0~7)\n";
 	std::getline(std::cin, input); if (std::cin.eof()) return ;
 	std::stringstream ss(input);
+
 	if (isNumber(input) && ss >> idx) {
-		if(idx > 7 || idx < 0)
-			return ;
+		if(idx > 7 || idx < 0) return ;
 		this->Dispay(idx);
 	}
 	return ;
@@ -82,13 +84,18 @@ void	PhoneBook::Dispay(int idx) const {
 
 	std::cout << std::setw(15) << "first name :     " <<
 		contact->first_name << std::endl;
+
 	std::cout << std::setw(15) << "last name :      " <<
 		contact->last_name << std::endl;
+
 	std::cout << std::setw(15) << "nickname :       " <<
 		contact->nickname << std::endl;
+
 	std::cout << std::setw(15) << "phonenumber :    " <<
 		contact->phone_number << std::endl;
+
 	std::cout << std::setw(15) << "darkest_secret : " <<
 		contact->darkest_secret << std::endl;
+
 	return ;
 }

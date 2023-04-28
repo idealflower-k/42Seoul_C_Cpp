@@ -6,17 +6,18 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/12 20:14:08 by sanghwal          #+#    #+#              #
-#    Updated: 2023/04/24 14:20:05 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/04/28 16:07:12 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
-CFLAGS = -std=c++98 -Wall -Wextra -Werror -pedantic-errors -MMD -MP
-
+CFLAGS = -std=c++98 -Wall -Wextra -Werror -MMD -MP
+# -pedantic-errors
 NAME = phonebook
 
 SRCS = main.cpp \
 	PhoneBook.cpp
+
 OBJS = $(SRCS:.cpp=.o)
 DEPS = $(SRCS:.cpp=.d)
 

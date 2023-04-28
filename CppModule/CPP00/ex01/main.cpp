@@ -6,14 +6,14 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 16:20:21 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/26 17:01:59 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/28 16:02:15 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
 bool	isNumber(std::string& str) {
-	for (std::string::const_iterator i = str.begin(); i != str.end(); i++)
+	for (std::string::const_iterator i = str.begin(); i != str.end(); ++i)
 		if (!isdigit(*i)) return (false);
 	return (true);
 }
@@ -39,11 +39,10 @@ void	executeCmd(std::string cmd, PhoneBook& phone_book) {
 }
 
 int main(void) {
-	PhoneBook phone_book;
-	std::string cmd;
+	PhoneBook	phone_book;
+	std::string	cmd;
 
-	while (true)
-	{
+	while (true) {
 		std::cout << "enter the command [ADD, SEARCH, EXIT]\n";
 		std::getline(std::cin, cmd);
 		if (std::cin.eof()) {std::cin.clear(); clearerr(stdin);}
@@ -52,6 +51,5 @@ int main(void) {
 		executeCmd(cmd, phone_book);
 		if (std::cin.eof()) {std::cin.clear(); clearerr(stdin);}
 	}
-	system("leaks phonebook");
-	return 0;
+	return (0);
 }
