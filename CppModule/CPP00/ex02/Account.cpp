@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:58:38 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/28 15:53:52 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/29 17:38:56 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int Account::_totalNbWithdrawals = 0;
 Account::Account(int initial_deposit) {
 	_displayTimestamp();
 
-	this->_accountIndex = _nbAccounts + 1;
+	this->_accountIndex = _nbAccounts;
 	this->_amount = initial_deposit;
 	this->_nbDeposits = 0;
 	this->_nbWithdrawals = 0;

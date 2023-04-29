@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:32:38 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/28 16:06:54 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/29 17:40:25 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
+
+PhoneBook::PhoneBook() : next_index(0), use_index(0) {}
 
 void	PhoneBook::Add() {
 	int	idx = (this->next_index % 8);

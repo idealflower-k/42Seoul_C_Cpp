@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:32:32 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/26 14:45:52 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/04/29 17:36:51 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class PhoneBook
 		int		next_index;
 		int		use_index;
 	public:
-		PhoneBook() : next_index(0), use_index(0) {}
+		PhoneBook();
 		void	Add();
 		void	Search() const;
 		void	Dispay(int idx) const;
