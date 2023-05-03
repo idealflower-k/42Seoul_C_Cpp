@@ -6,13 +6,14 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 16:13:06 by sanghwal          #+#    #+#              #
-#    Updated: 2023/05/02 16:13:24 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/05/03 16:54:52 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror -MMD -MP
 # -pedantic-errors
+
 NAME = replace
 
 SRCS = main.cpp \

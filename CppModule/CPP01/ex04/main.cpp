@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:53:30 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/02 16:14:18 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/03 14:59:54 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	main(int ac, char** av) {
 	if (ac != 4) {std::cout << " arguments error\n"; return (1);}
-
 
 	if (!replaceFile(av[1], av[2], av[3])) {
 		std::cout << "replace error\n";
