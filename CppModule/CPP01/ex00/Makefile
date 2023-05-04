@@ -6,13 +6,14 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/28 16:58:44 by sanghwal          #+#    #+#              #
-#    Updated: 2023/04/28 17:24:15 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/05/04 13:42:43 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
-CFLAGS = -std=c++98 -Wall -Wextra -Werror -MMD -MP
+CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -MMD -MP
 # -pedantic-errors
+
 NAME = zombie
 
 SRCS = main.cpp \
@@ -27,7 +28,7 @@ DEPS = $(SRCS:.cpp=.d)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-		$(CXX) $(CFLAGS) $^ -I. -o $@
+		$(CXX) $(CXXFLAGS) $^ -I. -o $@
 
 clean:
 		rm -f $(OBJS) $(DEPS)

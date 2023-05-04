@@ -6,12 +6,12 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 16:13:06 by sanghwal          #+#    #+#              #
-#    Updated: 2023/05/03 16:54:52 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/05/04 13:45:19 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
-CFLAGS = -std=c++98 -Wall -Wextra -Werror -MMD -MP
+CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -pedantic-errors -MMD -MP
 # -pedantic-errors
 
 NAME = replace
@@ -26,7 +26,7 @@ DEPS = $(SRCS:.cpp=.d)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-		$(CXX) $(CFLAGS) $^ -I. -o $@
+		$(CXX) $(CXXFLAGS) $^ -I. -o $@
 
 clean:
 		rm -f $(OBJS) $(DEPS)
