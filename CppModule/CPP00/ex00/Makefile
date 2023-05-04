@@ -6,12 +6,13 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/12 20:14:08 by sanghwal          #+#    #+#              #
-#    Updated: 2023/04/20 17:58:55 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/05/04 10:58:26 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
-CFLAGS = -std=c++98 -Wall -Wextra -Werror -MMD -MP
+CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -MMD -MP
+# -pedantic-errors
 
 NAME = megaphone
 
@@ -22,7 +23,7 @@ DEPS = $(SRCS:.cpp=.d)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CXX) $(CFLAGS) $^ -o $@
+	$(CXX) $(CXXFLAGS) $^ -o $@
 
 clean:
 	rm -f $(OBJS) $(DEPS)
