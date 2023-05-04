@@ -6,12 +6,12 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 16:13:06 by sanghwal          #+#    #+#              #
-#    Updated: 2023/05/04 13:45:19 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/05/04 13:47:34 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
-CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -pedantic-errors -MMD -MP
+CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -MMD -MP
 # -pedantic-errors
 
 NAME = replace
