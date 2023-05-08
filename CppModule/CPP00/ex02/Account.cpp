@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:58:38 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/29 17:38:56 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/08 15:44:22 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,9 +125,11 @@ void	Account::displayStatus(void) const {
 // void	_displayTimestamp( void );
 void	Account::_displayTimestamp(void) {
 	std::time_t t = std::time(NULL);
-    char timestamp[16];
-    std::strftime(timestamp, sizeof(timestamp), "%Y%m%d_%H%M%S", std::localtime(&t));
-    std::cout << "[" << timestamp << "] ";
+	char timestamp[16];
+
+	std::strftime(
+		timestamp, sizeof(timestamp), "%Y%m%d_%H%M%S", std::localtime(&t));
+	std::cout << "[" << timestamp << "] ";
 }
 
 Account::~Account(void) {
