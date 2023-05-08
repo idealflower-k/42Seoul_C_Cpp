@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:53:30 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/03 14:59:54 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/08 20:00:32 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@ int	main(int ac, char** av) {
 		std::cout << "replace error\n";
 		return (1);
 	}
+	system("leaks replace");
 	return (0);
 }

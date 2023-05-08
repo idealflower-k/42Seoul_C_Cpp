@@ -6,14 +6,14 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:40:40 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/04 16:52:52 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/08 19:56:17 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.h"
 
 void	Harl::complain(std::string level) {
-	void	(Harl::*func_ptr[5])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	void	(Harl::*func_ptr[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 	std::string	levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	int			idx = 0;
 
