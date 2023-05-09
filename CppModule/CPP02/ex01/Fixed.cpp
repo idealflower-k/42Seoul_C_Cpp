@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 15:29:41 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/09 19:54:58 by sanghwal         ###   ########seoul.kr  */
+/*   Created: 2023/05/09 20:22:49 by sanghwal          #+#    #+#             */
+/*   Updated: 2023/05/09 21:23:17 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 
 Fixed::Fixed() : fixed_point_num(0) {
 	std::cout << "Default constructor called" << std::endl;
+}
+
+Fixed::Fixed(const int num) {
+	this->fixed_point_num = num << this->fractional_bits;
+}
+
+Fixed::Fixed(const float f_num) {
+	this->fixed_point_num = static_cast<int>(roundf(f_num * 256)); // int형으로 명시적 형변환 해준다.
 }
 
 Fixed::Fixed(const Fixed& origin) {

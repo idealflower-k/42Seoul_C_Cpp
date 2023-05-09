@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Fixed.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 15:42:46 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/09 19:52:23 by sanghwal         ###   ########seoul.kr  */
+/*   Created: 2023/05/09 20:22:51 by sanghwal          #+#    #+#             */
+/*   Updated: 2023/05/09 21:22:31 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.h"
+#ifndef FIXED_H
+# define FIXED_H
 
-int	main(void) {
+#include <iostream>
+#include <cmath>
+#include "Fixed.hpp"
 
-	Fixed	a;
-	Fixed	b(a);
-	Fixed	c;
-
-	c = b;
-
-	std::cout << a.getRawBits()	<< std::endl;
-	std::cout << b.getRawBits()	<< std::endl;
-	std::cout << c.getRawBits()	<< std::endl;
-
-	return (0);
-}
+#endif
