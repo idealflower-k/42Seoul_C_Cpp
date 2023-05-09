@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 16:20:21 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/28 16:02:15 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/09 16:54:22 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ std::string	cutString(const std::string& str) {
 	if (str.length() <= 10)
 		return (str);
 	new_str[9] = '.';
-	new_str[10] = '\0';
+	new_str.erase(10, std::string::npos);
 	return (new_str);
 }
 
