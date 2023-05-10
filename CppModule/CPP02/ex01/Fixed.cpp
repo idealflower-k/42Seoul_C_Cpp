@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 20:22:49 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/09 21:23:17 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/10 20:52:09 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,15 @@ Fixed& Fixed::operator=(const Fixed& origin) {
 	return (*this);
 }
 
-int Fixed::getRawBits() const {
+float	Fixed::toFloat(void) const {
+	return (this->fixed_point_num / 256.0f);
+}
+
+int	Fixed::toInt(void) const {
+	return (this->fixed_point_num >> this->fractional_bits);
+}
+
+int	Fixed::getRawBits() const {
 	std::cout << "getRawBits member function called" << std::endl;
 	return (this->fixed_point_num);
 }
@@ -48,4 +56,9 @@ void	Fixed::setRawBits(int const raw) {
 
 Fixed::~Fixed() {
 	std::cout << "Destructor called" << std::endl;
+}
+
+std::ostream& operator<<(std::ostream& os, const Fixed& fixed) {
+	os << fixed.toFloat();
+	return os;
 }

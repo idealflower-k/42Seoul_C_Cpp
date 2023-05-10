@@ -6,13 +6,12 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 20:22:54 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/09 20:28:36 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/10 20:59:45 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FIXED_HPP
 # define FIXED_HPP
-
 class Fixed {
 	private:
 		static const int	fractional_bits = 8;
@@ -31,5 +30,7 @@ class Fixed {
 		int		toInt(void) const; // 고정소수점 값을 정수 값으로 변환하는 함수
 		~Fixed();
 };
+
+std::ostream& operator<<(std::ostream& os, const Fixed& fixed);
 
 #endif
