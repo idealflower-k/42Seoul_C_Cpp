@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 14:36:54 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/04/28 16:00:33 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/10 15:16:55 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char*	chageToUpper(char* str)
 	const int	LEN = std::strlen(str);
 
 	for (int i = 0; i < LEN; i++) {
-		str[i] = std::toupper((unsigned char)str[i]);
+		str[i] = std::toupper((int)str[i]);
 	}
 	return (str);
 }

@@ -6,15 +6,15 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 16:20:21 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/09 16:54:22 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/10 15:25:45 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
 bool	isNumber(std::string& str) {
-	for (std::string::const_iterator i = str.begin(); i != str.end(); ++i)
-		if (!isdigit(*i)) return (false);
+	for (std::string::const_iterator itr = str.begin(); itr != str.end(); ++itr)
+		if (!isdigit(*itr)) return (false);
 	return (true);
 }
 
@@ -43,13 +43,16 @@ int main(void) {
 	std::string	cmd;
 
 	while (true) {
-		std::cout << "enter the command [ADD, SEARCH, EXIT]\n";
+		std::cout << "Enter the command [ADD, SEARCH, EXIT]\n";
 		std::getline(std::cin, cmd);
 		if (std::cin.eof()) {std::cin.clear(); clearerr(stdin);}
 		if (!cmd.compare("EXIT"))
 			break;
 		executeCmd(cmd, phone_book);
-		if (std::cin.eof()) {std::cin.clear(); clearerr(stdin);}
+		if (std::cin.eof()) {
+			std::cin.clear(); clearerr(stdin);
+			std::cout << std::endl;
+		}
 	}
 	return (0);
 }
