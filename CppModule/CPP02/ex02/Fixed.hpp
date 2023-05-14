@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 18:37:16 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/11 18:41:48 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/14 18:02:45 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,18 @@ class Fixed {
 		Fixed(const Fixed& origin);
 
 		Fixed& operator=(const Fixed& origin);
-		Fixed& operator>(const Fixed& origin);
-		Fixed& operator<(const Fixed& origin);
-		Fixed& operator>=(const Fixed& origin);
-		Fixed& operator<=(const Fixed& origin);
-		Fixed& operator==(const Fixed& origin);
-		Fixed& operator!=(const Fixed& origin);
-		Fixed& operator+(const Fixed& origin);
-		Fixed& operator-(const Fixed& origin);
-		Fixed& operator+(const Fixed& origin);
-		Fixed& operator/(const Fixed& origin);
+
+		bool	operator>(const Fixed& other) const;
+		bool	operator<(const Fixed& other) const;
+		bool	operator>=(const Fixed& other) const;
+		bool	operator<=(const Fixed& other) const;
+		bool	operator==(const Fixed& other) const;
+		bool	operator!=(const Fixed& other) const;
+
+		float	operator+(const Fixed& other);
+		float	operator-(const Fixed& other);
+		float	operator*(const Fixed& other);
+		float	operator/(const Fixed& other);
 
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
