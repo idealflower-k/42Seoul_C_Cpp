@@ -6,18 +6,26 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:00:14 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/04 13:43:22 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/15 21:10:58 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.h"
 
 int	main(void) {
-	Zombie* zombie_array = zombieHorde(5, "arrayZombie");
+	try {
+		Zombie* zombie_array = zombieHorde(-1, "arrayZombie");
 
-	for (int i = 0; i < 5; ++i) {
-		zombie_array[i].announce();
+		if (!zombie_array)
+			throw std::invalid_argument("Failed to create zombie_array");
+
+		for (int i = 0; i < 5; ++i)
+			zombie_array[i].announce();
+
+		delete[] zombie_array;
+	} catch (const std::exception& e) {
+		std::cerr << "Exception caught: " << e.what() << std::endl;
+		return (1);
 	}
-	delete[] zombie_array;
 	return (0);
 }
