@@ -6,13 +6,14 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 14:10:20 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/04 16:38:22 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/16 17:37:34 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.h"
 
 int	main(void) {
+
 	Harl	harl1;
 
 	std::cout << "DEBUG: ";
