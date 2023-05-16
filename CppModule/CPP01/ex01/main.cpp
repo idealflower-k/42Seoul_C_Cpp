@@ -6,20 +6,21 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:00:14 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/15 21:10:58 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/16 16:30:44 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.h"
 
 int	main(void) {
+
+		int		n;
+		Zombie* zombie_array = NULL;
 	try {
-		Zombie* zombie_array = zombieHorde(-1, "arrayZombie");
+		n = 5;
+		zombie_array = zombieHorde(n, "arrayZombie");
 
-		if (!zombie_array)
-			throw std::invalid_argument("Failed to create zombie_array");
-
-		for (int i = 0; i < 5; ++i)
+		for (int i = 0; i < n; ++i)
 			zombie_array[i].announce();
 
 		delete[] zombie_array;
