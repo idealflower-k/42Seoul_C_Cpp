@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:40:37 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/15 18:49:19 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/16 20:45:26 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ int	main(void) {
 
 	std::cout << b << std::endl;
 
-	std::cout << Fixed::max(a, b) << std::endl;
+	// std::cout << Fixed::max(a, b) << std::endl;
 }

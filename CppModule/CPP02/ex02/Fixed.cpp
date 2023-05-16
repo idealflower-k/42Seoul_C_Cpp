@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 18:37:36 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/15 18:48:53 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/16 20:52:49 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,25 +77,25 @@ float	Fixed::operator/(const Fixed& other) {
 	return (this->toFloat() / other.toFloat());
 }
 
-Fixed&	Fixed::operator++(void) {
-	this->fixed_point_num += static_cast<int>(roundf(this->toFloat() * (1 << this->fractional_bits)));
+const Fixed&	Fixed::operator++(void) {
+	++(this->fixed_point_num);
 	return (*this);
 }
 
 Fixed&	Fixed::operator++(int) {
 	Fixed result(*this);
-	this->fixed_point_num += static_cast<int>(roundf(this->toFloat() * (1 << this->fractional_bits)));
+	++(this->fixed_point_num);
 	return (result);
 }
 
-Fixed&	Fixed::operator--(void) {
-	this->fixed_point_num -= static_cast<int>(roundf(this->toFloat() * (1 << this->fractional_bits)));
+const Fixed&	Fixed::operator--(void) {
+	--(this->fixed_point_num);
 	return (*this);
 }
 
 Fixed&	Fixed::operator--(int) {
 	Fixed result(*this);
-	this->fixed_point_num -= static_cast<int>(roundf(this->toFloat() * (1 << this->fractional_bits)));
+	--(this->fixed_point_num);
 	return (result);
 }
 
@@ -114,31 +114,6 @@ int	Fixed::getRawBits() const {
 
 void	Fixed::setRawBits(int const raw) {
 	this->fixed_point_num = raw;
-}
-
-const Fixed& Fixed::min(int& fixed_num1, int& fixed_num2) {
-	if (fixed_num1 < fixed_num2)
-		return (fixed_num1);
-	return (fixed_num2);
-}
-
-const Fixed& Fixed::min(const int& fixed_num1, const int& fixed_num2)
-{
-	if (fixed_num1 < fixed_num2)
-		return (const_cast<int&>(fixed_num1));
-	return (const_cast<int&>(fixed_num2));
-}
-
-const Fixed& Fixed::max(int& fixed_num1, int& fixed_num2) {
-	if (fixed_num1 > fixed_num2)
-		return (fixed_num1);
-	return (fixed_num2);
-}
-
-const Fixed& Fixed::max(const int& fixed_num1, const int& fixed_num2) {
-	if (fixed_num1 > fixed_num2)
-		return (const_cast<int&>(fixed_num1));
-	return (const_cast<int&>(fixed_num2));
 }
 
 Fixed::~Fixed() {

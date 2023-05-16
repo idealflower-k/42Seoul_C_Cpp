@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 18:37:16 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/15 18:51:33 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/16 20:51:23 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,15 @@ class Fixed {
 		float	operator-(const Fixed& other);
 		float	operator*(const Fixed& other);
 		float	operator/(const Fixed& other);
-		Fixed&	operator++(void);
+		const Fixed&	operator++(void);
 		Fixed&	operator++(int);
-		Fixed&	operator--(void);
+		const Fixed&	operator--(void);
 		Fixed&	operator--(int);
 
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
 		float	toFloat(void) const; // 고정소수점 값을 부동 소수점 값으로 변환하는 함수
 		int		toInt(void) const; // 고정소수점 값을 정수 값으로 변환하는 함수
-		static const float&	min(Fixed& num1, Fixed& num2);
-		static const float&	min(const int& fixed_num1, const int& fixed_num2);
-		static const float&	max(Fixed& num1, Fixed& num2);
-		static const float&	max(const int& fixed_num1, const int& fixed_num2);
 		~Fixed();
 };
 
