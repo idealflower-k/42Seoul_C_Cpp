@@ -6,21 +6,24 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 16:04:38 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/08 20:12:38 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/16 17:15:15 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-bool	replaceFile(std::string file, std::string s1, std::string s2) {
+void	replaceFile(std::string file, std::string s1, std::string s2) {
+
 	std::ifstream	infile(file);
-	std::ofstream	outfile(file + ".replace");
 	std::string		line;
 
-	if (!infile.is_open() || !outfile.is_open()) {
-		std::cout << "file open error\n";
-		return (false);
-	}
+	if (!infile.is_open())
+		throw std::invalid_argument("open infile error");
+
+	std::ofstream	outfile(file + ".replace");
+
+	if (!outfile.is_open())
+		throw std::invalid_argument("open oufile error");
 
 	infile.seekg(0, std::ios::end); // 위치 지정자를 파일 끝으로 옮긴다.
 	int	size = infile.tellg(); // 그 위치를 읽는다. (파일의 크기) 바이트 반환
@@ -35,6 +38,4 @@ bool	replaceFile(std::string file, std::string s1, std::string s2) {
 		pos = line.find(s1, pos + s2.length());
 	}
 	outfile << line;
-
-	return (true);
 }
