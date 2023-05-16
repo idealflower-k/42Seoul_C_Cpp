@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 17:01:36 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/15 20:44:43 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/16 15:50:53 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 class Zombie {
 
-	private:	
-		std::string name;
+	private:
+		std::string	name;
 
 	public:
 		Zombie(std::string name);
-		void	announce(void);
 		~Zombie();
+		void	announce(void);
 };
 
 #endif
