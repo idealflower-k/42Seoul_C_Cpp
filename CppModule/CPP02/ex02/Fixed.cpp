@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 18:37:36 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/16 20:52:49 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/17 15:15:48 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,30 +70,31 @@ float	Fixed::operator-(const Fixed& other) {
 }
 
 float	Fixed::operator*(const Fixed& other) {
-	return (this->toFloat() * other.toFloat());
+	// std::cout << "this:" << this->toFloat() << "  other:" << other.toFloat() << std::endl;
+	return this->toFloat() * other.toFloat();
 }
 
 float	Fixed::operator/(const Fixed& other) {
 	return (this->toFloat() / other.toFloat());
 }
 
-const Fixed&	Fixed::operator++(void) {
+Fixed&	Fixed::operator++(void) {
 	++(this->fixed_point_num);
 	return (*this);
 }
 
-Fixed&	Fixed::operator++(int) {
+Fixed	Fixed::operator++(int) {
 	Fixed result(*this);
 	++(this->fixed_point_num);
 	return (result);
 }
 
-const Fixed&	Fixed::operator--(void) {
+Fixed&	Fixed::operator--(void) {
 	--(this->fixed_point_num);
 	return (*this);
 }
 
-Fixed&	Fixed::operator--(int) {
+Fixed	Fixed::operator--(int) {
 	Fixed result(*this);
 	--(this->fixed_point_num);
 	return (result);
@@ -114,6 +115,30 @@ int	Fixed::getRawBits() const {
 
 void	Fixed::setRawBits(int const raw) {
 	this->fixed_point_num = raw;
+}
+
+Fixed& Fixed::min(Fixed& num1, Fixed& num2) {
+	if (num1.toFloat() < num2.toFloat())
+		return (num1);
+	return (num2);
+}
+
+Fixed& Fixed::min(const Fixed& num1, const Fixed& num2) {
+	if (num1.toFloat() < num2.toFloat())
+		return (const_cast<Fixed&>(num1));
+	return (const_cast<Fixed&>(num2));
+}
+
+Fixed& Fixed::max(Fixed& num1, Fixed& num2) {
+	if (num1.toFloat() > num2.toFloat())
+		return (num1);
+	return (num2);
+}
+
+Fixed& Fixed::max(const Fixed& num1, const Fixed& num2) {
+	if (num1.toFloat() > num2.toFloat())
+		return (const_cast<Fixed&>(num1));
+	return (const_cast<Fixed&>(num2));
 }
 
 Fixed::~Fixed() {
