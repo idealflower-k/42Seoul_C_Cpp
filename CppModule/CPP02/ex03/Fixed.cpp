@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/11 18:37:36 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/17 20:41:39 by sanghwal         ###   ########seoul.kr  */
+/*   Created: 2023/05/17 19:57:21 by sanghwal          #+#    #+#             */
+/*   Updated: 2023/05/17 19:57:54 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ float	Fixed::operator-(const Fixed& other) {
 }
 
 float	Fixed::operator*(const Fixed& other) {
-	// std::cout << "this:" << this->toFloat() << "  other:" << other.toFloat() << std::endl;
 	return this->toFloat() * other.toFloat();
 }
 
