@@ -6,11 +6,13 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 20:22:49 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/18 15:58:13 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/20 23:25:12 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.h"
+
+const int Fixed::fractional_bits = 8;
 
 Fixed::Fixed() : fixed_point_num(0) {
 	std::cout << "Default constructor called" << std::endl;
