@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:13:15 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/18 13:46:54 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/20 23:15:53 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 class Fixed {
 
 	private:
-		static const int	fractional_bits = 8;
+		static const int	fractional_bits;
 		int					fixed_point_num;
 
 	public:

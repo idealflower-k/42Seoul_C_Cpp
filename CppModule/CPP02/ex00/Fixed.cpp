@@ -6,11 +6,13 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:29:41 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/18 14:16:38 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/20 23:23:59 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.h"
+
+const int Fixed::fractional_bits = 8;
 
 Fixed::Fixed() : fixed_point_num(0) {
 	std::cout << "Default constructor called" << std::endl;
@@ -35,7 +37,6 @@ int Fixed::getRawBits() const {
 }
 
 void	Fixed::setRawBits(int const raw) {
-	std::cout << "setRawBits member function called" << std::endl;
 	this->fixed_point_num = raw;
 }
 
