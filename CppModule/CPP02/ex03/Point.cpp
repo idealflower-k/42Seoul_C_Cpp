@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 19:59:08 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/19 14:40:16 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/22 16:57:11 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ const Fixed& Point::getY() const {
 }
 
 Point::~Point() {
-	std::cout << "Point Destructor called" << std::endl;
+	// std::cout << "Point Destructor called" << std::endl;
 }

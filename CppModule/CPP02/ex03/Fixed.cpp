@@ -6,33 +6,33 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 19:57:21 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/18 17:39:03 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/22 16:51:23 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.h"
 
 Fixed::Fixed() : fixed_point_num(0) {
-	std::cout << "Default constructor called" << std::endl;
+	// std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const int num) {
-	std::cout << "const int constructor called" << std::endl;
-	this->fixed_point_num = num << fractional_bits;
+Fixed::Fixed(const int num)
+	: fixed_point_num(num << fractional_bits) {
+	// std::cout << "const int constructor called" << std::endl;
 }
 
-Fixed::Fixed(const float f_num) {
-	std::cout << "const float constructor called" << std::endl;
-	this->fixed_point_num = static_cast<int>(roundf(f_num * (1 << fractional_bits)));
+Fixed::Fixed(const float f_num)
+	: fixed_point_num(static_cast<int>(roundf(f_num * (1 << fractional_bits)))) {
+	// std::cout << "const float constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed& origin) 
 	: fixed_point_num(origin.getRawBits()) {
-	std::cout << "Copy constructor called" << std::endl;
+	// std::cout << "Copy constructor called" << std::endl;
 }
 
 Fixed& Fixed::operator=(const Fixed& origin) {
-	std::cout << "Copy assignment operator called" << std::endl;
+	// std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &origin) {
 		this->setRawBits(origin.getRawBits());
 	}
@@ -118,12 +118,12 @@ int	Fixed::toInt(void) const {
 }
 
 int	Fixed::getRawBits() const {
-	std::cout << "getRawBits member function called" << std::endl;
+	// std::cout << "getRawBits member function called" << std::endl;
 	return (this->fixed_point_num);
 }
 
 void	Fixed::setRawBits(int const raw) {
-	std::cout << "setRawBits member function called" << std::endl;
+	// std::cout << "setRawBits member function called" << std::endl;
 	this->fixed_point_num = raw;
 }
 
@@ -184,7 +184,7 @@ Fixed& Fixed::max(const Fixed& num1, const Fixed& num2) {
 }
 
 Fixed::~Fixed() {
-	std::cout << "Destructor called" << std::endl;
+	// std::cout << "Destructor called" << std::endl;
 }
 
 std::ostream& operator<<(std::ostream& os, const Fixed& fixed) {

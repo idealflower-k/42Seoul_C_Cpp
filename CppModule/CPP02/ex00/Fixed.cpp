@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:29:41 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/20 23:23:59 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/22 16:27:26 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ Fixed::Fixed() : fixed_point_num(0) {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const Fixed& origin) {
+Fixed::Fixed(const Fixed& origin)
+	: fixed_point_num(origin.getRawBits()) {
 	std::cout << "Copy constructor called" << std::endl;
-	this->setRawBits(origin.getRawBits());
 }
 
 Fixed& Fixed::operator=(const Fixed& origin) {

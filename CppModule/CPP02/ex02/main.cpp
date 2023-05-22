@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:40:37 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/18 17:11:10 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/22 16:01:24 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,34 +110,34 @@ int	main(void) {
 // }
 
 // int main() {
-//     Fixed a(1.5f);
-//     Fixed b(2.3f);
+// 	Fixed a(1.5f);
+// 	Fixed b(2.3f);
 
-//     // Test addition
-//     std::cout << "a + b = " << a + b << std::endl;
+// 	// Test addition
+// 	std::cout << "a + b = " << a + b << std::endl;
 
-//     // Test subtraction
-//     std::cout << "a - b = " << a - b << std::endl;
+// 	// Test subtraction
+// 	std::cout << "a - b = " << a - b << std::endl;
 
-//     // Test multiplication
-//     std::cout << "a * b = " << a * b << std::endl;
+// 	// Test multiplication
+// 	std::cout << "a * b = " << a * b << std::endl;
 
-//     // Test division
-//     try {
-//         std::cout << "a / b = " << a / b << std::endl;
-//     }
-//     catch(const std::exception& e) {
-//         std::cerr << "Caught exception: " << e.what() << std::endl;
-//     }
+// 	// Test division
+// 	try {
+// 		std::cout << "a / b = " << a / b << std::endl;
+// 	}
+// 	catch(const std::exception& e) {
+// 		std::cerr << "Caught exception: " << e.what() << std::endl;
+// 	}
 
-//     // Test division by zero
-//     Fixed zero(0.0f);
-//     try {
-//         std::cout << "a / zero = " << a / zero << std::endl;
-//     }
-//     catch(const std::exception& e) {
-//         std::cerr << "Caught exception: " << e.what() << std::endl;
-//     }
+// 	// Test division by zero
+// 	Fixed zero(0.0f);
+// 	try {
+// 		std::cout << "a / zero = " << a / zero << std::endl;
+// 	}
+// 	catch(const std::exception& e) {
+// 		std::cerr << "Caught exception: " << e.what() << std::endl;
+// 	}
 
-//     return 0;
+// 	return 0;
 // }

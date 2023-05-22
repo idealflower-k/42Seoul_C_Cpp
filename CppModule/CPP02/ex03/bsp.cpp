@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 14:43:55 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/19 21:18:40 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/22 16:55:47 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ static float	triangleArea(const Point& p1, const Point& p2, const Point& p3) {
 	Fixed	p3_cord[2] = {p3.getX(), p3.getY()};
 
 	float	a = (p1_cord[X] * p2_cord[Y]) + (p2_cord[X] * p3_cord[Y]) + (p3_cord[X] * p1_cord[Y]);
-	if (a < 0)
-		a = -a;
+	if (a < 0) {a = -a;}
+
 	float	b = (p2_cord[X] * p1_cord[Y]) + (p3_cord[X] * p2_cord[Y]) + (p1_cord[X] * p3_cord[Y]);
-	if (b < 0)
-		b = -b;
+	if (b < 0) {b = -b;}
+	
 	float	area = (a - b) / 2.0f;
 	if (area < 0)
 		area = -area;
@@ -45,11 +45,6 @@ bool bsp(Point const a, Point const b, Point const c, Point const point) {
 	float	tri1 = triangleArea(point, a, b);
 	float	tri2 = triangleArea(point, a, c);
 	float	tri3 = triangleArea(point, b, c);
-	
-	std::cout << "big: " << big_tri << std::endl;
-	std::cout << "tri1: " << tri1 << std::endl;
-	std::cout << "tri2: " << tri2 << std::endl;
-	std::cout << "tri3: " << tri3 << std::endl;
 
 	if (tri1 == 0.0f || tri2 == 0.0f || tri3 == 0.0f)
 		return (false);

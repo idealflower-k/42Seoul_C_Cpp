@@ -6,24 +6,26 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 18:37:36 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/18 17:31:31 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/22 16:48:49 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.h"
 
+const int Fixed::fractional_bits = 8;
+
 Fixed::Fixed() : fixed_point_num(0) {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const int num) {
+Fixed::Fixed(const int num)
+	: fixed_point_num(num << fractional_bits) {
 	std::cout << "const int constructor called" << std::endl;
-	this->fixed_point_num = num << fractional_bits;
 }
 
-Fixed::Fixed(const float f_num) {
+Fixed::Fixed(const float f_num)
+	: fixed_point_num(static_cast<int>(roundf(f_num * (1 << fractional_bits)))) {
 	std::cout << "const float constructor called" << std::endl;
-	this->fixed_point_num = static_cast<int>(roundf(f_num * (1 << fractional_bits)));
 }
 
 Fixed::Fixed(const Fixed& origin) 

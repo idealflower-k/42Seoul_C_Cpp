@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 20:22:49 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/20 23:25:12 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/22 16:42:07 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,19 @@ Fixed::Fixed() : fixed_point_num(0) {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const int num) {
-	this->fixed_point_num = num << fractional_bits;
+Fixed::Fixed(const int num)
+	: fixed_point_num(num << fractional_bits) {
+	std::cout << "Int constructor called" << std::endl;
 }
 
-Fixed::Fixed(const float f_num) {
-	this->fixed_point_num = static_cast<int>(roundf(f_num * (1 << fractional_bits)));
+Fixed::Fixed(const float f_num)
+	: fixed_point_num(static_cast<int>(roundf(f_num * (1 << fractional_bits)))) {
+	std::cout << "Float constructor called" << std::endl;
 }
 
-Fixed::Fixed(const Fixed& origin) {
+Fixed::Fixed(const Fixed& origin) 
+	: fixed_point_num(origin.getRawBits()) {
 	std::cout << "Copy constructor called" << std::endl;
-	this->setRawBits(origin.getRawBits());
 }
 
 Fixed& Fixed::operator=(const Fixed& origin) {
