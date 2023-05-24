@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 19:56:53 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/23 20:45:36 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/24 14:03:40 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,10 @@ int	main(void) {
 	scav_3.attack("scav_2");
 	scav_2.takeDamage(120);
 	scav_2.beRepaired(10);
+	
+	scav_2.guardGate();
+
+	ScavTrap scav_4 = scav_3;
+	scav_4.takeDamage(10);
+	scav_3.takeDamage(0);
 }

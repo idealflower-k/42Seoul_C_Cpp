@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:21:38 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/23 20:46:16 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/24 14:04:06 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& origin) {
 
 void	ClapTrap::attack(const std::string& target) {
 
-	if (this->energy_points == 0 || hit_points == 0)
-		std::cout << "ClapTrap " << this->name << " doesn't have energy or hit_points! " << std::endl;
-	else {
+	if (this->energy_hit_point_check()) {
 		std::cout << "ClapTrap " << this->name << " attacks " << target << ", causing " << this->attack_damage << " points of damage!" << std::endl;
 		this->energy_points -= 1;
 	}
+	else
+		std::cout << "ClapTrap " << this->name << " doesn't have energy or hit_points! " << std::endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount) {
@@ -60,26 +60,31 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 
 	std::cout << "ClapTrap " << this->name << " takes " << amount << " damage!" << std::endl;
 
-	if (this->hit_points < amount) {
+	if (this->hit_points < amount)
 		this->hit_points = 0;
-	}
-	else {
+	else
 		this->hit_points -= amount;
-	}
 
 	std::cout << "    -> ClapTrap " << this->name << " have " << this->hit_points << " hit_points" << std::endl;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount) {
 
-	if (this->energy_points == 0 || this->hit_points == 0)
-		std::cout << "ClapTrap " << this->name << " doesn't have energy or hit_points! " << std::endl;
-	else {
+	if (this->energy_hit_point_check()) {
 		std::cout << "ClapTrap " << this->name << " repaired " << amount << std::endl;
 		this->hit_points += amount;
 		std::cout << "    -> ClapTrap " << this->name << " have " << this->hit_points << " hit_points" << std::endl;
 		this->energy_points -= 1;
 	}
+	else
+		std::cout << "ClapTrap " << this->name << " doesn't have energy or hit_points! " << std::endl;
+}
+
+bool	ClapTrap::energy_hit_point_check(void) {
+
+	if (this->hit_points == 0 || this->energy_points == 0)
+		return (false);
+	return (true);
 }
 
 ClapTrap::~ClapTrap() {

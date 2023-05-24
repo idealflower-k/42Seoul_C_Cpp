@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 20:23:13 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/23 20:52:51 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/24 13:52:25 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class ScavTrap : public ClapTrap {
 		ScavTrap&	operator=(const ScavTrap& origin);
 
 		void		attack(const std::string& target);
-		void		guardGate();
+		void		guardGate(void);
 
 		~ScavTrap();
 };

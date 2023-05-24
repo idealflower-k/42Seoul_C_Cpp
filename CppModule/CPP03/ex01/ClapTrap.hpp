@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:11:53 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/23 20:41:40 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/24 13:55:27 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ class ClapTrap {
 		void	attack(const std::string& target);
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
+		bool	energy_hit_point_check(void);
 
 		~ClapTrap();
 };
