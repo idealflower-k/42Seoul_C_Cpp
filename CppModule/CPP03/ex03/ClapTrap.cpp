@@ -6,19 +6,23 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:21:38 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/24 18:02:11 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/24 19:42:03 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.h"
 
+const unsigned int ClapTrap::init_clap_hit = 10;
+const unsigned int ClapTrap::init_clap_energy = 10;
+const unsigned int ClapTrap::init_clap_attack = 0;
+
 ClapTrap::ClapTrap()
-	: name("default"), hit_points(100), energy_points(50), attack_damage(30) {
+	: name("default"), hit_points(init_clap_hit), energy_points(init_clap_energy), attack_damage(init_clap_attack) {
 		std::cout << "Default ClapTrap constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string _name)
-	: name(_name), hit_points(100), energy_points(50), attack_damage(30) {
+	: name(_name), hit_points(init_clap_hit), energy_points(init_clap_energy), attack_damage(init_clap_attack) {
 		std::cout << "_name ClapTrap constructor called" << std::endl;
 }
 

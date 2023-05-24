@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 20:23:13 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/24 13:52:25 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/24 20:12:28 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 #include "ScavTrap.h"
 
 class ScavTrap : public ClapTrap {
+
+	protected:
+		static const unsigned int	init_scav_hit;
+		static const unsigned int	init_scav_energy;
+		static const unsigned int	init_scav_attack;
 
 	public:
 		ScavTrap();

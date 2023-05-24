@@ -6,30 +6,26 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 14:26:26 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/24 15:02:23 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/24 20:12:04 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.h"
 
+const unsigned int	FragTrap::init_frag_hit = 100;
+const unsigned int	FragTrap::init_frag_energy = 100;
+const unsigned int	FragTrap::init_frag_attack = 30;
+
 FragTrap::FragTrap()
-	: ClapTrap() {
+	: ClapTrap("\0", init_frag_hit, init_frag_energy, init_frag_attack) {
 
-	std::cout << "FragTrap default constructor called" << std::endl;
-
-	this->hit_points = 100;
-	this->energy_points = 100;
-	this->attack_damage = 30;
+	std::cout << "default FragTrap constructor called" << std::endl;
 }
 
 FragTrap::FragTrap(std::string _name)
-	: ClapTrap(_name) {
+	: ClapTrap(_name, init_frag_hit, init_frag_energy, init_frag_attack) {
 
-	std::cout << "FragTrap _name constructor called" << std::endl;
-
-	this->hit_points = 100;
-	this->energy_points = 100;
-	this->attack_damage = 30;
+	std::cout << "_name FragTrap constructor called" << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap& origin)
@@ -52,16 +48,6 @@ FragTrap& FragTrap::operator=(const FragTrap& origin) {
 	}
 	return (*this);
 }
-
-// void	FragTrap::attack(const std::string& target) {
-
-// 	if (this->energy_hit_point_check()) {
-// 		std::cout << "FragTrap " << this->name << " attacks " << target << ", causing " << this->attack_damage << " points of damage!" << std::endl;
-// 		this->energy_points -= 1;
-// 	}
-// 	else
-// 		std::cout << "FragTrap " << this->name << " doesn't have energy or hit_points!" << std::endl;
-// }
 
 void	FragTrap::highFivesGuys(void) {
 

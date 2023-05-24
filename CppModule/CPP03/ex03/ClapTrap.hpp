@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:11:53 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/24 17:59:42 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/24 19:40:23 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ class ClapTrap {
 		unsigned int	hit_points;
 		unsigned int	energy_points;
 		unsigned int	attack_damage;
+
+		static const unsigned int	init_clap_hit;
+		static const unsigned int	init_clap_energy;
+		static const unsigned int	init_clap_attack;
 
 	public:
 		ClapTrap();

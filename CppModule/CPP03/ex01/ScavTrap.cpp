@@ -6,21 +6,27 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 20:31:01 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/24 14:02:04 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/24 20:14:35 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.h"
 #include "ScavTrap.h"
 
+const unsigned int	ScavTrap::init_scav_hit = 100;
+const unsigned int	ScavTrap::init_scav_energy = 50;
+const unsigned int	ScavTrap::init_scav_attack = 20;
+
 ScavTrap::ScavTrap()
-	: ClapTrap() {
-		std::cout << "Default ScavTrap constructor called" << std::endl;
+	: ClapTrap("\0", init_scav_hit, init_scav_energy, init_scav_attack) {
+
+	std::cout << "Default ScavTrap constructor called" << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string _name)
-	: ClapTrap(_name) {
-		std::cout << "_name ScavTrap constructor called" <<std::endl;
+	: ClapTrap(_name, init_scav_hit, init_scav_energy, init_scav_attack) {
+
+	std::cout << "_name ScavTrap constructor called" <<std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& origin)

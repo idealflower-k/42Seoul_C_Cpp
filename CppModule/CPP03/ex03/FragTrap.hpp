@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 14:11:25 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/24 16:26:17 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/24 20:10:41 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,12 @@
 
 #include "FragTrap.h"
 
-class FragTrap : virtual public ClapTrap{
+class FragTrap : virtual public ClapTrap {
+
+	protected:
+		static const unsigned int	init_frag_hit;
+		static const unsigned int	init_frag_energy;
+		static const unsigned int	init_frag_attack;
 
 	public:
 		FragTrap();
@@ -24,7 +29,6 @@ class FragTrap : virtual public ClapTrap{
 
 		FragTrap&	operator=(const FragTrap& origin);
 
-		// void		attack(const std::string& target);
 		void		highFivesGuys(void);
 
 		~FragTrap();

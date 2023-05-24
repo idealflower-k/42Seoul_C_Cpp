@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 16:18:39 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/24 17:12:34 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/24 19:50:12 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ class DiamondTrap : public ScavTrap, public FragTrap {
 
 	private:
 		std::string name;
+		static const unsigned int	init_diamond_hit;
+		static const unsigned int	init_diamond_energy;
+		static const unsigned int	init_diamond_attack;
 
 	public:
 		DiamondTrap();
