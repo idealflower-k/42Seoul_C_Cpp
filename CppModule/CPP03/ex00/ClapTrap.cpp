@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:21:38 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/23 20:11:36 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/25 14:29:28 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,21 @@
 
 ClapTrap::ClapTrap()
 	: name("default"), hit_points(10), energy_points(10), attack_damage(0) {
+	
 		std::cout << "Default constructor called" << std::endl;
-	}
+}
 
 ClapTrap::ClapTrap(std::string _name)
 	: name(_name), hit_points(10), energy_points(10), attack_damage(0) {
+
 		std::cout << "_name constructor called" << std::endl;
-	}
+}
 
 ClapTrap::ClapTrap(const ClapTrap& origin)
 	: name(origin.name), hit_points(origin.hit_points), energy_points(origin.energy_points), attack_damage(origin.attack_damage) {
+
 		std::cout << "Copy constructor called" << std::endl;
-	}
+}
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& origin) {
 
@@ -77,8 +80,8 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 	else {
 		std::cout << "ClapTrap " << this->name << " repaired " << amount << std::endl;
 		this->hit_points += amount;
-		std::cout << "    -> ClapTrap " << this->name << " have " << this->hit_points << " hit_points" << std::endl;
 		this->energy_points -= 1;
+		std::cout << "    -> ClapTrap " << this->name << " have " << this->hit_points << " hit_points" << std::endl;
 	}
 }
 

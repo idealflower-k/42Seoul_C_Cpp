@@ -6,13 +6,13 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/23 17:11:18 by sanghwal          #+#    #+#              #
-#    Updated: 2023/05/24 14:54:37 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/05/25 14:44:56 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
 CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -MMD -MP
-# -pedantic-errors
+
 
 NAME = ScavTrap
 

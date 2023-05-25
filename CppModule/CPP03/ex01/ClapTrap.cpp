@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:21:38 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/24 20:14:02 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/25 14:35:06 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,25 @@ const unsigned int ClapTrap::init_clap_attack = 0;
 
 ClapTrap::ClapTrap()
 	: name("default"), hit_points(init_clap_hit), energy_points(init_clap_energy), attack_damage(init_clap_attack) {
+
 		std::cout << "Default ClapTrap constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string _name)
 	: name(_name), hit_points(init_clap_hit), energy_points(init_clap_energy), attack_damage(init_clap_attack) {
+
 		std::cout << "_name ClapTrap constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string _name, unsigned int hit, unsigned int energy, unsigned int attack)
 	: name(_name), hit_points(hit), energy_points(energy), attack_damage(attack) {
+
 	std::cout << "_name ClapTrap constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& origin)
 	: name(origin.name), hit_points(origin.hit_points), energy_points(origin.energy_points), attack_damage(origin.attack_damage) {
+
 		std::cout << "ClapTrap Copy constructor called" << std::endl;
 }
 
@@ -82,8 +86,8 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 	if (this->energy_hit_point_check()) {
 		std::cout << "ClapTrap " << this->name << " repaired " << amount << std::endl;
 		this->hit_points += amount;
-		std::cout << "    -> ClapTrap " << this->name << " have " << this->hit_points << " hit_points" << std::endl;
 		this->energy_points -= 1;
+		std::cout << "    -> ClapTrap " << this->name << " have " << this->hit_points << " hit_points" << std::endl;
 	}
 	else
 		std::cout << "ClapTrap " << this->name << " doesn't have energy or hit_points! " << std::endl;

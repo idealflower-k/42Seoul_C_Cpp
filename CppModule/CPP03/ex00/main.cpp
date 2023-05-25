@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 19:56:53 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/23 20:10:37 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/25 14:31:03 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,6 @@ int	main(void) {
 	
 	clap_2.takeDamage(0);
 	clap_3.takeDamage(3);
+	
+	return (0);
 }
