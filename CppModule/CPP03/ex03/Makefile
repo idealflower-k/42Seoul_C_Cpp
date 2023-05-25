@@ -6,13 +6,13 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/23 17:11:18 by sanghwal          #+#    #+#              #
-#    Updated: 2023/05/24 16:16:58 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/05/25 14:57:28 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
 CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -MMD -MP
-# -pedantic-errors
+
 
 NAME = DiamondTrap
 
