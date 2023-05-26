@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:44:10 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/25 20:40:26 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/26 16:25:30 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Dog& Dog::operator=(const Dog& origin) {
 }
 
 void	Dog::makeSound(void) const{
-	std::cout << "[Dog] Bow!" << std::endl;
+	std::cout << "[Dog] woof!" << std::endl;
 }
 
 std::string	Dog::getType(void) const{
