@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 17:21:51 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/27 18:58:08 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/27 23:06:04 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ std::string const& AMateria::getType() const {
 	return (this->_type);
 }
 
-void		AMateria::use(ICharacter& target) {
-	std::string name = target.getName();
+void	AMateria::use(ICharacter& target) {
+	std::cout << "[Amateria] Nothing to use for " << target.getName() << std::endl;
 }
 
 AMateria::~AMateria() {

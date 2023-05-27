@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 17:22:41 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/27 18:52:04 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/27 23:54:51 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ MateriaSource::MateriaSource()
 
 	std::cout << "[MateriaSource] Default constructor called" << std::endl;
 
-	learned = new AMateria*[learn_size];
+	this->learned = new AMateria*[learn_size];
 
 	for (int i = 0; i < learn_size; ++i)
 		this->learned[i] = NULL;
@@ -30,12 +30,14 @@ MateriaSource::MateriaSource(const MateriaSource& origin)
 
 	std::cout << "[MateriaSource] Copy constructor called" << std::endl;
 
+	this->learned = new AMateria*[learn_size];
+
 	for (int i = 0; i < learn_size; ++i)
-		this->learned[i] = origin.learned[i];
+		this->learned[i] = origin.learned[i] ? origin.learned[i]->clone() : NULL;
 }
 
 MateriaSource& MateriaSource::operator=(const MateriaSource& origin) {
-	
+
 	std::cout << "[MateriaSource] Copy assignment called" << std::endl;
 
 	if (this != &origin) {
@@ -44,7 +46,7 @@ MateriaSource& MateriaSource::operator=(const MateriaSource& origin) {
 		for (int i = 0; i < learn_size; ++i) {
 			if (this->learned[i] != NULL)
 				delete this->learned[i];
-			this->learned[i] = origin.learned[i];
+			this->learned[i] = origin.learned[i] ? origin.learned[i]->clone() : NULL;
 		}
 	}
 	return (*this);
@@ -54,7 +56,7 @@ void	MateriaSource::learnMateria(AMateria* m) {
 	
 	for (int i = 0; i < learn_size; ++i) {
 		if (this->learned[i] == NULL) {
-			this->learned[i] = m;
+			this->learned[i] = m->clone();
 			return ;
 		}
 	}
@@ -77,5 +79,5 @@ MateriaSource::~MateriaSource() {
 		if (this->learned[i] != NULL)
 			delete this->learned[i];
 	}
-	delete this->learned;
+	delete[] this->learned;
 }

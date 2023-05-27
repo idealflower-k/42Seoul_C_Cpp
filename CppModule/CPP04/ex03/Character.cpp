@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 21:06:50 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/27 19:04:57 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/27 23:54:46 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,11 @@ Character::Character(const Character& origin)
 	: ICharacter(), name(origin.name) {
 	
 	std::cout << "[Character] Copy constructor called" << std::endl;
+	
+	this->inventory = new AMateria*[iv_size];
 
 	for (int i = 0; i < iv_size; ++i)
-		this->inventory[i] = origin.inventory[i];
+		this->inventory[i] = origin.inventory[i] ? origin.inventory[i]->clone() : NULL;
 }
 
 Character& Character::operator=(const Character& origin) {
@@ -53,9 +55,10 @@ Character& Character::operator=(const Character& origin) {
 		ICharacter::operator=(origin);
 
 		for (int i = 0; i < iv_size; ++i) {
-			if (this->inventory[i] != NULL)
+			if (this->inventory[i] != NULL) {
 				delete this->inventory[i];
-			this->inventory[i] = origin.inventory[i];
+				this->inventory[i] = origin.inventory[i] ? origin.inventory[i]->clone() : NULL;
+			}
 		}
 
 		this->name = origin.name;
@@ -68,11 +71,6 @@ std::string const&	Character::getName(void) const {
 }
 
 void	Character::equip(AMateria* m) {
-
-	std::string	_type = m->getType();
-	
-	if (_type.compare("ice") != 0 && _type.compare("cure") != 0)
-		return ;
 
 	for (int i = 0; i < iv_size; ++i) {
 		if (this->inventory[i] == NULL) {
@@ -104,5 +102,5 @@ Character::~Character() {
 		if (this->inventory[i] != NULL)
 			delete this->inventory[i];
 	}
-	delete inventory;
+	delete[] inventory;
 }
