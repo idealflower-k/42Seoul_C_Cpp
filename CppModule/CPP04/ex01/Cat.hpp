@@ -6,14 +6,15 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:32:01 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/26 15:47:40 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/27 22:32:13 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CAT_HPP
 # define CAT_HPP
 
-#include "Cat.h"
+#include "Animal.hpp"
+#include "Brain.hpp"
 
 class Cat : public Animal {
 

@@ -6,11 +6,11 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 14:45:04 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/26 15:58:47 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/27 22:31:24 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Brain.h"
+#include "Brain.hpp"
 
 Brain::Brain()
 	: next_idx(0) {
