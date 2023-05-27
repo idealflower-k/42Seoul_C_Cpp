@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.h                                         :+:      :+:    :+:   */
+/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 16:38:12 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/26 16:53:56 by sanghwal         ###   ########seoul.kr  */
+/*   Created: 2023/05/26 16:55:38 by sanghwal          #+#    #+#             */
+/*   Updated: 2023/05/27 18:31:26 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AMATERIA_H
-# define AMATERIA_H
+#ifndef IMATERIASOURCE_HPP
+# define IMATERIASOURCE_HPP
 
-#include <iostream>
-#include <string>
-#include "ICharacter.h"
 #include "AMateria.hpp"
+
+class IMateriaSource {
+
+	public:
+		IMateriaSource();
+		IMateriaSource(const IMateriaSource& origin);
+
+		IMateriaSource&		operator=(const IMateriaSource& origin);
+
+		virtual void		learnMateria(AMateria*) = 0;
+		virtual AMateria*	createMateria(std::string const& type) = 0;
+
+		virtual ~IMateriaSource();
+};
 
 #endif

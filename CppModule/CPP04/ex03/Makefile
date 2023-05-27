@@ -6,7 +6,7 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/25 16:15:26 by sanghwal          #+#    #+#              #
-#    Updated: 2023/05/26 20:44:54 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/05/27 19:21:09 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,16 @@ CXX = c++
 CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -MMD -MP
 
 
-NAME = AAnimal
+NAME = AMateria
 
 SRCS = main.cpp \
 	AMateria.cpp \
 	Ice.cpp \
 	Cure.cpp \
-	ICharater.cpp
+	ICharacter.cpp \
+	Character.cpp \
+	IMateriaSource.cpp \
+	MateriaSource.cpp
 	
 
 OBJS = $(SRCS:.cpp=.o)

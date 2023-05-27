@@ -6,22 +6,103 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 21:06:50 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/26 21:07:29 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/27 19:04:57 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Character.h"
+#include "Character.hpp"
 
-		// std::string	name;
+const int	Character::iv_size = 4;
 
-		// Character();
-		// Character(const Character& origin);
-		// Character& operator=(const Character& origin);
+Character::Character()
+	: ICharacter(), name("Default") {
 
-		// std::string const&	getName() const;
-		// void				equip(AMateria* m);
-		// void				unequip(int idx);
-		// void				use(int idx, Character& target);
+	std::cout << "[Character] Default constrctor called" << std::endl;
 
-		// ~Character();
+	this->inventory = new AMateria*[iv_size];
 
+	for (int i = 0; i < iv_size; ++i)
+		inventory[i] = NULL;
+}
+
+Character::Character(const std::string _name)
+	: ICharacter(), name(_name) {
+
+	std::cout << "[Character] name constructor called" << std::endl;
+
+	this->inventory = new AMateria*[iv_size];
+
+	for (int i = 0; i < iv_size; ++i)
+		inventory[i] = NULL;
+}
+
+Character::Character(const Character& origin)
+	: ICharacter(), name(origin.name) {
+	
+	std::cout << "[Character] Copy constructor called" << std::endl;
+
+	for (int i = 0; i < iv_size; ++i)
+		this->inventory[i] = origin.inventory[i];
+}
+
+Character& Character::operator=(const Character& origin) {
+	
+	std::cout << "[Character] Copy assignment called" << std::endl;
+
+	if (this != &origin) {
+		ICharacter::operator=(origin);
+
+		for (int i = 0; i < iv_size; ++i) {
+			if (this->inventory[i] != NULL)
+				delete this->inventory[i];
+			this->inventory[i] = origin.inventory[i];
+		}
+
+		this->name = origin.name;
+	}
+	return (*this);
+}
+
+std::string const&	Character::getName(void) const {
+	return (this->name);
+}
+
+void	Character::equip(AMateria* m) {
+
+	std::string	_type = m->getType();
+	
+	if (_type.compare("ice") != 0 && _type.compare("cure") != 0)
+		return ;
+
+	for (int i = 0; i < iv_size; ++i) {
+		if (this->inventory[i] == NULL) {
+			this->inventory[i] = m;
+			return ;
+		}
+	}
+}
+
+void	Character::unequip(int idx) {
+
+	if (idx >= 0 && idx < iv_size && this->inventory[idx] != NULL)
+		this->inventory[idx] = NULL;
+}
+
+void	Character::use(int idx, ICharacter& target) {
+
+	if (idx >= 0 && idx < iv_size && this->inventory[idx] != NULL) {
+		this->inventory[idx]->use(target);
+		delete this->inventory[idx];
+		this->inventory[idx] = NULL;
+	}
+}
+
+Character::~Character() {
+	std::cout << "[Character] Destructor called" << std::endl;
+
+	for (int i = 0; i < iv_size; ++i) {
+		if (this->inventory[i] != NULL)
+			delete this->inventory[i];
+	}
+	delete inventory;
+}

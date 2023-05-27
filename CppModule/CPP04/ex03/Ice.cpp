@@ -6,11 +6,11 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 20:21:56 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/26 20:36:14 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/27 18:35:59 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Ice.h"
+#include "Ice.hpp"
 
 Ice::Ice()
 	: AMateria("ice") {

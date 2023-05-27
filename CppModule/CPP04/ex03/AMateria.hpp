@@ -6,15 +6,17 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 16:39:16 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/26 20:46:15 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/27 18:49:01 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef AMATERIA_HPP
 # define AMATERIA_HPP
 
-#include "AMateria.h"
-
+#include <iostream>
+#include <string>
+#include "ICharacter.hpp"
+class ICharacter;
 class AMateria {
 
 	protected:

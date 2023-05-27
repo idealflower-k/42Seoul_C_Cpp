@@ -6,15 +6,15 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 16:45:55 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/26 21:04:24 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/27 18:47:18 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICHARACTER_HPP
 # define ICHARACTER_HPP
 
-#include "ICharacter.h"
-
+#include "AMateria.hpp"
+class AMateria;
 class ICharacter {
 
 	public:

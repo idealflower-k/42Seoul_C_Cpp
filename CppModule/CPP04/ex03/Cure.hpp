@@ -6,15 +6,14 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 20:37:35 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/26 20:38:52 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/27 18:30:49 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CURE_HPP
 # define CURE_HPP
 
-#include "Cure.h"
-
+#include "AMateria.hpp"
 class Cure : public AMateria {
 
 	public:

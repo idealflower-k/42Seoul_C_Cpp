@@ -6,11 +6,11 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 20:39:01 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/26 20:40:56 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/27 18:20:20 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cure.h"
+#include "Cure.hpp"
 
 Cure::Cure()
 	: AMateria("cure") {
