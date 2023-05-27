@@ -6,14 +6,14 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:42:12 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/25 20:45:10 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/27 22:20:42 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DOG_HPP
 # define DOG_HPP
 
-#include "Dog.h"
+#include "Animal.hpp"
 
 class Dog : public Animal {
 

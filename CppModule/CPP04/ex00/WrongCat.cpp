@@ -6,11 +6,11 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:58:11 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/25 20:40:12 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/27 22:25:05 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "WrongCat.h"
+#include "WrongCat.hpp"
 
 WrongCat::WrongCat()
 	: WrongAnimal("WrongCat") {

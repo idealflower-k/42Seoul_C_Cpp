@@ -6,11 +6,11 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:55:35 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/25 20:39:54 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/27 22:25:01 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "WrongAnimal.h"
+#include "WrongAnimal.hpp"
 
 WrongAnimal::WrongAnimal()
 	: type("\0") {

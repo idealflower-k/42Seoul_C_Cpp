@@ -6,14 +6,14 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:58:09 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/25 20:45:43 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/27 22:22:06 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WRONGCAT_HPP
 # define WRONGCAT_HPP
 
-#include "WrongCat.h"
+#include "WrongAnimal.hpp"
 
 class WrongCat : public WrongAnimal {
 	
