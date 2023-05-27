@@ -6,14 +6,15 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:17:06 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/26 16:22:14 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/27 22:44:01 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef AANIMAL_HPP
 # define AANIMAL_HPP
 
-#include "AAnimal.h"
+#include <iostream>
+#include <string>
 
 class AAnimal {
 

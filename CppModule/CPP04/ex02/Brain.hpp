@@ -6,14 +6,15 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 14:44:08 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/26 15:51:10 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/27 22:44:27 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BRAIN_HPP
 # define BRAIN_HPP
 
-#include "Brain.h"
+#include <iostream>
+#include <string>
 
 class Brain {
 

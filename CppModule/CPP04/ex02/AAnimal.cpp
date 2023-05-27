@@ -6,11 +6,11 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:19:59 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/26 16:23:37 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/27 22:43:45 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AAnimal.h"
+#include "AAnimal.hpp"
 
 AAnimal::AAnimal()
 	: type("\0") {

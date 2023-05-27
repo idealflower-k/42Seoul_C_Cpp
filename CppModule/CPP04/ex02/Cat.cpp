@@ -6,11 +6,11 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:34:26 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/26 16:29:34 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/27 22:44:31 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.h"
+#include "Cat.hpp"
 
 Cat::Cat()
 	: AAnimal("Cat") {

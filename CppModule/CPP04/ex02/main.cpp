@@ -6,13 +6,13 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 17:02:53 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/26 16:32:26 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/27 22:48:48 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.h"
-#include "Dog.h"
-#include "WrongCat.h"
+#include "Cat.hpp"
+#include "Dog.hpp"
+#include "WrongCat.hpp"
 
 int	main(void) {
 	// AAnimal ani;
@@ -25,7 +25,6 @@ int	main(void) {
 	cat->makeSound();
 	dog->makeSound();
 
-	
 	delete cat;
 	delete dog;
 

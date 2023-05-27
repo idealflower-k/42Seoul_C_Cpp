@@ -6,11 +6,11 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:44:10 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/26 16:28:59 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/27 22:45:02 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.h"
+#include "Dog.hpp"
 
 Dog::Dog()
 	: AAnimal("Dog") {
