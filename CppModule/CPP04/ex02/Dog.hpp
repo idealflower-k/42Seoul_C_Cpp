@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:42:12 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/27 22:45:19 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/28 17:55:20 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ class Dog : public AAnimal {
 		void		makeSound(void) const;
 		std::string	getType(void) const;
 		Brain*		getBrain(void);
+		void		addIdeas(const std::string& some);
+		std::string	getIdeasIdx(int idx) const;
 
 		~Dog();
 };

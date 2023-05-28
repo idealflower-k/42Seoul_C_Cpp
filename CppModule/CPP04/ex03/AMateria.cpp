@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 17:21:51 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/27 23:06:04 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/28 17:57:14 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ AMateria::AMateria(const AMateria& origin)
 }
 
 AMateria& AMateria::operator=(const AMateria& origin) {
-	
+
 	std::cout << "[AMateria] Copy assignment constructor called" << std:: endl;
-	
+
 	if (this != &origin)
 		this->_type = origin._type;
 	return (*this);

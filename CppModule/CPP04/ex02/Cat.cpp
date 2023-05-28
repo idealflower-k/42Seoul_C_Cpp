@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:34:26 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/27 22:44:31 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/28 17:54:53 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ Cat::Cat()
 }
 
 Cat::Cat(const Cat& origin)
-	: AAnimal(origin), c_brain(origin.c_brain) {
+	: AAnimal(origin) {
 
 	std::cout << "[Cat] Copy constructor called" << std::endl;
+
+	this->c_brain = new Brain(*origin.c_brain);
 }
 
 Cat& Cat::operator=(const Cat& origin) {
@@ -32,7 +34,7 @@ Cat& Cat::operator=(const Cat& origin) {
 
 	if (this != &origin) {
 		AAnimal::operator=(origin);
-		this->c_brain = origin.c_brain;
+		*this->c_brain = *origin.c_brain;
 	}
 	return (*this);
 }
@@ -48,6 +50,14 @@ std::string	Cat::getType(void) const{
 
 Brain*	Cat::getBrain(void) {
 	return (this->c_brain);
+}
+
+std::string	Cat::getIdeasIdx(int idx) const {
+	return (this->c_brain->getIdeasIdx(idx));
+}
+
+void	Cat::addIdeas(const std::string& some) {
+	this->c_brain->addIdeas(some);
 }
 
 Cat::~Cat() {

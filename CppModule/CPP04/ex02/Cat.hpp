@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:32:01 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/27 22:44:52 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/28 17:54:38 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ class Cat : public AAnimal {
 		void		makeSound(void) const;
 		std::string	getType(void) const;
 		Brain*		getBrain(void);
+		void		addIdeas(const std::string& some);
+		std::string	getIdeasIdx(int idx) const;
 
 		~Cat();
 };
-
 #endif

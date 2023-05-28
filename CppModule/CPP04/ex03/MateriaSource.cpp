@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 17:22:41 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/27 23:54:51 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/28 18:11:57 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ AMateria*	MateriaSource::createMateria(std::string const& type) {
 			return (this->learned[i]->clone());
 		}
 	}
-	return (NULL);
+	return (0);
 }
 
 MateriaSource::~MateriaSource() {

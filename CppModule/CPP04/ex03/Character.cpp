@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 21:06:50 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/27 23:54:46 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/28 18:22:41 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,9 @@ Character& Character::operator=(const Character& origin) {
 		ICharacter::operator=(origin);
 
 		for (int i = 0; i < iv_size; ++i) {
-			if (this->inventory[i] != NULL) {
+			if (this->inventory[i] != NULL)
 				delete this->inventory[i];
-				this->inventory[i] = origin.inventory[i] ? origin.inventory[i]->clone() : NULL;
-			}
+			this->inventory[i] = origin.inventory[i] ? origin.inventory[i]->clone() : NULL;
 		}
 
 		this->name = origin.name;
@@ -88,11 +87,8 @@ void	Character::unequip(int idx) {
 
 void	Character::use(int idx, ICharacter& target) {
 
-	if (idx >= 0 && idx < iv_size && this->inventory[idx] != NULL) {
+	if (idx >= 0 && idx < iv_size && this->inventory[idx] != NULL)
 		this->inventory[idx]->use(target);
-		delete this->inventory[idx];
-		this->inventory[idx] = NULL;
-	}
 }
 
 Character::~Character() {

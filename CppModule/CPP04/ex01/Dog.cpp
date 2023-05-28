@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:44:10 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/28 17:29:09 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/28 17:42:12 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ Dog::Dog(const Dog& origin)
 	
 	std::cout << "[Dog] Copy constructor called" << std::endl;
 	
-	this->d_brain = new Brain();
-	
-	*this->d_brain = *origin.d_brain;
+	this->d_brain = new Brain(*origin.d_brain);
 }
 
 Dog& Dog::operator=(const Dog& origin) {

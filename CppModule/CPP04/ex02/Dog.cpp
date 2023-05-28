@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:44:10 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/27 22:45:02 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/28 17:55:27 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ Dog::Dog()
 }
 
 Dog::Dog(const Dog& origin)
-	: AAnimal(origin.type), d_brain(origin.d_brain) {
+	: AAnimal(origin) {
 	
 	std::cout << "[Dog] Copy constructor called" << std::endl;
+	
+	this->d_brain = new Brain(*origin.d_brain);
 }
 
 Dog& Dog::operator=(const Dog& origin) {
@@ -32,7 +34,7 @@ Dog& Dog::operator=(const Dog& origin) {
 	
 	if (this != &origin) {
 		AAnimal::operator=(origin);
-		this->d_brain = origin.d_brain;
+		*this->d_brain = *origin.d_brain;
 	}
 	return (*this);
 }
@@ -48,6 +50,14 @@ std::string	Dog::getType(void) const{
 
 Brain*	Dog::getBrain(void) {
 	return (this->d_brain);
+}
+
+std::string	Dog::getIdeasIdx(int idx) const {
+	return (this->d_brain->getIdeasIdx(idx));
+}
+
+void	Dog::addIdeas(const std::string& some) {
+	this->d_brain->addIdeas(some);
 }
 
 Dog::~Dog() {

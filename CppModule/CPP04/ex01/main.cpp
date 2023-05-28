@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 17:02:53 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/28 17:27:40 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/28 17:42:30 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 #include "Dog.hpp"
 #include "WrongCat.hpp"
 
-int	main(void) {
-	Animal* j = new Dog();
-	Animal* i = new Cat();
+// int	main(void) {
+// 	Animal* j = new Dog();
+// 	Animal* i = new Cat();
 
-	delete j;
-	delete i;
+// 	delete j;
+// 	delete i;
 
-	system("leaks Animal");
-	return(0);
-}
+// 	system("leaks Animal");
+// 	return(0);
+// }
 
 // int main() {
 
@@ -86,13 +86,15 @@ int	main(void) {
 	
 // 	*b = *a;
 // 	std::cout << "Copy c, a" << std::endl;
-// 	Cat c = *a;
+// 	Cat c(*a);
+// 	Cat d = *a;
 // 	std::cout << b->getIdeasIdx(0) << std::endl;
 // 	a->addIdeas("hi2");
 // 	std::cout << b->getIdeasIdx(2) << std::endl;
-// 	std::cout << "b(2): " << b->getIdeasIdx(2) << std::endl;
 // 	std::cout << "a(2): " << a->getIdeasIdx(2) << std::endl;
+// 	std::cout << "b(2): " << b->getIdeasIdx(2) << std::endl;
 // 	std::cout << "c(2): " << c.getIdeasIdx(2) << std::endl;
+// 	std::cout << "d(2): " << d.getIdeasIdx(2) << std::endl;
 // 	c.addIdeas("hi2");
 // 	std::cout << "c(2): " << c.getIdeasIdx(2) << std::endl;
 

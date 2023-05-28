@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 14:44:08 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/27 22:44:27 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/28 17:53:58 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ class Brain {
 		Brain&			operator=(const Brain& origin);
 
 		void			addIdeas(const std::string& some);
-		std::string*	getIdeas();
+		std::string*	getIdeas(void);
+		std::string		getIdeasIdx(int idx) const;
 
 		~Brain();
 };

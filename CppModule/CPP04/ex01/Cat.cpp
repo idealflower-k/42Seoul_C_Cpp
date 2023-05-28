@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:34:26 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/28 17:20:30 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/28 17:42:39 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ Cat::Cat(const Cat& origin)
 
 	std::cout << "[Cat] Copy constructor called" << std::endl;
 
-	this->c_brain = new Brain();
-
-	*this->c_brain = *origin.c_brain;
+	this->c_brain = new Brain(*origin.c_brain);
 }
 
 Cat& Cat::operator=(const Cat& origin) {
