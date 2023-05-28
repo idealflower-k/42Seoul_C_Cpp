@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 17:02:53 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/27 22:42:24 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/28 16:50:32 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,19 @@ int main() {
 	for (int i = 0; i < numAnimals; ++i) {
 		std::string idea = "Idea " + std::to_string(i);
 		if(i < numAnimals / 2) {
-			static_cast<Dog*>(animal_array[i])->getBrain()->addIdeas(idea);
+			static_cast<Dog*>(animal_array[i])->addIdeas(idea);
 		} else {
-			static_cast<Cat*>(animal_array[i])->getBrain()->addIdeas(idea);
+			static_cast<Cat*>(animal_array[i])->addIdeas(idea);
 		}
 	}
 	
 	std::cout << "=====dispaly ideas=====" << std::endl;
 	for (int i = 0; i < numAnimals; ++i) {
 		if (i < numAnimals / 2) {
-			std::cout << static_cast<Dog*>(animal_array[i])->getBrain()->getIdeas()[0] << std::endl;
+			std::cout << static_cast<Dog*>(animal_array[i])->getIdeas(0) << std::endl;
 		}
 		else
-			std::cout << static_cast<Cat*>(animal_array[i])->getBrain()->getIdeas()[0] << std::endl;
+			std::cout << static_cast<Cat*>(animal_array[i])->getIdeas(0) << std::endl;
 	}
 	
 	std::cout << "=====Delete Aniaml_array=====" << std::endl;

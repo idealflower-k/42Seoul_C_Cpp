@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:34:26 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/27 22:31:56 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/28 16:48:52 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,14 @@ std::string	Cat::getType(void) const{
 
 Brain*	Cat::getBrain(void) {
 	return (this->c_brain);
+}
+
+std::string	Cat::getIdeas(int idx) const {
+	return (this->c_brain->getIdeas(idx));
+}
+
+void	Cat::addIdeas(const std::string& some) {
+	this->c_brain->addIdeas(some);
 }
 
 Cat::~Cat() {

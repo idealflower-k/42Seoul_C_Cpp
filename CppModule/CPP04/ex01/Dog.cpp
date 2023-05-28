@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:44:10 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/27 22:32:36 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/28 16:49:06 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,14 @@ std::string	Dog::getType(void) const{
 
 Brain*	Dog::getBrain(void) {
 	return (this->d_brain);
+}
+
+std::string	Dog::getIdeas(int idx) const {
+	return (this->d_brain->getIdeas(idx));
+}
+
+void	Dog::addIdeas(const std::string& some) {
+	this->d_brain->addIdeas(some);
 }
 
 Dog::~Dog() {
