@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 14:45:04 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/28 16:43:26 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/05/28 17:11:41 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,11 @@ void	Brain::addIdeas(const std::string& some) {
 		std::cout << "[Brain] ideas is full" << std::endl;
 }
 
-std::string	Brain::getIdeas(int idx) const {
+std::string*	Brain::getIdeas(void) {
+	return (this->ideas);
+}
+
+std::string	Brain::getIdeasIdx(int idx) const {
 
 	if (idx >= 100)
 		return ("Wrong idx value");

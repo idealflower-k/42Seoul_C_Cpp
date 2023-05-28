@@ -6,12 +6,12 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/25 16:15:26 by sanghwal          #+#    #+#              #
-#    Updated: 2023/05/26 15:11:48 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/05/28 17:22:07 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
-CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -MMD -MP
+CXXFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 
 NAME = Animal
