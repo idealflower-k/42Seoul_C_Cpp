@@ -14,6 +14,7 @@ typedef struct s_ray	t_ray;
 typedef	struct s_camera	t_camera;
 typedef	struct s_canvas	t_canvas;
 typedef struct s_sphere t_sphere;
+typedef struct s_hit_record	t_hit_record;
 
 struct s_vec3
 {
@@ -51,6 +52,16 @@ struct  s_sphere
 	t_point3	center;
 	double		radius;
 	double		radius2;
+};
+
+struct s_hit_record
+{
+	t_point3	p;
+	t_vec3		normal;
+	double		tmin;
+	double		tmax;
+	double		t;
+	t_bool		front_face;
 };
 
 

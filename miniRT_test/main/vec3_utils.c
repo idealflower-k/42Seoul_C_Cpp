@@ -126,17 +126,18 @@ t_vec3	vcross(t_vec3 vec, t_vec3 vec2)
 }
 
 // 단위 벡터 (벡터 정규화, 길이를 1로 만든다.)
+// 유클리드 norm 으로 수정 (곱셈이 나눗셈보다 비용이 적게 든다.)
 t_vec3	vunit(t_vec3 vec)
 {
-	double len = vlength(vec);
+	double len = 1 / vlength(vec);
 	if (len == 0)
 	{
 		printf("Error\n:Devider is 0");
 		exit(0);
 	}
-	vec.x /= len;
-	vec.y /= len;
-	vec.z /= len;
+	vec.x *= len;
+	vec.y *= len;
+	vec.z *= len;
 	return (vec);
 }
 

@@ -31,16 +31,14 @@ t_ray	ray_primary(t_camera *cam, double u, double v)
 //광선이 최종적으로 얻게된 픽셀의 색상 값을 리턴.
 t_color3	ray_color(t_ray *ray, t_sphere *sphere)
 {
-	double  t;
-	t_vec3	n;
+	double	t;
+	t_hit_record	rec;
 
-	t = hit_sphere(sphere, ray);
+	rec.tmin = 0;
+	rec.tmax = INFINITY;
 
-	if (t > 0.0)
-	{
-		n = vunit(vminus(ray_at(ray, t), sphere->center));
-		return (vmult(color3(n.x + 1, n.y + 1, n.z + 1), 0.5));
-	}
+	if (hit_sphere(sphere, ray, &rec))
+		return (vmult(vplus(rec.normal, color3(1, 1, 1)), 0.5));
 	else
 	{
 		t = 0.5 * (ray->dir.y + 1.0);
