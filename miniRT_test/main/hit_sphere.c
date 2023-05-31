@@ -2,10 +2,10 @@
 #include "utils.h"
 #include "trace.h"
 
-double	hit_sphere(t_sphere *sp, t_ray *ray, t_hit_record *rec)
+double	hit_sphere(t_object *world, t_ray *ray, t_hit_record *rec)
 {
 	t_vec3	oc;
-
+	t_sphere *sp = world->element;
 	double	a;
 	double	half_b;
 	double	c;

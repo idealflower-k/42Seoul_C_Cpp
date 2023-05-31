@@ -9,7 +9,9 @@ SRCS = main.c \
 	ray.c \
 	scene.c \
 	vec3_utils.c \
-	normal.c
+	normal.c \
+	hit.c \
+	object_utils.c
 
 OBJS = $(SRCS:.c=.o)
 

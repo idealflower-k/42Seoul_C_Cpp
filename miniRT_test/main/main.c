@@ -15,13 +15,14 @@ int	main(void)
 	t_canvas	canv;
 	t_camera	cam;
 	t_ray		ray;
+	t_object	*world;
 
-	t_sphere	sp;
-
-	canv = canvas(400, 300);
+	canv = canvas(1920, 1080);
 	cam = camera(&canv, point3(0, 0, 0));
 
-	sp = sphere(point3(0, 0, -5), 2);
+	world = object(SP, sphere(point3(-2, 2, -5), 1.5));
+	oadd(&world, object(SP, sphere(point3(2, 2, -5), 1.5)));
+	oadd(&world, object(SP, sphere(point3(0, 0, -5), 2.4)));
 
 	printf("P3\n%d %d\n255\n", canv.width, canv.height);
 	j = canv.height - 1;
@@ -33,7 +34,7 @@ int	main(void)
 			u = (double)i / (canv.width - 1);
 			v = (double)j / (canv.height - 1);
 			ray = ray_primary(&cam, u, v);
-			pixel_color = ray_color(&ray, &sp);
+			pixel_color = ray_color(&ray, world);
 			write_color(pixel_color);
 			++i;
 		}
