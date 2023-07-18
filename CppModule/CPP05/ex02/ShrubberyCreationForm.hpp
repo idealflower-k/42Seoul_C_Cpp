@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 14:06:08 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/18 16:50:58 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/18 19:50:45 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ class Bureaucrat;
 
 class ShrubberyCreationForm : public AForm {
 	private:
-		void	validExec(Bureaucrat const& bur) const;
 		ShrubberyCreationForm();
 
 	public:

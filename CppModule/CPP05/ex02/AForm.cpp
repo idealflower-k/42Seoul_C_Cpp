@@ -83,6 +83,13 @@ bool	AForm::getSigned(void) const {
 	return (this->is_signed);
 }
 
+void	AForm::validExec(Bureaucrat const& bur) const {
+	if (!this->getSigned())
+		throw AForm::NotSignedException();
+	else if (bur.getGrade() > this->getExeGrade())
+		throw AForm::GradeTooLowException();
+}
+
 std::ostream& operator<<(std::ostream& os, AForm& form) {
 	std::cout << form.getName() + ", required  sign grade " \
 		<< form.getSignGrade() << ", required execute grade " \

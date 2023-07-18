@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:48:17 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/18 17:17:29 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/18 19:50:44 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ class Bureaucrat;
 
 class RobotomyRequestForm : public AForm {
 	private:
-		void	validExec(Bureaucrat const& bur) const;
 		RobotomyRequestForm();
 
 	public:
