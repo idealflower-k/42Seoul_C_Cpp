@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 17:28:09 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/18 17:31:25 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/18 19:50:43 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ class Bureaucrat;
 
 class PresidentialPardonForm : public AForm {
 	private:
-		void	validExec(Bureaucrat const& bur) const;
 		PresidentialPardonForm();
 
 	public:

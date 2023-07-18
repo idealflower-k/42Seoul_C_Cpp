@@ -6,7 +6,7 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/25 16:15:26 by sanghwal          #+#    #+#              #
-#    Updated: 2023/07/18 17:22:06 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/07/18 19:55:40 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRCS = main.cpp \
 	Bureaucrat.cpp \
 	AForm.cpp \
 	ShrubberyCreationForm.cpp \
-	RobotomyRequestForm.cpp
+	RobotomyRequestForm.cpp \
+	PresidentialPardonForm.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 DEPS = $(SRCS:.cpp=.d)
