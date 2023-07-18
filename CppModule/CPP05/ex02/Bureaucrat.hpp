@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 17:42:25 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/18 16:12:35 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/18 19:58:59 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ class Bureaucrat {
 		void		incrementGrade();
 		void		decrementGrade();
 		void		signForm(AForm& form);
+		void		executeForm(AForm const& form);
 
 		~Bureaucrat();
 };

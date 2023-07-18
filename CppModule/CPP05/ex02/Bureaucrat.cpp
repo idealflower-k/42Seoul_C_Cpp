@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 19:00:16 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/18 16:39:58 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/18 20:05:39 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,17 @@ void	Bureaucrat::signForm(AForm& form) {
 	else
 		std::cout << *this << "couldn't sign " << form << \
 											"because " << "grade too low!\n";
+}
+
+void	Bureaucrat::executeForm(AForm const& form) {
+
+	try {
+		form.execute(*this);
+	} catch (std::exception& e) {
+		std::cout << *this << "can't executed " << const_cast<AForm&>(form);
+		throw ;
+	}
+	std::cout << *this << "executed " << const_cast<AForm&>(form);
 }
 
 std::ostream& operator<<(std::ostream& os, Bureaucrat& bureaucrat) {
