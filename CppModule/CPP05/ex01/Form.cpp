@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 14:26:06 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/17 16:04:01 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/18 13:14:49 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,11 @@ Form&	Form::operator=(const Form& origin) {
 }
 
 void	Form::besigned(Bureaucrat& bur) {
-	if (bur.getGrade() <= this->req_sign)
+	if (bur.getGrade() <= this->req_sign) {
+		std::cout << "[Form] " << bur.getName() << " signed " \
+														<< this->name << "\n";
 		this->is_signed = true;
+	}
 	else
 		throw Form::GradeTooLowException();
 }
@@ -80,6 +83,5 @@ std::ostream& operator<<(std::ostream& os, Form& form) {
 }
 
 Form::~Form() {
-	std::cout << this->name << "[Form] Destructor called\n";
+	std::cout << this->name << " [Form] Destructor called\n";
 }
-
