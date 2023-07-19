@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:38:07 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/18 19:56:02 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/19 14:43:08 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,11 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 }
 
 void	PresidentialPardonForm::execute(Bureaucrat const& executor) const {
-	this->validExec(executor);
+	try {
+		this->validExec(executor);
+	} catch (std::exception& e) {
+		throw ;
+	}
 	std::cout << this->getName() << " has been pardoned by Zaphod Beeblebrox\n";
 }
 

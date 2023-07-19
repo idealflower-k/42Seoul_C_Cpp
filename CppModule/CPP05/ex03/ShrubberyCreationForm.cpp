@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 14:23:12 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/18 19:50:46 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/19 14:51:45 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,12 @@ static void	_MakeTree(Bureaucrat const& executor) {
 }
 
 void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const {
-	this->validExec(executor);
-	_MakeTree(executor);
+	try {
+		this->validExec(executor);
+		_MakeTree(executor);
+	} catch (std::exception& e) {
+		throw;
+	}
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {
