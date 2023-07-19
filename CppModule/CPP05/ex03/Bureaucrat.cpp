@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 19:00:16 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/19 14:17:13 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/19 14:51:04 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 Bureaucrat::Bureaucrat(std::string _name, int _grade)
 	: name(_name), grade(_grade) {
-	validGrade(_grade);
+	this->validGrade(_grade);
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& origin)
 	: name(origin.name), grade(origin.grade) {
-	validGrade(origin.grade);
+	this->validGrade(origin.grade);
 }
 
 Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& origin) {
 	if (this != &origin) {
-		validGrade(origin.grade);
+		this->validGrade(origin.grade);
 		this->grade = origin.grade;
 		const_cast<std::string&>(this->name) = origin.name;
 	}
@@ -40,12 +40,12 @@ int	Bureaucrat::getGrade(void) const {
 }
 
 void	Bureaucrat::incrementGrade(void) {
-	validGrade(this->grade - 1);
+	this->validGrade(this->grade - 1);
 	this->grade -= 1;
 }
 
 void	Bureaucrat::decrementGrade(void) {
-	validGrade(this->grade + 1);
+	this->validGrade(this->grade + 1);
 	this->grade += 1;
 }
 
@@ -76,12 +76,11 @@ void	Bureaucrat::signForm(AForm& form) {
 }
 
 void	Bureaucrat::executeForm(AForm const& form) {
-
 	try {
 		form.execute(*this);
 	} catch (std::exception& e) {
-		std::cout << *this << "can't executed " << const_cast<AForm&>(form);
-		throw ;
+		std::cerr << *this << "can't executed " << const_cast<AForm&>(form);
+		std::cerr << e.what();
 	}
 	std::cout << *this << "executed " << const_cast<AForm&>(form);
 }
