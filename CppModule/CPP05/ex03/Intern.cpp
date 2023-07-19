@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 20:29:52 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/18 21:27:20 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/19 15:10:17 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Intern&	Intern::operator=(const Intern& origin) {
 }
 
 AForm*	Intern::makeForm(std::string form, std::string target) {
-	AForm	*res;
+	AForm	*res = NULL;
 	std::string forms[3] = \
 	{"ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"};
 	int			idx = -1;
@@ -44,8 +44,7 @@ AForm*	Intern::makeForm(std::string form, std::string target) {
 		res = new PresidentialPardonForm(target);
 		break;
 	default:
-		res = NULL;
-		std::cout << "Have Not Form\n";
+		std::cerr << "Have Not Form\n";
 		return (NULL);
 	}
 	std::cout << "Intern creates " << form << "\n";
