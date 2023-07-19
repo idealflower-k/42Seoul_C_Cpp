@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:54:34 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/19 14:51:33 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/19 15:01:23 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ static void	_Robotomized(Bureaucrat const& executor) {
 void	RobotomyRequestForm::execute(Bureaucrat const& executor) const {
 	try {
 		this->validExec(executor);
+		_Robotomized(executor);
 	} catch (std::exception& e) {
 		throw;
 	}
-	_Robotomized(executor);
 }
 
 RobotomyRequestForm::~RobotomyRequestForm() {
