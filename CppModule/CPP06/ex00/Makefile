@@ -6,7 +6,7 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/19 15:32:08 by sanghwal          #+#    #+#              #
-#    Updated: 2023/07/19 19:21:32 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/07/21 20:30:56 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ CXXFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 NAME = converter
 
-SRCS = main.cpp
+SRCS = main.cpp \
+	ScalarConverter.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 DEPS = $(SRCS:.cpp=.d)

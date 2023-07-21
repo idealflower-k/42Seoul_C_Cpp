@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:40:46 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/19 19:10:19 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/21 20:28:32 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,38 @@
 
 #include <string>
 #include <iostream>
+#include <exception>
 
 class ScalarConverter {
-	public:
+	private:
 		ScalarConverter();
+		static bool	validCheckData(const std::string& data);
+		static void	convertChar(const double& dataDouble);
+		static void	convertInt(const double& dataDouble);
+		// static void	convertFloat(const double& dataDouble);
+		// static void	convertDouble(const double& dataDouble);
+
+	public:
 		ScalarConverter(const ScalarConverter& origin);
 
 		ScalarConverter&	operator=(const ScalarConverter& origin);
 
-		void	convert(const char* data);
+		static void	convert(const std::string& data);
 
 		~ScalarConverter();
+
+		// class ScalarValidError : public std::exception {
+		// 	public:
+		// 		const char* what() const throw();
+		// };
+		// class ScalarImpossible : public std::exception {
+		// 	public:
+		// 		const char* what() const throw();
+		// };
+		// class NonDisplayable : public std::exception {
+		// 	public:
+		// 		const char* what() const throw();
+		// };
 };
 
 #endif
