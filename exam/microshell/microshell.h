@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 15:22:35 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/23 19:47:13 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/24 20:52:07 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,20 +52,4 @@
 	// head_list를 순회하면서 cmd_list 순회 실행
 	// cd 는 따로 처리하기
 	// 에러 처리
-
-typedef struct s_list t_list;
-typedef struct s_cmd t_cmd;
-
-struct s_list {
-	struct cmd		*cmd_list;
-	int				num_cmd;
-	struct s_list	*next;
-};
-
-struct s_cmd {
-	char	**cmd_arr;
-	int		pipe[2];
-	struct cmd* next;
-};
-
 #endif
