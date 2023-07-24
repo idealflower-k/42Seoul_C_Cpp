@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 13:17:46 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/24 20:52:12 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/24 21:26:48 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,9 @@ int	exe_pipe(int idx, int num, char** av, char** env, int pre_fd)
 {
 	char* arr[99];
 	int i = 0;
-	arr[i] = av[idx - num];
-	i++;
-	while (idx - num < num) {
-		arr[i] = av[(idx - num) + i];
+	while (i < num && strcmp(av[(idx - num) + i], ";")) {
+		arr[i] = av[idx - num + i];
 		i++;
-		idx++;
 	}
 	arr[i] = NULL;
 
@@ -79,21 +76,18 @@ void	exe_last(int idx, int num, char** av, char** env, int pre_fd) {
 	for (int i = 0; i < 99; i++)
 		arr[i] = NULL;
 	int i = 0;
-	arr[i] = av[idx - num];
-	i++;
-	int j = 1;
-	while (j < num) {
-		arr[i] = av[(idx - num) + i];
-		idx++;
+	while (i < num && strcmp(av[(idx - num) + i], ";")) {
+		arr[i] = av[idx - num + i];
 		i++;
-		j++;
 	}
 	arr[i] = NULL;
 
 	int pid = fork();
 	if (pid == 0) {
-		dup2(pre_fd, 0);
-		close(pre_fd);
+		if (pre_fd > 0) {
+			dup2(pre_fd, 0);
+			close(pre_fd);
+		}
 		execve(arr[0], arr, env);
 		write_error("error: cannot execute ");
 		write_error(arr[0]);
@@ -108,7 +102,7 @@ int	main(int ac, char** av, char** env)
 		exit(0);
 	int	idx = 1;
 	int pre_fd = 0;
-	int	num = 0;
+	int	num_cmd = 0;
 	while (av[idx] != NULL) {
 		int num = 0;
 		if (!strcmp(av[idx], ";"))
@@ -129,18 +123,19 @@ int	main(int ac, char** av, char** env)
 			if (av[idx] != NULL && !strcmp(av[idx], "|")) {
 				pre_fd = exe_pipe(idx, num, av, env, pre_fd);
 				idx++;
-				num++;
+				num_cmd++;
 			}
 			else if (av[idx] == NULL || !strcmp(av[idx], ";")) {
 				exe_last(idx, num, av, env, pre_fd);
 				if (av[idx] != NULL && !strcmp(av[idx], ";"))
 					idx++;
-				num++;
-				close(pre_fd);
+				num_cmd++;
+				if (pre_fd > 0)
+					close(pre_fd);
 			}
 		}
 	}
-	for (int i = 0; i < num; i++)
+	for (int i = 0; i < num_cmd; i++)
 		wait(0);
 	exit (0);
 }
