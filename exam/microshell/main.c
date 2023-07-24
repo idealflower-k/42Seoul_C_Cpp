@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 13:17:46 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/24 21:26:48 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/24 21:37:10 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	cd_exe(int idx, int num, char** av) {
 int	exe_pipe(int idx, int num, char** av, char** env, int pre_fd)
 {
 	char* arr[99];
+	for (int i = 0; i < 99; i++)
+		arr[i] = NULL;
 	int i = 0;
 	while (i < num && strcmp(av[(idx - num) + i], ";")) {
 		arr[i] = av[idx - num + i];
