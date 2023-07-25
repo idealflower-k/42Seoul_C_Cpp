@@ -1,9 +1,9 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <unistd.h>
 #include <string.h>
 
-void	write_error(char *str) {
+void	write_error(char* str) {
 	while (*str)
 		write(2, str++, 1);
 }
@@ -14,15 +14,17 @@ void	exe_cd(int path_idx, int cmd_num, char** av) {
 		return ;
 	}
 	char *path = av[path_idx + cmd_num];
-	if (chdir(path) == -1) {
+	if (chdir(path) == -1)
+	{
 		write_error("error: cd: cannot change directory to ");
 		write_error(path);
 		write_error("\n");
 	}
 }
 
-int	exe_pipe(int path_idx, int cmd_num, char** av, char** env, int pre_fd) {
-	char *arr[100];
+int	exe_pipe(int path_idx, int cmd_num, char** av, char** env, int pre_fd)
+{
+	char* arr[100];
 	for (int i = 0; i < 100; i++)
 		arr[i] = NULL;
 	for (int i = 0; i < cmd_num && strcmp(av[path_idx + i], ";"); i++) {
@@ -59,14 +61,13 @@ int	exe_pipe(int path_idx, int cmd_num, char** av, char** env, int pre_fd) {
 	return (_pipe[0]);
 }
 
-void exe_last(int path_idx, int cmd_num, char** av, char** env, int pre_fd) {
-		char *arr[100];
+void	exe_last(int path_idx, int cmd_num, char** av, char** env, int pre_fd) {
+	char* arr[100];
 	for (int i = 0; i < 100; i++)
 		arr[i] = NULL;
 	for (int i = 0; i < cmd_num && strcmp(av[path_idx + i], ";"); i++) {
 		arr[i] = av[path_idx + i];
 	}
-
 	int pid = fork();
 	if (pid == -1) {
 		write_error("error: fatal\n");
@@ -85,27 +86,26 @@ void exe_last(int path_idx, int cmd_num, char** av, char** env, int pre_fd) {
 	}
 }
 
-int	main(int ac, char** av, char** env) {
+int main(int ac, char** av, char** env) {
 	if (ac < 2)
 		exit(1);
 	int	idx = 1;
-	int exe_num = 0;
-	int path_idx = 0;
 	int pre_fd = 0;
+	int exe_num = 0;
+	int	path_idx = 0;
 	while (av[idx] != NULL) {
 		int cmd_num = 0;
-		if(!strcmp(av[idx], ";"))
+		if (!strcmp(av[idx], ";"))
 			idx++;
 		else if (av[idx] != NULL && !strcmp(av[idx], "cd")) {
-			path_idx = idx;
-			idx++;
+			path_idx = idx++;
 			while (av[idx] != NULL && strcmp(av[idx], ";")) {
 				idx++;
 				cmd_num++;
 			}
 			exe_cd(path_idx, cmd_num, av);
 		}
-		else if (av[idx] != NULL && strcmp(av[idx], ";") && strcmp(av[idx], "|")) {
+		else if (av[idx] != NULL && strcmp(av[idx], "|") && strcmp(av[idx], ";")) {
 			path_idx = idx;
 			while (av[idx] != NULL && strcmp(av[idx], "|") && strcmp(av[idx], ";")) {
 				idx++;
