@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:47:09 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/22 21:12:18 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/25 17:12:18 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,23 @@ void	ScalarConverter::convertInt(const std::string& data) {
 void	ScalarConverter::convertFloat(const std::string& data) {
 	const double	dataDouble = std::strtod(data.c_str(), NULL);
 
-	std::cout << "float: ";
-	if ((data.length() == 1 && std::isalpha(*data.c_str()))) {
-		std::cout << std::showpoint << std::setprecision(6) \
-									<< static_cast<float>(*data.c_str());
-	}
-	else {
-		std::cout << std::showpoint << std::setprecision(6) \
-									<< static_cast<float>(dataDouble);
-	}
+	std::cout << "float: " << std::showpoint << std::fixed << std::setprecision(1);
+	if ((data.length() == 1 && std::isalpha(*data.c_str())))
+		std::cout << static_cast<float>(*data.c_str());
+	else
+		std::cout << static_cast<float>(dataDouble);
 	std::cout << "f\n";
+}
+
+void	ScalarConverter::convertDouble(const std::string& data) {
+	const double	dataDouble = std::strtod(data.c_str(), NULL);
+
+	std::cout << "double: ";
+	if ((data.length() == 1 && std::isalpha(*data.c_str())))
+		std::cout << static_cast<double>(*data.c_str());
+	else
+		std::cout << static_cast<double>(dataDouble);
+	std::cout << "\n";
 }
 
 void	ScalarConverter::convert(const std::string& data) {
@@ -90,7 +97,7 @@ void	ScalarConverter::convert(const std::string& data) {
 	ScalarConverter::convertChar(data);
 	ScalarConverter::convertInt(data);
 	ScalarConverter::convertFloat(data);
-	// convertDouble(data);
+	ScalarConverter::convertDouble(data);
 }
 
 ScalarConverter::~ScalarConverter(void) {
