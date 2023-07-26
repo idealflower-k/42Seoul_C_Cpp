@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 13:18:06 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/17 14:23:40 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/26 13:22:21 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,13 @@ int	main(void) {
 // 		std::cout << p3;
 // 		p2.incrementGrade();
 // 		std::cout << p2;
+// 		p1.incrementGrade();
+// 		std::cout << p1;
 // 	} catch (std::exception& e) {
 // 		std::cout << e.what();
 // 	}
+// 	std::cout << "After catch\n";
+// 	return (0);
 // }
 
 // int	main(void) {
