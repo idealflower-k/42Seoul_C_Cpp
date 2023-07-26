@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 14:26:06 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/26 13:41:03 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/26 14:08:20 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,19 +68,19 @@ const char*	Form::GradeTooLowException::what() const throw() {
 	return ("[Form] Grade too low!! (1~150)\n");
 }
 
-std::string	Form::getName(void) {
+std::string	Form::getName(void) const {
 	return (this->name);
 }
 
-bool	Form::getSigned(void) {
+bool	Form::getSigned(void) const {
 	return (this->is_signed);
 }
 
-int	Form::getSignGrade(void) {
+int	Form::getSignGrade(void) const {
 	return (this->req_sign);
 }
 
-int	Form::getExeGrade(void) {
+int	Form::getExeGrade(void) const {
 	return (this->req_exe);
 }
 

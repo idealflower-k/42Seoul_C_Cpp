@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 17:42:25 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/18 13:00:27 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/26 14:07:39 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ class Bureaucrat {
 
 		Bureaucrat&	operator=(const Bureaucrat& origin);
 
-		std::string getName();
-		int			getGrade();
+		std::string getName() const;
+		int			getGrade() const;
 		void		incrementGrade();
 		void		decrementGrade();
 		void		signForm(Form& form);

@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 14:26:10 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/26 13:36:35 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/26 14:08:11 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ class Form {
 		Form&		operator=(const Form& origin);
 		
 		void		besigned(Bureaucrat& bur);
-		std::string	getName();
-		bool		getSigned();
-		int			getSignGrade();
-		int			getExeGrade();
+		std::string	getName() const;
+		bool		getSigned() const;
+		int			getSignGrade() const;
+		int			getExeGrade() const;
 
 		~Form();
 };
