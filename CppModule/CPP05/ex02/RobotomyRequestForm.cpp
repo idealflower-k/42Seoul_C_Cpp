@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:54:34 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/19 15:01:43 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/26 14:43:42 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 static void	_Robotomized(Bureaucrat const& executor) {
 	int	num = std::rand() % 2;
 
+	std::cout << "Roughly drilling sound...!! >> ";
 	if (num)
 		std::cout << executor.getName() << " has been robotomized success!!\n";
 	else

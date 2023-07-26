@@ -53,7 +53,7 @@ class AForm {
 		int				getSignGrade() const;
 		int				getExeGrade() const;
 		bool			getSigned() const;
-		virtual void	validExec(Bureaucrat const& bur) const;
+		void			validExec(Bureaucrat const& bur) const;
 		virtual void	execute(Bureaucrat const& executor) const = 0;
 
 		virtual ~AForm();

@@ -12,6 +12,9 @@
 
 #include "AForm.hpp"
 
+AForm::AForm(void)
+	: name(""), is_signed(false), req_sign(0), req_exe(0) {}
+
 AForm::AForm(std::string _name, int _req_sign, int _req_exe)
 	: name(_name), is_signed(false), req_sign(_req_sign), req_exe(_req_exe) {
 
@@ -29,6 +32,8 @@ AForm::AForm(const AForm& origin)
 
 AForm&	AForm::operator=(const AForm& origin) {
 	if (this != &origin) {
+		validGrade(origin.req_sign);
+		validGrade(origin.req_exe);
 		const_cast<std::string&>(this->name) = origin.name;
 		this->is_signed = origin.is_signed;
 		const_cast<int&>(this->req_sign) = origin.req_sign;

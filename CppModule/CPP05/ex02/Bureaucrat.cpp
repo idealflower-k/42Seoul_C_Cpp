@@ -6,11 +6,13 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 19:00:16 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/19 15:04:59 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/26 14:14:15 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+
+Bureaucrat::Bureaucrat(void) {}
 
 Bureaucrat::Bureaucrat(std::string _name, int _grade)
 	: name(_name), grade(_grade) {
