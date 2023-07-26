@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:40:46 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/25 17:07:41 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/26 16:01:03 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <exception>
 #include <iomanip>
 #include <cctype>
+#include <climits>
 
 class ScalarConverter {
 	private:
