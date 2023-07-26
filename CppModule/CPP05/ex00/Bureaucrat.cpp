@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 19:00:16 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/26 13:23:18 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/26 14:06:32 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& origin) {
 	return (*this);
 }
 
-std::string	Bureaucrat::getName(void) {
+std::string	Bureaucrat::getName(void) const {
 	return (this->name);
 }
 
-int	Bureaucrat::getGrade(void) {
+int	Bureaucrat::getGrade(void) const {
 	return (this->grade);
 }
 
