@@ -6,11 +6,14 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 14:26:06 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/18 13:14:49 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/26 13:41:03 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
+
+Form::Form()
+	: name(""), is_signed(false), req_sign(0), req_exe(0) {}
 
 Form::Form(std::string _name, int _req_sign, int _req_exe)
 	: name(_name), is_signed(false), req_sign(_req_sign), req_exe(_req_exe) {
@@ -29,6 +32,8 @@ Form::Form(const Form& origin)
 
 Form&	Form::operator=(const Form& origin) {
 	if (this != &origin) {
+		validGrade(origin.req_sign);
+		validGrade(origin.req_exe);
 		const_cast<std::string&>(this->name) = origin.name;
 		this->is_signed = origin.is_signed;
 		const_cast<int&>(this->req_sign) = origin.req_sign;
@@ -65,6 +70,10 @@ const char*	Form::GradeTooLowException::what() const throw() {
 
 std::string	Form::getName(void) {
 	return (this->name);
+}
+
+bool	Form::getSigned(void) {
+	return (this->is_signed);
 }
 
 int	Form::getSignGrade(void) {

@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 14:26:10 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/18 13:00:24 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/26 13:36:35 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ class Form {
 		
 		void		besigned(Bureaucrat& bur);
 		std::string	getName();
+		bool		getSigned();
 		int			getSignGrade();
 		int			getExeGrade();
 
