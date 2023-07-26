@@ -29,6 +29,8 @@ AForm::AForm(const AForm& origin)
 
 AForm&	AForm::operator=(const AForm& origin) {
 	if (this != &origin) {
+		validGrade(origin.req_sign);
+		validGrade(origin.req_exe);
 		const_cast<std::string&>(this->name) = origin.name;
 		this->is_signed = origin.is_signed;
 		const_cast<int&>(this->req_sign) = origin.req_sign;

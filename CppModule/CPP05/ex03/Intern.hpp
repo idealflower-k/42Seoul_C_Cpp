@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 20:16:07 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/18 21:27:12 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/26 15:52:13 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,20 @@ class AForm;
 class Bureaucrat;
 
 class Intern {
+	private:
+		Intern& operator=(const Intern& origin);
+
 	public:
 		Intern();
 		Intern(const Intern& origin);
-		
-		Intern& operator=(const Intern& origin);
-		
+
+		class HaveNotForm : public std::exception {
+			public:
+				const char* what() const throw();
+		};
+
 		AForm*	makeForm(std::string form, std::string target);
-		
+
 		~Intern();
 };
 

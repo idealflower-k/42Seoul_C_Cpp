@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 20:29:52 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/19 15:10:17 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/26 15:53:34 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@ Intern::Intern() {}
 
 Intern::Intern(const Intern& origin) {
 	(void)origin;
-}
-
-Intern&	Intern::operator=(const Intern& origin) {
-	if (this != &origin)
-		Intern::operator=(origin);
-	return (*this);
 }
 
 AForm*	Intern::makeForm(std::string form, std::string target) {
@@ -44,11 +38,14 @@ AForm*	Intern::makeForm(std::string form, std::string target) {
 		res = new PresidentialPardonForm(target);
 		break;
 	default:
-		std::cerr << "Have Not Form\n";
-		return (NULL);
+		throw Intern::HaveNotForm();
 	}
 	std::cout << "Intern creates " << form << "\n";
 	return (res);
+}
+
+const char*	Intern::HaveNotForm::what() const throw() {
+	return ("Have Not Form\n");
 }
 
 Intern::~Intern() {
