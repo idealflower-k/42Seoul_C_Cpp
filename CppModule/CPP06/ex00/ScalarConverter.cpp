@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:47:09 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/26 16:16:51 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/27 12:45:12 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ void	ScalarConverter::convertChar(const std::string& data) {
 	std::cout << "char: ";
 	if ((data.length() == 1 && std::isalpha(*data.c_str())))
 		std::cout << '\'' << data << '\'' << "\n";
-	else if (dataDouble - static_cast<int>(dataDouble) == 0 && dataDouble >= 0 && dataDouble <= 255) {
+	else if (dataDouble - static_cast<int>(dataDouble) == 0
+			&& dataDouble >= 0 && dataDouble <= 255) {
 		if (dataDouble >= 32 && dataDouble <= 127)
 			std::cout << '\'' << static_cast<char>(dataDouble) << '\'' << "\n";
 		else

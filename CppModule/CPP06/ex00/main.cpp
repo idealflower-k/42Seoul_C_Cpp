@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 18:06:35 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/26 16:18:45 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/27 12:48:19 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(int ac, char **av)
 	try {
 		ScalarConverter::convert(av[1]);
 	} catch (std::exception& e) {
-		std::cerr << e.what();
+		std::cerr << "Exception!!: " << e.what();
 	}
 	return (0);
 }
