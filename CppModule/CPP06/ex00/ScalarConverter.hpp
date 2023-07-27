@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:40:46 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/27 12:47:43 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/27 13:18:06 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class ScalarConverter {
 		ScalarConverter();
 		ScalarConverter(const ScalarConverter& origin);
 		ScalarConverter&	operator=(const ScalarConverter& origin);
+		~ScalarConverter();
 
 		static bool			validCheckData(const std::string& data);
 		static void			convertChar(const std::string& data);
@@ -39,8 +40,6 @@ class ScalarConverter {
 			public:
 				const char* what() const throw();
 		};
-
-		~ScalarConverter();
 };
 
 #endif

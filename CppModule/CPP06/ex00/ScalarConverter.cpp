@@ -6,20 +6,11 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:47:09 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/27 12:45:12 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/27 13:18:08 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
-
-ScalarConverter::ScalarConverter(void) {}
-
-ScalarConverter::ScalarConverter(const ScalarConverter& origin) {(void)origin;}
-
-ScalarConverter& ScalarConverter::operator=(const ScalarConverter& origin) {
-	(void)origin;
-	return (*this);
-}
 
 const char*	ScalarConverter::ScalarValidError::what() const throw() {
 	return("Can't convert!!!\n");
@@ -100,8 +91,4 @@ void	ScalarConverter::convert(const std::string& data) {
 	ScalarConverter::convertInt(data);
 	ScalarConverter::convertFloat(data);
 	ScalarConverter::convertDouble(data);
-}
-
-ScalarConverter::~ScalarConverter(void) {
-	std::cout << "[ScalarConverter] Destructor called\n";
 }
