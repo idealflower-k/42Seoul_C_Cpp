@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:24:48 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/28 13:54:17 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/28 14:01:39 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void plusOne(T& data) {
 
 template <typename T>
 void printData(T& data) {
-  std::cout << data << ", ";
+  std::cout << data << " ";
 }
 
 template <typename T, std::size_t N>
