@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 20:33:17 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/29 17:33:57 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/30 16:06:31 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 #define SPAN_HPP
 
 #include <algorithm>
-#include <climits>
+#include <deque>
 #include <exception>
 #include <iostream>
+#include <limits>
+#include <list>
 #include <vector>
 
 class Span {
@@ -31,10 +33,15 @@ class Span {
   Span& operator=(const Span& origin);
 
   void addNumber(int num);
-  void addNumber(std::vector<int>::iterator begin,
-                 std::vector<int>::iterator end);
+  template <typename InputItr>
+  void addNumber(InputItr begin, InputItr end) {
+    if (std::distance(begin, end) + this->storage.size() <= this->max_size) {
+      this->storage.insert(this->storage.end(), begin, end);
+    } else
+      throw std::length_error("storage is full!!!\n");
+  }
   unsigned int shortestSpan() const;
-  // unsigned int longestSpan() const;
+  unsigned int longestSpan() const;
 
   ~Span();
 };

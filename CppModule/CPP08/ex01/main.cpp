@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 16:20:46 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/29 17:43:51 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/07/30 16:13:32 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ int main(void) {
     span1.addNumber(17);
     span1.addNumber(9);
     span1.addNumber(11);
+
     std::cout << span1.shortestSpan() << "\n";
+    std::cout << span1.longestSpan() << "\n";
+
   } catch (std::exception& e) {
     std::cerr << e.what();
   }
@@ -40,6 +43,7 @@ int main(void) {
 //   try {
 //     span1.addNumber(data.begin(), data.end());
 //     std::cout << span1.shortestSpan() << "\n";
+//     std::cout << span1.longestSpan() << "\n";
 //   } catch (std::exception& e) {
 //     std::cerr << e.what();
 //   }
