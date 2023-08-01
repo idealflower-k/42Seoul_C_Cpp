@@ -6,12 +6,12 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 17:28:09 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/26 14:22:43 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/08/01 13:39:13 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRESIDENTIALPARDONFORM_HPP
-# define PRESIDENTIALPARDONFORM_HPP
+#define PRESIDENTIALPARDONFORM_HPP
 
 #include "AForm.hpp"
 
@@ -22,18 +22,18 @@ class AForm;
 class Bureaucrat;
 
 class PresidentialPardonForm : public AForm {
-	private:
-		PresidentialPardonForm();
+ private:
+  PresidentialPardonForm();
 
-	public:
-		PresidentialPardonForm(std::string target);
-		PresidentialPardonForm(const PresidentialPardonForm& origin);
+ public:
+  PresidentialPardonForm(std::string target);
+  PresidentialPardonForm(const PresidentialPardonForm& origin);
 
-		PresidentialPardonForm&	operator=(const PresidentialPardonForm& origin);
+  PresidentialPardonForm& operator=(const PresidentialPardonForm& origin);
 
-		void	execute(Bureaucrat const& executor) const;
+  void execute(Bureaucrat const& executor) const;
 
-		~PresidentialPardonForm();
+  ~PresidentialPardonForm();
 };
 
 #endif

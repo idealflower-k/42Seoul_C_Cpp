@@ -6,44 +6,43 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:54:34 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/26 14:43:42 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/08/01 13:38:57 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target)
-	: AForm(target, RRF_SIGN, RRF_SIGN) {}
+    : AForm(target, RRF_SIGN, RRF_SIGN) {}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& origin)
-	: AForm(origin) {}
+    : AForm(origin) {}
 
-RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& origin) {
-	if (this != &origin)
-		AForm::operator=(origin);
-	return (*this);
+RobotomyRequestForm& RobotomyRequestForm::operator=(
+    const RobotomyRequestForm& origin) {
+  if (this != &origin) AForm::operator=(origin);
+  return (*this);
 }
 
-static void	_Robotomized(Bureaucrat const& executor) {
-	int	num = std::rand() % 2;
+static void _Robotomized(Bureaucrat const& executor) {
+  int num = std::rand() % 2;
 
-	std::cout << "Roughly drilling sound...!! >> ";
-	if (num)
-		std::cout << executor.getName() << " has been robotomized success!!\n";
-	else
-		std::cout << executor.getName() << " has been robotomized fail..\n";
+  std::cout << "Roughly drilling sound...!! >> ";
+  if (num)
+    std::cout << executor.getName() << " has been robotomized success!!\n";
+  else
+    std::cout << executor.getName() << " has been robotomized fail..\n";
 }
 
-void	RobotomyRequestForm::execute(Bureaucrat const& executor) const {
-	try {
-		this->validExec(executor);
-		_Robotomized(executor);
-	} catch (std::exception& e) {
-		throw;
-	}
+void RobotomyRequestForm::execute(Bureaucrat const& executor) const {
+  try {
+    this->validExec(executor);
+    _Robotomized(executor);
+  } catch (std::exception& e) {
+    throw;
+  }
 }
 
 RobotomyRequestForm::~RobotomyRequestForm() {
-	std::cout << this->getName() << \
-								" [RobotomyRequestForm] Destructor called\n";
+  std::cout << this->getName() << " [RobotomyRequestForm] Destructor called\n";
 }
