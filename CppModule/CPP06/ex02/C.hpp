@@ -6,19 +6,19 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 20:42:52 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/26 21:32:58 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/08/02 16:12:07 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef C_HPP
-# define C_HPP
+#define C_HPP
 
 #include "Base.hpp"
 
 class C : public Base {
-	public:
-		C();
-		~C();
+ public:
+  C();
+  ~C();
 };
 
 #endif

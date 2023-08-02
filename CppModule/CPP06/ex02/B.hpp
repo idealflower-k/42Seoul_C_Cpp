@@ -6,19 +6,19 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 20:42:35 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/26 21:33:12 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/08/02 16:12:02 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef B_HPP
-# define B_HPP
+#define B_HPP
 
 #include "Base.hpp"
 
 class B : public Base {
-	public:
-		B();
-		~B();
+ public:
+  B();
+  ~B();
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 21:25:29 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/26 21:33:49 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/08/02 16:11:54 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,4 @@
 
 Base::Base() {}
 
-Base::~Base() {
-	std::cout << "[Base] Destructor called\n";
-}
+Base::~Base() { std::cout << "[Base] Destructor called\n"; }
