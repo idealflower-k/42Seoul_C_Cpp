@@ -6,12 +6,8 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 21:30:05 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/08/02 16:12:01 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/08/28 14:51:15 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "B.hpp"
-
-B::B() : Base() {}
-
-B::~B() { std::cout << "[B] Destructor called\n"; }

@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 20:39:12 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/08/02 16:11:51 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/08/28 14:50:22 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 class Base {
  public:
-  Base();
   virtual ~Base();
 };
 

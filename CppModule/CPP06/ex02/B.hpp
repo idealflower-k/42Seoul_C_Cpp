@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 20:42:35 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/08/02 16:12:02 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/08/28 14:51:11 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 
 #include "Base.hpp"
 
-class B : public Base {
- public:
-  B();
-  ~B();
-};
+class B : public Base {};
 
 #endif
