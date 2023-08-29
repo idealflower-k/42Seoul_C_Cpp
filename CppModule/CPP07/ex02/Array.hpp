@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 17:14:50 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/28 14:03:21 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/08/29 16:30:29 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ class Array {
 
   unsigned int size() const;
   T& operator[](unsigned int n);
+  const T& operator[](unsigned int n) const;
 
   ~Array();
 };

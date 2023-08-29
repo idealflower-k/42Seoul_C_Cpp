@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:58:14 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/28 13:54:19 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/08/29 14:58:43 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ int main(void) {
   std::cout << "min(test1, test2) = " << ::min(test1.data, test2.data) << "\n";
   std::cout << "max(test1, test2) = " << ::max(test1.data, test2.data) << "\n";
 
+  system("leaks whatever");
   return (0);
 }
