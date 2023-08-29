@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:44:53 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/28 13:54:21 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/08/29 16:52:31 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@ void swap(T& a, T& b) {
   T temp = a;
   a = b;
   b = temp;
+}
+
+template <typename T>
+void swap(T* a, T* b) {
+  T temp = *a;
+  *a = *b;
+  *b = temp;
 }
 
 template <typename T>
