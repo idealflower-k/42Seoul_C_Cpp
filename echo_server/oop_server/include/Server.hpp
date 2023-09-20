@@ -11,23 +11,23 @@ class Server {
 	void init_server();
 	void handle_events();
 	void accept_client();
-	void change_events(short filter, u_short flags, u_int fflags, int64_t data, void* udata);
+	void change_events(uintptr_t ident, short filter, u_short flags, u_int fflags, int64_t data, void* udata);
 	void disconnect_client(int client_fd);
 
 	const int MAX_EVENTS = 10;
 
 	int server_fd;
 	int kq;
-	int port;
+	int _port;
 	sockaddr_in server_addr;
 
-	std::map<int, Clienthandler*> clients;
+	std::map<int, ClientHandler*> clients;
 	std::vector<struct kevent> change_list;
 	struct kevent event_list[10];
 
    public:
 	Server(int port);
 	void run();
-}
+};
 
 #endif
