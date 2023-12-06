@@ -22,6 +22,8 @@
 #include <iomanip>
 #include <iostream>
 #include <string>
+#include <cstdlib>
+#include <cstring>
 
 #include "utils.hpp"
 
