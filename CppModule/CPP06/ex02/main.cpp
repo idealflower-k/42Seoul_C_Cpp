@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 20:43:19 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/08/28 15:00:08 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/12/06 19:10:54 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ Base* createC() { return (new C()); }
 Base* generate(void) {
   FactoryFunction factory_func[] = {createA, createB, createC};
   int rand_num = std::rand() % 3;
+  std::string class_name[] = {"A", "B", "C"};
 
-  std::cout << "rand_num = " << rand_num << "\n";
+  std::cout << "generate class = " << class_name[rand_num] << "\n";
 
   return (factory_func[rand_num]());
 }
@@ -64,8 +65,8 @@ void identify(Base& p) {
 }
 
 int main(void) {
-  for (int i = 0; i < 10; i++) {
-    std::cout << "\ni = " << i << " / ";
+  for (int i = 1; i <= 10; i++) {
+    std::cout << "\ncnt = " << i << " / ";
 
     Base* some = generate();
     identify(some);
