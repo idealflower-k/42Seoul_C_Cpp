@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:58:14 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/08/29 14:58:43 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/12/06 20:36:47 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,29 +20,29 @@ struct test {
 };
 
 int main(void) {
-  int a = 2;
-  int b = 3;
+  int oneInt = 1;
+  int twoInt = 2;
 
-  ::swap(a, b);
-  std::cout << "a = " << a << ", b = " << b << "\n";
-  std::cout << "min(a, b) = " << ::min(a, b) << "\n";
-  std::cout << "max(a, b) = " << ::max(a, b) << "\n";
+  ::swap(oneInt, twoInt);
+  std::cout << "oneInt = " << oneInt << ", twoInt = " << twoInt << "\n";
+  std::cout << "min(oneInt, twoInt) = " << ::min(oneInt, twoInt) << "\n";
+  std::cout << "max(oneInt, twoInt) = " << ::max(oneInt, twoInt) << "\n";
 
-  std::string c = "chaine1";
-  std::string d = "chaine2";
+  std::string oneStr = "chaine1";
+  std::string twoStr = "chaine2";
 
-  ::swap(c, d);
-  std::cout << "c = " << c << ", d = " << d << "\n";
-  std::cout << "min(c, d) = " << ::min(c, d) << "\n";
-  std::cout << "max(c, d) = " << ::max(c, d) << "\n";
+  ::swap(oneStr, twoStr);
+  std::cout << "oneStr = " << oneStr << ", twoStr = " << twoStr << "\n";
+  std::cout << "min(oneStr, twoStr) = " << ::min(oneStr, twoStr) << "\n";
+  std::cout << "max(oneStr, twoStr) = " << ::max(oneStr, twoStr) << "\n";
 
-  const char *str1 = "abc";
-  const char *str2 = "bbc";
+  const char *cStr1 = "abc";
+  const char *cStr2 = "bbc";
 
-  ::swap(str1, str2);
-  std::cout << "str1 = " << str1 << ", str2 = " << str2 << "\n";
-  std::cout << "min(str1, str2) = " << ::min(str1, str2) << "\n";
-  std::cout << "max(str1, str2) = " << ::max(str1, str2) << "\n";
+  // ::swap(cStr1, cStr2);
+  std::cout << "cStr1 = " << cStr1 << ", cStr2 = " << cStr2 << "\n";
+  std::cout << "min(cStr1, cStr2) = " << ::min(cStr1, cStr2) << "\n";
+  std::cout << "max(cStr1, cStr2) = " << ::max(*cStr1, *cStr2) << "\n";
 
   double d1 = 123.45;
   double d2 = 123.46;
