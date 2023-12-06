@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:40:46 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/12/05 22:02:40 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/12/06 14:49:49 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 #include "utils.hpp"
 
-enum actualType { CHAR, INT, FLOAT, DOUBLE, NONE };
+enum actualType { CHAR, INT, FLOAT, DOUBLE };
 
 struct dataStruct {
   std::string dataStr;
@@ -37,14 +37,12 @@ struct dataStruct {
   std::string intStr;
 
   float floatVal;
-  std::string floatStr;
 
   double doubleVal;
-  std::string doubleStr;
 
   actualType type;
 
-  dataStruct() : type(NONE) {}
+  dataStruct() : type(DOUBLE) {}
 };
 
 class ScalarConverter {
@@ -54,27 +52,24 @@ class ScalarConverter {
   ScalarConverter& operator=(const ScalarConverter& origin);
 
   static bool validCheckData(const std::string& targetStr);
+  static void convertActualData(dataStruct& dataStruct,
+                                const std::string& targetStr);
+  static void convertOtherData(dataStruct& dataStruct);
 
   static void convertChar(dataStruct& dataStruct);
   static void convertInt(dataStruct& dataStruct);
   static void convertFloat(dataStruct& dataStruct);
   static void convertDouble(dataStruct& dataStruct);
 
-  static void printChar(const dataStruct& dataStruct);
-  static void printInt(const dataStruct& dataStruct);
-  static void printFloat(const dataStruct& dataStruct);
-  static void printDouble(const dataStruct& dataStruct);
-  static void convertActualData(dataStruct& dataStruct,
-                                const std::string& targetStr);
-  static void convertOtherData(dataStruct& dataStruct);
-
- public:
-  static void convert(const std::string& targetStr);
+  static void printData(const dataStruct& dataStruct);
 
   class ScalarValidError : public std::exception {
    public:
     const char* what() const throw();
   };
+
+ public:
+  static void convert(const std::string& targetStr);
 
   ~ScalarConverter();
 };
