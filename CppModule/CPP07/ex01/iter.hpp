@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/27 15:24:48 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/12/06 21:15:21 by sanghwal         ###   ########seoul.kr  */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef ITER_HPP
 #define ITER_HPP
 
@@ -20,37 +8,26 @@
 
 template <typename A, typename F>
 void iter(A* arr, int len, F& func) {
-  std::cerr << "non-const iter\n";
+  std::cerr << "iter(A*, int, F&): " << __FILE__ << std::endl;
   for (int i = 0; i < len; i++) func(arr[i]);
 }
+
 template <typename A, typename F>
 void iter(const A* arr, int len, const F& func) {
-  std::cerr << "const iter\n";
+  std::cerr << "iter(const A*, int, const F&): " << __FILE__ << std::endl;
+  for (int i = 0; i < len; i++) func(arr[i]);
+}
+
+template <typename A, typename F>
+void iter(const A* arr, int len, F& func) {
+  std::cerr << "iter(const A*, int, F&): " << __FILE__ << std::endl;
   for (int i = 0; i < len; i++) func(arr[i]);
 }
 
 template <typename A, typename F>
 void iter(A* arr, int len, const F& func) {
-  std::cerr << "const func iter\n";
+  std::cerr << "iter(A*, int, const F&): " << __FILE__ << std::endl;
   for (int i = 0; i < len; i++) func(arr[i]);
-}
-
-template <typename A, typename F>
-void iter(A* arr, int len, F (*func)(A)) {
-  std::cerr << "function pointer iter\n";
-  for (int i = 0; i < len; i++) (*func)(arr[i]);
-}
-
-template <typename A, typename F>
-void iter(const A* arr, int len, F (*func)(A)) {
-  std::cerr << "function pointer iter\n";
-  for (int i = 0; i < len; i++) (*func)(arr[i]);
-}
-
-template <typename A, typename F>
-void iter(const A* arr, int len, const F (*func)(A)) {
-  std::cerr << "function pointer iter\n";
-  for (int i = 0; i < len; i++) (*func)(arr[i]);
 }
 
 template <typename T>

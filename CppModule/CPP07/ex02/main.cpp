@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 19:48:40 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/08/29 16:18:39 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/12/09 21:10:44 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ int main(void) {
     for (unsigned int i = 0; i < arr1.size(); i++) std::cout << arr1[i] << " ";
     std::cout << "\n";
 
+    const int test = arr1[1];
+    std::cout << "test: " << test << "\n";
+
     std::cout << "==test char_arr==\n";
     for (unsigned int i = 0; i < arr2.size(); i++)
       arr2[i] = static_cast<char>(i + 'A');
@@ -41,7 +44,7 @@ int main(void) {
       std::cout << std::showpoint << arr3[i] << " ";
     std::cout << "\n";
 
-    Array<int> arr4;
+    Array<int> arr4(arr1);
     Array<int> arr5(arr4);
 
     // std::cout << arr4[0] << "\n";

@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/27 15:33:11 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/12/06 21:21:31 by sanghwal         ###   ########seoul.kr  */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "iter.hpp"
 
 void sqrtWrapper(double& data) { data = std::pow(data, 2); }
@@ -22,8 +10,8 @@ int main(void) {
   ::iter(int_arr, ARRAY_SIZE(int_arr), ::printData<int>);
   std::cout << "\n";
   // ::iter(int_arr, ARRAY_SIZE(int_arr), ::plusOne<int>);
-  ::iter(int_arr, ARRAY_SIZE(int_arr), ::printData<int>);
-  std::cout << "\n";
+  // ::iter(int_arr, ARRAY_SIZE(int_arr), ::printData<int>);
+  // std::cout << "\n";
 
   ::iter(char_arr, ARRAY_SIZE(char_arr), ::printData<char>);
   std::cout << "\n";
