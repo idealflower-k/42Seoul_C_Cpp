@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:26:03 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/30 17:39:54 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/12/10 17:34:33 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ int main(void) {
 
   MutantStack<int>::iterator itr = mstack.begin();
   MutantStack<int>::iterator eitr = mstack.end();
+
+  // MutantStack<int>::const_iterator citr = mstack.begin();
+  // MutantStack<int>::const_iterator ceitr = mstack.end();
+  // *citr = 42;
+  // *ceitr = 42;
 
   ++itr;
   --itr;

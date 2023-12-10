@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:18:17 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/30 17:41:33 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/12/10 17:33:43 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,13 @@ class MutantStack : public std::stack<T, std::deque<T> > {
   }
 
   typedef typename std::deque<T>::iterator iterator;
+  typedef typename std::deque<T>::const_iterator const_iterator;
 
   iterator begin() { return (this->c.begin()); }
   iterator end() { return (this->c.end()); }
+
+  const_iterator begin() const { return (this->c.begin()); }
+  const_iterator end() const { return (this->c.end()); }
 
   ~MutantStack() { std::cout << "[MutantStack] Destructor called\n"; }
 };
