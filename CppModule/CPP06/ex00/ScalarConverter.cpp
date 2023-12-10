@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:47:09 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/12/06 14:50:28 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/12/10 16:17:57 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,17 @@ void ScalarConverter::convertDouble(dataStruct& dataStruct) {
 
 const char* ScalarConverter::ScalarValidError::what() const throw() {
   return ("Can't convert!!!\n");
+}
+
+ScalarConverter::ScalarConverter() {}
+
+ScalarConverter::ScalarConverter(const ScalarConverter& origin) {
+  (void)origin;
+}
+
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter& origin) {
+  (void)origin;
+  return (*this);
 }
 
 ScalarConverter::~ScalarConverter() {}

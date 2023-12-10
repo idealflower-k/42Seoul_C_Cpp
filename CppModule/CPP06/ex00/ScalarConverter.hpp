@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:40:46 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/12/06 19:59:43 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/12/10 16:18:19 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,10 @@ class ScalarConverter {
     const char* what() const throw();
   };
 
+  ~ScalarConverter();
+
  public:
   static void convert(const std::string& targetStr);
-
-  ~ScalarConverter();
 };
 
 #endif
