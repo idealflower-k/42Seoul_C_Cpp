@@ -6,12 +6,12 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/19 15:32:08 by sanghwal          #+#    #+#              #
-#    Updated: 2023/07/30 16:13:47 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/12/10 17:36:48 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
-CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -g3
+CXXFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 NAME = Span
 
