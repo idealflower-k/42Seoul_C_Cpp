@@ -6,7 +6,7 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/19 15:32:08 by sanghwal          #+#    #+#              #
-#    Updated: 2023/07/28 13:54:33 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/12/13 18:22:56 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $^ -I. -o $@
 
 clean:
-	rm -f $(OBJS) $(DEPS) *_shrubbery
+	rm -f $(OBJS) $(DEPS)
 
 fclean: clean
 	rm -f $(NAME)

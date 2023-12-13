@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 20:29:30 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/12/09 21:07:47 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/12/13 19:36:23 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ template <typename T>
 const T& Array<T>::operator[](unsigned int n) const {
   if (n > this->arr_size || this->arr_size == 0)
     throw std::out_of_range("Index out of range!!\n");
-  std::cout << "const T& Array<T>::operator[](unsigned int n) const\n";
   return (this->array[n]);
 }
 
