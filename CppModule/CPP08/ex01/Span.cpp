@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 21:12:22 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/07/30 16:12:51 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/12/16 19:38:47 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,16 @@ unsigned int Span::shortestSpan() const {
   std::sort(temp.begin(), temp.end());
 
   unsigned int min_dist = std::numeric_limits<unsigned int>::max();
+  unsigned int dist = std::numeric_limits<unsigned int>::max();
   for (std::vector<int>::iterator itr = temp.begin(); itr != temp.end();
        ++itr) {
     if (itr + 1 != temp.end()) {
-      unsigned int dist = std::numeric_limits<unsigned int>::max();
-      if (*itr < 0 && *(itr + 1) > 0)
-        dist = static_cast<unsigned int>(std::abs(*itr) + *(itr + 1));
+      std::vector<int>::iterator nextItr = itr + 1;
+      dist = std::numeric_limits<unsigned int>::max();
+      if (*itr < 0 && *(nextItr) > 0)
+        dist = static_cast<unsigned int>(std::abs(*itr) + *(nextItr));
       else {
-        dist = static_cast<unsigned int>(*(itr + 1) - *itr);
+        dist = static_cast<unsigned int>(*(nextItr) - *itr);
       }
       min_dist = std::min(min_dist, dist);
     }

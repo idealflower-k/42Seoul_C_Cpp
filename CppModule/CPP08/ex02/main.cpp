@@ -6,7 +6,7 @@
 /*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:26:03 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/12/10 17:34:33 by sanghwal         ###   ########seoul.kr  */
+/*   Updated: 2023/12/16 19:59:43 by sanghwal         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,31 +24,35 @@ int main(void) {
 
   std::cout << mstack.top() << " is top\n";
 
+  std::cout << mstack.top() << " is pop\n";
   mstack.pop();
 
-  std::cout << mstack.size() << " is size\n";
+  std::cout << "size is " << mstack.size() << "\n";
+  std::cout << mstack.top() << " is top\n";
 
   mstack.push(3);
   mstack.push(5);
   mstack.push(737);
   mstack.push(0);
 
-  MutantStack<int>::iterator itr = mstack.begin();
-  MutantStack<int>::iterator eitr = mstack.end();
-
   // MutantStack<int>::const_iterator citr = mstack.begin();
   // MutantStack<int>::const_iterator ceitr = mstack.end();
   // *citr = 42;
   // *ceitr = 42;
 
-  ++itr;
-  --itr;
-  std::cout << "data in stack\n";
-  while (itr != eitr) {
-    std::cout << *itr << "\n";
-    ++itr;
+  std::cout << "data in mstack\n";
+  for (MutantStack<int>::iterator itr = mstack.begin(); itr != mstack.end();
+       ++itr) {
+    std::cout << *itr << ", ";
   }
-  std::stack<int> s(mstack);
+
+  std::stack<int> copyStack(mstack);
+  std::cout << "\ndata in copyStack\n";
+  while (!copyStack.empty()) {
+    std::cout << copyStack.top() << ", ";
+    copyStack.pop();
+  }
+
   return (0);
 }
 
@@ -69,17 +73,18 @@ int main(void) {
 //   my_list.push_back(737);
 //   my_list.push_back(0);
 
-//   std::list<int>::iterator itr = my_list.begin();
-//   std::list<int>::iterator eitr = my_list.end();
-
-//   ++itr;
-//   --itr;
 //   std::cout << "data in list\n";
-//   while (itr != eitr) {
-//     std::cout << *itr << "\n";
-//     ++itr;
+//   for (std::list<int>::iterator itr = my_list.begin(); itr != my_list.end();
+//        ++itr) {
+//     std::cout << *itr << ", ";
 //   }
-//   std::list<int> s(my_list);
+//   std::list<int> copyList(my_list);
+//   std::cout << "\ndata in copyList\n";
+//   for (std::list<int>::iterator itr = copyList.begin(); itr !=
+//   copyList.end();
+//        ++itr) {
+//     std::cout << *itr << ", ";
+//   }
 //   return (0);
 // }
 
@@ -100,17 +105,18 @@ int main(void) {
 //   my_vector.push_back(737);
 //   my_vector.push_back(0);
 
-//   std::vector<int>::iterator itr = my_vector.begin();
-//   std::vector<int>::iterator eitr = my_vector.end();
-
-//   ++itr;
-//   --itr;
 //   std::cout << "data in vector\n";
-//   while (itr != eitr) {
-//     std::cout << *itr << "\n";
-//     ++itr;
+//   for (std::vector<int>::iterator itr = my_vector.begin();
+//        itr != my_vector.end(); ++itr) {
+//     std::cout << *itr << ", ";
 //   }
-//   std::vector<int> s(my_vector);
+
+//   std::vector<int> copyVector(my_vector);
+//   std::cout << "\ndata in copyVector\n";
+//   for (std::vector<int>::iterator itr = copyVector.begin();
+//        itr != copyVector.end(); ++itr) {
+//     std::cout << *itr << ", ";
+//   }
 //   return (0);
 // }
 
@@ -131,16 +137,17 @@ int main(void) {
 //   my_deque.push_back(737);
 //   my_deque.push_back(0);
 
-//   std::deque<int>::iterator itr = my_deque.begin();
-//   std::deque<int>::iterator eitr = my_deque.end();
-
-//   ++itr;
-//   --itr;
 //   std::cout << "data in deque\n";
-//   while (itr != eitr) {
-//     std::cout << *itr << "\n";
-//     ++itr;
+//   for (std::deque<int>::iterator itr = my_deque.begin(); itr !=
+//   my_deque.end();
+//        ++itr) {
+//     std::cout << *itr << ", ";
 //   }
-//   std::deque<int> s(my_deque);
+//   std::deque<int> copyDeque(my_deque);
+//   std::cout << "\ndata in copyDeque\n";
+//   for (std::deque<int>::iterator itr = copyDeque.begin();
+//        itr != copyDeque.end(); ++itr) {
+//     std::cout << *itr << ", ";
+//   }
 //   return (0);
 // }
