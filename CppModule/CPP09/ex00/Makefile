@@ -6,16 +6,17 @@
 #    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/19 15:32:08 by sanghwal          #+#    #+#              #
-#    Updated: 2023/08/01 14:52:08 by sanghwal         ###   ########seoul.kr   #
+#    Updated: 2023/12/18 20:24:41 by sanghwal         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
 CXXFLAGS = -std=c++98 -Wall -Wextra -Werror
 
-NAME = Btc
+NAME = btc
 
-SRCS = main.cpp
+SRCS = main.cpp /
+	BitcoinExchange.cpp /
 
 OBJS = $(SRCS:.cpp=.o)
 DEPS = $(SRCS:.cpp=.d)
@@ -26,8 +27,7 @@ $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $^ -I. -o $@
 
 clean:
-	rm -f $(OBJS) $(DEPS) *_shrubbery
-
+	rm -f $(OBJS) $(DEPS)
 fclean: clean
 	rm -f $(NAME)
 
