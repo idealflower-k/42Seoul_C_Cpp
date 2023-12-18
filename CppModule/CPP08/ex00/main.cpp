@@ -38,12 +38,12 @@ int main(void) {
   std::deque<int>::const_iterator itr3 = ::easyfind(deque1, 1);
   if (itr3 != deque1.end()) std::cout << "Find in deque!!: " << *itr3 << "\n";
 
-  std::vector<double> doubleArr;
-  for (int i = 0; i < 10; ++i) doubleArr.push_back(i + 0.5);
-  printContainer(doubleArr);
-  std::vector<double>::const_iterator doubleItr = ::easyfind(doubleArr, 3.5);
-  if (doubleItr != doubleArr.end())
-    std::cout << "Find in vector!!: " << *doubleItr << "\n";
+  // std::vector<double> doubleArr;
+  // for (int i = 0; i < 10; ++i) doubleArr.push_back(i + 0.5);
+  // printContainer(doubleArr);
+  // std::vector<double>::const_iterator doubleItr = ::easyfind(doubleArr, 3.5);
+  // if (doubleItr != doubleArr.end())
+  //   std::cout << "Find in vector!!: " << *doubleItr << "\n";
 
   return (0);
 }
