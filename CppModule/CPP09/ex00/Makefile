@@ -1,22 +1,10 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/07/19 15:32:08 by sanghwal          #+#    #+#              #
-#    Updated: 2023/12/18 20:24:41 by sanghwal         ###   ########seoul.kr   #
-#                                                                              #
-# **************************************************************************** #
-
 CXX = c++
 CXXFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 NAME = btc
 
-SRCS = main.cpp /
-	BitcoinExchange.cpp /
+SRCS = BitcoinExchange.cpp \
+		main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 DEPS = $(SRCS:.cpp=.d)
@@ -28,6 +16,7 @@ $(NAME): $(OBJS)
 
 clean:
 	rm -f $(OBJS) $(DEPS)
+
 fclean: clean
 	rm -f $(NAME)
 
