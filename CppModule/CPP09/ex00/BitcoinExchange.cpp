@@ -205,7 +205,7 @@ void BitcoinExchange::printError(std::string error, std::string date) const {
 }
 
 void BitcoinExchange::convert() {
-  std::ifstream ifs(this->_inputFile);
+  std::ifstream ifs(this->_inputFile.c_str());
   std::string line;
 
   if (!ifs.is_open()) {
@@ -272,8 +272,8 @@ void BitcoinExchange::zeroTrim(std::string& str) {
   size_t dotPos = str.find('.');
   if (dotPos == std::string::npos) return;
 
-  while (str.back() == '0') {
-    str.pop_back();
+  while (!str.empty() && str[str.length() - 1] == '0') {
+    str.erase(str.length() - 1);
   }
 }
 
