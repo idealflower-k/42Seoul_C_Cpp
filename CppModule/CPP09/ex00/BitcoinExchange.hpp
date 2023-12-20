@@ -2,9 +2,13 @@
 #define BITCOINEXCHANGE_HPP
 
 #include <algorithm>
+#include <cmath>
 #include <fstream>
+#include <iomanip>
 #include <iostream>
+#include <limits>
 #include <map>
+#include <sstream>
 #include <string>
 
 #define DATA_DELIMITER ","
@@ -24,7 +28,7 @@
 
 class BitcoinExchange {
  private:
-  std::map<std::string, float> _data;
+  std::map<std::string, double> _data;
   std::string _inputFile;
 
   BitcoinExchange();
@@ -33,17 +37,21 @@ class BitcoinExchange {
 
   void setData();
   bool vaildFormat(std::string delimiter, std::string& input) const;
-  bool vaildDate(std::string& date) const;
+  bool vaildDate(std::string& date);
   bool vaildYear(std::string& year) const;
   bool vaildMonth(std::string& month) const;
   bool vaildDay(std::string& year, std::string& month, std::string& day) const;
   bool isLeapYear(std::string& year) const;
   bool vaildRate(std::string& rate) const;
-  bool vaildValue(std::string& value) const;
-  float multivalue(std::string& date, float value);
-  void printResult(std::string& date, float value, float result) const;
+  bool vaildValue(std::string& value);
+  double multivalue(std::string& date, double value);
+  void printResult(std::string& date, double value, double result);
   void printError(std::string error, std::string date) const;
+
   void spaceTrim(std::string& str);
+  void zeroTrim(std::string& str);
+  int calculateDecimalPlaces(double value);
+  std::string doubleToString(double value);
 
  public:
   BitcoinExchange(std::string inputFile);

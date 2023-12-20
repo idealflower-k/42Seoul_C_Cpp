@@ -1,22 +1,5 @@
 #include "BitcoinExchange.hpp"
 
-//   void setData();
-//   bool vaildFormat(std::string delimiter, std::string input) const;
-//   bool vaildDate(std::string date) const;
-//   bool vaildYear(std::string year) const;
-//   bool vaildMonth(std::string month) const;
-//   bool vaildDay(std::string day) const;
-//   bool vaildRate(std::string rate) const;
-//   bool vaildValue(std::string value) const;
-//   double multivalue(std::string date, double value) const;
-//   void printResult(std::string date, double value, double result) const;
-
-//  public:
-//   BitcoinExchange(std::string inputFile);
-//   ~BitcoinExchange();
-
-//   void convert();
-
 BitcoinExchange::BitcoinExchange(std::string inputFile)
     : _inputFile(inputFile) {
   this->setData();
@@ -30,9 +13,8 @@ void BitcoinExchange::setData() {
     throw std::runtime_error(DATA_FILE_ERROR);
   }
   std::getline(ifs, line);
-  if ("date,exchange_rate" != line) {
+  if (line.compare(DATA_FORMAT) != 0) {
     ifs.close();
-    std::cerr << line << std::endl;
     throw std::runtime_error(BAD_DATA_ERROR);
   }
   while (std::getline(ifs, line)) {
@@ -51,7 +33,7 @@ void BitcoinExchange::setData() {
       ifs.close();
       throw std::runtime_error(BAD_DATA_ERROR);
     }
-    this->_data[date] = std::stof(value);
+    this->_data[date] = std::atof(value.c_str());
   }
   ifs.close();
 }
@@ -67,10 +49,17 @@ bool BitcoinExchange::vaildFormat(std::string delimiter,
   return true;
 }
 
-bool BitcoinExchange::vaildDate(std::string& date) const {
+bool BitcoinExchange::vaildDate(std::string& date) {
   size_t delPos = date.find(DATE_DELIMITER);
-  if (delPos == std::string::npos || date.size() != 10) return false;
+  if (delPos == std::string::npos ||
+      !(date.size() == 10 || (date.size() == 11 && date[10] == ' '))) {
+    return false;
+  }
 
+  if (date.size() == 11) {
+    this->spaceTrim(date);
+    delPos = date.find(DATE_DELIMITER);
+  }
   std::string year = date.substr(0, delPos);
   size_t lastDelPos = date.find_last_of(DATE_DELIMITER);
   if (delPos == lastDelPos) return false;
@@ -143,8 +132,20 @@ bool BitcoinExchange::vaildRate(std::string& value) const {
   return true;
 }
 
-bool BitcoinExchange::vaildValue(std::string& value) const {
+bool BitcoinExchange::vaildValue(std::string& value) {
   if (value.empty()) return false;
+
+  for (size_t i = 0, spcnt = 0; i < value.size(); ++i) {
+    if (value[i] == ' ') {
+      ++spcnt;
+      if (spcnt > 1) {
+        this->printError(BAD_INPUT_ERROR, std::string());
+        return false;
+      }
+    }
+  }
+
+  this->spaceTrim(value);
 
   if (std::count(value.begin(), value.end(), '.') > 1) {
     this->printError(BAD_INPUT_ERROR, std::string());
@@ -153,17 +154,21 @@ bool BitcoinExchange::vaildValue(std::string& value) const {
 
   for (size_t i = 0; i < value.size(); ++i) {
     if (!std::isdigit(value[i]) && value[i] != '.') {
-      this->printError(BAD_INPUT_ERROR, std::string());
+      if (i == 0 && value[i] == '-')
+        this->printError(NEGATIVE_ERROR, std::string());
+      else {
+        this->printError(BAD_INPUT_ERROR, std::string());
+      }
       return false;
     }
   }
 
-  float floatValue = std::atof(value.c_str());
-  if (floatValue < 0) {
+  double doubleValue = std::atof(value.c_str());
+  if (doubleValue < 0) {
     this->printError(NEGATIVE_ERROR, std::string());
     return false;
   }
-  if (floatValue > 1000) {
+  if (doubleValue > 1000) {
     this->printError(TOO_LARGE_ERROR, std::string());
     return false;
   }
@@ -171,8 +176,8 @@ bool BitcoinExchange::vaildValue(std::string& value) const {
   return true;
 }
 
-float BitcoinExchange::multivalue(std::string& date, float value) {
-  std::map<std::string, float>::iterator dbIt = this->_data.lower_bound(date);
+double BitcoinExchange::multivalue(std::string& date, double value) {
+  std::map<std::string, double>::iterator dbIt = this->_data.lower_bound(date);
 
   if (dbIt == this->_data.begin() && dbIt->first.compare(date) != 0)
     return NO_DATA;
@@ -182,9 +187,14 @@ float BitcoinExchange::multivalue(std::string& date, float value) {
   return dbIt->second * value;
 }
 
-void BitcoinExchange::printResult(std::string& date, float value,
-                                  float result) const {
-  std::cout << date << " => " << value << " = " << result << std::endl;
+void BitcoinExchange::printResult(std::string& date, double value,
+                                  double result) {
+  std::string valueStr = this->doubleToString(value);
+  std::string resultStr = this->doubleToString(result);
+  this->zeroTrim(valueStr);
+  this->zeroTrim(resultStr);
+
+  std::cout << date << " => " << valueStr << " = " << resultStr << std::endl;
 }
 
 void BitcoinExchange::printError(std::string error, std::string date) const {
@@ -216,21 +226,21 @@ void BitcoinExchange::convert() {
 
     std::string date = line.substr(0, line.find(INPUT_DELIMITER));
     std::string value = line.substr(line.find(INPUT_DELIMITER) + 1);
-    this->spaceTrim(date);
-    this->spaceTrim(value);
 
     if (!this->vaildDate(date)) {
       this->printError(BAD_INPUT_ERROR, date);
       continue;
     }
-    if (!this->vaildValue(value)) continue;
+    if (!this->vaildValue(value)) {
+      continue;
+    }
 
-    float floatValue = std::atof(value.c_str());
-    float result = this->multivalue(date, floatValue);
+    double doubleValue = std::atof(value.c_str());
+    double result = this->multivalue(date, doubleValue);
     if (result == NO_DATA) {
       this->printError(NO_DATA_ERROR, date);
     } else {
-      this->printResult(date, floatValue, result);
+      this->printResult(date, doubleValue, result);
     }
   }
   ifs.close();
@@ -238,6 +248,33 @@ void BitcoinExchange::convert() {
 
 void BitcoinExchange::spaceTrim(std::string& str) {
   str.erase(std::remove(str.begin(), str.end(), ' '), str.end());
+}
+
+int BitcoinExchange::calculateDecimalPlaces(double value) {
+  int decimalPlaces = 0;
+  double epsilon = std::numeric_limits<double>::epsilon();
+
+  while (fabs(value - std::floor(value)) > epsilon && decimalPlaces < 15) {
+    value *= 10;
+    decimalPlaces++;
+  }
+  return decimalPlaces;
+}
+
+std::string BitcoinExchange::doubleToString(double value) {
+  std::ostringstream oss;
+  int decimalPlaces = this->calculateDecimalPlaces(value);
+  oss << std::fixed << std::setprecision(decimalPlaces) << value;
+  return oss.str();
+}
+
+void BitcoinExchange::zeroTrim(std::string& str) {
+  size_t dotPos = str.find('.');
+  if (dotPos == std::string::npos) return;
+
+  while (str.back() == '0') {
+    str.pop_back();
+  }
 }
 
 BitcoinExchange::~BitcoinExchange() {}
