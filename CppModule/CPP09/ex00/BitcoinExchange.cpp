@@ -182,7 +182,11 @@ double BitcoinExchange::multivalue(std::string& date, double value) {
   if (dbIt == this->_data.begin() && dbIt->first.compare(date) != 0)
     return NO_DATA;
 
-  if (dbIt != this->_data.begin() && dbIt->first.compare(date) != 0) --dbIt;
+  if (dbIt == this->_data.end()) {
+    --dbIt;
+  } else if ((dbIt != this->_data.begin() && dbIt->first.compare(date) != 0)) {
+    --dbIt;
+  }
 
   return dbIt->second * value;
 }
