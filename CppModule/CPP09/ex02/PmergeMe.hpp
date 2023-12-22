@@ -3,6 +3,7 @@
 #define PMERGEME_HPP
 
 // PmergeMe
+// C++98 기준으로 코드를 작성한다.
 // 기능 명세
 // 1. 양의 정수를 매개변수로 받는다. -> ./PmergeMe 1 2 3 4 5
 // 2. 병합-삽입 정렬 알고리즘을 사용해서 정렬한다. -> Ford-Johnson algorithm
@@ -63,6 +64,7 @@
 #include <ctime>
 #include <deque>
 #include <iostream>
+#include <set>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -71,6 +73,7 @@
 
 class PmergeMe {
  private:
+  std::vector<int> _jacobsThalSequence;
   std::vector<int> _vec;
   std::deque<int> _deq;
   size_t _sizeN;
@@ -81,20 +84,25 @@ class PmergeMe {
   PmergeMe(const PmergeMe& pmergeMe);
   PmergeMe& operator=(const PmergeMe& pmergeMe);
 
+  void setJacobsThalSequence();
   void initData(char** av);
   bool validData(std::string data);
   int strToInt(std::string str);
   void fordJohnsonAlgorithmVector(size_t size);
   void pairSortVector(size_t size);
-  void mergeInsertionSortVector(size_t low, size_t high);
+  void mergeInsertionSortVector(size_t size);
   void fordJohnsonAlgorithmDeque(size_t size);
   void pairSortDeque(size_t size);
-  void mergeInsertionSortDeque(size_t low, size_t high);
+  void mergeInsertionSortDeque(size_t size);
   void printInput();
   void printSort();
   void printDeque();
   void printVector();
   void printTime();
+  int getJacobsThalSequence(size_t n);
+
+  std::vector<std::vector<int>::iterator> makeMainChainVector(size_t size);
+  std::vector<std::vector<int>::iterator> makePendElemtsVector(size_t size);
 
  public:
   PmergeMe(char** av);
