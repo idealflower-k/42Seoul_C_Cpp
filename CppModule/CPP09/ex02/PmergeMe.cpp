@@ -17,7 +17,6 @@ PmergeMe::~PmergeMe() {}
 void PmergeMe::initData(char** av) {
   std::string str;
 
-  this->_vec.reserve((sizeof(av) / sizeof(av[0])) + 1);
   for (size_t i = 0; av[i]; ++i) {
     str = av[i];
     if (!this->validData(str)) throw std::invalid_argument(ERROR);
