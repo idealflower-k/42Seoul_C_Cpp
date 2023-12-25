@@ -3,7 +3,7 @@
 int main(int ac, char** av) {
   try {
     if (ac != 2) {
-      std::cout << "usage: ./btc [input_file]" << std::endl;
+      std::cout << "usage: " << av[0] << " [input_file]" << std::endl;
       return 1;
     }
     BitcoinExchange bitcoin(av[1]);

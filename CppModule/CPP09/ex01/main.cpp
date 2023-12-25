@@ -2,7 +2,7 @@
 
 int main(int ac, char const **av) {
   if (ac != 2) {
-    std::cout << "usage: ./ex01 [input string]" << std::endl;
+    std::cout << "usage: " << av[0] << " [input string]" << std::endl;
     return 1;
   }
 

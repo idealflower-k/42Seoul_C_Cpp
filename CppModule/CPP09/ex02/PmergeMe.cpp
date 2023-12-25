@@ -26,6 +26,7 @@ void PmergeMe::initData(char** av) {
     this->_sizeN++;
   }
   this->setJacobsThalSequence();
+  std::cout << std::endl;
 }
 
 void PmergeMe::setJacobsThalSequence() {
@@ -35,9 +36,9 @@ void PmergeMe::setJacobsThalSequence() {
   this->_jacobsThalSequence.push_back(curr);
 
   for (size_t i = 2; i <= size; ++i) {
-    if (curr > INT_MAX - 2 * prev) throw std::overflow_error(ERROR);
+    if (curr > SIZE_MAX - (2 * prev)) throw std::overflow_error(ERROR);
 
-    next = curr + 2 * prev;
+    next = curr + (2 * prev);
     if (next >= size) {
       this->_jacobsThalSequence.push_back(size);
       break;
@@ -47,8 +48,8 @@ void PmergeMe::setJacobsThalSequence() {
     curr = next;
   }
   if (size > 1) {
-    this->_jacobsThalSequence.erase(this->_jacobsThalSequence.begin() + 1);
-    this->_jacobsThalSequence.erase(this->_jacobsThalSequence.begin() + 1);
+    this->_jacobsThalSequence.erase(this->_jacobsThalSequence.begin(),
+                                    this->_jacobsThalSequence.begin() + 2);
   }
 }
 
@@ -106,9 +107,8 @@ void PmergeMe::fordJohnsonAlgorithmVector(size_t size) {
 
   this->pairSortVector(size);
 
-  if (pair == 1) {
-    return;
-  }
+  if (pair == 1) return;
+
   this->fordJohnsonAlgorithmVector(size * 2);
   this->mergeInsertionSortVector(size);
 }
