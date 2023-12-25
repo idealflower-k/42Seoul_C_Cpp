@@ -36,14 +36,14 @@ class BitcoinExchange {
   BitcoinExchange& operator=(const BitcoinExchange& origin);
 
   void setData();
-  bool vaildFormat(std::string delimiter, std::string& input) const;
-  bool vaildDate(std::string& date);
-  bool vaildYear(std::string& year) const;
-  bool vaildMonth(std::string& month) const;
-  bool vaildDay(std::string& year, std::string& month, std::string& day) const;
+  bool validFormat(std::string delimiter, std::string& input) const;
+  bool validDate(std::string& date, size_t size);
+  bool validYear(std::string& year) const;
+  bool validMonth(std::string& month) const;
+  bool validDay(std::string& year, std::string& month, std::string& day) const;
   bool isLeapYear(std::string& year) const;
-  bool vaildRate(std::string& rate) const;
-  bool vaildValue(std::string& value);
+  bool validRate(std::string& rate) const;
+  bool validValue(std::string& value);
   double multivalue(std::string& date, double value);
   void printResult(std::string& date, double value, double result);
   void printError(std::string error, std::string date) const;

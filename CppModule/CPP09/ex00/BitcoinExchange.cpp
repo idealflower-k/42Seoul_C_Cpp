@@ -28,8 +28,8 @@ void BitcoinExchange::setData() {
 
     std::string date = line.substr(0, line.find(DATA_DELIMITER));
     std::string value = line.substr(line.find(DATA_DELIMITER) + 1);
-    if (!this->vaildFormat(DATA_DELIMITER, line) || !this->vaildDate(date) ||
-        !this->vaildRate(value)) {
+    if (!this->validFormat(DATA_DELIMITER, line) ||
+        !this->validDate(date, 10) || !this->validRate(value)) {
       ifs.close();
       throw std::runtime_error(BAD_DATA_ERROR);
     }
@@ -38,7 +38,7 @@ void BitcoinExchange::setData() {
   ifs.close();
 }
 
-bool BitcoinExchange::vaildFormat(std::string delimiter,
+bool BitcoinExchange::validFormat(std::string delimiter,
                                   std::string& input) const {
   size_t delPos = input.find(delimiter);
   if (delPos == std::string::npos) return false;
@@ -49,14 +49,13 @@ bool BitcoinExchange::vaildFormat(std::string delimiter,
   return true;
 }
 
-bool BitcoinExchange::vaildDate(std::string& date) {
+bool BitcoinExchange::validDate(std::string& date, size_t size) {
   size_t delPos = date.find(DATE_DELIMITER);
-  if (delPos == std::string::npos ||
-      !(date.size() == 10 || (date.size() == 11 && date[10] == ' '))) {
+  if (delPos == std::string::npos || date.size() != size) {
     return false;
   }
 
-  if (date.size() == 11) {
+  if (size == 11) {
     this->spaceTrim(date);
     delPos = date.find(DATE_DELIMITER);
   }
@@ -65,14 +64,14 @@ bool BitcoinExchange::vaildDate(std::string& date) {
   if (delPos == lastDelPos) return false;
   std::string month = date.substr(delPos + 1, lastDelPos - delPos - 1);
   std::string day = date.substr(lastDelPos + 1);
-  if (!this->vaildYear(year) || !this->vaildMonth(month) ||
-      !this->vaildDay(year, month, day)) {
+  if (!this->validYear(year) || !this->validMonth(month) ||
+      !this->validDay(year, month, day)) {
     return false;
   }
   return true;
 }
 
-bool BitcoinExchange::vaildYear(std::string& year) const {
+bool BitcoinExchange::validYear(std::string& year) const {
   if (year.size() != 4) return false;
   for (size_t i = 0; i < year.size(); ++i) {
     if (!std::isdigit(year[i])) return false;
@@ -81,7 +80,7 @@ bool BitcoinExchange::vaildYear(std::string& year) const {
   return true;
 }
 
-bool BitcoinExchange::vaildMonth(std::string& month) const {
+bool BitcoinExchange::validMonth(std::string& month) const {
   if (month.size() != 2) return false;
   for (size_t i = 0; i < month.size(); ++i) {
     if (!std::isdigit(month[i])) return false;
@@ -97,7 +96,7 @@ bool BitcoinExchange::isLeapYear(std::string& year) const {
   return ((intYear % 4 == 0 && intYear % 100 != 0) || intYear % 400 == 0);
 }
 
-bool BitcoinExchange::vaildDay(std::string& year, std::string& month,
+bool BitcoinExchange::validDay(std::string& year, std::string& month,
                                std::string& day) const {
   if (day.size() != 2) return false;
   for (size_t i = 0; i < day.size(); ++i) {
@@ -119,7 +118,7 @@ bool BitcoinExchange::vaildDay(std::string& year, std::string& month,
   return true;
 }
 
-bool BitcoinExchange::vaildRate(std::string& value) const {
+bool BitcoinExchange::validRate(std::string& value) const {
   if (value.empty()) return false;
 
   if (std::count(value.begin(), value.end(), '.') > 1) return false;
@@ -132,17 +131,16 @@ bool BitcoinExchange::vaildRate(std::string& value) const {
   return true;
 }
 
-bool BitcoinExchange::vaildValue(std::string& value) {
+bool BitcoinExchange::validValue(std::string& value) {
   if (value.empty()) return false;
 
-  for (size_t i = 0, spcnt = 0; i < value.size(); ++i) {
-    if (value[i] == ' ') {
-      ++spcnt;
-      if (spcnt > 1) {
-        this->printError(BAD_INPUT_ERROR, std::string());
-        return false;
-      }
-    }
+  int spCnt = 0;
+  for (size_t i = 0; i < value.size(); ++i)
+    if (value[i] == ' ') ++spCnt;
+
+  if (spCnt != 1) {
+    this->printError(BAD_INPUT_ERROR, std::string());
+    return false;
   }
 
   this->spaceTrim(value);
@@ -224,7 +222,7 @@ void BitcoinExchange::convert() {
   while (std::getline(ifs, line)) {
     if (line.empty()) continue;
 
-    if (this->vaildFormat(INPUT_DELIMITER, line) == false) {
+    if (this->validFormat(INPUT_DELIMITER, line) == false) {
       this->printError(BAD_INPUT_ERROR, line);
       continue;
     }
@@ -232,11 +230,11 @@ void BitcoinExchange::convert() {
     std::string date = line.substr(0, line.find(INPUT_DELIMITER));
     std::string value = line.substr(line.find(INPUT_DELIMITER) + 1);
 
-    if (!this->vaildDate(date)) {
+    if (!this->validDate(date, 11)) {
       this->printError(BAD_INPUT_ERROR, date);
       continue;
     }
-    if (!this->vaildValue(value)) {
+    if (!this->validValue(value)) {
       continue;
     }
 
