@@ -13,5 +13,67 @@
 ## :memo: 협업 Tools
 ![Static Badge](https://img.shields.io/badge/Git-%23F05032?style=flat-square&logo=git&logoColor=white) ![Static Badge](https://img.shields.io/badge/GitHub-%23181717?style=flat-square&logo=github&logoColor=white) ![Static Badge](https://img.shields.io/badge/Jira-%230052CC?style=flat-square&logo=jira&logoColor=white) ![Static Badge](https://img.shields.io/badge/Notion-%23000000?style=flat-square&logo=notion&logoColor=%23000000&color=white)
 
+## 프로젝트 간략 소개
+### Lapiscine
+ - 프로젝트 목표 :
+ - 사용 기술 :
 
+### libft
+ - 프로젝트 목표 :
+ - 사용 기술 :
 
+### ft_printf
+ - 프로젝트 목표 :
+ - 사용 기술 :
+
+### get_next_line
+ - 프로젝트 목표 :
+ - 사용 기술 :
+
+### Born2beroot
+ - 프로젝트 목표 :
+ - 사용 기술 :
+
+### push_swap
+ - 프로젝트 목표 :
+ - 사용 기술 :
+
+### pipex
+ - 프로젝트 목표 :
+ - 사용 기술 :
+
+### fdf
+ - 프로젝트 목표 :
+ - 사용 기술 :
+
+### philosophers
+ - 프로젝트 목표 :
+ - 사용 기술 :
+
+### Minishell
+ - 프로젝트 목표 :
+ - 사용 기술 :
+
+### MiniRT
+ - 프로젝트 목표 :
+ - 사용 기술 :
+
+### Netpratice
+ - 프로젝트 목표 :
+ - 사용 기술 :
+
+### inception
+ - 프로젝트 목표 :
+ - 사용 기술 :
+
+### CppModule
+ - 프로젝트 목표 :
+ - 사용 기술 :
+
+### webserv
+ - 프로젝트 목표 :
+ - 사용 기술 :
+
+### ft_transcendence
+ - 프로젝트 목표 :
+ - 사용 기술 :
