@@ -1,4 +1,3 @@
-# it's pretty right?
 BOLD_PURPLE	=	\033[1;35m
 BOLD_CYAN	=	\033[1;36m
 BOLD_YELLOW	=	\033[1;33m

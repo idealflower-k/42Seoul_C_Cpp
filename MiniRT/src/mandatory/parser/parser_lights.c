@@ -1,0 +1,40 @@
+#include "parser.h"
+#include "design_patterns.h"
+#include "utils.h"
+
+static inline bool	_vaildation_light(t_spot_light *light)
+{
+	if (light->type != LIGHT)
+		return (false);
+	if (!check_0_to_1(light->ratio)
+		|| !check_rgb(&light->rgb))
+		return (false);
+	return (true);
+}
+
+static inline void	_set_spot_light_info(t_spot_light *light, char **line)
+{
+	light->type = LIGHT;
+	light->light_point = parser_vec3(line[1], POINT_ERR);
+	light->ratio = check_to_double(line[2]);
+	light->rgb = parser_vec3(line[3], RGB_ERR);
+}
+
+void	parser_light(char **line)
+{
+	t_meta			*meta;
+	t_spot_light	*light;
+
+	if (ft_arrlen((void **)line) != 4)
+		error_handler(LIGHT_ERR);
+	light = ft_malloc(sizeof(t_spot_light));
+	_set_spot_light_info(light, line);
+	meta = singleton();
+	if (!_vaildation_light(light) || meta->spot_lights != NULL)
+	{
+		free(light);
+		ft_free_all_arr(line);
+		error_handler(LIGHT_ERR);
+	}
+	ft_lstadd_back(&(meta->spot_lights), ft_lstnew(light));
+}
