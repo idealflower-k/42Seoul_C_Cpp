@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/29 16:47:14 by jgo               #+#    #+#             */
-/*   Updated: 2023/03/16 20:37:07 by jgo              ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "minishell.h"
 #include "defines.h"
 #include "error.h"
@@ -51,11 +39,7 @@ t_bool	prt_built_in_err(char *cmd, char *key, char *msg, int exit_status)
 	return (FT_FALSE);
 }
 
-/**
- * @brief 
- * 
- * @return int 
- */
+
 void	err_handler(t_meta *meta)
 {
 	const int	err = meta->err;

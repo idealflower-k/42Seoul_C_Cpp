@@ -1,19 +1,7 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/01 16:06:12 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/03/12 17:28:10 by sanghwal         ###   ########seoul.kr  */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef PARSER_H
 # define PARSER_H
 
-/* tokenize.c */
+
 
 t_list		*tokenize(char *line);
 void		make_tk_list(t_list **tk_list, char *line, int size);
@@ -29,7 +17,7 @@ void		free_token_str(t_tokenize *content);
 
 void		print_tokenize(t_list *tk_list);
 
-/* parser.c */
+
 
 int			parser(char *line, t_tree *tree);
 void		make_tree(\
@@ -77,7 +65,7 @@ int			search_rdr(\
 void		recover_dque(\
 	t_deque *dque, int re_cnt);
 
-/* here_doc.c */
+
 
 void		here_doc(t_list **tk_list, t_deque *dque, t_token *value);
 void		heredoc_wait(pid_t pid);
@@ -93,7 +81,7 @@ t_bool		validation_heredoc(t_list *token, t_deque *dque);
 void		edit_unlink_list(void);
 void		set_heredoc(char *file_path, t_token *value);
 
-/* lexer_parse.c */
+
 void		lexer_pipe(t_list *token, t_list **tk_list);
 void		lexer_rdr(t_list *token);
 

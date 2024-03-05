@@ -17,7 +17,7 @@
 
 typedef int (*func_t)();
 
-/* structs */
+
 
 typedef struct	glsl_info_s
 {

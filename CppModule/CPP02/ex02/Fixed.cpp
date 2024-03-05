@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Fixed.cpp                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/11 18:37:36 by sanghwal          #+#    #+#             */
-/*   Updated: 2023/05/22 16:48:49 by sanghwal         ###   ########seoul.kr  */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "Fixed.h"
 
 const int Fixed::fractional_bits = 8;
@@ -77,12 +65,7 @@ float	Fixed::operator*(const Fixed& other) {
 	return this->toFloat() * other.toFloat();
 }
 
-/**
- * @brief Division operator for Fixed class
- * @param other The divisor
- * @throws std::invalid_argument if the divisor is zero
- * @return The result of the division as a float
- */
+
 float	Fixed::operator/(const Fixed& other) {
 	if (other.toFloat() == 0.0f)
 		throw std::invalid_argument("Division by Zero");
@@ -129,56 +112,28 @@ void	Fixed::setRawBits(int const raw) {
 	this->fixed_point_num = raw;
 }
 
-/**
- * Returns the minimum value between num1 and num2. 
- * If both are equal, num1 is returned.
- *
- * @param num1 - First value to compare
- * @param num2 - Second value to compare
- * @return The smaller value between num1 and num2. If they're equal, num1 is returned.
- */
+
 Fixed& Fixed::min(Fixed& num1, Fixed& num2) {
 	if (num1.toFloat() <= num2.toFloat())
 		return (num1);
 	return (num2);
 }
 
-/**
- * Returns the minimum value between num1 and num2. 
- * If both are equal, num1 is returned.
- *
- * @param num1 - First value to compare
- * @param num2 - Second value to compare
- * @return The smaller value between num1 and num2. If they're equal, num1 is returned.
- */
+
 Fixed& Fixed::min(const Fixed& num1, const Fixed& num2) {
 	if (num1.toFloat() <= num2.toFloat())
 		return (const_cast<Fixed&>(num1));
 	return (const_cast<Fixed&>(num2));
 }
 
-/**
- * Returns the maximum value between num1 and num2.
- * If both are equal, num1 is returned.
- *
- * @param num1 - First value to compare
- * @param num2 - Second value to compare
- * @return The larger value between num1 and num2. If they're equal, num1 is returned.
- */
+
 Fixed& Fixed::max(Fixed& num1, Fixed& num2) {
 	if (num1.toFloat() >= num2.toFloat())
 		return (num1);
 	return (num2);
 }
 
-/**
- * Returns the maximum value between num1 and num2.
- * If both are equal, num1 is returned.
- *
- * @param num1 - First value to compare
- * @param num2 - Second value to compare
- * @return The larger value between num1 and num2. If they're equal, num1 is returned.
- */
+
 Fixed& Fixed::max(const Fixed& num1, const Fixed& num2) {
 	if (num1.toFloat() >= num2.toFloat())
 		return (const_cast<Fixed&>(num1));

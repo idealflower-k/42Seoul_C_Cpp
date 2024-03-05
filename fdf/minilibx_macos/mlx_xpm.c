@@ -70,7 +70,7 @@ char	*mlx_int_static_line(char **xpm_data,int *pos,int size)
 	return ((char *)0);
       len = len2;
     }
-  /* strcpy(copy,str); */
+  
   strlcpy(copy, str, len2+1);
   return (copy);
 }
@@ -111,19 +111,7 @@ int	mlx_int_get_text_rgb(char *name, char *end)
 
 void	mlx_int_xpm_set_pixel(mlx_img_list_t *img, char *data, int opp, int col, int x)
 {
-  /*
-  int	dec;
-
-  dec = opp;
-  while (dec--)
-    {
-      if (img->image->byte_order)
-	*(data+x*opp+dec) = col&0xFF;
-      else
-	*(data+x*opp+opp-dec-1) = col&0xFF;
-      col >>= 8;
-    }
-  */
+  
   // opp is 4, do it the simple way
   *((unsigned int *)(data+4*x)) = col;
 }
@@ -191,17 +179,7 @@ void	*mlx_int_parse_xpm(mlx_ptr_t *xvar,void *info,int info_size,char *(*f)())
 	RETURN;
 
       rgb_col = mlx_int_get_text_rgb(tab[j], tab[j+1]);
-      /*      
-      if ((rgb_col = mlx_int_get_text_rgb(tab[j], tab[j+1]))==-1)
-	{
-	  if (!(clip_data = malloc(4*width*height)) ||   // ok, nice size ..
-	      !(clip_img = XCreateImage(xvar->display, xvar->visual,
-					1, XYPixmap, 0, clip_data,
-					width, height, 8, (width+7)/8)) )
-	    RETURN;
-	  memset(clip_data, 0xFF, 4*width*height);
-	}
-      */
+      
       if (method)
 	colors_direct[mlx_int_get_col_name(line,cpp)] = rgb_col;
       //	  rgb_col>=0?mlx_get_color_value(xvar, rgb_col):rgb_col;
@@ -254,25 +232,7 @@ void	*mlx_int_parse_xpm(mlx_ptr_t *xvar,void *info,int info_size,char *(*f)())
       //      data += img->size_line;
       data += img->width*4;
     }
-  /*
-  if (clip_data)
-    {
-      if (!(clip_pix = XCreatePixmap(xvar->display, xvar->root,
-					   width, height, 1)) )
-	RETURN;
-      img->gc = XCreateGC(xvar->display, clip_pix, 0, &xgcv);
-      XPutImage(xvar->display, clip_pix, img->gc, clip_img,
-		0, 0, 0, 0, width, height);
-      XFreeGC(xvar->display, img->gc);
-      xgcv.clip_mask = clip_pix;
-      xgcv.function = GXcopy;
-      xgcv.plane_mask = AllPlanes;
-      img->gc = XCreateGC(xvar->display, xvar->root, GCClipMask|GCFunction|
-			  GCPlaneMask, &xgcv);
-      XSync(xvar->display, False);
-      XDestroyImage(clip_img);
-    }
-  */
+  
   if (colors)
     free(colors);
   if (colors_direct)
@@ -286,9 +246,7 @@ void	mlx_int_file_get_rid_comment(char *ptr, int size)
   int	com_begin;
   int	com_end;
 
-  while ((com_begin = mlx_int_str_str_cote(ptr,"/*",size))!=-1)
-    {
-      com_end = mlx_int_str_str(ptr+com_begin+2,"*/",size-com_begin-2);
+  while ((com_begin = mlx_int_str_str_cote(ptr,"",size-com_begin-2);
       memset(ptr+com_begin,' ',com_end+4);
     }
   while ((com_begin = mlx_int_str_str_cote(ptr,"//",size))!=-1)

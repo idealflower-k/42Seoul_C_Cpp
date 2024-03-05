@@ -1,19 +1,7 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   enum.h                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sanghwal <sanghwal@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/17 14:55:31 by jgo               #+#    #+#             */
-/*   Updated: 2023/03/17 17:00:00 by sanghwal         ###   ########seoul.kr  */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef ENUM_H
 # define ENUM_H
 
-/* enum typedef */
+
 typedef enum e_token_type		t_token_type;
 typedef enum e_rdr_type			t_rdr_type;
 typedef enum e_tree_edge		t_tree_edge;

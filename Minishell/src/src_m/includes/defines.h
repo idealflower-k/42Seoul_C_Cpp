@@ -1,22 +1,10 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   defines.h                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 17:38:28 by jgo               #+#    #+#             */
-/*   Updated: 2023/03/17 17:05:06 by jgo              ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef DEFINES_H
 # define DEFINES_H
 
 # include "constants.h"
 # include "enum.h"
 
-/* struct typedef */
+
 
 typedef struct s_meta			t_meta;
 typedef struct s_tree			t_tree;
@@ -33,24 +21,24 @@ typedef struct s_here_doc		t_here_doc;
 typedef struct s_executor		t_executor;
 typedef struct s_child_proc		t_child_proc;
 
-/* union typedef */
+
 
 typedef union u_cmd				t_ucmd;
 
-/* data_structure typedef */
+
 
 typedef struct s_deque			t_deque;
 typedef struct s_hash_table		t_hash_table;
 typedef struct s_stack			t_stack;
 typedef struct s_tree			t_tree;
 
-/* hash_table typedef */
+
 
 typedef struct s_hash_table		t_hash_table;
 typedef struct s_hash_asset		t_hash_asset;
 typedef struct s_hash_elem		t_hash_elem;
 
-/* func_ptr typedef */
+
 
 typedef int						(*t_built_in_func)(t_simple_cmd *);
 typedef void					(*t_rdr_func)(t_rdr *);

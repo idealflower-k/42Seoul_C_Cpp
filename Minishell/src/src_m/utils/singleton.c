@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   singleton.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/12 12:23:33 by jgo               #+#    #+#             */
-/*   Updated: 2023/03/12 17:51:59 by jgo              ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "minishell.h"
 #include "defines.h"
 #include "utils.h"
@@ -22,14 +10,7 @@ static void	init_hash_table(t_hash_table *ht)
 	ht->prime = ft_find_prev_prime(ht->size);
 }
 
-/**
- *
- *  you will must be free when you exit process
- *  free_bucket(meta->envp);
- *  free(meta->envp);
- *  free(meta);
- * 
-*/
+
 t_meta	*singleton(void)
 {
 	static t_meta	*meta;
