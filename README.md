@@ -19,11 +19,14 @@
  - 프로젝트 목표 : "실시간 Pong게임 웹 사이트 개발"
  - 사용 기술 : Python, Django, DRF, Postgrsql, Docker, JS, React, Nginx
  - 맡은 역할 : Django Backend API 서버 개발
+ - [ft_transcendence 링크](https://github.com/42ForYou/ft_transcendence)
+ - [백엔드 링크](https://github.com/42ForYou/backend)
 
 ### webserv
  - 프로젝트 목표 : "정적 웹서버 개발"
  - 사용 기술 : C++
  - 맡은 역할 : kqueue를 사용한 IO-multiplexing 처리 메인 로직 개발, CGI기능 개발, Client관리 구조 개발
+ - [webserv 링크](https://github.com/WebWaveMaker)
 
 ### MiniRT
  - 프로젝트 목표 : "3차원 오브젝트 렌더링, 빛 효과적용"
