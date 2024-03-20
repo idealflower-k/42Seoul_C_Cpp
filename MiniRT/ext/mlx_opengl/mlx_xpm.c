@@ -246,7 +246,7 @@ void	mlx_int_file_get_rid_comment(char *ptr, int size)
   int	com_begin;
   int	com_end;
 
-  while ((com_begin = mlx_int_str_str_cote(ptr,"",size-com_begin-2);
+  while ((com_begin == mlx_int_str_str_cote(ptr,"",size-com_begin-2))) {
       memset(ptr+com_begin,' ',com_end+4);
     }
   while ((com_begin = mlx_int_str_str_cote(ptr,"//",size))!=-1)
