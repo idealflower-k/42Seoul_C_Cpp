@@ -6,6 +6,7 @@
 #include <string>
 #include <sstream>
 #include <iomanip>
+#include <cstdio>
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 
