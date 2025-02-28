@@ -1,6 +1,6 @@
 # 42서울
 ## :rocket: 42서울 참여 기간
-  **2022.07.04 ~ 현재**
+  **2022.04 ~ 2024.04
 
 ## :computer: Stacks
 ![Static Badge](https://img.shields.io/badge/C-A8B9CC?style=flat-square&logo=C&logoColor=white) ![Static Badge](https://img.shields.io/badge/C%2B%2B-00599C?style=flat-square&logo=C%2B%2B&logoColor=white) ![Static Badge](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
